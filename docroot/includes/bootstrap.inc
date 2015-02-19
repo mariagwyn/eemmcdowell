@@ -8,7 +8,7 @@
 /**
  * The current system version.
  */
-define('VERSION', '7.33');
+define('VERSION', '7.23');
 
 /**
  * Core API compatibility.
@@ -244,18 +244,9 @@ define('REGISTRY_WRITE_LOOKUP_CACHE', 2);
 /**
  * Regular expression to match PHP function names.
  *
- * @see http://php.net/manual/language.functions.php
+ * @see http://php.net/manual/en/language.functions.php
  */
 define('DRUPAL_PHP_FUNCTION_PATTERN', '[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*');
-
-/**
- * A RFC7231 Compliant date.
- *
- * http://tools.ietf.org/html/rfc7231#section-7.1.1.1
- *
- * Example: Sun, 06 Nov 1994 08:49:37 GMT
- */
-define('DATE_RFC7231', 'D, d M Y H:i:s \G\M\T');
 
 /**
  * Provides a caching wrapper to be used in place of large array structures.
@@ -287,7 +278,7 @@ define('DATE_RFC7231', 'D, d M Y H:i:s \G\M\T');
  * error, and $var will be populated with the contents of $object['foo'], but
  * that data will be passed by value, not reference. For more information on
  * the PHP limitation, see the note in the official PHP documentation at·
- * http://php.net/manual/arrayaccess.offsetget.php on
+ * http://php.net/manual/en/arrayaccess.offsetget.php on
  * ArrayAccess::offsetGet().
  *
  * By default, the class accounts for caches where calling functions might
@@ -692,8 +683,7 @@ function drupal_environment_initialize() {
   ini_set('session.use_only_cookies', '1');
   ini_set('session.use_trans_sid', '0');
   // Don't send HTTP headers using PHP's session handler.
-  // An empty string is used here to disable the cache limiter.
-  ini_set('session.cache_limiter', '');
+  ini_set('session.cache_limiter', 'none');
   // Use httponly session cookies.
   ini_set('session.cookie_httponly', '1');
 
@@ -709,14 +699,7 @@ function drupal_environment_initialize() {
  *  TRUE if only containing valid characters, or FALSE otherwise.
  */
 function drupal_valid_http_host($host) {
-  // Limit the length of the host name to 1000 bytes to prevent DoS attacks with
-  // long host names.
-  return strlen($host) <= 1000
-    // Limit the number of subdomains and port separators to prevent DoS attacks
-    // in conf_path().
-    && substr_count($host, '.') <= 100
-    && substr_count($host, ':') <= 100
-    && preg_match('/^\[?(?:[a-zA-Z0-9-:\]_]+\.?)+$/', $host);
+  return preg_match('/^\[?(?:[a-zA-Z0-9-:\]_]+\.?)+$/', $host);
 }
 
 /**
@@ -861,7 +844,7 @@ function drupal_get_filename($type, $name, $filename = NULL) {
     try {
       if (function_exists('db_query')) {
         $file = db_query("SELECT filename FROM {system} WHERE name = :name AND type = :type", array(':name' => $name, ':type' => $type))->fetchField();
-        if ($file !== FALSE && file_exists(DRUPAL_ROOT . '/' . $file)) {
+        if (file_exists(DRUPAL_ROOT . '/' . $file)) {
           $files[$type][$name] = $file;
         }
       }
@@ -1275,7 +1258,7 @@ function drupal_page_header() {
 
   $default_headers = array(
     'Expires' => 'Sun, 19 Nov 1978 05:00:00 GMT',
-    'Last-Modified' => gmdate(DATE_RFC7231, REQUEST_TIME),
+    'Last-Modified' => gmdate(DATE_RFC1123, REQUEST_TIME),
     'Cache-Control' => 'no-cache, must-revalidate, post-check=0, pre-check=0',
     'ETag' => '"' . REQUEST_TIME . '"',
   );
@@ -1295,7 +1278,7 @@ function drupal_page_header() {
  */
 function drupal_serve_page_from_cache(stdClass $cache) {
   // Negotiate whether to use compression.
-  $page_compression = !empty($cache->data['page_compressed']);
+  $page_compression = variable_get('page_compression', TRUE) && extension_loaded('zlib');
   $return_compressed = $page_compression && isset($_SERVER['HTTP_ACCEPT_ENCODING']) && strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip') !== FALSE;
 
   // Get headers set in hook_boot(). Keys are lower-case.
@@ -1345,7 +1328,7 @@ function drupal_serve_page_from_cache(stdClass $cache) {
     drupal_add_http_header($name, $value);
   }
 
-  $default_headers['Last-Modified'] = gmdate(DATE_RFC7231, $cache->created);
+  $default_headers['Last-Modified'] = gmdate(DATE_RFC1123, $cache->created);
 
   // HTTP/1.0 proxies does not support the Vary header, so prevent any caching
   // by sending an Expires date in the past. HTTP/1.1 clients ignores the
@@ -1568,13 +1551,12 @@ function format_string($string, array $args = array()) {
  * Also validates strings as UTF-8 to prevent cross site scripting attacks on
  * Internet Explorer 6.
  *
- * @param string $text
+ * @param $text
  *   The text to be checked or processed.
  *
- * @return string
- *   An HTML safe version of $text. If $text is not valid UTF-8, an empty string
- *   is returned and, on PHP < 5.4, a warning may be issued depending on server
- *   configuration (see @link https://bugs.php.net/bug.php?id=47494 @endlink).
+ * @return
+ *   An HTML safe version of $text, or an empty string if $text is not
+ *   valid UTF-8.
  *
  * @see drupal_validate_utf8()
  * @ingroup sanitization
@@ -1951,33 +1933,6 @@ function drupal_block_denied($ip) {
 }
 
 /**
- * Returns a URL-safe, base64 encoded string of highly randomized bytes (over the full 8-bit range).
- *
- * @param $byte_count
- *   The number of random bytes to fetch and base64 encode.
- *
- * @return string
- *   The base64 encoded result will have a length of up to 4 * $byte_count.
- */
-function drupal_random_key($byte_count = 32) {
-  return drupal_base64_encode(drupal_random_bytes($byte_count));
-}
-
-/**
- * Returns a URL-safe, base64 encoded version of the supplied string.
- *
- * @param $string
- *   The string to convert to base64.
- *
- * @return string
- */
-function drupal_base64_encode($string) {
-  $data = base64_encode($string);
-  // Modify the output so it's safe to use in URLs.
-  return strtr($data, array('+' => '-', '/' => '_', '=' => ''));
-}
-
-/**
  * Returns a string of highly randomized bytes (over the full 8-bit range).
  *
  * This function is better than simply calling mt_rand() or any other built-in
@@ -1990,34 +1945,38 @@ function drupal_base64_encode($string) {
  */
 function drupal_random_bytes($count)  {
   // $random_state does not use drupal_static as it stores random bytes.
-  static $random_state, $bytes, $has_openssl;
-
-  $missing_bytes = $count - strlen($bytes);
-
-  if ($missing_bytes > 0) {
+  static $random_state, $bytes, $php_compatible;
+  // Initialize on the first call. The contents of $_SERVER includes a mix of
+  // user-specific and system information that varies a little with each page.
+  if (!isset($random_state)) {
+    $random_state = print_r($_SERVER, TRUE);
+    if (function_exists('getmypid')) {
+      // Further initialize with the somewhat random PHP process ID.
+      $random_state .= getmypid();
+    }
+    $bytes = '';
+  }
+  if (strlen($bytes) < $count) {
     // PHP versions prior 5.3.4 experienced openssl_random_pseudo_bytes()
     // locking on Windows and rendered it unusable.
-    if (!isset($has_openssl)) {
-      $has_openssl = version_compare(PHP_VERSION, '5.3.4', '>=') && function_exists('openssl_random_pseudo_bytes');
+    if (!isset($php_compatible)) {
+      $php_compatible = version_compare(PHP_VERSION, '5.3.4', '>=');
     }
-
-    // openssl_random_pseudo_bytes() will find entropy in a system-dependent
-    // way.
-    if ($has_openssl) {
-      $bytes .= openssl_random_pseudo_bytes($missing_bytes);
-    }
-
-    // Else, read directly from /dev/urandom, which is available on many *nix
-    // systems and is considered cryptographically secure.
-    elseif ($fh = @fopen('/dev/urandom', 'rb')) {
+    // /dev/urandom is available on many *nix systems and is considered the
+    // best commonly available pseudo-random source.
+    if ($fh = @fopen('/dev/urandom', 'rb')) {
       // PHP only performs buffered reads, so in reality it will always read
       // at least 4096 bytes. Thus, it costs nothing extra to read and store
       // that much so as to speed any additional invocations.
-      $bytes .= fread($fh, max(4096, $missing_bytes));
+      $bytes .= fread($fh, max(4096, $count));
       fclose($fh);
     }
-
-    // If we couldn't get enough entropy, this simple hash-based PRNG will
+    // openssl_random_pseudo_bytes() will find entropy in a system-dependent
+    // way.
+    elseif ($php_compatible && function_exists('openssl_random_pseudo_bytes')) {
+      $bytes .= openssl_random_pseudo_bytes($count - strlen($bytes));
+    }
+    // If /dev/urandom is not available or returns no bytes, this loop will
     // generate a good set of pseudo-random bytes on any system.
     // Note that it may be important that our $random_state is passed
     // through hash() prior to being rolled into $output, that the two hash()
@@ -2025,23 +1984,9 @@ function drupal_random_bytes($count)  {
     // the microtime() - is prepended rather than appended. This is to avoid
     // directly leaking $random_state via the $output stream, which could
     // allow for trivial prediction of further "random" numbers.
-    if (strlen($bytes) < $count) {
-      // Initialize on the first call. The contents of $_SERVER includes a mix of
-      // user-specific and system information that varies a little with each page.
-      if (!isset($random_state)) {
-        $random_state = print_r($_SERVER, TRUE);
-        if (function_exists('getmypid')) {
-          // Further initialize with the somewhat random PHP process ID.
-          $random_state .= getmypid();
-        }
-        $bytes = '';
-      }
-
-      do {
-        $random_state = hash('sha256', microtime() . mt_rand() . $random_state);
-        $bytes .= hash('sha256', mt_rand() . $random_state, TRUE);
-      }
-      while (strlen($bytes) < $count);
+    while (strlen($bytes) < $count) {
+      $random_state = hash('sha256', microtime() . mt_rand() . $random_state);
+      $bytes .= hash('sha256', mt_rand() . $random_state, TRUE);
     }
   }
   $output = substr($bytes, 0, $count);
@@ -2052,21 +1997,17 @@ function drupal_random_bytes($count)  {
 /**
  * Calculates a base-64 encoded, URL-safe sha-256 hmac.
  *
- * @param string $data
+ * @param $data
  *   String to be validated with the hmac.
- * @param string $key
+ * @param $key
  *   A secret string key.
  *
- * @return string
+ * @return
  *   A base-64 encoded sha-256 hmac, with + replaced with -, / with _ and
  *   any = padding characters removed.
  */
 function drupal_hmac_base64($data, $key) {
-  // Casting $data and $key to strings here is necessary to avoid empty string
-  // results of the hash function if they are not scalar values. As this
-  // function is used in security-critical contexts like token validation it is
-  // important that it never returns an empty string.
-  $hmac = base64_encode(hash_hmac('sha256', (string) $data, (string) $key, TRUE));
+  $hmac = base64_encode(hash_hmac('sha256', $data, $key, TRUE));
   // Modify the hmac so it's safe to use in URLs.
   return strtr($hmac, array('+' => '-', '/' => '_', '=' => ''));
 }
@@ -2167,7 +2108,7 @@ function drupal_array_merge_deep_array($arrays) {
  * @return Object - the user object.
  */
 function drupal_anonymous_user() {
-  $user = variable_get('drupal_anonymous_user_object', new stdClass);
+  $user = new stdClass();
   $user->uid = 0;
   $user->hostname = ip_address();
   $user->roles = array();
@@ -2186,7 +2127,7 @@ function drupal_anonymous_user() {
  *   drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
  * @endcode
  *
- * @param int $phase
+ * @param $phase
  *   A constant telling which phase to bootstrap to. When you bootstrap to a
  *   particular phase, all earlier phases are run automatically. Possible
  *   values:
@@ -2199,11 +2140,11 @@ function drupal_anonymous_user() {
  *   - DRUPAL_BOOTSTRAP_LANGUAGE: Finds out the language of the page.
  *   - DRUPAL_BOOTSTRAP_FULL: Fully loads Drupal. Validates and fixes input
  *     data.
- * @param boolean $new_phase
+ * @param $new_phase
  *   A boolean, set to FALSE if calling drupal_bootstrap from inside a
  *   function called from drupal_bootstrap (recursion).
  *
- * @return int
+ * @return
  *   The most recently completed phase.
  */
 function drupal_bootstrap($phase = NULL, $new_phase = TRUE) {
@@ -2225,13 +2166,12 @@ function drupal_bootstrap($phase = NULL, $new_phase = TRUE) {
   // bootstrap state.
   static $stored_phase = -1;
 
+  // When not recursing, store the phase name so it's not forgotten while
+  // recursing.
+  if ($new_phase) {
+    $final_phase = $phase;
+  }
   if (isset($phase)) {
-    // When not recursing, store the phase name so it's not forgotten while
-    // recursing but take care of not going backwards.
-    if ($new_phase && $phase >= $stored_phase) {
-      $final_phase = $phase;
-    }
-
     // Call a phase if it has not been called before and is below the requested
     // phase.
     while ($phases && $phase > $stored_phase && $final_phase > $stored_phase) {
@@ -2519,7 +2459,7 @@ function _drupal_bootstrap_page_header() {
  * @see drupal_bootstrap()
  */
 function drupal_get_bootstrap_phase() {
-  return drupal_bootstrap(NULL, FALSE);
+  return drupal_bootstrap();
 }
 
 /**
@@ -3313,8 +3253,8 @@ function registry_update() {
  * However, the above line of code does not work, because PHP only allows static
  * variables to be initializied by literal values, and does not allow static
  * variables to be assigned to references.
- * - http://php.net/manual/language.variables.scope.php#language.variables.scope.static
- * - http://php.net/manual/language.variables.scope.php#language.variables.scope.references
+ * - http://php.net/manual/en/language.variables.scope.php#language.variables.scope.static
+ * - http://php.net/manual/en/language.variables.scope.php#language.variables.scope.references
  * The example below shows the syntax needed to work around both limitations.
  * For benchmarks and more information, see http://drupal.org/node/619666.
  *
@@ -3339,9 +3279,11 @@ function registry_update() {
  * @param $default_value
  *   Optional default value.
  * @param $reset
- *   TRUE to reset one or all variables(s). This parameter is only used
- *   internally and should not be passed in; use drupal_static_reset() instead.
- *   (This function's return value should not be used when TRUE is passed in.)
+ *   TRUE to reset a specific named variable, or all variables if $name is NULL.
+ *   Resetting every variable should only be used, for example, for running
+ *   unit tests with a clean environment. Should be used only though via
+ *   function drupal_static_reset() and the return value should not be used in
+ *   this case.
  *
  * @return
  *   Returns a variable by reference.
@@ -3386,8 +3328,6 @@ function &drupal_static($name, $default_value = NULL, $reset = FALSE) {
  *
  * @param $name
  *   Name of the static variable to reset. Omit to reset all variables.
- *   Resetting all variables should only be used, for example, for running unit
- *   tests with a clean environment.
  */
 function drupal_static_reset($name = NULL) {
   drupal_static($name, NULL, TRUE);

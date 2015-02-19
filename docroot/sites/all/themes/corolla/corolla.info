@@ -20,7 +20,6 @@
   stylesheets[all][]   = css/fonts.css
   stylesheets[all][]   = css/corolla.settings.style.css
   stylesheets[all][]   = color/colors.css
-  stylesheets[all][]   = custom.css
   stylesheets[print][] = css/print.css
 
 ;----------// Regions

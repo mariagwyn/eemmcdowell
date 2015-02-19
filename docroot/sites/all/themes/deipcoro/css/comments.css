@@ -1,0 +1,110 @@
+/* Comments */
+.comment .attribution {
+    display: table-cell;
+    overflow: hidden;
+    padding: 0 1em 0 0;
+    vertical-align: top;
+}
+
+.comment .comment-text {
+  padding: 10px 15px;
+  border: 1px solid #EDDFBA;
+  display: table-cell;
+  vertical-align: top;
+  position: relative;
+  width: 100%;
+-webkit-border-radius: 1px;
+-webkit-border-top-right-radius: 40px;
+-webkit-border-bottom-left-radius: 40px;
+-moz-border-radius: 1px;
+-moz-border-radius-topright: 40px;
+-moz-border-radius-bottomleft: 40px;
+border-radius: 1px;
+border-top-right-radius: 40px;
+border-bottom-left-radius: 40px;
+}
+.comment .submitted p {
+    font-size: 1.071em;
+    line-height: 1.2;
+    margin: 4px 0;
+}
+.comment .submitted .comment-time {
+    font-size: 0.786em;
+}
+.comment .submitted .comment-permalink {
+    font-size: 0.786em;
+    text-transform: lowercase;
+}
+#comments ul.pager {display: none;}
+#comments > h2.title {
+  margin-bottom: .5em;
+}
+#comments ul.links {
+  margin: 0;
+  padding: 1em 0 .5em 0;
+}
+.comment {
+  margin: 20px 0;
+  padding: 0 0 16px;
+}
+.comment .indented {
+  margin-left: 60px;
+}
+h3.comment-title {
+  border: none;
+  line-height: 1;
+  margin: 0 0 5px;
+  padding: 0;
+  text-transform: none;
+}
+.comment-title a:link,
+.comment-title a:visited,
+.comment-title a:active {
+  text-decoration: none;
+  border-bottom: none;
+  font-weight: 700;
+}
+.comment-title a:hover,
+.comment-title a:focus {
+  text-decoration: underline;
+}
+.comment-title .new {
+  color: #ff8000;
+}
+.comment .user-picture {
+  float: left;
+  margin: 0 .6em .4em 0;
+}
+.comment .user-picture img {
+  background-color: #fffdee;
+  border: 1px solid #EDDFBA;
+  padding: 2px;
+}
+.comment-content {float:left; padding: 0 0 1em 0;}
+.comment-submitted {
+  font-size: 0.917em;
+  margin: 1px 0 0;
+  color: #552D05;
+  line-height: 1;
+  margin-top: 3px;
+}
+.comment-by-article-author .comment-submitted {
+  color: #779125;
+}
+.comment ul.links {
+  display: block;
+  text-align: left;
+  padding: 0;
+}
+.comment ul.links li {
+  padding: 0;
+}
+.comment ul.links li a {
+  text-transform: capitalize;
+}
+
+
+/*****  Facebook Comments *****/
+.fb-social-comments-plugin {
+    margin: .25em 0 0;
+}

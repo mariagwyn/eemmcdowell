@@ -1,5 +1,5 @@
 ﻿/*
-Copyright (c) 2003-2012, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2003-2011, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
@@ -16,10 +16,10 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		var doc = editor.document,
 			body = doc.getBody();
 
-		var enabled = false;
+		var enabled = 0;
 		var onExec = function()
 		{
-			enabled = true;
+			enabled = 1;
 		};
 
 		// The following seems to be the only reliable way to detect that
@@ -135,8 +135,11 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 				var body = this.document.getBody();
 
+				// Simulate 'beforepaste' event for all none-IEs.
+				if ( !CKEDITOR.env.ie && body.fire( 'beforepaste' ) )
+					event.cancel();
 				// Simulate 'paste' event for Opera/Firefox2.
-				if ( CKEDITOR.env.opera
+				else if ( CKEDITOR.env.opera
 						 || CKEDITOR.env.gecko && CKEDITOR.env.version < 10900 )
 					body.fire( 'paste' );
 				return;
@@ -154,8 +157,6 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 					}, 0 );
 		}
 	};
-
-	function cancel( evt ) { evt.cancel(); }
 
 	// Allow to peek clipboard content by redirecting the
 	// pasting content into a temporary bin and grab the content of it.
@@ -207,11 +208,19 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 		var bms = sel.createBookmarks();
 
-		this.on( 'selectionChange', cancel, null, null, 0 );
-
 		// Turn off design mode temporarily before give focus to the paste bin.
 		if ( mode == 'text' )
-			pastebin.$.focus();
+		{
+			if ( CKEDITOR.env.ie )
+			{
+				var ieRange = doc.getBody().$.createTextRange();
+				ieRange.moveToElementText( pastebin.$ );
+				ieRange.execCommand( 'Paste' );
+				evt.data.preventDefault();
+			}
+			else
+				pastebin.$.focus();
+		}
 		else
 		{
 			range.setStartAt( pastebin, CKEDITOR.POSITION_AFTER_START );
@@ -223,10 +232,8 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		// Wait a while and grab the pasted contents
 		window.setTimeout( function()
 		{
-			// Restore properly the document focus. (#5684, #8849)
-			editor.document.getBody().focus();
-
-			editor.removeListener( 'selectionChange', cancel );
+			mode == 'text' && CKEDITOR.env.gecko && editor.focusGrabber.focus();
+			pastebin.remove();
 
 			// Grab the HTML contents.
 			// We need to look for a apple style wrapper on webkit it also adds
@@ -238,9 +245,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 						 && ( bogusSpan.is && bogusSpan.hasClass( 'Apple-style-span' ) ) ?
 							bogusSpan : pastebin );
 
-			// IE7: selection must go before removing paste. (#8691)
 			sel.selectBookmarks( bms );
-			pastebin.remove();
 			callback( pastebin[ 'get' + ( mode == 'text' ? 'Value' : 'Html' ) ]() );
 		}, 0 );
 	}
@@ -283,9 +288,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		// keyboard paste or execCommand ) (#4874).
 		CKEDITOR.env.ie && ( depressBeforeEvent = 1 );
 
-		var retval = CKEDITOR.TRISTATE_OFF;
-		try { retval = editor.document.$.queryCommandEnabled( command ) ? CKEDITOR.TRISTATE_OFF : CKEDITOR.TRISTATE_DISABLED; }catch( er ){}
-
+		var retval = editor.document.$.queryCommandEnabled( command ) ? CKEDITOR.TRISTATE_OFF : CKEDITOR.TRISTATE_DISABLED;
 		depressBeforeEvent = 0;
 		return retval;
 	}
@@ -318,8 +321,6 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 							editor.insertHtml( data[ 'html' ] );
 						else if ( data[ 'text' ] )
 							editor.insertText( data[ 'text' ] );
-
-						setTimeout( function () { editor.fire( 'afterPaste' ); }, 0 );
 
 					}, null, null, 1000 );
 
@@ -369,67 +370,32 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 				editor.on( 'key', onKey, editor );
 
+				var mode = editor.config.forcePasteAsPlainText ? 'text' : 'html';
+
 				// We'll be catching all pasted content in one line, regardless of whether the
 				// it's introduced by a document command execution (e.g. toolbar buttons) or
 				// user paste behaviors. (e.g. Ctrl-V)
 				editor.on( 'contentDom', function()
 				{
 					var body = editor.document.getBody();
-
-					// Intercept the paste before it actually takes place.
-					body.on( !CKEDITOR.env.ie ? 'paste' : 'beforepaste', function( evt )
+					body.on( ( ( mode == 'text' && CKEDITOR.env.ie ) || CKEDITOR.env.webkit ) ? 'paste' : 'beforepaste',
+						function( evt )
 						{
 							if ( depressBeforeEvent )
 								return;
 
-							// Dismiss the (wrong) 'beforepaste' event fired on toolbar menu open.
-							var domEvent = evt.data && evt.data.$;
-							if ( CKEDITOR.env.ie && domEvent && !domEvent.ctrlKey )
-								return;
-
-							// Fire 'beforePaste' event so clipboard flavor get customized
-							// by other plugins.
-							var eventData =  { mode : 'html' };
-							editor.fire( 'beforePaste', eventData );
-
-							getClipboardData.call( editor, evt, eventData.mode, function ( data )
+							getClipboardData.call( editor, evt, mode, function ( data )
 							{
 								// The very last guard to make sure the
 								// paste has successfully happened.
-								if ( !( data = CKEDITOR.tools.trim( data.replace( /<span[^>]+data-cke-bookmark[^<]*?<\/span>/ig,'' ) ) ) )
+								if ( !data )
 									return;
 
 								var dataTransfer = {};
-								dataTransfer[ eventData.mode ] = data;
+								dataTransfer[ mode ] = data;
 								editor.fire( 'paste', dataTransfer );
 							} );
 						});
-
-					if ( CKEDITOR.env.ie )
-					{
-						// Dismiss the (wrong) 'beforepaste' event fired on context menu open. (#7953)
-						body.on( 'contextmenu', function()
-						{
-							depressBeforeEvent = 1;
-							// Important: The following timeout will be called only after menu closed.
-							setTimeout( function() { depressBeforeEvent = 0; }, 0 );
-						} );
-
-						// Handle IE's late coming "paste" event when pasting from
-						// browser toolbar/context menu.
-						body.on( 'paste', function( evt )
-						{
-							if ( !editor.document.getById( 'cke_pastebin' ) )
-							{
-								// Prevent native paste.
-								evt.data.preventDefault();
-
-								depressBeforeEvent = 0;
-								// Resort to the paste command.
-								pasteCmd.exec( editor );
-							}
-						} );
-					}
 
 					body.on( 'beforecut', function() { !depressBeforeEvent && fixCut( editor ); } );
 
