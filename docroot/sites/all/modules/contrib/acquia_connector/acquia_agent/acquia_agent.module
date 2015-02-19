@@ -75,7 +75,91 @@ function acquia_agent_menu() {
     'access arguments' => array('administer site configuration'),
     'type' => MENU_CALLBACK,
   );
+  $items['system/acquia-connector-status'] = array(
+    'title' => 'Site status',
+    'description' => 'Check the site status',
+    'page callback' => 'acquia_agent_site_status',
+    'access callback' => 'acquia_agent_site_status_access',
+    'file' => 'acquia_agent.pages.inc',
+    'type' => MENU_CALLBACK,
+  );
   return $items;
+}
+
+/**
+ * Implements hook_menu_site_status_alter().
+ */
+function acquia_agent_menu_site_status_alter(&$menu_site_status, $path) {
+  // Disable offline mode so the acquia connector status page can always be
+  // accessed.
+  if (($menu_site_status == MENU_SITE_OFFLINE) && ($path == 'system/acquia-connector-status')) {
+    $menu_site_status = MENU_SITE_ONLINE;
+  }
+}
+
+/**
+ * Access callback for acquia_agent_site_status().
+ */
+function acquia_agent_site_status_access() {
+  // If we don't have all the query params, leave now.
+  if (!isset($_GET['key'], $_GET['nonce'], $_GET['stamp'])) {
+    return FALSE;
+  }
+
+  $sub_data = acquia_agent_settings('acquia_subscription_data');
+  $sub_uuid = _acquia_agent_get_id_from_sub($sub_data);
+  if (!empty($sub_uuid)) {
+    // If the timestamp is 'newer' or more than 1 minute old.
+    $elapsed_time = REQUEST_TIME - (int) $_GET['stamp'];
+    if ($elapsed_time < 0 || $elapsed_time > 60) {
+      return FALSE;
+    }
+
+    $expected_hash = hash('sha1', "{$sub_uuid}:{$_GET['nonce']}");
+    // If the generated hash matches the hash from $_GET['key'], we're good.
+    if ($_GET['key'] === $expected_hash) {
+      return TRUE;
+    }
+  }
+
+  // Log request if validation failed and debug is enabled.
+  $acquia_debug = variable_get('acquia_agent_debug', FALSE);
+  if ($acquia_debug) {
+    $info = array(
+      'sub_data' => $sub_data,
+      'sub_uuid_from_data' => $sub_uuid,
+      'expected_hash' => $expected_hash,
+      'get' => $_GET,
+      'server' => $_SERVER,
+      'request' => $_REQUEST,
+    );
+    watchdog('acquia_agent', 'Site status request: @data', array('@data' => var_export($info, TRUE)));
+  }
+
+  return FALSE;
+}
+
+/**
+ * Gets the subscription UUID from subscription data.
+ *
+ * @param array $sub_data
+ *   An array of subscription data
+ *   @see acquia_agent_settings('acquia_subscription_data')
+ *
+ * @return string
+ *   The UUID taken from the subscription data.
+ */
+function _acquia_agent_get_id_from_sub($sub_data) {
+  if (!empty($sub_data['uuid'])) {
+    return $sub_data['uuid'];
+  }
+
+  // Otherwise, get this form the sub url.
+  $url = drupal_parse_url($sub_data['href']);
+  $parts = explode('/', $url['path']);
+  // Remove '/dashboard'.
+  array_pop($parts);
+  return end($parts);
 }
 
 /**
@@ -100,7 +184,6 @@ function acquia_agent_toolbar_add_links($toolbar) {
       $icon = '<img src="' . base_path() . 'misc/message-16-ok.png" alt="ok" style="vertical-align: middle;" />';
       $link['title'] = t("!icon Subscription active (expires @date)", array('!icon' => $icon, '@date' => format_date(strtotime($subscription['expiration_date']['value']), 'custom', 'Y/n/j')));
       $link['attributes']['class'][] = "acquia-active-subscription";
-      $link['attributes']['title'] = $subscription['product']['view'];
       $link['href'] = $subscription['href'];
     }
   }
@@ -118,9 +201,25 @@ function acquia_agent_toolbar_add_links($toolbar) {
 }
 
 /**
- * Implementation of hook_init().
+ * Implements hook_init().
  */
 function acquia_agent_init() {
+  // Auto-connect with Acquia Cloud credentials if there's not currently a
+  // connection or credentials set.
+   if (!acquia_agent_has_credentials() && !variable_get('acquia_subscription_data', FALSE)
+      && variable_get('ah_network_key', FALSE) && variable_get('ah_network_identifier', FALSE)) {
+
+    variable_set('acquia_identifier', variable_get('ah_network_identifier', FALSE));
+    variable_set('acquia_key', variable_get('ah_network_key', FALSE));
+
+    $activated = acquia_agent_check_subscription();
+
+    if ($activated) {
+      $text = t('Your site has been automatically connected to the Acquia Network. <a href="!url">Change subscription</a>', array('!url' => url('admin/config/system/acquia-agent/setup')));
+      drupal_set_message($text, 'status', FALSE);
+    }
+  }
+
   $request = ltrim(request_uri(), DIRECTORY_SEPARATOR);
   $hide_signup_messages = variable_get('acquia_agent_hide_signup_messages', 0);
   if (!$hide_signup_messages &&
@@ -154,11 +253,12 @@ function acquia_agent_theme() {
  *
  * This check also sends a heartbeat to the Acquia Network unless
  * $params['no_heartbeat'] == 1.
+ *
+ * @return FALSE, integer (xmlrpc error number), or subscription data
  */
 function acquia_agent_check_subscription($params = array()) {
-  // Default return value is FALSE.
+  $current_subscription = acquia_agent_settings('acquia_subscription_data');
   $subscription = FALSE;
-  $response_error = FALSE;
   $active = FALSE;
   if (!acquia_agent_has_credentials()) {
     // If there is not an identifier or key, delete any old subscription data.
@@ -167,15 +267,20 @@ function acquia_agent_check_subscription($params = array()) {
   else {
     // Get our subscription data
     $subscription = acquia_agent_get_subscription($params);
-    if (is_int($subscription)) {
-      switch($subscription) {
+    if (is_numeric($subscription)) {
+      switch ($subscription) {
         case SUBSCRIPTION_NOT_FOUND:
         case SUBSCRIPTION_EXPIRED:
-          variable_del('acquia_subscription_data');
+          // Fall through since these values are stored and used by
+          // acquia_search_acquia_subscription_status()
           break;
+        default:
+          // Likely server error (503) or connection timeout (-110) so leave
+          // current subscription in place. _acquia_agent_request() logged an
+          // error message.
+          return $current_subscription;
       }
     }
-    // Everything checked out fine
     variable_set('acquia_subscription_data', $subscription);
     // Check if our main subscription is active
     if ($subscription) {
@@ -191,10 +296,10 @@ function acquia_agent_check_subscription($params = array()) {
  *
  * This check also sends a heartbeat to the Acquia Network unless
  * $params['no_heartbeat'] == 1.
+ *
+ * @return FALSE, integer (xmlrpc error number), or subscription data
  */
 function acquia_agent_get_subscription($params = array(), $identifier = NULL, $key = NULL, $acquia_network_address = NULL) {
-  // Default return value is FALSE.
-  $response_error = FALSE;
   // There is an identifier and key, so attempt communication.
   $subscription = array();
   $subscription['timestamp'] = REQUEST_TIME;
@@ -271,10 +376,10 @@ function acquia_agent_update_status_alter(&$projects) {
   foreach ($projects as $project => $project_info) {
     if ($project == 'drupal') {
       if (isset($subscription['update'])) {
-        $projects[$project]['status'] = $subscription['update']['status'];
-        $projects[$project]['releases'] = $subscription['update']['releases'];
-        $projects[$project]['recommended'] = $subscription['update']['recommended'];
-        $projects[$project]['latest_version'] = $subscription['update']['latest_version'];
+        $projects[$project]['status'] = isset($subscription['update']['status']) ? $subscription['update']['status'] : t('Unknown');
+        $projects[$project]['releases'] = isset($subscription['update']['releases']) ? $subscription['update']['releases'] : array();
+        $projects[$project]['recommended'] = isset($subscription['update']['recommended']) ? $subscription['update']['recommended'] : '';
+        $projects[$project]['latest_version'] = isset($subscription['update']['latest_version']) ? $subscription['update']['latest_version'] : '';
         // Security updates are a separate piece of data.  If we leave it, then core
         // security warnings from druapl.org will also be displayed on the update page.
         unset($projects[$project]['security updates']);

@@ -30,5 +30,4 @@
   <?php if ($links = render($content['links'])): ?>
     <nav class="clearfix"><?php print $links; ?></nav>
   <?php endif; ?>
-
 </article>

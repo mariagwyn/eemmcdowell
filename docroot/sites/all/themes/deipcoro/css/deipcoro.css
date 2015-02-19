@@ -1,0 +1,286 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/* html elements */ 
+html {
+  font-size: 81.3%; /* 16px x 81.3% = 13px */
+  word-wrap: break-word;
+}
+
+.region-header {
+padding: 30px 0;
+}
+#menu-bar-wrapper {height: 30px; display:block;background: #7d1e19;margin-bottom:1em;}
+#menu-bar-wrapper #block-search-form {width: 30%; float:left; margin-bottom:0;}
+#menu-bar-wrapper #block-system-main-menu {width:50%; float:right; text-align:right;}
+#menu-bar-wrapper .block ul {margin:0}
+#menu-bar-wrapper .block ul li {float:right;}
+#menu-bar .menu-wrapper > ul > li {
+display: inline-block;
+margin: 0;
+}
+section#main-content {margin-left: 20px;}
+
+.node-links {float:right; padding:0; text-align:right; color:#97865b;}
+/*
+.description, .form-item .description {
+  font-size: 0.92em;
+  line-height: 150%;
+  margin-bottom: 0.75em;
+  color: #97865b;
+}
+*/
+.content-style {background-color: #fffdee; border:none}
+#content .taxonomy li:after, .links li:after {
+	content: " | ";
+}
+#content .taxonomy li.last:after, .links li.last:after, table .links li:after {
+	content: "";
+}
+
+.article { 
+	-webkit-border-top-left-radius: 1px;
+	-webkit-border-top-right-radius: 40px;
+	-webkit-border-bottom-right-radius: 1px;
+	-webkit-border-bottom-left-radius: 40px;
+	-moz-border-radius-topleft: 1px;
+	-moz-border-radius-topright: 40px;
+	-moz-border-radius-bottomright: 1px;
+	-moz-border-radius-bottomleft: 40px;
+	border-top-left-radius: 1px;
+	border-top-right-radius: 40px;
+	border-bottom-right-radius: 1px;
+	border-bottom-left-radius: 40px;
+	border: 1px solid #EDDFBA; background: #FEFBE9;}
+.article-inner {padding: 1em;}
+/* Teaser Nodes */
+.article-title {
+	font-size: 1.5em;
+}
+.article-inner .submitted {
+	color: #779125;
+}
+h1, h1 a, h1 a.active {color: #7D1E19;}
+
+/* Full Nodes */
+.article-full .article-inner > header {
+background: #7D1E19;
+margin: -1em -1em 16px -1em;
+border-radius: 0 40px 10px;
+padding: 10px 0 0 10px;
+}
+.article-full .article-title {
+	font-size: 1.5em;
+border-bottom: none;
+line-height: 1;
+margin: 0;
+padding: 0;
+color: #fffdee;
+}
+.article-full .article-inner .submitted {
+	margin-top: 3px;
+	margin-left: 20px;
+	padding: 0 0 10px 0px;
+}
+
+.article-full h1.article-title  a, .article-full h1.article-title a.active {color:#fffdee;}
+.book-navigation .page-links {
+	border-top: 1px solid #EDDFBA;
+	border-bottom: 1px solid #EDDFBA;
+}
+/*** Node settings ***/
+.node-actions {display:inline-block; width: 100%; padding: 10px 0 10px 10px;}
+.tags-group {
+	width: 40%;
+	display: inline-block;
+	float: left;
+	height: 66px;
+}
+.tags-group section {}
+.field-name-field-addthis {
+	height:66px;
+	width: 60%;
+	float:right;
+}
+.field-name-field-addthis .addthis_default_style, .article-teaser .field-name-field-addthis-bott-big .addthis_default_style {
+	float:right;
+}
+.addthis-group {}
+.addthis-group-teaser  .field-name-field-addthis-bott {float:right; display: inline-block;}
+.addthis-group-teaser  .field-name-field-addthis-bott-big {
+	display: inline;
+	float: right;
+	margin-right: 6px;
+}
+.addthis-group .field-name-field-addthis-bott, .addthis-group .field-name-field-addthis-bott-big {
+}
+
+/*** Taxonomy ***/
+.field-type-taxonomy-term-reference {display: inline-block;}
+.field-type-taxonomy-term-reference ul {}
+.field-name-body {font-size: 1.1em;}
+
+/*
+.field-name-taxonomy-vocabulary-5 {float:right;}
+.field-name-taxonomy-vocabulary-1 {float:left;margin:0 1em 0 0;}
+.field-name-taxonomy-vocabulary-1 .field-item {float:left; display:inline-block; margin:0 .25em;}
+.field-name-taxonomy-vocabulary-1 .field-item::after, .field-name-taxonomy-vocabulary-1 .field-item::after {
+	content: " | ";
+	}
+*/
+.author {
+display: block;
+float: left;
+}
+
+/**** blocks.css ****/
+.block .item-list ul {
+margin-left: 0;
+}
+blockquote {padding: .25em 2em; background:url(../images/quote.png) left top no-repeat;}
+ul.links li {
+padding: 0;
+}
+.inset {display:block;}
+.fifty {width: 50%;}
+.fourty {width: 40%}
+.left {float:left; margin: 1em 1em .5em 0;}
+.right {float:right; margin: 1em 0 .5em 1em;}
+
+.deip-image {}
+.deip-image img, .deip-image-teaser img {border: 3px double #7d1e19; border-radius: 0 10px 5px 10px;}
+.deip-image .field-name-field-caption, 
+.deip-image .field-name-field-attribution {float: left; clear: left; width: 200px; margin-right: 20px; padding-left: 5px;}
+.deip-image .field-name-field-caption {font-weight: bold; margin-bottom: .5em;}
+.deip-image .field-name-field-attribution {font-size: .8em;}
+.deip-image-teaser p, .deip-image p {margin-bottom: .25em;}
+.deip-image-teaser .field-name-field-caption, 
+.deip-image-teaser .field-name-field-attribution 
+	{float: left; clear: left; width: 180px; margin-right: 10px; padding-left: 5px;}
+.deip-image-teaser .field-name-field-caption {font-weight: bold; margin-bottom: .5em; font-size: .9em;}
+.deip-image-teaser .field-name-field-caption p {margin-bottom: .25em;}
+.deip-image-teaser .field-name-field-attribution {font-size: .7em;}
+.image {line-height: 1.1em;}
+.image .title {font-weight:bold;font-size:1em;}
+.image .attribution {font-size: .8em;}
+.image .attribution  a {font-size: .7em;}
+img.left, .left img, img.right, .right img, img.image, .large img {border: 3px double #7d1e19;}
+ul.galleries li img {padding:0}
+.region-footer {display:block; border-top:3px solid #7d1e19; border-bottom:3px solid #7d1e19; margin-bottom:2em; padding:1em 0;}
+.region-footer::after {
+content: ".";
+display: block;
+height:0;
+clear: both;
+visibility: hidden;
+}
+.region-bottom::after {
+content: ".";
+display: block;
+height:0;
+clear: both;
+visibility: hidden;
+}
+.region-bottom .block {margin-bottom: 0;}
+#top {
+  clear:both;
+	padding: 1em 0;
+}
+
+#top {
+  clear:both;
+	padding: 1em 0;
+}
+.to-top {
+  background: url(images/link-arrow-up.png) no-repeat 0% 50%;
+  padding: 6px 0 2px 20px;
+}
+
+.footnote p {font-size: .9em; margin: .25em 0; line-height:1.2em;}
+#block-quotes-1 {width:400px; float:right; }
+.block-quotes .node-actions {display: none;}
+.block-quotes .quotes-author {padding-bottom: 1em;}
+.quote-msg {
+  margin: 1em;
+  padding: 1em 2em;
+  background: transparent url(../images/quote.png) no-repeat top left;
+	border:none;
+	line-height: 1.2em;
+}
+.quote-author {
+  display: block;
+  font-weight: bold;
+  margin: 0 0 1em 0;
+}
+.intertext {color: #7D1E19; font-weight: bold;}
+/*********************/
+/*** Oremus Bible Browser Styles (bible.oremus.org/bible.css) ***/
+/*********************/
+span.cc, span.rr, div.bible p span.cc, div.bible p span.rr, span.cp, div.bible p span.cp
+{
+	float : left ;
+	font-size : 2em ;
+	font-family : Verdana, Arial, Helvetica, sans-serif ;
+	color : #666666 ;
+	line-height : 1em ;
+	margin-right : 0.2em ;
+	/*
+	 * this vertical-align is needed to force IE to lay things out
+	 * properly; otherwise if the chapter number falls in the same
+	 * line as a verse superscript then IE will set this chapter
+	 * num too high, and then set the second line of the passage
+	 * too high as well, overlapping with this line; a side effect
+	 * is that in Mozilla and Safari the chapter number is now
+	 * raised slightly too high and aligns with the top of the
+	 * superscript verse number; but it's not too bad, I guess.
+	 * sjk 16 Jan 2006.
+	 */
+	vertical-align : top ;
+}
+sup.ww, sup.uu, sup.ii, sup.oo, sup.plus-M, sup.hh, sup.plus-V
+{
+	font-family : Verdana, Arial, Helvetica, sans-serif ;
+	color : #777777 ;
+}
+span.vv, div.bible p span.vv
+{
+	font-family : Verdana, Arial, Helvetica, sans-serif ;
+	color : #777777 ;
+}
+/*****  Tables *****/
+th, thead, thead th {
+    background-color: #7D1E19;
+    border: medium none;
+    color: #FFFDEE;
+}
+tr.odd, tr.info {
+    background-color: #FFFDEE;
+}
+tr.even {
+    background-color: #FEFBE9;
+}
+tr td:last-child {
+    border-right: 1px solid #FEFBE9;
+}
+
+/*****  Forms *****/
+input.form-text, input.form-password, input.form-file, textarea {
+	background-color: #fffdee;
+	border: 1px solid #EDDFBA;
+}
+/*********************/
+/*** Facebook Social ***/
+/*********************/
+.node-teaser .post-date {}
+.node-teaser .post-date .date, .node-teaser .post-date .month, .node-teaser .post-date .year {}
+.node-teaser .fb-social-comments-plugin {margin: 5em 0 0 0;}
+.fbFeedbackContent {min-height: 100px;}
+.node-teaser .fb-social-comments-plugin {}
+.node-deiprofundis-post.node-teaser .content {}
+.node-teaser h2 {}
+
+.fbFeedbackContent .composer {
+    background-color: #EDDFBA;
+    border-color: #EDDFBA;
+}
+.mainCommentForm {}

@@ -1,10 +1,10 @@
 ﻿/*
-Copyright (c) 2003-2012, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2003-2011, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
 /**
- * @fileOverview Defines the {@link CKEDITOR.lang} object for the
+ * @fileOverview Defines the {@link CKEDITOR.lang} object, for the
  * Dutch language.
  */
 
@@ -14,7 +14,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
 /**
- * Contains the dictionary of language entries.
+ * Constains the dictionary of language entries.
  * @namespace
  */
 CKEDITOR.lang['nl'] =
@@ -34,8 +34,8 @@ CKEDITOR.lang['nl'] =
 	editorTitle : 'Tekstverwerker, %1, druk op ALT 0 voor hulp.',
 
 	// ARIA descriptions.
-	toolbars	: 'Werkbalken',
-	editor		: 'Tekstverwerker',
+	toolbar	: 'Werkbalk',
+	editor	: 'Tekstverwerker',
 
 	// Toolbar buttons without dialogs.
 	source			: 'Code',
@@ -48,7 +48,7 @@ CKEDITOR.lang['nl'] =
 	print			: 'Printen',
 	underline		: 'Onderstreept',
 	bold			: 'Vet',
-	italic			: 'Cursief',
+	italic			: 'Schuingedrukt',
 	selectAll		: 'Alles selecteren',
 	removeFormat	: 'Opmaak verwijderen',
 	strike			: 'Doorhalen',
@@ -56,7 +56,7 @@ CKEDITOR.lang['nl'] =
 	superscript		: 'Superscript',
 	horizontalrule	: 'Horizontale lijn invoegen',
 	pagebreak		: 'Pagina-einde invoegen',
-	pagebreakAlt		: 'Pagina-einde',
+	pagebreakAlt		: 'Page Break', // MISSING
 	unlink			: 'Link verwijderen',
 	undo			: 'Ongedaan maken',
 	redo			: 'Opnieuw uitvoeren',
@@ -81,7 +81,7 @@ CKEDITOR.lang['nl'] =
 		select			: 'Selectieveld',
 		imageButton		: 'Afbeeldingsknop',
 		notSet			: '<niet ingevuld>',
-		id				: 'Id',
+		id				: 'Kenmerk',
 		name			: 'Naam',
 		langDir			: 'Schrijfrichting',
 		langDirLtr		: 'Links naar rechts (LTR)',
@@ -89,7 +89,7 @@ CKEDITOR.lang['nl'] =
 		langCode		: 'Taalcode',
 		longDescr		: 'Lange URL-omschrijving',
 		cssClass		: 'Stylesheet-klassen',
-		advisoryTitle	: 'Adviserende titel',
+		advisoryTitle	: 'Aanbevolen titel',
 		cssStyle		: 'Stijl',
 		ok				: 'OK',
 		cancel			: 'Annuleren',
@@ -101,14 +101,14 @@ CKEDITOR.lang['nl'] =
 		confirmNewPage	: 'Alle aangebrachte wijzigingen gaan verloren. Weet u zeker dat u een nieuwe pagina wilt openen?',
 		confirmCancel	: 'Enkele opties zijn gewijzigd. Weet u zeker dat u dit dialoogvenster wilt sluiten?',
 		options			: 'Opties',
-		target			: 'Doelvenster',
+		target			: 'Doel',
 		targetNew		: 'Nieuw venster (_blank)',
 		targetTop		: 'Hele venster (_top)',
 		targetSelf		: 'Zelfde venster (_self)',
 		targetParent	: 'Origineel venster (_parent)',
 		langDirLTR		: 'Links naar rechts (LTR)',
 		langDirRTL		: 'Rechts naar links (RTL)',
-		styles			: 'Stijl',
+		styles			: 'Stijlen',
 		cssClasses		: 'Stylesheet klassen',
 		width			: 'Breedte',
 		height			: 'Hoogte',
@@ -118,13 +118,9 @@ CKEDITOR.lang['nl'] =
 		alignCenter		: 'Centreren',
 		alignTop		: 'Boven',
 		alignMiddle		: 'Midden',
-		alignBottom		: 'Onder',
+		alignBottom		: 'Beneden',
 		invalidHeight	: 'De hoogte moet een getal zijn.',
 		invalidWidth	: 'De breedte moet een getal zijn.',
-		invalidCssLength	: 'Waarde in veld "%1" moet een positief nummer zijn, met of zonder een geldige CSS meeteenheid (px, %, in, cm, mm, em, ex, pt of pc).',
-		invalidHtmlLength	: 'Waarde in veld "%1" moet een positief nummer zijn, met of zonder een geldige HTML meeteenheid (px of %).',
-		invalidInlineStyle	: 'Waarde voor de online stijl moet bestaan uit een of meerdere tupels met het formaat "naam : waarde", gescheiden door puntkomma\'s.',
-		cssLengthTooltip	: 'Geef een nummer in voor een waarde in pixels of geef een nummer in met een geldige CSS eenheid (px, %, in, cm, mm, em, ex, pt, of pc).',
 
 		// Put the voice-only part of the label in the span.
 		unavailable		: '%1<span class="cke_accessibility">, niet beschikbaar</span>'
@@ -132,7 +128,7 @@ CKEDITOR.lang['nl'] =
 
 	contextmenu :
 	{
-		options : 'Contextmenu opties'
+		options : 'Context menu opties'
 	},
 
 	// Special char dialog.
@@ -151,7 +147,7 @@ CKEDITOR.lang['nl'] =
 		menu		: 'Link wijzigen',
 		title		: 'Link',
 		info		: 'Linkomschrijving',
-		target		: 'Doelvenster',
+		target		: 'Doel',
 		upload		: 'Upload',
 		advanced	: 'Geavanceerd',
 		type		: 'Linktype',
@@ -159,14 +155,14 @@ CKEDITOR.lang['nl'] =
 		toAnchor	: 'Interne link in pagina',
 		toEmail		: 'E-mail',
 		targetFrame		: '<frame>',
-		targetPopup		: '<popupvenster>',
+		targetPopup		: '<popup window>',
 		targetFrameName	: 'Naam doelframe',
 		targetPopupName	: 'Naam popupvenster',
 		popupFeatures	: 'Instellingen popupvenster',
 		popupResizable	: 'Herschaalbaar',
 		popupStatusBar	: 'Statusbalk',
 		popupLocationBar: 'Locatiemenu',
-		popupToolbar	: 'Werkbalk',
+		popupToolbar	: 'Menubalk',
 		popupMenuBar	: 'Menubalk',
 		popupFullScreen	: 'Volledig scherm (IE)',
 		popupScrollBars	: 'Schuifbalken',
@@ -179,19 +175,18 @@ CKEDITOR.lang['nl'] =
 		langDirRTL		: 'Rechts naar links (RTL)',
 		acccessKey		: 'Toegangstoets',
 		name			: 'Naam',
-		langCode			: 'Taalcode',
-		tabIndex			: 'Tabvolgorde',
-		advisoryTitle		: 'Adviserende titel',
+		langCode		: 'Schrijfrichting',
+		tabIndex		: 'Tabvolgorde',
+		advisoryTitle	: 'Aanbevolen titel',
 		advisoryContentType	: 'Aanbevolen content-type',
 		cssClasses		: 'Stylesheet-klassen',
 		charset			: 'Karakterset van gelinkte bron',
 		styles			: 'Stijl',
-		rel			: 'Relatie',
-		selectAnchor		: 'Kies een interne link',
+		selectAnchor	: 'Kies een interne link',
 		anchorName		: 'Op naam interne link',
-		anchorId			: 'Op kenmerk interne link',
-		emailAddress		: 'E-mailadres',
-		emailSubject		: 'Onderwerp bericht',
+		anchorId		: 'Op kenmerk interne link',
+		emailAddress	: 'E-mailadres',
+		emailSubject	: 'Onderwerp bericht',
 		emailBody		: 'Inhoud bericht',
 		noAnchors		: '(Geen interne links in document gevonden)',
 		noUrl			: 'Geef de link van de URL',
@@ -205,8 +200,7 @@ CKEDITOR.lang['nl'] =
 		menu		: 'Eigenschappen interne link',
 		title		: 'Eigenschappen interne link',
 		name		: 'Naam interne link',
-		errorName	: 'Geef de naam van de interne link op',
-		remove		: 'Interne link verwijderen'
+		errorName	: 'Geef de naam van de interne link op'
 	},
 
 	// List style dialog
@@ -216,16 +210,16 @@ CKEDITOR.lang['nl'] =
 		bulletedTitle		: 'Eigenschappen lijst met opsommingstekens',
 		type				: 'Type',
 		start				: 'Start',
-		validateStartNumber				:'Startnummer van de lijst moet een heel nummer zijn.',
+		validateStartNumber				:'Starnummer van de lijst moet een heel nummer zijn.',
 		circle				: 'Cirkel',
 		disc				: 'Schijf',
 		square				: 'Vierkant',
 		none				: 'Geen',
 		notset				: '<niet gezet>',
-		armenian			: 'Armeense nummering',
-		georgian			: 'Georgische nummering (an, ban, gan, etc.)',
+		armenian			: 'Armeense numering',
+		georgian			: 'Greorgische numering (an, ban, gan, etc.)',
 		lowerRoman			: 'Romeins kleine letters (i, ii, iii, iv, v, etc.)',
-		upperRoman			: 'Romeinse hoofdletters (I, II, III, IV, V, etc.)',
+		upperRoman			: 'Romeins hoofdletters (I, II, III, IV, V, etc.)',
 		lowerAlpha			: 'Kleine letters (a, b, c, d, e, etc.)',
 		upperAlpha			: 'Hoofdletters (A, B, C, D, E, etc.)',
 		lowerGreek			: 'Grieks kleine letters (alpha, beta, gamma, etc.)',
@@ -242,12 +236,11 @@ CKEDITOR.lang['nl'] =
 		findWhat			: 'Zoeken naar:',
 		replaceWith			: 'Vervangen met:',
 		notFoundMsg			: 'De opgegeven tekst is niet gevonden.',
-		findOptions			: 'Zoekopties',
 		matchCase			: 'Hoofdlettergevoelig',
 		matchWord			: 'Hele woord moet voorkomen',
 		matchCyclic			: 'Doorlopend zoeken',
 		replaceAll			: 'Alles vervangen',
-		replaceSuccessMsg	: '%1 resultaten vervangen.'
+		replaceSuccessMsg	: '%1 resulaten vervangen.'
 	},
 
 	// Table Dialog
@@ -275,8 +268,8 @@ CKEDITOR.lang['nl'] =
 		invalidRows		: 'Het aantal rijen moet een getal zijn groter dan 0.',
 		invalidCols		: 'Het aantal kolommen moet een getal zijn groter dan 0.',
 		invalidBorder	: 'De rand breedte moet een getal zijn.',
-		invalidWidth	: 'De tabelbreedte moet een getal zijn.',
-		invalidHeight	: 'De tabelhoogte moet een getal zijn.',
+		invalidWidth	: 'De tabel breedte moet een getal zijn.',
+		invalidHeight	: 'De tabel hoogte moet een getal zijn.',
 		invalidCellSpacing	: 'Afstand tussen cellen moet een getal zijn.',
 		invalidCellPadding	: 'Ruimte in de cel moet een getal zijn.',
 
@@ -419,6 +412,7 @@ CKEDITOR.lang['nl'] =
 		upload		: 'Upload',
 		alt			: 'Alternatieve tekst',
 		lockRatio	: 'Afmetingen vergrendelen',
+		unlockRatio	: 'Afmetingen ontgrendelen',
 		resetSize	: 'Afmetingen resetten',
 		border		: 'Rand',
 		hSpace		: 'HSpace',
@@ -470,7 +464,7 @@ CKEDITOR.lang['nl'] =
 		bgcolor			: 'Achtergrondkleur',
 		hSpace			: 'HSpace',
 		vSpace			: 'VSpace',
-		validateSrc		: 'De URL mag niet leeg zijn.',
+		validateSrc		: 'Geef de link van de URL',
 		validateHSpace	: 'De HSpace moet een getal zijn.',
 		validateVSpace	: 'De VSpace moet een getal zijn.'
 	},
@@ -481,7 +475,7 @@ CKEDITOR.lang['nl'] =
 		toolbar			: 'Spellingscontrole',
 		title			: 'Spellingscontrole',
 		notAvailable	: 'Excuses, deze dienst is momenteel niet beschikbaar.',
-		errorLoading	: 'Er is een fout opgetreden bij het laden van de dienst: %s.',
+		errorLoading	: 'Er is een fout opgetreden bij het laden van de diesnt: %s.',
 		notInDic		: 'Niet in het woordenboek',
 		changeTo		: 'Wijzig in',
 		btnIgnore		: 'Negeren',
@@ -489,13 +483,13 @@ CKEDITOR.lang['nl'] =
 		btnReplace		: 'Vervangen',
 		btnReplaceAll	: 'Alles vervangen',
 		btnUndo			: 'Ongedaan maken',
-		noSuggestions	: '- Geen suggesties -',
+		noSuggestions	: '-Geen suggesties-',
 		progress		: 'Bezig met spellingscontrole...',
 		noMispell		: 'Klaar met spellingscontrole: geen fouten gevonden',
 		noChanges		: 'Klaar met spellingscontrole: geen woorden aangepast',
 		oneChange		: 'Klaar met spellingscontrole: één woord aangepast',
 		manyChanges		: 'Klaar met spellingscontrole: %1 woorden aangepast',
-		ieSpellDownload	: 'De spellingscontrole is niet geïnstalleerd. Wilt u deze nu downloaden?'
+		ieSpellDownload	: 'De spellingscontrole niet geïnstalleerd. Wilt u deze nu downloaden?'
 	},
 
 	smiley :
@@ -513,8 +507,8 @@ CKEDITOR.lang['nl'] =
 
 	numberedlist	: 'Genummerde lijst',
 	bulletedlist	: 'Opsomming',
-	indent			: 'Inspringing vergroten',
-	outdent			: 'Inspringing verkleinen',
+	indent			: 'Inspringen vergroten',
+	outdent			: 'Inspringen verkleinen',
 
 	justify :
 	{
@@ -531,7 +525,7 @@ CKEDITOR.lang['nl'] =
 		title		: 'Plakken',
 		cutError	: 'De beveiligingsinstelling van de browser verhinderen het automatisch knippen. Gebruik de sneltoets Ctrl/Cmd+X van het toetsenbord.',
 		copyError	: 'De beveiligingsinstelling van de browser verhinderen het automatisch kopiëren. Gebruik de sneltoets Ctrl/Cmd+C van het toetsenbord.',
-		pasteMsg	: 'Plak de tekst in het volgende vak gebruikmakend van uw toetsenbord (<strong>Ctrl/Cmd+V</strong>) en klik op OK.',
+		pasteMsg	: 'Plak de tekst in het volgende vak gebruik makend van uw toetsenbord (<strong>Ctrl/Cmd+V</strong>) en klik op <strong>OK</strong>.',
 		securityMsg	: 'Door de beveiligingsinstellingen van uw browser is het niet mogelijk om direct vanuit het klembord in de editor te plakken. Middels opnieuw plakken in dit venster kunt u de tekst alsnog plakken in de editor.',
 		pasteArea	: 'Plakgebied'
 	},
@@ -553,7 +547,7 @@ CKEDITOR.lang['nl'] =
 	templates :
 	{
 		button			: 'Sjablonen',
-		title			: 'Inhoud sjablonen',
+		title			: 'Inhoud sjabonen',
 		options : 'Template opties',
 		insertOption	: 'Vervang de huidige inhoud',
 		selectPromptMsg	: 'Selecteer het sjabloon dat in de editor geopend moet worden (de actuele inhoud gaat verloren):',
@@ -567,7 +561,7 @@ CKEDITOR.lang['nl'] =
 		label		: 'Stijl',
 		panelTitle	: 'Opmaakstijlen',
 		panelTitle1	: 'Blok stijlen',
-		panelTitle2	: 'Inline stijlen',
+		panelTitle2	: 'In-line stijlen',
 		panelTitle3	: 'Object stijlen'
 	},
 
@@ -597,7 +591,7 @@ CKEDITOR.lang['nl'] =
 		IdInputLabel		: 'Id',
 		languageCodeInputLabel	: ' Taalcode',
 		inlineStyleInputLabel	: 'Inline stijl',
-		advisoryTitleInputLabel	: 'Adviserende titel',
+		advisoryTitleInputLabel	: 'informatieve titel',
 		langDirLabel		: 'Schrijfrichting',
 		langDirLTRLabel		: 'Links naar rechts (LTR)',
 		langDirRTLLabel		: 'Rechts naar links (RTL)',
@@ -607,11 +601,11 @@ CKEDITOR.lang['nl'] =
 
 	iframe :
 	{
-		title		: 'IFrame eigenschappen',
-		toolbar		: 'IFrame',
-		noUrl		: 'Geef de IFrame URL in',
-		scrolling	: 'Scrollbalken inschakelen',
-		border		: 'Framerand tonen'
+		title		: 'IFrame Properties', // MISSING
+		toolbar		: 'IFrame', // MISSING
+		noUrl		: 'Please type the iframe URL', // MISSING
+		scrolling	: 'Enable scrollbars', // MISSING
+		border		: 'Show frame border' // MISSING
 	},
 
 	font :
@@ -720,8 +714,6 @@ CKEDITOR.lang['nl'] =
 	{
 		title		: 'Over CKEditor',
 		dlgTitle	: 'Over CKEditor',
-		help	: 'Bekijk de $1 voor hulp.',
-		userGuide : 'CKEditor gebruiksaanwijzing',
 		moreInfo	: 'Voor licentie informatie, bezoek onze website:',
 		copy		: 'Copyright &copy; $1. Alle rechten voorbehouden.'
 	},
@@ -731,10 +723,10 @@ CKEDITOR.lang['nl'] =
 
 	fakeobjects :
 	{
-		anchor		: 'Interne link',
+		anchor		: 'Anker',
 		flash		: 'Flash animatie',
-		iframe		: 'IFrame',
-		hiddenfield	: 'Verborgen veld',
+		iframe		: 'IFrame', // MISSING
+		hiddenfield	: 'Hidden Field', // MISSING
 		unknown		: 'Onbekend object'
 	},
 
@@ -745,71 +737,16 @@ CKEDITOR.lang['nl'] =
 		title		: 'Selecteer kleur',
 		options	:	'Kleuropties',
 		highlight	: 'Actief',
-		selected	: 'Geselecteerde kleur',
+		selected	: 'Geselecteerd',
 		clear		: 'Wissen'
 	},
 
 	toolbarCollapse	: 'Werkbalk inklappen',
 	toolbarExpand	: 'Werkbalk uitklappen',
 
-	toolbarGroups :
-	{
-		document : 'Document',
-		clipboard : 'Klembord/Ongedaan maken',
-		editing : 'Bewerken',
-		forms : 'Formulieren',
-		basicstyles : 'Basisstijlen',
-		paragraph : 'Paragraaf',
-		links : 'Links',
-		insert : 'Invoegen',
-		styles : 'Stijlen',
-		colors : 'Kleuren',
-		tools : 'Toepassingen'
-	},
-
 	bidi :
 	{
 		ltr : 'Schrijfrichting van links naar rechts',
 		rtl : 'Schrijfrichting van rechts naar links'
-	},
-
-	docprops :
-	{
-		label : 'Documenteigenschappen',
-		title : 'Documenteigenschappen',
-		design : 'Ontwerp',
-		meta : 'Meta tags',
-		chooseColor : 'Kies',
-		other : 'Anders...',
-		docTitle :	'Paginatitel',
-		charset : 	'Tekencodering',
-		charsetOther : 'Andere tekencodering',
-		charsetASCII : 'ASCII',
-		charsetCE : 'Centraal Europees',
-		charsetCT : 'Traditioneel Chinees (Big5)',
-		charsetCR : 'Cyrillisch',
-		charsetGR : 'Grieks',
-		charsetJP : 'Japans',
-		charsetKR : 'Koreaans',
-		charsetTR : 'Turks',
-		charsetUN : 'Unicode (UTF-8)',
-		charsetWE : 'West Europees',
-		docType : 'Documenttype-definitie',
-		docTypeOther : 'Andere documenttype-definitie',
-		xhtmlDec : 'XHTML declaratie invoegen',
-		bgColor : 'Achtergrondkleur',
-		bgImage : 'Achtergrondafbeelding URL',
-		bgFixed : 'Niet-scrollend (gefixeerde) achtergrond',
-		txtColor : 'Tekstkleur',
-		margin : 'Pagina marges',
-		marginTop : 'Boven',
-		marginLeft : 'Links',
-		marginRight : 'Rechts',
-		marginBottom : 'Onder',
-		metaKeywords : 'Trefwoorden voor indexering (komma-gescheiden)',
-		metaDescription : 'Documentbeschrijving',
-		metaAuthor : 'Auteur',
-		metaCopyright : 'Auteursrechten',
-		previewHtml : '<p>Dit is <strong>voorbeeld tekst</strong>. Je gebruikt <a href="javascript:void(0)">CKEditor</a>.</p>'
 	}
 };
