@@ -15,11 +15,12 @@ function shorten_schema() {
 }
 
 /**
- * Implementation of hook_update_N().
+ * Implements hook_update_N().
+ * Removes the shorten_generate_token variable since the token module now loads
+ * tokens only when needed.
  */
-function shorten_update_6001() {
-  // The settings pages moved, so we need to rebuild the menu router cache.
-  menu_cache_clear_all();
+function shorten_update_7001() {
+  variable_del('shorten_generate_token');
 }
 
 /**
@@ -45,7 +46,6 @@ function shorten_uninstall() {
   variable_del('shorten_adjix_custom');
   variable_del('shorten_show_service');
   variable_del('shorten_cache_duration');
-  variable_del('shorten_generate_token');
   variable_del('shorten_service_backup');
   variable_del('shorten_cache_clear_all');
   variable_del('shorten_invisible_services');

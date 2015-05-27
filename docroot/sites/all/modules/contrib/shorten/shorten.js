@@ -12,10 +12,10 @@ Drupal.behaviors.shorten = {
       shorten.focus();
     }
     shortenedURL.click(function() {
-      shorten.select();
-      shorten.focus();
+      this.select();
+      this.focus();
     });
   }
-}
+};
 
 })(jQuery);
