@@ -56,31 +56,47 @@ class MigrateDestinationComment extends MigrateDestinationEntity {
    * Returns a list of fields available to be mapped for comments attached to
    * a particular bundle (node type)
    *
+   * @param Migration $migration
+   *  Optionally, the migration containing this destination.
    * @return array
    *  Keys: machine names of the fields (to be passed to addFieldMapping)
    *  Values: Human-friendly descriptions of the fields.
    */
-  public function fields() {
+  public function fields($migration = NULL) {
     $fields = array();
     // First the core (comment table) properties
-    $fields['cid'] = t('Comment: Existing comment ID');
-    $fields['pid'] = t('Comment: Parent (by Drupal ID)');
-    $fields['nid'] = t('Comment: Node (by Drupal ID)');
-    $fields['uid'] = t('Comment: User (by Drupal ID)');
-    $fields['subject'] = t('Comment: Subject');
-    $fields['hostname'] = t('Comment: Hostname/IP address');
-    $fields['created'] = t('Comment: Created timestamp');
-    $fields['changed'] = t('Comment: Modified timestamp');
-    $fields['status'] = t('Comment: Status');
-    $fields['thread'] = t('Comment: Thread');   // ???
-    $fields['name'] = t('Comment: User name (not username)');
-    $fields['mail'] = t('Comment: Email address');
-    $fields['homepage'] = t('Comment: Homepage');
-    $fields['language'] = t('Comment: Language');
+    $fields['cid'] = t('<a href="@doc">Existing comment ID</a>',
+                array('@doc' => 'http://drupal.org/node/1349714#cid'));
+    $fields['nid'] = t('<a href="@doc">Node (by Drupal ID)</a>',
+                array('@doc' => 'http://drupal.org/node/1349714#nid'));
+    $fields['uid'] = t('<a href="@doc">User (by Drupal ID)</a>',
+                array('@doc' => 'http://drupal.org/node/1349714#uid'));
+    $fields['pid'] = t('<a href="@doc">Parent (by Drupal ID)</a>',
+                array('@doc' => 'http://drupal.org/node/1349714#pid'));
+    $fields['subject'] = t('<a href="@doc">Subject</a>',
+                array('@doc' => 'http://drupal.org/node/1349714#subject'));
+    $fields['created'] = t('<a href="@doc">Created timestamp</a>',
+                array('@doc' => 'http://drupal.org/node/1349714#created'));
+    $fields['changed'] = t('<a href="@doc">Modified timestamp</a>',
+                array('@doc' => 'http://drupal.org/node/1349714#changed'));
+    $fields['status'] = t('<a href="@doc">Status</a>',
+                array('@doc' => 'http://drupal.org/node/1349714#status'));
+    $fields['hostname'] = t('<a href="@doc">Hostname/IP address</a>',
+                array('@doc' => 'http://drupal.org/node/1349714#hostname'));
+    $fields['name'] = t('<a href="@doc">User name (not username)</a>',
+                array('@doc' => 'http://drupal.org/node/1349714#name'));
+    $fields['mail'] = t('<a href="@doc">Email address</a>',
+                array('@doc' => 'http://drupal.org/node/1349714#mail'));
+    $fields['homepage'] = t('<a href="@doc">Homepage</a>',
+                array('@doc' => 'http://drupal.org/node/1349714#homepage'));
+    $fields['language'] = t('<a href="@doc">Language</a>',
+                array('@doc' => 'http://drupal.org/node/1349714#language'));
+    $fields['thread'] = t('<a href="@doc">Thread</a>',
+                array('@doc' => 'http://drupal.org/node/1349714#thread'));
 
     // Then add in anything provided by handlers
-    $fields += migrate_handler_invoke_all('Entity', 'fields', $this->entityType, $this->bundle);
-    $fields += migrate_handler_invoke_all('Comment', 'fields', $this->entityType, $this->bundle);
+    $fields += migrate_handler_invoke_all('Entity', 'fields', $this->entityType, $this->bundle, $migration);
+    $fields += migrate_handler_invoke_all('Comment', 'fields', $this->entityType, $this->bundle, $migration);
 
     return $fields;
   }
@@ -133,12 +149,20 @@ class MigrateDestinationComment extends MigrateDestinationEntity {
       $comment->changed = MigrationBase::timestamp($comment->changed);
     }
 
+    if (!isset($comment->node_type)) {
+      $comment->node_type = $this->bundle;
+    }
+
     if ($migration->getSystemOfRecord() == Migration::DESTINATION) {
       if (!isset($comment->cid)) {
         throw new MigrateException(t('System-of-record is DESTINATION, but no destination cid provided'));
       }
       $rawcomment = $comment;
       $old_comment = comment_load($comment->cid);
+      if (empty($old_comment)) {
+        throw new MigrateException(t('System-of-record is DESTINATION, but commend !cid does not exist',
+          array('!cid' => $comment->cid)));
+      }
       if (!isset($comment->nid)) {
         $comment->nid = $old_comment->nid;
       }
@@ -160,7 +184,6 @@ class MigrateDestinationComment extends MigrateDestinationEntity {
         'language' => $this->language,
         'node_type' => $this->bundle,
         'subject' => '',
-        'comment' => '',
         'status' => COMMENT_PUBLISHED,
         'uid' => 0,
         'cid' => 0,
@@ -191,6 +214,10 @@ class MigrateDestinationComment extends MigrateDestinationEntity {
     else {
       $updating = FALSE;
     }
+
+    // Validate field data prior to saving.
+    field_attach_validate('comment', $comment);
+
     migrate_instrument_start('comment_save');
     comment_save($comment);
     migrate_instrument_stop('comment_save');
@@ -216,7 +243,40 @@ class MigrateDestinationComment extends MigrateDestinationEntity {
     return $return;
   }
 
+  /**
+   * Implements MigrateDestination::preImport().
+   */
   public function preImport() {
+    $this->disableStatistics();
+  }
+
+  /**
+   * Implements MigrateDestination::postImport().
+   */
+  public function postImport() {
+    $this->enableStatistics();
+  }
+
+  /**
+   * Implements MigrateDestination::preRollback().
+   */
+  public function preRollback() {
+    $this->disableStatistics();
+  }
+
+  /**
+   * Implements MigrateDestination::postRollback().
+   */
+  public function postRollback() {
+    $this->enableStatistics();
+  }
+
+  /**
+   * Updating node statistics on every comment imported or rolled back is
+   * expensive. We disable node statistics while performing imports and rollbacks,
+   * then re-enable and compute them in bulk when done.
+   */
+  protected function disableStatistics() {
     // If maintaining node statistics is enabled, temporarily disable it
     $this->maintainNodeStatistics =
       variable_get('comment_maintain_node_statistics', TRUE);
@@ -225,7 +285,11 @@ class MigrateDestinationComment extends MigrateDestinationEntity {
     }
   }
 
-  public function postImport() {
+  /**
+   * Re-enable and recompute node statistics after an import or rollback
+   * operation.
+   */
+  protected function enableStatistics() {
     // If originally enabled, re-enable and rebuild the stats
     if ($this->maintainNodeStatistics) {
       $GLOBALS['conf']['comment_maintain_node_statistics'] = TRUE;
@@ -235,21 +299,53 @@ class MigrateDestinationComment extends MigrateDestinationEntity {
       // Empty table
       db_truncate('node_comment_statistics')->execute();
 
-      // TODO: DBTNG. Ignore keyword is Mysql only? Is only used in the rare case when
-      // two comments on the same node share same timestamp.
-      $sql = "
-        INSERT IGNORE INTO {node_comment_statistics} (nid, cid, last_comment_timestamp, last_comment_name, last_comment_uid, comment_count) (
-          SELECT c.nid, c.cid, c.created, c.name, c.uid, c2.comment_count FROM {comment} c
-          JOIN (
-            SELECT c.nid, MAX(c.created) AS created, COUNT(*) AS comment_count FROM {comment} c WHERE status=:published GROUP BY c.nid
-          ) AS c2 ON c.nid = c2.nid AND c.created=c2.created
-        )";
-      db_query($sql, array(':published' => COMMENT_PUBLISHED));
+      // DBTNG. IGNORE keyword is not compatible with Postgres. SQLite?
+      switch (db_driver()) {
+        case 'pgsql':
+          // We still want to run this under Postgres. On the very rare occasion
+          // when we have 2 comments on the same node with the same timestamp
+          // we will lose data.
+          $sql = "
+            INSERT INTO {node_comment_statistics} (nid, cid, last_comment_timestamp, last_comment_name, last_comment_uid, comment_count) (
+              SELECT c.nid, c.cid, c.created, c.name, c.uid, c2.comment_count
+              FROM {comment} c
+              JOIN (
+                SELECT c.nid, MAX(c.created) AS created, COUNT(*) AS comment_count
+                FROM {comment} c
+                WHERE status=:published
+                GROUP BY c.nid
+              ) AS c2 ON c.nid = c2.nid AND c.created=c2.created
+            )";
+        break;
+
+        default:
+          $sql = "
+            INSERT IGNORE INTO {node_comment_statistics} (nid, cid, last_comment_timestamp, last_comment_name, last_comment_uid, comment_count) (
+              SELECT c.nid, c.cid, c.created, c.name, c.uid, c2.comment_count
+              FROM {comment} c
+              JOIN (
+                SELECT c.nid, MAX(c.created) AS created, COUNT(*) AS comment_count
+                FROM {comment} c
+                WHERE status=:published
+                GROUP BY c.nid
+              ) AS c2 ON c.nid = c2.nid AND c.created=c2.created
+            )";
+      }
+      try {
+        db_query($sql, array(':published' => COMMENT_PUBLISHED));
+      }
+      catch (Exception $e) {
+        // Our edge case has been hit. A Postgres migration has likely just
+        // lost data. Let the user know.
+        Migration::displayMessage(t('Failed to update node comment statistics: !message',
+          array('!message' => $e->getMessage())
+        ));
+      }
 
       // Insert records into the node_comment_statistics for nodes that are missing.
       $query = db_select('node', 'n');
       $query->leftJoin('node_comment_statistics', 'ncs', 'ncs.nid = n.nid');
-      $query->addField('n', 'changed', 'last_comment_timestamp');
+      $query->addField('n', 'created', 'last_comment_timestamp');
       $query->addField('n', 'uid', 'last_comment_uid');
       $query->addField('n', 'nid');
       $query->addExpression('0', 'comment_count');
@@ -268,7 +364,10 @@ class MigrateCommentNodeHandler extends MigrateDestinationHandler {
     $this->registerTypes(array('node'));
   }
 
-  public function fields($entity_type, $bundle) {
+  /**
+   * Implementation of MigrateDestinationHandler::fields().
+   */
+  public function fields($entity_type, $bundle, $migration = NULL) {
     $fields = array();
     $fields['comment'] = t('Whether comments may be posted to the node');
     return $fields;

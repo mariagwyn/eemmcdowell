@@ -1,98 +1,71 @@
 <?php
-
 /**
-* @file
-* Requirements hook for the migrate_ui_module.
-*/
-
-
-/**
- * Implementation of hook_requirements().
- * Checks installation requirements and do status reporting.
- * TODO: Share code with migrate_migration_info
- * @param phase 'install': ignored (no installation requirements)
- *              'runtime': status reporting for migrations
- * @return A keyed array of requirements
+ * @file
+ * Install/update function for migrate_ui.
  */
-function migrate_ui_requirements($phase) {
-  $reqs = array();
-  // TODO: Needs work to support newly-protected fields
-  return $reqs;
 
-  $severity = REQUIREMENT_OK;
-  // TODO: UI for disabling reports
-  if ($phase == 'runtime' && variable_get('migrate_ui_status_report', TRUE)) {
-    $migrations = migrate_migrations();
-    $info = array();
-    $rows = array();
-    foreach ($migrations as $migration) {
-      // Only track true migrations
-      if (is_subclass_of($migration, 'Migration')) {
-        $open = $unmapped_destination = $unmapped_source = $nofield = 0;
-        // TODO: Ugh! Rename one pair or the other...
-        $source_fields_keyed = $destination_fields_keyed = array();
-        $source_fields = $migration->getSource()->fields();
-        $destination_fields = $migration->getDestination()->fields();
-        foreach ($migration->getFieldMappings() as $mapping) {
-          if ($mapping->getIssuePriority() != MigrateFieldMapping::ISSUE_PRIORITY_OK) {
-            $open++;
-            $severity = REQUIREMENT_WARNING;
-          }
-          if ($mapping->getSourceField() && !isset($source_fields[$mapping->getSourceField()])) {
-            $nofield++;
-            $severity = REQUIREMENT_WARNING;
-          }
-          if ($mapping->getDestinationField() && !isset($destination_fields[$mapping->getDestinationField()])) {
-            $nofield++;
-            $severity = REQUIREMENT_WARNING;
-          }
-          $source_fields_keyed[$mapping->getSourceField()] = $mapping->getSourceField();
-          $destination_fields_keyed[$mapping->getDestinationField()] = $mapping->getDestinationField();
-        }
-        $destKey = $migration->getMap()->getDestinationKey();
-        foreach ($migration->getDestination()->fields() as $machine_name => $description) {
-          if (!isset($destination_fields_keyed[$machine_name]) && !isset($destKey[$machine_name])) {
-            $unmapped_destination++;
-            $severity = REQUIREMENT_WARNING;
-          }
-        }
-        $sourceKey = $migration->getMap()->getSourceKey();
-        foreach ($migration->getSource()->fields() as $machine_name => $description) {
-          if (!isset($source_fields_keyed[$machine_name]) && !isset($sourceKey[$machine_name])) {
-            $unmapped_source++;
-            $severity = REQUIREMENT_WARNING;
-          }
-        }
-        $row = array();
-        $row[] = l($migration->getMachineName(),
-          'admin/migrate/' . $migration->getMachineName());
-        $row[] = $open;
-        $row[] = $unmapped_destination;
-        $row[] = $unmapped_source;
-        $row[] = $nofield;
-        $rows[] = $row;
-      }
-    }
+/**
+ * Implements hook_install().
+ */
+function migrate_ui_install() {
+  migrate_ui_set_weight();
+}
 
-    $description = t('Click on a migration name for full details.');
-    $header = array(t('Migration'), t('Open mapping issues'), t('Unmapped destinations'),
-      t('Unmapped sources'), t('Non-existent fields in mappings'));
-    // TODO: Headers inherit severity icons - we don't want that
-    // TODO: Gets a white background - we do want to inherit that
-    $description .= theme('table', array('header' => $header, 'rows' => $rows));
-    if ($severity == REQUIREMENT_WARNING) {
-      $status = t('Incomplete');
+/**
+ * Implements hook_uninstall().
+ */
+function migrate_ui_uninstall() {
+  variable_del('migrate_import_method');
+  variable_del('migrate_drush_path');
+  variable_del('migrate_drush_mail');
+  variable_del('migrate_drush_mail_subject');
+  variable_del('migrate_drush_mail_body');
+}
+
+/**
+ * Make sure we have a higher weight than node.
+ */
+function migrate_ui_update_7201() {
+  migrate_ui_set_weight();
+}
+
+/**
+ * Sets the weight of migrate_ui higher than node, so Import links come after
+ * "Add content" at admin/content.
+ */
+function migrate_ui_set_weight() {
+  $node_weight = db_select('system', 's')
+                 ->fields('s', array('weight'))
+                 ->condition('name', 'node')
+                 ->execute()
+                 ->fetchField();
+  db_update('system')
+    ->fields(array('weight' => $node_weight + 1))
+    ->condition('name', 'migrate_ui')
+    ->execute();
+}
+
+/**
+ * If WordPress Migrate has background imports via drush enabled, copy the
+ * configuration to the new general Migrate support.
+ */
+function migrate_ui_update_7202() {
+  $drush_command = variable_get('wordpress_migrate_drush', '');
+  if ($drush_command) {
+    variable_set('migrate_drush_path', $drush_command);
+    // Consolidate these two variables into import method - 0 means immediate
+    // only, 1 means drush only, 2 means offer both options.
+    $import_method = variable_get('wordpress_migrate_import_method', 0);
+    $force_drush = variable_get('wordpress_migrate_force_drush', FALSE);
+    if (!$force_drush) {
+      $import_method = 2;
     }
-    else {
-      $status = t('Complete');
-    }
-    $reqs['migrate_ui'] = array(
-      'title' => t('Migrations'),
-      'value' => $status,
-      'severity' => $severity,
-      'description' => $description,
-      );
+    variable_set('migrate_import_method', $import_method);
+    variable_set('migrate_drush_mail',
+                 variable_get('wordpress_migrate_notification', 0));
+    variable_set('migrate_drush_mail_subject',
+                 variable_get('wordpress_migrate_notification_subject', ''));
+    variable_set('migrate_drush_mail_body',
+                 variable_get('wordpress_migrate_notification_body', ''));
   }
-
-  return $reqs;
 }

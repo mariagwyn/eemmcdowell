@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * @file
+ * Tests for the comment destination plugin.
+ */
+
+/**
  * Test comment migration.
  */
 class MigrateCommentUnitTest extends DrupalWebTestCase {
@@ -14,6 +19,9 @@ class MigrateCommentUnitTest extends DrupalWebTestCase {
 
   function setUp() {
     parent::setUp('taxonomy', 'image', 'comment', 'migrate', 'migrate_example');
+
+    // Make sure the migrations are registered.
+    migrate_static_registration();
   }
 
   function testCommentImport() {
@@ -131,7 +139,7 @@ class MigrateCommentUnitTest extends DrupalWebTestCase {
     }
 
     // Test rollback
-    $result = $migration->processRollback();
+    $result = $migration->processRollback(array('force' => TRUE));
     $this->assertEqual($result, Migration::RESULT_COMPLETED,
       t('Comment rollback returned RESULT_COMPLETED'));
     $rawcomments = comment_load_multiple(FALSE);

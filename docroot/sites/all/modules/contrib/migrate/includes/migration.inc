@@ -22,6 +22,9 @@ abstract class Migration extends MigrationBase {
   public function getSource() {
     return $this->source;
   }
+  public function setSource(MigrateSource $source) {
+    $this->source = $source;
+  }
 
   /**
    * Destination object for the migration, derived from MigrateDestination.
@@ -32,6 +35,9 @@ abstract class Migration extends MigrationBase {
   public function getDestination() {
     return $this->destination;
   }
+  public function setDestination(MigrateDestination $destination) {
+    $this->destination = $destination;
+  }
 
   /**
    * Map object tracking relationships between source and destination data
@@ -41,6 +47,9 @@ abstract class Migration extends MigrationBase {
   protected $map;
   public function getMap() {
     return $this->map;
+  }
+  public function setMap(MigrateMap $map) {
+    $this->map = $map;
   }
 
   /**
@@ -59,6 +68,9 @@ abstract class Migration extends MigrationBase {
   public function getSystemOfRecord() {
     return $this->systemOfRecord;
   }
+  public function setSystemOfRecord($system_of_record) {
+    $this->systemOfRecord = $system_of_record;
+  }
 
   /**
    * Specify value of needs_update for current map row. Usually set by
@@ -69,13 +81,83 @@ abstract class Migration extends MigrationBase {
   public $needsUpdate = MigrateMap::STATUS_IMPORTED;
 
   /**
-   * Simple mappings between destination fields (keys) and source fields (values).
+   * The default rollback action for this migration. Can be overridden on
+   * a per-row basis by setting $row->rollbackAction in prepareRow().
+   *
+   * @var int
+   */
+  protected $defaultRollbackAction = MigrateMap::ROLLBACK_DELETE;
+  public function getDefaultRollbackAction() {
+    return $this->defaultRollbackAction;
+  }
+  public function setDefaultRollbackAction($rollback_action) {
+    $this->defaultRollbackAction = $rollback_action;
+  }
+
+  /**
+   * The rollback action to be saved for the current row.
+   *
+   * @var int
+   */
+  public $rollbackAction;
+
+  /**
+   * Field mappings defined in code.
    *
    * @var array
    */
-  protected $fieldMappings = array();
+  protected $storedFieldMappings = array();
+  protected $storedFieldMappingsRetrieved = FALSE;
+  public function getStoredFieldMappings() {
+    if (!$this->storedFieldMappingsRetrieved) {
+      $this->loadFieldMappings();
+      $this->storedFieldMappingsRetrieved = TRUE;
+    }
+    return $this->storedFieldMappings;
+  }
+
+  /**
+   * Field mappings retrieved from storage.
+   *
+   * @var array
+   */
+  protected $codedFieldMappings = array();
+  public function getCodedFieldMappings() {
+    return $this->codedFieldMappings;
+  }
+
+  /**
+   * All field mappings, with those retrieved from the database overriding those
+   * defined in code.
+   *
+   * @var array
+   */
+  protected $allFieldMappings = array();
   public function getFieldMappings() {
-    return $this->fieldMappings;
+    if (empty($allFieldMappings)) {
+      $this->allFieldMappings = array_merge($this->getCodedFieldMappings(),
+                                            $this->getStoredFieldMappings());
+      // If there are multiple mappings of a given source field to no
+      // destination field, keep only the last (so the UI can override a source
+      // field DNM that was defined in code).
+      $no_destination = array();
+      foreach ($this->allFieldMappings as $destination_field => $mapping) {
+        // If the source field is not mapped to a destination field, the
+        // array index is integer.
+        if (is_int($destination_field)) {
+          $source_field = $mapping->getSourceField();
+          if (isset($no_destination[$source_field])) {
+            unset($this->allFieldMappings[$no_destination[$source_field]]);
+            unset($no_destination[$source_field]);
+          }
+          $no_destination[$source_field] = $destination_field;
+        }
+      }
+
+      // Make sure primary fields come before their subfields
+      ksort($this->allFieldMappings);
+    }
+    return $this->allFieldMappings;
   }
 
   /**
@@ -104,8 +186,9 @@ abstract class Migration extends MigrationBase {
   public function getHighwaterField() {
     return $this->highwaterField;
   }
-
-  protected $currentSourceKey;
+  public function setHighwaterField(array $highwater_field) {
+    $this->highwaterField = $highwater_field;
+  }
 
   /**
    * The object currently being constructed
@@ -120,10 +203,39 @@ abstract class Migration extends MigrationBase {
   protected $sourceValues;
 
   /**
+   * Queue up messages that can't be safely saved (in particular, if they're
+   * generated in prepareRow().
+   *
+   * @var array
+   */
+  protected $queuedMessages = array();
+
+  /**
    * General initialization of a Migration object.
    */
-  public function __construct($group = NULL) {
-    parent::__construct($group);
+  public function __construct($arguments = array()) {
+    parent::__construct($arguments);
+  }
+
+  /**
+   * Register a new migration process in the migrate_status table. This will
+   * generally be used in two contexts - by the class detection code for
+   * static (one instance per class) migrations, and by the module implementing
+   * dynamic (parameterized class) migrations.
+   *
+   * @param string $class_name
+   * @param string $machine_name
+   * @param array $arguments
+   */
+  static public function registerMigration($class_name, $machine_name = NULL,
+      array $arguments = array()) {
+    // Record any field mappings provided via arguments.
+    if (isset($arguments['field_mappings'])) {
+      self::saveFieldMappings($machine_name, $arguments['field_mappings']);
+      unset($arguments['field_mappings']);
+    }
+
+    parent::registerMigration($class_name, $machine_name, $arguments);
   }
 
   /**
@@ -140,9 +252,16 @@ abstract class Migration extends MigrationBase {
     try {
       // Remove map and message tables
       $migration = self::getInstance($machine_name);
-      $migration->map->destroy();
+      if ($migration && method_exists($migration, 'getMap')) {
+        $migration->getMap()->destroy();
+      }
 
-      // TODO: Clear log entries? Or keep for historical purposes?
+      // @todo: Clear log entries? Or keep for historical purposes?
+
+      // Remove stored field mappings for this migration
+      $rows_deleted = db_delete('migrate_field_mapping')
+                      ->condition('machine_name', $machine_name)
+                      ->execute();
 
       // Call the parent deregistration (which clears migrate_status) last, the
       // above will reference it.
@@ -150,6 +269,51 @@ abstract class Migration extends MigrationBase {
     }
     catch (Exception $e) {
       // Fail silently if it's already gone
+    }
+  }
+
+  /**
+   * Record an array of field mappings to the database.
+   *
+   * @param $machine_name
+   * @param array $field_mappings
+   */
+  static public function saveFieldMappings($machine_name, array $field_mappings) {
+    // Clear existing field mappings
+    db_delete('migrate_field_mapping')
+      ->condition('machine_name', $machine_name)
+      ->execute();
+    foreach ($field_mappings as $field_mapping) {
+      $destination_field = $field_mapping->getDestinationField();
+      $source_field = $field_mapping->getSourceField();
+      db_insert('migrate_field_mapping')
+        ->fields(array(
+            'machine_name' => $machine_name,
+            'destination_field' => is_null($destination_field) ? '' : $destination_field,
+            'source_field' => is_null($source_field) ? '' : $source_field,
+            'options' => serialize($field_mapping)
+          ))
+        ->execute();
+    }
+  }
+
+  /**
+   * Load any stored field mappings from the database.
+   */
+  public function loadFieldMappings() {
+    $result = db_select('migrate_field_mapping', 'mfm')
+              ->fields('mfm', array('destination_field', 'source_field', 'options'))
+              ->condition('machine_name', $this->machineName)
+              ->execute();
+    foreach ($result as $row) {
+      $field_mapping = unserialize($row->options);
+      $field_mapping->setMappingSource(MigrateFieldMapping::MAPPING_SOURCE_DB);
+      if (empty($row->destination_field)) {
+        $this->storedFieldMappings[] = $field_mapping;
+      }
+      else {
+        $this->storedFieldMappings[$row->destination_field] = $field_mapping;
+      }
     }
   }
 
@@ -164,27 +328,33 @@ abstract class Migration extends MigrationBase {
    *  Name of the destination field.
    * @param string $sourceField
    *  Name of the source field (optional).
+   * @param boolean $warn_on_override
+   *  Set to FALSE to prevent warnings when there's an existing mapping
+   *  for this destination field.
    */
-  public function addFieldMapping($destination_field, $source_field = NULL) {
+  public function addFieldMapping($destination_field, $source_field = NULL,
+                                  $warn_on_override = TRUE) {
     // Warn of duplicate mappings
-    if (!is_null($destination_field) && isset($this->fieldMappings[$destination_field])) {
+    if ($warn_on_override && !is_null($destination_field) &&
+        isset($this->codedFieldMappings[$destination_field])) {
       self::displayMessage(
-        t('!name addFieldMapping: !dest was previously mapped, overridden',
-          array('!name' => $this->machineName, '!dest' => $destination_field)),
+        t('!name addFieldMapping: !dest was previously mapped from !source, overridden',
+          array('!name' => $this->machineName, '!dest' => $destination_field,
+                '!source' => $this->codedFieldMappings[$destination_field]->getSourceField())),
         'warning');
     }
     $mapping = new MigrateFieldMapping($destination_field, $source_field);
     if (is_null($destination_field)) {
-      $this->fieldMappings[] = $mapping;
+      $this->codedFieldMappings[] = $mapping;
     }
     else {
-      $this->fieldMappings[$destination_field] = $mapping;
+      $this->codedFieldMappings[$destination_field] = $mapping;
     }
     return $mapping;
   }
 
   /**
-   * Remove any existing mappings for a given destination or source field.
+   * Remove any existing coded mappings for a given destination or source field.
    *
    * @param string $destination_field
    *  Name of the destination field.
@@ -193,12 +363,12 @@ abstract class Migration extends MigrationBase {
    */
   public function removeFieldMapping($destination_field, $source_field = NULL) {
     if (isset($destination_field)) {
-      unset($this->fieldMappings[$destination_field]);
+      unset($this->codedFieldMappings[$destination_field]);
     }
     if (isset($source_field)) {
-      foreach ($this->fieldMappings as $key => $mapping) {
+      foreach ($this->codedFieldMappings as $key => $mapping) {
         if ($mapping->getSourceField() == $source_field) {
-          unset($this->fieldMappings[$key]);
+          unset($this->codedFieldMappings[$key]);
         }
       }
     }
@@ -227,12 +397,12 @@ abstract class Migration extends MigrationBase {
    * @param string $issue_group
    *  Issue group name to apply to the generated mappings (defaults to 'DNM').
    */
-  public function addUnmigratedDestinations(array $fields, $issue_group = NULL) {
+  public function addUnmigratedDestinations(array $fields, $issue_group = NULL, $warn_on_override = TRUE) {
     if (!$issue_group) {
       $issue_group = t('DNM');
     }
     foreach ($fields as $field) {
-      $this->addFieldMapping($field)
+      $this->addFieldMapping($field, NULL, $warn_on_override)
            ->issueGroup($issue_group);
     }
   }
@@ -247,12 +417,12 @@ abstract class Migration extends MigrationBase {
    * @param string $issue_group
    *  Issue group name to apply to the generated mappings (defaults to 'DNM').
    */
-  public function addUnmigratedSources(array $fields, $issue_group = NULL) {
+  public function addUnmigratedSources(array $fields, $issue_group = NULL, $warn_on_override = TRUE) {
     if (!$issue_group) {
       $issue_group = t('DNM');
     }
     foreach ($fields as $field) {
-      $this->addFieldMapping(NULL, $field)
+      $this->addFieldMapping(NULL, $field, $warn_on_override)
            ->issueGroup($issue_group);
     }
   }
@@ -262,7 +432,7 @@ abstract class Migration extends MigrationBase {
    * source rows have been processed).
    */
   public function isComplete() {
-    $total = $this->source->count(TRUE);
+    $total = $this->sourceCount(TRUE);
     // If the source is uncountable, we have no way of knowing if it's
     // complete, so stipulate that it is.
     if ($total < 0) {
@@ -290,7 +460,7 @@ abstract class Migration extends MigrationBase {
       if ($this->feedback_unit == 'item') {
         $this->feedback_unit = 'items';
       }
-      else if ($this->feedback_unit == 'second') {
+      elseif ($this->feedback_unit == 'second') {
         $this->feedback_unit = 'seconds';
       }
     }
@@ -382,17 +552,20 @@ abstract class Migration extends MigrationBase {
           break;
         }
 
-        $this->currentSourceKey = $this->map->getCurrentKey();
+        $current_source_key = $this->map->getCurrentKey();
 
         // If there's an idlist, skip anything not in the list
-        if ($idlist && !isset($idlist[$this->currentSourceKey['sourceid1']])) {
+        if ($idlist && !isset($idlist[$current_source_key['sourceid1']])) {
           continue;
         }
 
         // Note that bulk rollback is only supported for single-column keys
-        $sourceids[] = $this->currentSourceKey;
+        $sourceids[] = $current_source_key;
         if (!empty($destination_key->destid1)) {
-          $destids[] = $destination_key->destid1;
+          $map_row = $this->map->getRowByDestination((array)$destination_key);
+          if ($map_row['rollback_action'] == MigrateMap::ROLLBACK_DELETE) {
+            $destids[] = $destination_key->destid1;
+          }
         }
 
         $batch_count++;
@@ -454,10 +627,10 @@ abstract class Migration extends MigrationBase {
         if ($this->itemOptionExceeded()) {
           break;
         }
-        $this->currentSourceKey = $this->map->getCurrentKey();
+        $current_source_key = $this->map->getCurrentKey();
 
         // If there's an idlist, skip anything not in the list
-        if ($idlist && !isset($idlist[$this->currentSourceKey['sourceid1']])) {
+        if ($idlist && !isset($idlist[$current_source_key['sourceid1']])) {
           continue;
         }
 
@@ -473,14 +646,17 @@ abstract class Migration extends MigrationBase {
               }
             }
             if (!$skip) {
-              migrate_instrument_start('destination rollback');
-              $this->destination->rollback((array)$destination_key);
-              migrate_instrument_stop('destination rollback');
+              $map_row = $this->map->getRowByDestination((array)$destination_key);
+              if ($map_row['rollback_action'] == MigrateMap::ROLLBACK_DELETE) {
+                migrate_instrument_start('destination rollback');
+                $this->destination->rollback((array)$destination_key);
+                migrate_instrument_stop('destination rollback');
+              }
             }
           }
 
           migrate_instrument_start('rollback map/message update');
-          $this->map->delete($this->currentSourceKey);
+          $this->map->delete($current_source_key);
           migrate_instrument_stop('rollback map/message update');
           $this->total_successes++;
           $this->successes_since_feedback++;
@@ -513,21 +689,21 @@ abstract class Migration extends MigrationBase {
   protected function import() {
     $return = MigrationBase::RESULT_COMPLETED;
 
-    foreach ($this->source as $data_row) {
-      if ($this->timeOptionExceeded()) {
-        break;
-      }
-      if (($return = $this->checkStatus()) != MigrationBase::RESULT_COMPLETED) {
-        break;
-      }
-      if ($this->itemOptionExceeded()) {
-        break;
-      }
+    try {
+      $this->source->rewind();
+    }
+    catch (Exception $e) {
+      self::displayMessage(
+        t('Migration failed with source plugin exception: %e, in %file:%line',
+          array('%e' => $e->getMessage(), '%file' => $e->getFile(), '%line' => $e->getLine())));
+      return MigrationBase::RESULT_FAILED;
+    }
+    while ($this->source->valid()) {
+      $data_row = $this->source->current();
 
-      $this->currentSourceKey = $this->source->getCurrentKey();
-
-      // Wipe old messages
-      $this->map->delete($this->currentSourceKey, TRUE);
+      // Wipe old messages, and save any new messages.
+      $this->map->delete($this->currentSourceKey(), TRUE);
+      $this->saveQueuedMessages();
 
       $this->sourceValues = $data_row;
       $this->applyMappings();
@@ -537,24 +713,33 @@ abstract class Migration extends MigrationBase {
         $ids = $this->destination->import($this->destinationValues, $this->sourceValues);
         migrate_instrument_stop('destination import');
         if ($ids) {
-          $this->map->saveIDMapping($this->sourceValues, $ids, $this->needsUpdate);
+          $this->map->saveIDMapping($this->sourceValues, $ids,
+            $this->needsUpdate, $this->rollbackAction,
+            $data_row->migrate_map_hash);
           $this->successes_since_feedback++;
           $this->total_successes++;
         }
         else {
-          $this->map->saveIDMapping($this->sourceValues, array(), MigrateMap::STATUS_FAILED);
-          $message = t('New object was not saved, no error provided');
-          $this->saveMessage($message);
-          self::displayMessage($message);
+          $this->map->saveIDMapping($this->sourceValues, array(),
+            MigrateMap::STATUS_FAILED, $this->rollbackAction,
+            $data_row->migrate_map_hash);
+          if ($this->map->messageCount() == 0) {
+            $message = t('New object was not saved, no error provided');
+            $this->saveMessage($message);
+            self::displayMessage($message);
+          }
         }
       }
       catch (MigrateException $e) {
-        $this->map->saveIDMapping($this->sourceValues, array(), MigrateMap::STATUS_FAILED);
+        $this->map->saveIDMapping($this->sourceValues, array(),
+          $e->getStatus(), $this->rollbackAction, $data_row->migrate_map_hash);
         $this->saveMessage($e->getMessage(), $e->getLevel());
         self::displayMessage($e->getMessage());
       }
       catch (Exception $e) {
-        $this->map->saveIDMapping($this->sourceValues, array(), MigrateMap::STATUS_FAILED);
+        $this->map->saveIDMapping($this->sourceValues, array(),
+          MigrateMap::STATUS_FAILED, $this->rollbackAction,
+          $data_row->migrate_map_hash);
         $this->handleException($e);
       }
       $this->total_processed++;
@@ -572,11 +757,182 @@ abstract class Migration extends MigrationBase {
       if (!empty($this->destination->entityType)) {
         entity_get_controller($this->destination->entityType)->resetCache();
       }
+
+      if ($this->timeOptionExceeded()) {
+        break;
+      }
+      if (($return = $this->checkStatus()) != MigrationBase::RESULT_COMPLETED) {
+        break;
+      }
+      if ($this->itemOptionExceeded()) {
+        break;
+      }
+      try {
+        $this->source->next();
+      }
+      catch (Exception $e) {
+        self::displayMessage(
+          t('Migration failed with source plugin exception: %e, in %file:%line',
+            array('%e' => $e->getMessage(), '%file' => $e->getFile(), '%line' => $e->getLine())));
+        return MigrationBase::RESULT_FAILED;
+      }
     }
 
     $this->progressMessage($return);
 
     return $return;
+  }
+
+  /**
+   * Perform an analysis operation - report on field values in the source.
+   *
+   * @return array
+   *  Array of analysis details - each element is keyed by field name and
+   *  contains an array describing the field values.
+   */
+  public function analyze() {
+    // The source needs this to find the map table.
+    self::$currentMigration = $this;
+    try {
+      $this->source->rewind();
+    }
+    catch (Exception $e) {
+      self::displayMessage(
+        t('Migration analysis failed with source plugin exception: !e',
+          array('!e' => $e->getMessage())));
+      self::$currentMigration = NULL;
+      return array();
+    }
+    // Get the documented fields first
+    $source_fields = $this->source->fields();
+    $analysis = array();
+    $field_init = array(
+      'is_numeric' => TRUE,
+      'min_numeric' => NULL,
+      'max_numeric' => NULL,
+      'min_strlen' => 0,
+      'max_strlen' => 0,
+      'distinct_values' => array(),
+    );
+    foreach ($source_fields as $field_name => $description) {
+      // Ignore fields from the map table
+      if (substr($field_name, 0, strlen('migrate_map_')) == 'migrate_map_') {
+        continue;
+      }
+      $analysis[$field_name] = $field_init +
+        array('description' => $description);
+    }
+    // For each data row...
+    while ($this->source->valid()) {
+      $row = $this->source->current();
+      // Cheat for XML migrations, which don't pick up the source values
+      // until applyMappings() applies the xpath()
+      if (is_a($this, 'XMLMigration') && isset($row->xml)) {
+        $this->sourceValues = $row;
+        $this->applyMappings();
+        $row = $this->sourceValues;
+        unset($row->xml);
+      }
+      // For each field in this row...
+      foreach ($row as $field_name => $raw_value) {
+        // Ignore fields from the map table
+        if (substr($field_name, 0, strlen('migrate_map_')) == 'migrate_map_') {
+          continue;
+        }
+        // It might be an array of values, check each value
+        if (!is_array($raw_value)) {
+          $raw_value = array($raw_value);
+        }
+        foreach ($raw_value as $field_value) {
+          // If this is an undocumented field, initialize it
+          if (!isset($analysis[$field_name])) {
+            $analysis[$field_name] = $field_init +
+              array('description' => '');
+          }
+          // Ignore leading/trailing spaces in determing numerics
+          $trimmed_value = trim($field_value);
+          if (is_numeric($trimmed_value)) {
+            $trimmed_value = floatval($trimmed_value);
+            // First numeric value, initialize the min/max
+            if (is_null($analysis[$field_name]['min_numeric'])) {
+              $analysis[$field_name]['min_numeric'] = $trimmed_value;
+              $analysis[$field_name]['max_numeric'] = $trimmed_value;
+            }
+            else {
+              $analysis[$field_name]['min_numeric'] = min($trimmed_value,
+                $analysis[$field_name]['min_numeric']);
+              $analysis[$field_name]['max_numeric'] = max($trimmed_value,
+                $analysis[$field_name]['max_numeric']);
+            }
+          }
+          elseif ($trimmed_value !== '') {
+            // Empty strings are !is_numeric(), but treat as empty rather than
+            // assuming we don't have a numeric field
+            $analysis[$field_name]['is_numeric'] = FALSE;
+          }
+          $strlen = strlen($field_value);
+          // First string value, initialize both min and max
+          if ($analysis[$field_name]['max_strlen'] == 0) {
+            $analysis[$field_name]['min_strlen'] = $strlen;
+            $analysis[$field_name]['max_strlen'] = $strlen;
+          }
+          else {
+            $analysis[$field_name]['min_strlen'] = min($strlen,
+              $analysis[$field_name]['min_strlen']);
+            $analysis[$field_name]['max_strlen'] = max($strlen,
+              $analysis[$field_name]['max_strlen']);
+          }
+          // Track up to 10 distinct values
+          if (count($analysis[$field_name]['distinct_values']) <= 10) {
+            $analysis[$field_name]['distinct_values'][$trimmed_value]++;
+          }
+        }
+      }
+
+      try {
+        $this->source->next();
+      }
+      catch (Exception $e) {
+        self::displayMessage(
+          t('Migration analysis failed with source plugin exception: !e. Partial results follow:',
+            array('!e' => $e->getMessage())));
+        self::$currentMigration = NULL;
+        return $analysis;
+      }
+    }
+
+    self::$currentMigration = NULL;
+    return $analysis;
+  }
+
+  /**
+   * Fetch the key array for the current source record.
+   *
+   * @return array
+   */
+  protected function currentSourceKey() {
+    return $this->source->getCurrentKey();
+  }
+
+  /**
+   * Default implementation of prepareKey. This method is called from the source
+   * plugin immediately after retrieving the raw data from the source - by
+   * default, it simply assigns the key values based on the field names passed
+   * to MigrateSQLMap(). Override this if you need to generate your own key
+   * (e.g., the source doesn't have a natural unique key). Be sure to also
+   * set any values you generate in $row.
+   *
+   * @param array $source_key
+   * @param object $row
+   *
+   * @return array
+   */
+  public function prepareKey($source_key, $row) {
+    $key = array();
+    foreach ($source_key as $field_name => $field_schema) {
+      $key[$field_name] = $row->$field_name;
+    }
+    return $key;
   }
 
   /**
@@ -589,9 +945,10 @@ abstract class Migration extends MigrationBase {
    *  TRUE to process this row, FALSE to have the source skip it.
    */
   public function prepareRow($row) {
+    $this->rollbackAction = $this->defaultRollbackAction;
     return TRUE;
   }
-  
+
   ////////////////////////////////////////////////////////////////////
   // Utility methods
 
@@ -602,7 +959,14 @@ abstract class Migration extends MigrationBase {
    *  Pass TRUE to refresh the cached count.
    */
   public function sourceCount($refresh = FALSE) {
-    return $this->source->count($refresh);
+    try {
+      $count = $this->source->count($refresh);
+    }
+    catch (Exception $e) {
+      $count = t('N/A');
+      self::displayMessage($e->getMessage());
+    }
+    return $count;
   }
 
   /**
@@ -611,7 +975,14 @@ abstract class Migration extends MigrationBase {
    *  Number of processed records.
    */
   public function processedCount() {
-    return $this->map->processedCount();
+    try {
+      $count = $this->map->processedCount();
+    }
+    catch (Exception $e) {
+      $count = t('N/A');
+      self::displayMessage($e->getMessage());
+    }
+    return $count;
   }
 
   /**
@@ -620,7 +991,14 @@ abstract class Migration extends MigrationBase {
    *  Number of imported records.
    */
   public function importedCount() {
-    return $this->map->importedCount();
+    try {
+      $count = $this->map->importedCount();
+    }
+    catch (Exception $e) {
+      $count = t('N/A');
+      self::displayMessage($e->getMessage());
+    }
+    return $count;
   }
 
   /**
@@ -628,7 +1006,14 @@ abstract class Migration extends MigrationBase {
    * @return int
    */
   public function updateCount() {
-    return $this->map->updateCount();
+    try {
+      $count = $this->map->updateCount();
+    }
+    catch (Exception $e) {
+      $count = t('N/A');
+      self::displayMessage($e->getMessage());
+    }
+    return $count;
   }
 
   /**
@@ -704,7 +1089,7 @@ abstract class Migration extends MigrationBase {
           break;
         case Migration::RESULT_INCOMPLETE:
           $basetext = "Processed !numitems (!created created, !updated updated, !failed failed, !ignored ignored) in !time sec (!perminute/min) - continuing with '!name'";
-          $type = 'ok';
+          $type = 'status';
           break;
         case Migration::RESULT_STOPPED:
           $basetext = "Processed !numitems (!created created, !updated updated, !failed failed, !ignored ignored) in !time sec (!perminute/min) - stopped '!name'";
@@ -724,7 +1109,7 @@ abstract class Migration extends MigrationBase {
           break;
         case Migration::RESULT_INCOMPLETE:
           $basetext = "Rolled back !numitems in !time sec (!perminute/min) - continuing with '!name'";
-          $type = 'ok';
+          $type = 'status';
           break;
         case Migration::RESULT_STOPPED:
           $basetext = "Rolled back !numitems in !time sec (!perminute/min) - stopped '!name'";
@@ -800,82 +1185,112 @@ abstract class Migration extends MigrationBase {
    * a populated destination object.
    */
   protected function applyMappings() {
-    // Apply mappings.
     $this->destinationValues = new stdClass;
-    foreach ($this->fieldMappings as $mapping) {
+    foreach ($this->getFieldMappings() as $mapping) {
       $destination = $mapping->getDestinationField();
       // Skip mappings with no destination (source fields marked DNM)
       if ($destination) {
         $source = $mapping->getSourceField();
         $default = $mapping->getDefaultValue();
+
+        // When updating existing items, make sure we don't create a destination
+        // field that is not mapped to anything (a source field or a default value)
+        if (!$source && !isset($default)) {
+          continue;
+        }
+
+        $destination_values = NULL;
+
         // If there's a source mapping, and a source value in the data row, copy
         // to the destination
-        if ($source && isset($this->sourceValues->$source)) {
-          $this->destinationValues->$destination = $this->sourceValues->$source;
+        if ($source && isset($this->sourceValues->{$source})) {
+          $destination_values = $this->sourceValues->$source;
         }
         // Otherwise, apply the default value (if any)
         elseif (!is_null($default)) {
-          $this->destinationValues->$destination = $default;
+          $destination_values = $default;
         }
 
         // If there's a separator specified for this destination, then it
         // will be populated as an array exploded from the source value
         $separator = $mapping->getSeparator();
-        if ($separator && isset($this->destinationValues->$destination)) {
-          $this->destinationValues->$destination = explode($separator, $this->destinationValues->$destination);
+        if ($separator && isset($destination_values)) {
+          $destination_values = explode($separator, $destination_values);
         }
 
         // If a source migration is supplied, use the current value for this field
         // to look up a destination ID from the provided migration
         $source_migration = $mapping->getSourceMigration();
-        if ($source_migration && isset($this->destinationValues->$destination)) {
-          $this->destinationValues->$destination = $this->handleSourceMigration($source_migration, $this->destinationValues->$destination, $default, $this);
+        if ($source_migration && isset($destination_values)) {
+          $destination_values = $this->handleSourceMigration($source_migration, $destination_values, $default, $this);
         }
 
         // Call any designated callbacks
         $callbacks = $mapping->getCallbacks();
         foreach ($callbacks as $callback) {
-          if (property_exists($this->destinationValues, $destination)) {
-            $this->destinationValues->$destination = call_user_func($callback, $this->destinationValues->$destination);
+          if (isset($destination_values)) {
+            $destination_values = call_user_func($callback, $destination_values);
           }
         }
 
         // If specified, assure a unique value for this property.
         $dedupe = $mapping->getDedupe();
-        if ($dedupe && isset($this->destinationValues->$destination)) {
-          $this->destinationValues->$destination = $this->handleDedupe($dedupe, $this->destinationValues->$destination, $mapping);
+        if ($dedupe && isset($destination_values)) {
+          $destination_values = $this->handleDedupe($dedupe, $destination_values);
         }
 
         // Assign any arguments
-        if (isset($this->destinationValues->$destination)) {
+        if (isset($destination_values)) {
           $arguments = $mapping->getArguments();
           if ($arguments) {
-            if (!is_array($this->destinationValues->$destination)) {
-              $this->destinationValues->$destination = array($this->destinationValues->$destination);
+            if (!is_array($destination_values)) {
+              $destination_values = array($destination_values);
             }
             // TODO: Stuffing arguments into the destination field is gross - can
             // we come up with a better way to communicate them to the field
             // handlers?
-            $this->destinationValues->{$destination}['arguments'] = array();
+            $destination_values['arguments'] = array();
             foreach ($arguments as $argname => $destarg) {
               if (is_array($destarg) && isset($destarg['source_field']) && property_exists($this->sourceValues, $destarg['source_field'])) {
-                $this->destinationValues->{$destination}['arguments'][$argname] = $this->sourceValues->$destarg['source_field'];
+                $destination_values['arguments'][$argname] = $this->sourceValues->$destarg['source_field'];
               }
               elseif (is_array($destarg) && isset($destarg['default_value'])) {
-                $this->destinationValues->{$destination}['arguments'][$argname] = $destarg['default_value'];
+                $destination_values['arguments'][$argname] = $destarg['default_value'];
               }
               else {
-                $this->destinationValues->{$destination}['arguments'][$argname] = $destarg;
+                $destination_values['arguments'][$argname] = $destarg;
               }
             }
           }
         }
 
-        // When we're updating existing nodes, if there is a source mapping but there
-        // was no value for this row, add a null destination value so it gets removed
-        // from the node
-        if ($this->systemOfRecord == Migration::DESTINATION && $source && !isset($this->destinationValues->$destination)) {
-          $this->destinationValues->$destination = NULL;
+        // Are we dealing with the primary value of the destination field, or a
+        // subfield?
+        $destination = explode(':', $destination);
+        $destination_field = $destination[0];
+        if (isset($destination[1])) {
+          $subfield = $destination[1];
+          // We're processing the subfield before the primary value, initialize it
+          if (!property_exists($this->destinationValues, $destination_field)) {
+            $this->destinationValues->$destination_field = array();
+          }
+          // We have a value, and need to convert to an array so we can add
+          // arguments.
+          elseif (!is_array($this->destinationValues->$destination_field)) {
+            $this->destinationValues->$destination_field = array($this->destinationValues->$destination_field);
+          }
+          // Add the subfield value to the arguments array.
+          $this->destinationValues->{$destination_field}['arguments'][$subfield] = $destination_values;
+        }
+        // Just the primary value, the first time through for this field, simply
+        // set it.
+        elseif (!property_exists($this->destinationValues, $destination_field)) {
+          $this->destinationValues->$destination_field = $destination_values;
+        }
+        // We've seen a subfield, so add as an array value.
+        else {
+          $this->destinationValues->{$destination_field} = array_merge(
+            (array)$destination_values, $this->destinationValues->{$destination_field});
         }
       }
     }
@@ -907,7 +1322,11 @@ abstract class Migration extends MigrationBase {
     // We want to treat source keys consistently as an array of arrays (each
     // representing one key).
     if (is_array($source_keys)) {
-      if (is_array(reset($source_keys))) {
+      if (empty($source_keys)) {
+        // Empty value should return empty results.
+        return NULL;
+      }
+      elseif (is_array(reset($source_keys))) {
         // Already an array of key arrays, fall through
       }
       else {
@@ -932,28 +1351,40 @@ abstract class Migration extends MigrationBase {
     $results = array();
     // Each $source_key will be an array of key values
     foreach ($source_keys as $source_key) {
-      // If any source keys are empty, skip this set
+      // If any source keys are NULL, skip this set
       $continue = FALSE;
       foreach ($source_key as $value) {
-        if (empty($value) && $value !== 0 && $value !== '0') {
+        if (!isset($value)) {
           $continue = TRUE;
           break;
         }
       }
-      if ($continue || empty($source_key)) {
+      // Occasionally $source_key comes through with an empty string.
+      $sanity_check = array_filter($source_key);
+      if ($continue || empty($source_key) || empty($sanity_check)) {
         continue;
       }
       // Loop through each source migration, checking for an existing dest ID.
       foreach ($source_migrations as $source_migration) {
         // Break out of the loop as soon as a destination ID is found.
         if ($destids = $source_migration->getMap()->lookupDestinationID($source_key)) {
-          break;
+          if (!empty($destids['destid1'])) {
+            break;
+          }
         }
       }
       // If no destination ID was found, give each source migration a chance to
       // create a stub.
       if (!$destids) {
         foreach ($source_migrations as $source_migration) {
+          // Is this a self reference?
+          if ($source_migration->machineName == $this->machineName) {
+            if (!array_diff($source_key, $this->currentSourceKey())) {
+              $destids = array();
+              $this->needsUpdate = MigrateMap::STATUS_NEEDS_UPDATE;
+              break;
+            }
+          }
           // Break out of the loop if a stub was successfully created.
           if ($destids = $source_migration->createStubWrapper($source_key, $migration)) {
             break;
@@ -980,14 +1411,43 @@ abstract class Migration extends MigrationBase {
       return $results;
     }
     else {
-      return reset($results);
+      $value = reset($results);
+      return empty($value) && $value !== 0 && $value !== '0' ? NULL : $value;
     }
   }
 
   /**
-   * Assign a non-existing value for current mapping.
+   * For fields which require uniqueness, assign a new unique value if necessary.
+   *
+   * @param array $dedupe
+   *  An array with two keys, 'table' the name of the Drupal table and 'column'
+   *  the column within that table where uniqueness must be maintained.
+   * @param $original
+   *  The value coming in, which must be checked for uniqueness.
+   * @return string
+   *  The value to use - either the original, or a variation created by appending
+   *  a sequence number.
    */
-  protected function handleDedupe($dedupe, $original, $mapping) {
+  protected function handleDedupe($dedupe, $original) {
+    // If we're remigrating a previously-existing value, simply running through
+    // our normal process will re-dedupe it - we must be sure to preserve the
+    // previously-written value. Note that this means that you cannot migrate
+    // changes to this field - the originally-migrated value will always
+    // remain, because we can't tell what the original was.
+    if (isset($this->sourceValues->migrate_map_destid1)) {
+      $key_field = key($this->destination->getKeySchema());
+      $existing_value = db_select($dedupe['table'], 't')
+                        ->fields('t', array($dedupe['column']))
+                        ->range(0, 1)
+                        ->condition($key_field, $this->sourceValues->migrate_map_destid1)
+                        ->execute()
+                        ->fetchField();
+      // Note that if, for some reason, we don't find a value, fall through
+      // to the normal deduping process
+      if ($existing_value) {
+        return $existing_value;
+      }
+    }
     $i = 1;
     $candidate = $original;
     while ($candidate_found = db_select($dedupe['table'], 't')
@@ -1003,9 +1463,9 @@ abstract class Migration extends MigrationBase {
     }
     if ($i > 1) {
       $message = t('Replacing !column !original with !candidate',
-                 array('!column' => $dedupe['column'],
-                       '!original' => $original,
-                       '!candidate' => $candidate));
+                   array('!column' => $dedupe['column'],
+                         '!original' => $original,
+                         '!candidate' => $candidate));
       $migration = Migration::currentMigration();
       $migration->saveMessage($message, Migration::MESSAGE_INFORMATIONAL);
     }
@@ -1026,7 +1486,8 @@ abstract class Migration extends MigrationBase {
         foreach ($map_source_key as $key => $definition) {
           $data_row->$key = $source_key[$i++];
         }
-        $this->map->saveIDMapping($data_row, $destids, MigrateMap::STATUS_NEEDS_UPDATE);
+        $this->map->saveIDMapping($data_row, $destids,
+          MigrateMap::STATUS_NEEDS_UPDATE, $this->defaultRollbackAction);
       }
     }
     else {
@@ -1036,7 +1497,7 @@ abstract class Migration extends MigrationBase {
   }
 
   /**
-   * Pass messages through to the map class
+   * Pass messages through to the map class.
    *
    * @param string $message
    *  The message to record.
@@ -1044,7 +1505,29 @@ abstract class Migration extends MigrationBase {
    *  Optional message severity (defaults to MESSAGE_ERROR).
    */
   public function saveMessage($message, $level = MigrationBase::MESSAGE_ERROR) {
-    $this->map->saveMessage($this->currentSourceKey, $message, $level);
+    $this->map->saveMessage($this->currentSourceKey(), $message, $level);
+  }
+
+  /**
+   * Queue messages to be later saved through the map class.
+   *
+   * @param string $message
+   *  The message to record.
+   * @param int $level
+   *  Optional message severity (defaults to MESSAGE_ERROR).
+   */
+  public function queueMessage($message, $level = MigrationBase::MESSAGE_ERROR) {
+    $this->queuedMessages[] = array('message' => $message, 'level' => $level);
+  }
+
+  /**
+   * Save any messages we've queued up to the message table.
+   */
+  public function saveQueuedMessages() {
+    foreach ($this->queuedMessages as $queued_message) {
+      $this->saveMessage($queued_message['message'], $queued_message['level']);
+    }
+    $this->queuedMessages = array();
   }
 
   /**
@@ -1052,19 +1535,26 @@ abstract class Migration extends MigrationBase {
    */
   public function setUpdate(array $source_key = NULL) {
     if (!$source_key) {
-      $source_key = $this->currentSourceKey;
+      $source_key = $this->currentSourceKey();
     }
     $this->map->setUpdate($source_key);
   }
 }
 
 /**
- * Convenience class - deriving from this rather than directory from Migration
- * ensures that a class will not be registered as a migration itself - it is
- * the implementor's responsibility to register each instance of a dynamic
- * migration class.
+ * @deprecated - This class is no longer necessary, inherit directly from
+ *  Migration instead.
  */
 abstract class DynamicMigration extends Migration {
+  static $deprecationWarning = FALSE;
+  public function __construct($arguments) {
+    parent::__construct($arguments);
+    if (variable_get('migrate_deprecation_warnings', 1) &&
+        !self::$deprecationWarning) {
+      self::displayMessage(t('The DynamicMigration class is no longer necessary and is now deprecated - please derive your migration classes directly from Migration.'));
+      self::$deprecationWarning = TRUE;
+    }
+  }
   /**
    * Overrides default of FALSE
    */

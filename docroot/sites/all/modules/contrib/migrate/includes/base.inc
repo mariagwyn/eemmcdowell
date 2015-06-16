@@ -37,9 +37,9 @@ abstract class MigrationBase {
   }
 
   /**
-   * The name of a migration group, used to collect related migrations.
+   * A migration group object, used to collect related migrations.
    *
-   * @var string
+   * @var MigrateGroup
    */
   protected $group;
   public function getGroup() {
@@ -54,6 +54,9 @@ abstract class MigrationBase {
   protected $description;
   public function getDescription() {
     return $this->description;
+  }
+  public function setDescription($description) {
+    $this->description = $description;
   }
 
   /**
@@ -143,8 +146,20 @@ abstract class MigrationBase {
   public function getHardDependencies() {
     return $this->dependencies;
   }
+  public function setHardDependencies(array $dependencies) {
+    $this->dependencies = $dependencies;
+  }
+  public function addHardDependencies(array $dependencies) {
+    $this->dependencies = array_merge($this->dependencies, $dependencies);
+  }
   public function getSoftDependencies() {
     return $this->softDependencies;
+  }
+  public function setSoftDependencies(array $dependencies) {
+    $this->softDependencies = $dependencies;
+  }
+  public function addSoftDependencies(array $dependencies) {
+    $this->softDependencies = array_merge($this->softDependencies, $dependencies);
   }
   public function getDependencies() {
     return array_merge($this->dependencies, $this->softDependencies);
@@ -154,24 +169,19 @@ abstract class MigrationBase {
    * Name of a function for displaying feedback. It must take the message to display
    * as its first argument, and a (string) message type as its second argument
    * (see drush_log()).
-   * Deprecated in favor of the static displayFunction - remove in next API release.
-   * @var string
-   */
-  protected $outputFunction;
-  public function setOutputFunction($output_function) {
-    $this->outputFunction = $output_function;
-  }
-
-  /**
-   * Name of a function for displaying feedback. It must take the message to display
-   * as its first argument, and a (string) message type as its second argument
-   * (see drush_log()).
    * @var string
    */
   protected static $displayFunction;
-  public function setDisplayFunction($display_function) {
+  public static function setDisplayFunction($display_function) {
     self::$displayFunction = $display_function;
   }
+
+  /**
+   * Track whether or not we've already displayed an encryption warning
+   *
+   * @var bool
+   */
+  protected static $showEncryptionWarning = TRUE;
 
   /**
    * The fraction of the memory limit at which an operation will be interrupted.
@@ -206,6 +216,14 @@ abstract class MigrationBase {
   protected $timeLimit;
 
   /**
+   * A time limit in seconds appropriate to be used in a batch
+   * import. Defaults to 240.
+   *
+   * @var int
+   */
+  protected $batchTimeLimit = 240;
+
+  /**
    * MigrateTeamMember objects representing people involved with this
    * migration.
    *
@@ -214,6 +232,9 @@ abstract class MigrationBase {
   protected $team = array();
   public function getTeam() {
     return $this->team;
+  }
+  public function setTeam(array $team) {
+    $this->team = $team;
   }
 
   /**
@@ -226,6 +247,9 @@ abstract class MigrationBase {
   public function getIssuePattern() {
     return $this->issuePattern;
   }
+  public function setIssuePattern($issue_pattern) {
+    $this->issuePattern = $issue_pattern;
+  }
 
   /**
    * If we set an error handler (during import), remember the previous one so
@@ -234,6 +258,22 @@ abstract class MigrationBase {
    * @var callback
    */
   protected $previousErrorHandler = NULL;
+
+  /**
+   * Arguments configuring a migration.
+   *
+   * @var array
+   */
+  protected $arguments = array();
+  public function getArguments() {
+    return $this->arguments;
+  }
+  public function setArguments(array $arguments) {
+    $this->arguments = $arguments;
+  }
+  public function addArguments(array $arguments) {
+    $this->arguments = array_merge($this->arguments, $arguments);
+  }
 
   /**
    * Disabling a migration prevents it from running with --all, or individually
@@ -245,6 +285,29 @@ abstract class MigrationBase {
   public function getEnabled() {
     return $this->enabled;
   }
+  public function setEnabled($enabled) {
+    $this->enabled = $enabled;
+  }
+
+  /**
+   * Any module hooks which should be disabled during migration processes.
+   *
+   * @var array
+   *  Key: Hook name (e.g., 'node_insert')
+   *  Value: Array of modules for which to disable this hook (e.g., array('pathauto')).
+   */
+  protected $disableHooks = array();
+  public function getDisableHooks() {
+    return $this->disableHooks;
+  }
+
+  /**
+   * Have we already warned about obsolete constructor argumentss on this request?
+   *
+   * @var bool
+   */
+  static protected $groupArgumentWarning = FALSE;
+  static protected $emptyArgumentsWarning = FALSE;
 
   /**
    * Codes representing the result of a rollback or import process.
@@ -296,17 +359,51 @@ abstract class MigrationBase {
   }
 
   /**
-   * General initialization of a MigrationBase object.
+   * Construction of a MigrationBase instance.
+   *
+   * @param array $arguments
    */
-  public function __construct($group = NULL) {
-    $this->machineName = $this->generateMachineName();
-
-    if (empty($group)) {
-      $this->group = MigrateGroup::getInstance('default');
+  public function __construct($arguments = array()) {
+    // Support for legacy code passing a group object as the first parameter.
+    if (is_object($arguments) && is_a($arguments, 'MigrateGroup')) {
+      $this->group = $arguments;
+      $this->arguments['group_name'] = $arguments->getName();
+      if (!self::$groupArgumentWarning &&
+          variable_get('migrate_deprecation_warnings', 1)) {
+        self::displayMessage(t('Passing a group object to a migration constructor is now deprecated - pass through the arguments array passed to the leaf class instead.'));
+        self::$groupArgumentWarning = TRUE;
+      }
     }
     else {
-      $this->group = $group;
+      if (empty($arguments)) {
+        $this->arguments = array();
+        if (!self::$emptyArgumentsWarning &&
+            variable_get('migrate_deprecation_warnings', 1)) {
+          self::displayMessage(t('Passing an empty first parameter to a migration constructor is now deprecated - pass through the arguments array passed to the leaf class instead.'));
+          self::$emptyArgumentsWarning = TRUE;
+        }
+      }
+      else {
+        $this->arguments = $arguments;
+      }
+      if (empty($this->arguments['group_name'])) {
+        $this->arguments['group_name'] = 'default';
+      }
+      $this->group = MigrateGroup::getInstance($this->arguments['group_name']);
     }
+    if (isset($this->arguments['machine_name'])) {
+      $this->machineName = $this->arguments['machine_name'];
+    }
+    else {
+      // Deprecated - this supports old code which does not pass the arguments
+      // array through to the base constructor. Remove in the next version.
+      $this->machineName = $this->machineFromClass(get_class($this));
+    }
+    // Make any group arguments directly accessible to the specific migration,
+    // other than group dependencies.
+    $group_arguments = $this->group->getArguments();
+    unset($group_arguments['dependencies']);
+    $this->arguments += $group_arguments;
 
     // Record the memory limit in bytes
     $limit = trim(ini_get('memory_limit'));
@@ -315,7 +412,7 @@ abstract class MigrationBase {
     }
     else {
       if (!is_numeric($limit)) {
-        $last = strtolower($limit[strlen($limit)-1]);
+        $last = drupal_strtolower($limit[strlen($limit)-1]);
         switch ($last) {
           case 'g':
             $limit *= 1024;
@@ -335,16 +432,6 @@ abstract class MigrationBase {
     // Record the time limit
     $this->timeLimit = ini_get('max_execution_time');
 
-    // Default the displayFunction outputFunction based on context
-    if (function_exists('drush_log')) {
-      self::$displayFunction = 'drush_log';
-    }
-    else {
-      self::$displayFunction = 'drupal_set_message';
-    }
-    // Maintain deprecated version for now
-    $this->outputFunction = self::$displayFunction;
-
     // Prevent any emails from being sent out on migration
     global $conf;
     if (!empty($conf['mail_system'])) {
@@ -352,9 +439,31 @@ abstract class MigrationBase {
         $conf['mail_system'][$system] = 'MigrateMailIgnore';
       }
     }
+    else {
+      $conf['mail_system']['default-system'] = 'MigrateMailIgnore';
+    }
 
     // Make sure we clear our semaphores in case of abrupt exit
-    register_shutdown_function(array($this, 'endProcess'));
+    drupal_register_shutdown_function(array($this, 'endProcess'));
+
+    // Save any hook disablement information.
+    if (isset($this->arguments['disable_hooks']) &&
+        is_array($this->arguments['disable_hooks'])) {
+      $this->disableHooks = $this->arguments['disable_hooks'];
+    }
+  }
+
+  /**
+   * Initialize static members, before any class instances are created.
+   */
+  static public function staticInitialize() {
+    // Default the displayFunction outputFunction based on context
+    if (function_exists('drush_log')) {
+      self::$displayFunction = 'drush_log';
+    }
+    else {
+      self::$displayFunction = 'drupal_set_message';
+    }
   }
 
   /**
@@ -367,10 +476,33 @@ abstract class MigrationBase {
    * @param string $machine_name
    * @param array $arguments
    */
-  static public function registerMigration($class_name, $machine_name = NULL, array $arguments = array()) {
+  static public function registerMigration($class_name, $machine_name = NULL,
+      array $arguments = array()) {
+    // Support for legacy migration code - in later releases, the machine_name
+    // should always be explicit.
     if (!$machine_name) {
       $machine_name = self::machineFromClass($class_name);
     }
+
+    if (!preg_match('|^[a-z0-9_]+$|i', $machine_name)) {
+      throw new Exception(t('!name is not a valid Migration machine name. Use only alphanumeric or underscore characters.',
+                          array('!name' => $machine_name)));
+    }
+
+    // We no longer have any need to store the machine_name in the arguments.
+    if (isset($arguments['machine_name'])) {
+      unset($arguments['machine_name']);
+    }
+
+    if (isset($arguments['group_name'])) {
+      $group_name = $arguments['group_name'];
+      unset($arguments['group_name']);
+    }
+    else {
+      $group_name = 'default';
+    }
+
+    $arguments = self::encryptArguments($arguments);
 
     // Register the migration if it's not already there; if it is,
     // update the class and arguments in case they've changed.
@@ -378,6 +510,7 @@ abstract class MigrationBase {
       ->key(array('machine_name' => $machine_name))
       ->fields(array(
                 'class_name' => $class_name,
+                'group_name' => $group_name,
                 'arguments' => serialize($arguments)
         ))
       ->execute();
@@ -393,20 +526,31 @@ abstract class MigrationBase {
     $rows_deleted = db_delete('migrate_status')
                     ->condition('machine_name', $machine_name)
                     ->execute();
+    // Make sure the group gets deleted if we were the only member.
+    MigrateGroup::deleteOrphans();
   }
 
   /**
-   * By default, the migration machine name is the class name (with the
-   * Migration suffix, if present, stripped).
+   * The migration machine name is stored in the arguments.
+   *
+   * @return string
    */
   protected function generateMachineName() {
-    $class_name = get_class($this);
-    return self::machineFromClass($class_name);
+    return $this->arguments['machine_name'];
   }
 
+  /**
+   * Given only a class name, derive a machine name (the class name with the
+   * "Migration" suffix, if any, removed).
+   *
+   * @param $class_name
+   *
+   * @return string
+   */
   protected static function machineFromClass($class_name) {
     if (preg_match('/Migration$/', $class_name)) {
-      $machine_name = substr($class_name, 0, strlen($class_name) - strlen('Migration'));
+      $machine_name = drupal_substr($class_name, 0,
+        strlen($class_name) - strlen('Migration'));
     }
     else {
       $machine_name = $class_name;
@@ -419,38 +563,74 @@ abstract class MigrationBase {
    *
    * @param string $machine_name
    */
+
+  /**
+   * Return the single instance of the given migration.
+   *
+   * @param $machine_name
+   *  The unique machine name of the migration to retrieve.
+   * @param string $class_name
+   *  Deprecated - no longer used, class name is retrieved from migrate_status.
+   * @param array $arguments
+   *  Deprecated - no longer used, arguments are retrieved from migrate_status.
+   *
+   * @return MigrationBase
+   */
   static public function getInstance($machine_name, $class_name = NULL, array $arguments = array()) {
     $migrations = &drupal_static(__FUNCTION__, array());
     // Otherwise might miss cache hit on case difference
-    $machine_name_key = strtolower($machine_name);
+    $machine_name_key = drupal_strtolower($machine_name);
     if (!isset($migrations[$machine_name_key])) {
-      // Skip the query if our caller already made it
-      if (!$class_name) {
-        // See if we know about this migration
-        $row = db_select('migrate_status', 'ms')
-                 ->fields('ms', array('class_name', 'arguments'))
-                 ->condition('machine_name', $machine_name)
-                 ->execute()
-                 ->fetchObject();
-        if ($row) {
-          $class_name = $row->class_name;
-          $arguments = unserialize($row->arguments);
+      // See if we know about this migration
+      $row = db_select('migrate_status', 'ms')
+             ->fields('ms', array('class_name', 'group_name', 'arguments'))
+             ->condition('machine_name', $machine_name)
+             ->execute()
+             ->fetchObject();
+      if ($row) {
+        $class_name = $row->class_name;
+        $arguments = unserialize($row->arguments);
+        $arguments = self::decryptArguments($arguments);
+        $arguments['group_name'] = $row->group_name;
+      }
+      else {
+        // Can't find a migration with this name
+        self::displayMessage(t('No migration found with machine name !machine',
+          array('!machine' => $machine_name)));
+        return NULL;
+      }
+      $arguments['machine_name'] = $machine_name;
+      if (class_exists($class_name)) {
+        try {
+          $migrations[$machine_name_key] = new $class_name($arguments);
         }
-        else {
-          // Can't find a migration with this name
-          throw new MigrateException(t('No migration found with machine name !machine',
+        catch (Exception $e) {
+          self::displayMessage(t('Migration !machine could not be constructed.',
             array('!machine' => $machine_name)));
+          self::displayMessage($e->getMessage());
+          return NULL;
         }
       }
-      $migrations[$machine_name_key] = new $class_name($arguments);
+      else {
+        self::displayMessage(t('No migration class !class found',
+          array('!class' => $class_name)));
+        return NULL;
+      }
+      if (isset($arguments['dependencies'])) {
+        $migrations[$machine_name_key]->setHardDependencies(
+          $arguments['dependencies']);
+      }
+      if (isset($arguments['soft_dependencies'])) {
+        $migrations[$machine_name_key]->setSoftDependencies(
+          $arguments['soft_dependencies']);
+      }
     }
     return $migrations[$machine_name_key];
   }
 
   /**
-   * Identifies whether this migration is "dynamic" (that is, allows multiple
-   * instances distinguished by differing parameters). A dynamic class should
-   * override this with a return value of TRUE.
+   * @deprecated - No longer a useful distinction between "status" and "dynamic"
+   *  migrations.
    */
   static public function isDynamic() {
     return FALSE;
@@ -482,20 +662,6 @@ abstract class MigrationBase {
     }
 
     self::displayMessage($message, $level);
-  }
-
-  /**
-   * Output the given message appropriately (drush_print/drupal_set_message/etc.)
-   * Deprecated in favor of static displayMessage(), remove in next API update.
-   *
-   * @param string $message
-   *  The message to output.
-   * @param int $level
-   *  Optional message severity as understood by drupal_set_message and drush_log
-   *  (defaults to 'error').
-   */
-  public function showMessage($message, $level = 'error') {
-    call_user_func(self::$displayFunction, $message, $level);
   }
 
   /**
@@ -560,33 +726,6 @@ abstract class MigrationBase {
       $this->saveMessage($message);
     }
     self::displayMessage($message);
-  }
-
-  /**
-   * Database logging callback - called when there's a database error. We
-   * log non-critical stuff, and throw an exception otherwise
-   * TODO: Eliminate in favor of hook_watchdog()?
-   *
-   * @param string $type
-   *  Ignored
-   * @param string $message
-   *  Message to display or throw, potentially with t() placeholders
-   * @param array $variables
-   *  Variables to substitute into $message
-   * @param unknown_type $severity
-   *  Watchdog severity level
-   * @param $link
-   *  ???
-   */
-  public function loggingCallback($type, $message, $variables = array(),
-          $severity = WATCHDOG_NOTICE, $link = NULL) {
-    if ($severity == WATCHDOG_NOTICE || $severity == WATCHDOG_INFO ||
-        $severity == WATCHDOG_DEBUG) {
-      $this->saveMessage(t($message, $variables), MigrationBase::MESSAGE_INFORMATIONAL);
-    }
-    else {
-      throw new MigrateException(t($message, $variables), MigrationBase::MESSAGE_ERROR);
-    }
   }
 
   /**
@@ -663,9 +802,16 @@ abstract class MigrationBase {
         if (!empty($this->highwaterField['type']) && $this->highwaterField['type'] == 'int') {
           // If the highwater is an integer type, we need to force the DB server
           // to treat the varchar highwater field as an integer (otherwise it will
-          // think '5' > '10'). CAST(highwater AS INTEGER) would be ideal, but won't
-          // work in MySQL. This hack is thought to be portable.
-          $query->where('(highwater+0) < :highwater', array(':highwater' => $highwater));
+          // think '5' > '10').
+          switch (Database::getConnection()->databaseType()) {
+            case 'pgsql':
+              $query->where('(CASE WHEN highwater=\'\' THEN 0 ELSE CAST(highwater AS INTEGER) END) < :highwater', array(':highwater' => intval($highwater)));
+              break;
+            default:
+              // CAST(highwater AS INTEGER) would be ideal, but won't
+              // work in MySQL. This hack is thought to be portable.
+              $query->where('(highwater+0) < :highwater', array(':highwater' => $highwater));
+          }
         }
         else {
           $query->condition('highwater', $highwater, '<');
@@ -707,13 +853,24 @@ abstract class MigrationBase {
 
   /**
    * Reports whether all (hard) dependencies have completed migration
-   * TODO: Support rollback (reverse dependencies)
    */
-  protected function dependenciesComplete() {
-    foreach ($this->dependencies as $dependency) {
-      $migration = MigrationBase::getInstance($dependency);
-      if (!$migration->isComplete()) {
-        return FALSE;
+  protected function dependenciesComplete($rollback = FALSE) {
+    if ($rollback) {
+      foreach (migrate_migrations() as $migration) {
+        $dependencies = $migration->getHardDependencies();
+        if (array_search($this->machineName, $dependencies) !== FALSE) {
+          if (method_exists($migration, 'importedCount') && $migration->importedCount() > 0) {
+            return FALSE;
+          }
+        }
+      }
+    }
+    else {
+      foreach ($this->dependencies as $dependency) {
+        $migration = MigrationBase::getInstance($dependency);
+        if (!$migration || !$migration->isComplete()) {
+          return FALSE;
+        }
       }
     }
     return TRUE;
@@ -726,7 +883,7 @@ abstract class MigrationBase {
     $incomplete = array();
     foreach ($this->getDependencies() as $dependency) {
       $migration = MigrationBase::getInstance($dependency);
-      if (!$migration->isComplete()) {
+      if (!$migration || !$migration->isComplete()) {
         $incomplete[] = $dependency;
       }
     }
@@ -780,9 +937,16 @@ abstract class MigrationBase {
                      ->execute();
     }
 
-    // And capture anything the DB tries to log to the watchdog
-    // TODO: Broken by http://drupal.org/node/711108 - what to do?
-    //Database::setLoggingCallback(array($this, 'loggingCallback'), WATCHDOG_NOTICE, WATCHDOG_ERROR);
+    // If we're disabling any hooks, reset the static module_implements cache so
+    // it is rebuilt with the specified hooks removed by our
+    // hook_module_implements_alter(). By setting #write_cache to FALSE, we
+    // ensure that our munged version of the hooks array does not get written
+    // to the persistent cache and interfere with other Drupal processes.
+    if (!empty($this->disableHooks)) {
+      $implementations = &drupal_static('module_implements');
+      $implementations = array();
+      $implementations['#write_cache'] = FALSE;
+    }
   }
 
   /**
@@ -863,12 +1027,11 @@ abstract class MigrationBase {
       $return = MigrationBase::RESULT_COMPLETED;
       if (method_exists($this, 'rollback')) {
         $this->options = $options;
-        // TODO: Validate dependencies (migrations depending on us have no imported rows)
-    /*    if (!isset($options['force'])) {
-          if (!$this->dependenciesComplete()) {
-            return Migration::RESULT_SKIPPED;
+        if (!isset($options['force'])) {
+          if (!$this->dependenciesComplete(TRUE)) {
+            return MigrationBase::RESULT_SKIPPED;
           }
-        }*/
+        }
         $this->beginProcess(MigrationBase::STATUS_ROLLING_BACK);
         try {
           $return = $this->rollback();
@@ -899,7 +1062,8 @@ abstract class MigrationBase {
       $return = MigrationBase::RESULT_COMPLETED;
       if (method_exists($this, 'import')) {
         $this->options = $options;
-        if (!isset($options['force'])) {
+
+        if (!isset($options['force']) || !$options['force']) {
           if (!$this->dependenciesComplete()) {
             return MigrationBase::RESULT_SKIPPED;
           }
@@ -915,7 +1079,13 @@ abstract class MigrationBase {
         }
 
         if ($return == MigrationBase::RESULT_COMPLETED && isset($this->total_successes)) {
-          $overallThroughput = round(60*$this->total_successes / (microtime(TRUE) - $this->starttime));
+          $time = microtime(TRUE) - $this->starttime;
+          if ($time > 0) {
+            $overallThroughput = round(60 * $this->total_successes / $time);
+          }
+          else {
+            $overallThroughput = 9999;
+          }
         }
         else {
           $overallThroughput = 0;
@@ -927,6 +1097,14 @@ abstract class MigrationBase {
       $return = MigrationBase::RESULT_DISABLED;
     }
     return $return;
+  }
+
+  /**
+   * Set the PHP time limit. This method may be called from batch callbacks
+   * before calling the processImport method.
+   */
+  public function setBatchTimeLimit() {
+    drupal_set_time_limit($this->batchTimeLimit);
   }
 
   /**
@@ -1025,23 +1203,150 @@ abstract class MigrationBase {
   }
 
   /**
+   * Encrypt an incoming value. Detects for existence of the Drupal 'Encrypt'
+   *  module or the mcrypt PHP extension.
+   *
+   * @param string $value
+   * @return string The encrypted value.
+   */
+  static public function encrypt($value) {
+    if (module_exists('encrypt')) {
+      $value = encrypt($value);
+    }
+    else if (extension_loaded('mcrypt')) {
+      // Mimic encrypt module to ensure compatibility
+      $key = drupal_substr(variable_get('drupal_private_key', 'no_key'), 0, 32);
+      $iv_size = mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB);
+      $iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
+      $value = mcrypt_encrypt(MCRYPT_RIJNDAEL_256, $key, $value,
+                              MCRYPT_MODE_ECB, $iv);
+
+      $encryption_array['text'] = $value;
+      // For forward compatibility with the encrypt module.
+      $encryption_array['method'] = 'mcrypt_rij_256';
+      $encryption_array['key_name'] = 'drupal_private_key';
+      $value = serialize($encryption_array);
+    }
+    else {
+      if (self::$showEncryptionWarning) {
+        MigrationBase::displayMessage(t('Encryption of secure migration information is not supported. Ensure the <a href="@encrypt">Encrypt module</a> or <a href="mcrypt">mcrypt PHP extension</a> is installed for this functionality.',
+            array(
+              '@encrypt' => 'http://drupal.org/project/encrypt',
+              '@mcrypt' => 'http://php.net/manual/en/book.mcrypt.php',
+            )
+          ),
+          'warning');
+        self::$showEncryptionWarning = FALSE;
+      }
+    }
+    return $value;
+  }
+
+  /**
+   * Decrypt an incoming value.
+   *
+   * @param string $value
+   * @return string The encrypted value
+   */
+  static public function decrypt($value) {
+    if (module_exists('encrypt')) {
+      $value = decrypt($value);
+    }
+    else if (extension_loaded('mcrypt')) {
+      // Mimic encrypt module to ensure compatibility
+      $encryption_array = unserialize($value);
+      $method = $encryption_array['method']; // Not used right now
+      $text = $encryption_array['text'];
+      $key_name = $encryption_array['key_name']; // Not used right now
+
+      $iv_size = mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB);
+      $iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
+      $key = drupal_substr(variable_get('drupal_private_key', 'no_key'), 0, 32);
+      $value = mcrypt_decrypt(MCRYPT_RIJNDAEL_256, $key, $text,
+                              MCRYPT_MODE_ECB, $iv);
+    }
+    else {
+      if (self::$showEncryptionWarning) {
+        MigrationBase::displayMessage(t('Encryption of secure migration information is not supported. Ensure the <a href="@encrypt">Encrypt module</a> or <a href="mcrypt">mcrypt PHP extension</a> is installed for this functionality.',
+            array(
+              '@encrypt' => 'http://drupal.org/project/encrypt',
+              '@mcrypt' => 'http://php.net/manual/en/book.mcrypt.php',
+            )
+          ),
+          'warning');
+        self::$showEncryptionWarning = FALSE;
+      }
+    }
+    return $value;
+  }
+
+  /**
+   * Make sure any arguments we want to be encrypted get encrypted.
+   *
+   * @param array $arguments
+   *
+   * @return array
+   */
+  static public function encryptArguments(array $arguments) {
+    if (isset($arguments['encrypted_arguments'])) {
+      foreach ($arguments['encrypted_arguments'] as $argument_name) {
+        if (isset($arguments[$argument_name])) {
+          $arguments[$argument_name] = self::encrypt(
+            serialize($arguments[$argument_name]));
+        }
+      }
+    }
+    return $arguments;
+  }
+
+  /**
+   * Make sure any arguments we want to be decrypted get decrypted.
+   *
+   * @param array $arguments
+   *
+   * @return array
+   */
+  static public function decryptArguments(array $arguments) {
+    if (isset($arguments['encrypted_arguments'])) {
+      foreach ($arguments['encrypted_arguments'] as $argument_name) {
+        if (isset($arguments[$argument_name])) {
+          $decrypted_string = self::decrypt($arguments[$argument_name]);
+          // A decryption failure will return FALSE and issue a notice. We need
+          // to distinguish a failure from a serialized FALSE.
+          $unserialized_value = @unserialize($decrypted_string);
+          if ($unserialized_value === FALSE && $decrypted_string != serialize(FALSE)) {
+            self::displayMessage(t('Failed to decrypt argument %argument_name',
+              array('%argument_name' => $argument_name)));
+            unset($arguments[$argument_name]);
+          }
+          else {
+            $arguments[$argument_name] = $unserialized_value;
+          }
+        }
+      }
+    }
+    return $arguments;
+  }
+
+  /**
    * Convert an incoming string (which may be a UNIX timestamp, or an arbitrarily-formatted
    * date/time string) to a UNIX timestamp.
    *
    * @param string $value
    */
   static public function timestamp($value) {
-    // Default empty values to now
-    if (empty($value)) {
-      return time();
-    }
-
     // Does it look like it's already a timestamp? Just return it
     if (is_numeric($value)) {
       return $value;
     }
 
-    $time = strtotime($value);
+    // Default empty values to now
+    if (empty($value)) {
+      return time();
+    }
+
+    $date = new DateTime($value);
+    $time = $date->format('U');
     if ($time == FALSE) {
       // Handles form YYYY-MM-DD HH:MM:SS.garbage
       if (drupal_strlen($value) > 19) {
@@ -1051,3 +1356,7 @@ abstract class MigrationBase {
     return $time;
   }
 }
+
+// Make sure static members (in particular, $displayFunction) get
+// initialized even if there are no class instances.
+MigrationBase::staticInitialize();

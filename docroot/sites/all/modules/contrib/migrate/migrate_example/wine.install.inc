@@ -65,25 +65,7 @@ function migrate_example_wine_uninstall() {
 }
 
 function migrate_example_wine_disable() {
-  MigrationBase::deregisterMigration('WinePrep');
-  Migration::deregisterMigration('WineFileCopy');
-  Migration::deregisterMigration('WineFileBlob');
-  Migration::deregisterMigration('WineRegion');
-  Migration::deregisterMigration('WineUser');
-  Migration::deregisterMigration('WineVariety');
-  Migration::deregisterMigration('WineBestWith');
-  Migration::deregisterMigration('WineProducer');
-  Migration::deregisterMigration('WineProducerXML');
-  Migration::deregisterMigration('WineProducerMultiXML');
-  Migration::deregisterMigration('WineWine');
-  Migration::deregisterMigration('WineComment');
-  MigrationBase::deregisterMigration('WineFinish');
-  Migration::deregisterMigration('WineUpdates');
-  Migration::deregisterMigration('WineUserUpdates');
-  Migration::deregisterMigration('WineVarietyUpdates');
-  Migration::deregisterMigration('WineCommentUpdates');
-  Migration::deregisterMigration('WineRole');
-  Migration::deregisterMigration('WineTable');
+  MigrateGroup::deregister('wine');
 }
 
 function migrate_example_wine_schema_wine() {
@@ -828,7 +810,7 @@ function migrate_example_wine_fields() {
     $field = array(
       'field_name' => 'field_migrate_example_image',
       'type' => 'image',
-      'cardinality' => -1,
+      'cardinality' => FIELD_CARDINALITY_UNLIMITED,
       'translatable' => TRUE,
       'indexes' => array('fid' => array('fid')),
       'settings' => array(
@@ -1211,7 +1193,7 @@ function migrate_example_wine_data_files() {
   $query = db_insert('migrate_example_wine_files')
     ->fields($fields);
   $data = array(
-    array(1, 'http://drupal.org/files/images/DA-individual.thumbnail.png', NULL, NULL, NULL),
+    array(1, 'http://placekitten.com/200/200', NULL, NULL, NULL),
     array(2, 'http://cyrve.com/files/penguin.jpeg', 'Penguin alt', 'Penguin title', 1),
     array(3, 'http://cyrve.com/files/rioja.jpeg', 'Rioja alt', 'Rioja title', 2),
     array(4, 'http://cyrve.com/files/boutisse_0.jpeg', 'Boutisse alt', 'Boutisse title', 2),

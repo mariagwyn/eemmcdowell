@@ -35,17 +35,9 @@ abstract class MigrateItems {
   /**
    * Implementors are expected to return a count of IDs available to be migrated.
    *
-   * @API: Commented out so not to break implementations which haven't implemented
-   *  this yet - require it in the next API.
-   *
    * @return int
    */
-  //abstract public function computeCount();
-
-  /**
-   * Deprecated - implement computeCount() instead
-   */
-  //abstract public function count($refresh = TRUE);
+  abstract public function computeCount();
 
   /**
    * Implementors are expected to return an object representing a source item.
@@ -55,8 +47,18 @@ abstract class MigrateItems {
    * @return stdClass
    */
   abstract public function getItem($id);
-}
 
+  /**
+   * Implementors may optionally implement a hash function, applied to the
+   * entire source row, if this particular item type makes it difficult to
+   * do on the raw row.
+   *
+   * @param $row
+   *
+   * @return mixed
+   */
+  //abstract public function hash($row);
+}
 
 /**
  * Implementation of MigrateItems, for providing a list of IDs and for
@@ -190,5 +192,18 @@ class MigrateSourceMultiItems extends MigrateSource {
     }
     return $row;
   }
-}
 
+  /**
+   * Overrides MigrateSource::hash().
+   */
+  protected function hash($row) {
+    // Let the item class override the default hash function.
+    if (method_exists($this->itemsClass, 'hash')) {
+      $hash = $this->itemsClass->hash($row);
+    }
+    else {
+      $hash = parent::hash($row);
+    }
+    return $hash;
+  }
+}

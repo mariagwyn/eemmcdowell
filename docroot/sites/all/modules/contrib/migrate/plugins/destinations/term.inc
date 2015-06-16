@@ -13,6 +13,13 @@
  * Destination class implementing migration into terms.
  */
 class MigrateDestinationTerm extends MigrateDestinationEntity {
+  /**
+   * Boolean indicating whether to permit duplicate terms to be created.
+   *
+   * @var bool
+   */
+  protected $allowDuplicateTerms = FALSE;
+
   static public function getKeySchema() {
     return array(
       'tid' => array(
@@ -30,9 +37,11 @@ class MigrateDestinationTerm extends MigrateDestinationEntity {
    *  Default language for terms created via this destination class.
    * @param string $text_format
    *  Default text format for terms created via this destination class.
+   * @param string $allow_duplicate_terms
+   *  Default text format for terms created via this destination class.
    */
-  static public function options($language, $text_format) {
-    return compact('language', 'text_format');
+  static public function options($language, $text_format, $allow_duplicate_terms = FALSE) {
+    return compact('language', 'text_format', 'allow_duplicate_terms');
   }
 
   /**
@@ -43,30 +52,43 @@ class MigrateDestinationTerm extends MigrateDestinationEntity {
    */
   public function __construct($bundle, array $options = array()) {
     parent::__construct('taxonomy_term', $bundle, $options);
+
+    if (isset($options['allow_duplicate_terms'])) {
+      $this->allowDuplicateTerms = $options['allow_duplicate_terms'];
+    }
   }
 
   /**
    * Returns a list of fields available to be mapped for this vocabulary (bundle)
    *
+   * @param Migration $migration
+   *  Optionally, the migration containing this destination.
    * @return array
    *  Keys: machine names of the fields (to be passed to addFieldMapping)
    *  Values: Human-friendly descriptions of the fields.
    */
-  public function fields() {
+  public function fields($migration = NULL) {
     $fields = array();
     // First the core (taxonomy_term_data table) properties
-    $fields['tid'] = t('Term: Existing term ID');
-    $fields['name'] = t('Term: Name');
-    $fields['description'] = t('Term: Description');
-    $fields['format'] = t('Term: Format');
-    $fields['weight'] = t('Term: Weight');
+    $fields['tid'] = t('<a href="@doc">Existing term ID</a>',
+                array('@doc' => 'http://drupal.org/node/1349702#tid'));
+    $fields['name'] = t('<a href="@doc">Name</a>',
+                    array('@doc' => 'http://drupal.org/node/1349702#name'));
+    $fields['description'] = t('<a href="@doc">Description</a>',
+                    array('@doc' => 'http://drupal.org/node/1349702#description'));
+    $fields['parent'] = t('<a href="@doc">Parent (by Drupal term ID)</a>',
+                    array('@doc' => 'http://drupal.org/node/1349702#parent'));
     // TODO: Remove parent_name, implement via arguments
-    $fields['parent_name'] = t('Term: Parent (by name)');
-    $fields['parent'] = t('Term: Parent (by Drupal term ID)');
+    $fields['parent_name'] = t('<a href="@doc">Parent (by name)</a>',
+                    array('@doc' => 'http://drupal.org/node/1349702#parent_name'));
+    $fields['format'] = t('<a href="@doc">Format</a>',
+                    array('@doc' => 'http://drupal.org/node/1349702#format'));
+    $fields['weight'] = t('<a href="@doc">Weight</a>',
+                    array('@doc' => 'http://drupal.org/node/1349702#weight'));
 
     // Then add in anything provided by handlers
-    $fields += migrate_handler_invoke_all('entity', 'fields', $this->entityType, $this->bundle);
-    $fields += migrate_handler_invoke_all('taxonomy_term', 'fields', $this->entityType, $this->bundle);
+    $fields += migrate_handler_invoke_all('entity', 'fields', $this->entityType, $this->bundle, $migration);
+    $fields += migrate_handler_invoke_all('taxonomy_term', 'fields', $this->entityType, $this->bundle, $migration);
 
     return $fields;
   }
@@ -117,7 +139,6 @@ class MigrateDestinationTerm extends MigrateDestinationEntity {
     $migration = Migration::currentMigration();
     // Updating previously-migrated content?
     if (isset($row->migrate_map_destid1)) {
-      $term->tid = $row->migrate_map_destid1;
       if (isset($term->tid)) {
         if ($term->tid != $row->migrate_map_destid1) {
           throw new MigrateException(t("Incoming tid !tid and map destination nid !destid1 don't match",
@@ -128,6 +149,12 @@ class MigrateDestinationTerm extends MigrateDestinationEntity {
         $term->tid = $row->migrate_map_destid1;
       }
     }
+
+    // Default to bundle if no vocabulary machine name provided
+    if (!isset($term->vocabulary_machine_name)) {
+      $term->vocabulary_machine_name = $this->bundle;
+    }
+
     if ($migration->getSystemOfRecord() == Migration::DESTINATION) {
       if (!isset($term->tid)) {
         throw new MigrateException(t('System-of-record is DESTINATION, but no destination tid provided'));
@@ -135,16 +162,16 @@ class MigrateDestinationTerm extends MigrateDestinationEntity {
       $rawterm = $term;
       $this->prepare($term, $row);
       $old_term = taxonomy_term_load($term->tid);
+      if (empty($old_term)) {
+        throw new MigrateException(t('System-of-record is DESTINATION, but term !tid does not exist',
+          array('!tid' => $term->tid)));
+      }
       foreach ($rawterm as $field => $value) {
         $old_term->$field = $term->$field;
       }
       $term = $old_term;
     }
     else {
-      // Default to bundle if no vocabulary machine name provided
-      if (!isset($term->vocabulary_machine_name)) {
-        $term->vocabulary_machine_name = $this->bundle;
-      }
       // vid is required
       if (empty($term->vid)) {
         static $vocab_map = array();
@@ -164,6 +191,7 @@ class MigrateDestinationTerm extends MigrateDestinationEntity {
         }
         $term->vid = $vocab_map[$term->vocabulary_machine_name];
       }
+
       // Look up parent name if provided
       if (isset($term->parent_name) && trim($term->parent_name)) {
         // Look for the name in the same vocabulary.
@@ -171,21 +199,42 @@ class MigrateDestinationTerm extends MigrateDestinationEntity {
         $terms = taxonomy_term_load_multiple(array(),
           array('name' => trim($term->parent_name), 'vid' => $term->vid));
         $tids = array_keys($terms);
-        $term->parent = $tids[0];
+        $term->parent = array($tids[0]);
         unset($term->parent_name);
-      }
-      if (isset($term->parent) && is_array($term->parent['arguments'])) {
-        // Unset arguments here to avoid duplicate entries in the
-        // term_hierarchy table.
-        unset($term->parent['arguments']);
       }
       if (empty($term->parent)) {
         $term->parent = array(0);
       }
+      elseif (!is_array($term->parent)) {
+        // Convert to an array for comparison in findMatchingTerm().
+        // Note: taxonomy_term_save() also normalizes to an array.
+        $term->parent = array($term->parent);
+      }
+
+      if (isset($term->parent['arguments'])) {
+        // Unset arguments here to avoid duplicate entries in the
+        // term_hierarchy table.
+        unset($term->parent['arguments']);
+      }
       if (!isset($term->format)) {
         $term->format = $this->textFormat;
       }
+      if (!isset($term->language)) {
+        $term->language = $this->language;
+      }
       $this->prepare($term, $row);
+
+      if (empty($term->name)) {
+        throw new MigrateException(t('Taxonomy term name is required.'));
+      }
+
+      if (!$this->allowDuplicateTerms && $existing_term = $this->findMatchingTerm($term)) {
+        foreach ($existing_term as $field => $value) {
+          if (!isset($term->$field)) {
+            $term->$field = $existing_term->$field;
+          }
+        }
+      }
     }
 
     // Trying to update an existing term
@@ -208,6 +257,9 @@ class MigrateDestinationTerm extends MigrateDestinationEntity {
       $updating = FALSE;
     }
 
+    // Validate field data prior to saving.
+    field_attach_validate('taxonomy_term', $term);
+
     migrate_instrument_start('taxonomy_term_save');
     $status = taxonomy_term_save($term);
     migrate_instrument_stop('taxonomy_term_save');
@@ -225,5 +277,42 @@ class MigrateDestinationTerm extends MigrateDestinationEntity {
       $return = FALSE;
     }
     return $return;
+  }
+
+  /**
+   * Attempt to find a term that has the same name, vocabulary, and parents.
+   *
+   * @param object $term
+   *   A taxonomy term object with at least the name and vid properties defined.
+   *
+   * @return object
+   *   A matching taxonomy term object if found, otherwise FALSE.
+   */
+  public function findMatchingTerm($term) {
+    // See if the term, with the same parentage, already exists - if so,
+    // load it
+    $candidates = taxonomy_term_load_multiple(array(),
+      array('name' => trim($term->name), 'vid' => $term->vid));
+    foreach ($candidates as $candidate) {
+      $parents = taxonomy_get_parents($candidate->tid);
+      // We need to set up $parents as a simple array of tids
+      if (empty($parents)) {
+        $parents = array(0);
+      }
+      else {
+        // Parents array is tid => term object, make into list of tids
+        $new_parents = array();
+        foreach ($parents as $parent) {
+          $new_parents[] = $parent->tid;
+        }
+        $parents = $new_parents;
+      }
+      if ($term->parent == $parents) {
+        // We've found a matching term.
+        return $candidate;
+      }
+    }
+
+    return FALSE;
   }
 }

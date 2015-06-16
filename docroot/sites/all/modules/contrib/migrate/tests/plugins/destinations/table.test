@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * @file
+ * Tests for the table destination plugin.
+ */
+
+/**
  * Test table migration.
  */
 class MigrateTableUnitTest extends DrupalWebTestCase {
@@ -14,6 +19,9 @@ class MigrateTableUnitTest extends DrupalWebTestCase {
 
   function setUp() {
     parent::setUp('migrate', 'migrate_example');
+
+    // Make sure the migrations are registered.
+    migrate_static_registration();
   }
 
   function testTableImport() {

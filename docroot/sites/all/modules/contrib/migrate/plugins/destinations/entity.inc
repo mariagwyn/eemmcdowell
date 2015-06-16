@@ -138,6 +138,11 @@ abstract class MigrateDestinationEntity extends MigrateDestination {
     migrate_handler_invoke_all('Entity', 'prepare', $entity, $source_row);
     // Then call any entity-specific handlers
     migrate_handler_invoke_all($this->entityType, 'prepare', $entity, $source_row);
+
+    // Apply defaults, removing empty fields from the entity object.
+    $form = $form_state = array();
+    _field_invoke_default('submit', $this->entityType, $entity, $form, $form_state);
+
     // Then call any prepare handler for this specific Migration.
     if (method_exists($migration, 'prepare')) {
       $migration->prepare($entity, $source_row);
@@ -161,7 +166,14 @@ abstract class MigrateDestinationEntity extends MigrateDestination {
     // Then call any complete handler for this specific Migration.
     $migration = Migration::currentMigration();
     if (method_exists($migration, 'complete')) {
-      $migration->complete($entity, $source_row);
+      try {
+        $migration->complete($entity, $source_row);
+      }
+      catch (Exception $e) {
+        // If we catch any errors here, save the messages without letting
+        // the exception prevent the saving of the entity being recorded.
+        $migration->saveMessage($e->getMessage());
+      }
     }
   }
 }

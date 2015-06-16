@@ -19,6 +19,13 @@ abstract class MigrateMap implements Iterator {
   const STATUS_FAILED = 3;
 
   /**
+   * Codes reflecting how to handle the destination item on rollback.
+   *
+   */
+  const ROLLBACK_DELETE = 0;
+  const ROLLBACK_PRESERVE = 1;
+
+  /**
    * Arrays of key fields for the source and destination. Array keys are the
    * field names - array values are specific to the concrete map class.
    *
@@ -37,11 +44,26 @@ abstract class MigrateMap implements Iterator {
   protected $sourceKeyMap, $destinationKeyMap;
 
   /**
+   * Get the source key map.
+   */
+  public function getSourceKeyMap() {
+    return $this->sourceKeyMap;
+  }
+
+  /**
    * Boolean determining whether to track last_imported times in map tables
    *
    * @var boolean
    */
   protected $trackLastImported = FALSE;
+  public function getTrackLastImported() {
+    return $this->trackLastImported;
+  }
+  public function setTrackLastImported($trackLastImported) {
+    if (is_bool($trackLastImported)) {
+      $this->trackLastImported = $trackLastImported;
+    }
+  }
 
   /**
    * Save a mapping from the key values in the source row to the destination
@@ -50,9 +72,12 @@ abstract class MigrateMap implements Iterator {
    * @param $source_row
    * @param $dest_ids
    * @param $status
+   * @param $rollback_action
+   * @param $hash
    */
   abstract public function saveIDMapping(stdClass $source_row, array $dest_ids,
-    $status = MigrateMap::STATUS_IMPORTED);
+    $status = MigrateMap::STATUS_IMPORTED,
+    $rollback_action = MigrateMap::ROLLBACK_DELETE, $hash = NULL);
 
   /**
    * Record a message related to a source record
@@ -128,7 +153,7 @@ abstract class MigrateMap implements Iterator {
    * Retrieve an array of map rows marked as needing update.
    */
   abstract public function getRowsNeedingUpdate($count);
-  
+
   /**
    * Given a (possibly multi-field) destination key, return the (possibly multi-field)
    * source key mapped to it.
