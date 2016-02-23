@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Set up the DF Tools Slideshow base migrations.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function df_tools_slideshow_install() {
+  // Set up base path.
+  $path = dirname(__FILE__) . '/data/';
+
+  $migration = _df_migration_copy('import_block_base', 'block', 'slideshow', 'block_content', $path);
+  // Add our custom fields.
+  _df_migration_fields($migration, [2 => 'Slides'], ['field_block' => 'Slides']);
+  // Add our custom plugins.
+  $source = $migration->get('source');
+  $source['plugin'] = 'slideshow_block';
+  $migration->set('source', $source);
+  // Save the new migration.
+  $migration->save();
+}

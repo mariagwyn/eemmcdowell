@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * @file
+ * Contains df_tools_services.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function df_tools_services_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the df_tools_services module.
+    case 'help.page.df_tools_services':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('RESTful services demo assets.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function df_tools_services_theme() {
+  $theme = [];
+
+  return $theme;
+}

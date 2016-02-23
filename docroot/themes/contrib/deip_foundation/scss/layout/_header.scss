@@ -1,0 +1,51 @@
+// Non-modular or client styles for .l-header region.
+
+header {
+  &#page-header {
+  width: 100%;
+  height: 6rem;
+  margin-bottom: 1em;
+  &:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.6;
+    background: $background-image repeat-x;
+    height: 6rem;
+  }
+  .row {
+    position:relative;
+  }
+  }
+}
+
+#block-deip-foundation-branding {
+}
+#header-first {
+  &:before {
+    border-radius: 0 0 0 1rem;
+    //background: $primary-color;
+  }
+}
+#header-middle {
+  &:before {
+    //background: $success-color;
+  }
+}
+#header-last {
+  &:before {
+    border-radius: 0 0 1rem 0;
+    //background: $highlight-color;
+  }
+}
+
+#sub-header {
+  display: inline-block;
+  width: 100%;
+  border: 1px solid rgba($primary-color, .25);
+  border-width: 0 0 1px 0;
+  margin-bottom: 1rem;
+}

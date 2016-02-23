@@ -1,0 +1,74 @@
+<?php
+
+/**
+ * @file
+ * Contains df_tools_migration.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function df_tools_migration_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the df_tools_migration module.
+    case 'help.page.df_tools_migration':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Migration establishment patterns for DF Scenario installation.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function df_tools_migration_theme() {
+  $theme = [];
+
+  return $theme;
+}
+
+/**
+ * Helper function to copy a migration.
+ */
+function _df_migration_copy($base_migration, $prefix, $type, $entity_type, $path) {
+  $base_migration = entity_load('migration', $base_migration);
+  $migration = $base_migration->createDuplicate();
+  $label = "Import $prefix:$entity_type:$type";
+  $migration->set('label', $label);
+  $migration->set('id', "import_$prefix" . "_$type");
+  // Point source path to local CSV file.
+  $source = $migration->get('source');
+  $source['path'] = $path . $prefix . "." . $entity_type  . "." . $type . '.csv';
+  // Set content type to current bundle.
+  $process = $migration->get('process');
+  if (isset($process['type'])) {
+    $process['type']['default_value'] = $type;
+  }
+  // Set new source and process modifications.
+  $migration->set('source', $source);
+  $migration->set('process', $process);
+  // Return the new migration.
+  return $migration;
+}
+
+/**
+ * Helper function to add or modify an existing field mapping on a migration.
+ */
+function _df_migration_fields(&$migration, $columns, $fields) {
+  $source = $migration->get('source');
+  $process = $migration->get('process');
+  foreach ($columns as $column => $value) {
+    $source['csvColumns'][$column] = $value;
+  }
+  foreach ($fields as $field => $settings) {
+    $process[$field] = $settings;
+  }
+  $migration->set('source', $source);
+  $migration->set('process', $process);
+}
+

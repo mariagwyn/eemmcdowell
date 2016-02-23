@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies: {  }
+id: curator
+label: Curator
+weight: 3
+is_admin: null
+permissions:
+  - 'edit own comments'
+  - 'access user contact forms'
+  - 'create content translations'
+  - 'update content translations'
+  - 'translate article node'
+  - 'translate service node'
+  - 'access contextual links'
+  - 'access content overview'
+  - 'view all revisions'
+  - 'view own unpublished content'
+  - 'create article content'
+  - 'delete own article content'
+  - 'edit own article content'
+  - 'view article revisions'
+  - 'use draft_draft transition'
+  - 'use draft_needs_review transition'
+  - 'use needs_review_needs_review transition'
+  - 'dropzone upload files'

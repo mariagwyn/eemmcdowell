@@ -1,0 +1,58 @@
+// Non-modular or client styles for .l-footer region.
+footer {
+  &.page-footer {
+    position:relative;
+    font-size: .8rem;
+    margin-top: 4em;
+    &:before {
+      @include side-radius(top, 1rem);
+      content: ' ';
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.6;
+      background: $background-image no-repeat;
+    }
+    a:link, a:visited {color: $body-bg;}
+    ul li {
+      list-style: none;
+      text-align: center;
+    }
+  }
+  [id^=footer-] {
+    padding-bottom: 99999px;
+margin-bottom: -99999px;
+    &:before {
+      content: ' ';
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.4;
+      left: 0;
+      right: 0;
+    }
+    div {margin-top: 1em;}
+  }
+}
+
+#footer-first {
+  &:before {
+    border-radius: 1rem 0 0 0;
+    background: $primary-color;
+  }
+}
+#footer-middle {
+  &:before {
+    background: $success-color;
+  }
+}
+#footer-last {
+  &:before {
+    border-radius: 0 1rem 0 0;
+    background: $highlight-color;
+  }
+}

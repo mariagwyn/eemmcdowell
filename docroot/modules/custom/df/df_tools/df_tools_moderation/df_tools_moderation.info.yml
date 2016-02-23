@@ -1,0 +1,7 @@
+name: DF Tools Moderation
+type: module
+description: Provides configuration defaults for moderating content.
+core: 8.x
+package: Demo Framework Tools
+dependencies:
+  - workbench_moderation

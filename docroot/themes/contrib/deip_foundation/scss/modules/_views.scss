@@ -1,0 +1,22 @@
+.article-feed-item {
+  h4 {
+    font-size: inherit;
+  }
+  .views-field-created, .views-field-taxonomy-vocabulary-1 {
+    font-size: .8rem;
+  }
+}
+.wit-feed {
+  h4 {
+    font-size: inherit;
+  }
+}
+.views-field-user-picture {
+  img {
+    @include radius(30%);
+  }
+}
+
+.views-element-container .row {
+  margin: 0 0;
+}

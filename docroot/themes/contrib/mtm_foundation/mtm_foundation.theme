@@ -1,0 +1,104 @@
+<?php
+
+// Add your custom theme override functions here.
+
+/**
+ * Implements hook_preprocess_menu().
+ */
+function mtm_foundation_preprocess_menu(&$variables) {
+  // Add our linked logo to all menus, in case we want to output it.
+  if (!isset($variables['linked_logo'])) {
+    $logo = theme_get_setting('logo');
+    $site_name = \Drupal::config('system.site')->get('name');
+
+    $title = strip_tags($site_name) . ' ' . t('Home');
+    $url = \Drupal\Core\Url::fromRoute('<front>');
+    $url->setOption('attributes', array('title' => $title));
+
+    $logo_img = array(
+      '#theme' => 'image',
+      '#attributes' => array(
+        'src' => $logo['url'],
+        'class' => array('logo'),
+      )
+    );
+
+    $variables['linked_logo'] = \Drupal::l($logo_img, $url);
+  }
+}
+
+/**
+ * Implements hook_preprocess_block()
+ */
+function mtm_foundation_preprocess_block(&$variables) {
+  if ($variables['elements']['#plugin_id'] == 'system_menu_block:main') {
+    // $variables['attributes']['class'][] = 'top-bar';
+    // $variables['attributes']['data-options'] = array('sticky_on: large');
+    // $variables['attributes']['data-topbar'] = array();
+    // $variables['attributes']['role'] = 'navigation';
+  }
+}
+
+/**
+ * Implements template_preprocess_field().
+ */
+function mtm_foundation_preprocess_field(&$variables) {
+}
+
+/**
+ * Implements template_preprocess_html().
+ *
+ * Adds additional classes
+ */
+function mtm_foundation_preprocess_html(&$variables) {
+}
+
+/**
+ * Implements template_preprocess_node
+ *
+ * Add template suggestions and classes
+ */
+function mtm_foundation_preprocess_node(&$variables) {
+  // Move hero blocks outside the normal <article> wrapper if present
+  if (isset($variables['content']['field_hero_block'])) {
+    $variables['hero_block'] = $variables['content']['field_hero_block'];
+    unset($variables['content']['field_hero_block']);
+  }
+}
+
+/**
+ * Implements template_preprocess_page
+ *
+ * Add convenience variables and template suggestions
+ */
+function mtm_foundation_preprocess_page(&$variables) {
+  // Add an extra helper variable so we can target pages for certain node types
+  if (isset($variables['node'])) {
+    $variables['content_wrap_classes'] = 'node-' . $variables['node']->getType();
+    // We already display the title in node--full.html.twig
+    unset($variables['title']);
+  }
+  // Wrap tabs so we can float them above our hero images.
+  $variables['page']['content']['tabs'] = [
+    '#type' => 'container',
+    '#attributes' => ['class' => ['tab-wrap']],
+    0 => $variables['page']['content']['tabs']
+  ];
+}
+
+/**
+ * Implements template_preprocess_views_view().
+ */
+function mtm_foundation_preprocess_views_view(&$variables) {}
+
+/**
+ * Ensures that theme suggests and utilizes custom block templates
+ */
+function mtm_foundation_theme_suggestions_block_alter(array &$suggestions, array $variables) {
+  $block = $variables['elements'];
+  $blockType = $block['#configuration']['provider'];
+  if ($blockType == "block_content") {
+    $bundle = $block['content']['#block_content']->bundle();
+    array_splice($suggestions, 2, 0, 'block__' . $bundle);
+  }
+}

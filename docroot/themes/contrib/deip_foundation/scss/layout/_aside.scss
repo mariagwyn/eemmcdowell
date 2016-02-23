@@ -1,0 +1,12 @@
+// Non-modular or client styles for asides or sidebars.
+
+#sidebar-first {
+  font-size: .8rem;
+  ul, ol, dl {
+    font-size: inherit;
+    margin-bottom: 0;
+  }
+  .views-field {
+    margin-bottom: .4rem;
+  }
+}

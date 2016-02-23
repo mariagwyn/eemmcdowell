@@ -1,0 +1,16 @@
+<?php
+/**
+ * @file
+ * Install function for df_tools_services.
+ */
+
+use Drupal\user\Entity\User;
+
+/**
+ * Implements hook_install().
+ */
+function df_tools_services_install() {
+  // Enable default permissions for system roles.
+  user_role_grant_permissions(DRUPAL_ANONYMOUS_RID, array('restful get entity:node'));
+}
+

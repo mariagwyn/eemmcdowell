@@ -1,0 +1,16 @@
+.cke_top, .cke_bottom {
+    border-bottom: 1px solid #b6b6b6;
+    padding: 6px 8px 2px;
+    white-space: normal;
+    box-shadow: 0 1px 0 #fff inset;
+    background: red;
+    background-image: none;
+}
+
+.cke_top {
+    border-bottom: 1px solid #b6b6b6;
+    padding: 6px 8px 2px;
+    white-space: normal;
+    box-shadow: none;
+    background: white;
+}
