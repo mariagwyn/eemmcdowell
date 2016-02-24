@@ -243,10 +243,6 @@ $databases = array();
  *   );
  * @endcode
  */
-$config_directories = array(
-  CONFIG_ACTIVE_DIRECTORY => '/Users/mariamcdowell/Sites/drupal-config-directories/active',
-  CONFIG_STAGING_DIRECTORY => '/Users/mariamcdowell/Sites/drupal-config-directories/staging',
-);
 
 /**
  * Settings:
