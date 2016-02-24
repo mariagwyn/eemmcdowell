@@ -27,7 +27,8 @@ function file_browser_help($route_name, RouteMatchInterface $route_match) {
  */
 function file_browser_form_alter(&$form, FormStateInterface &$form_state) {
   if (isset($form['#form_id'])) {
-    if ($form['#form_id'] == 'entity_browser_browse_files_form') {
+    if ($form['#form_id'] == 'entity_browser_browse_files_form' ||
+        $form['#form_id'] == 'entity_browser_browse_files_modal_form') {
       // Attach our library.
       $form['#attached']['library'][] = 'file_browser/view';
 
@@ -45,6 +46,9 @@ function file_browser_form_alter(&$form, FormStateInterface &$form_state) {
         0 => $form['actions'],
       ];
       unset($form['actions']);
+
+      // Add a class for generic styling.
+      $form['#attributes']['class'][] = 'file-browser-form';
     }
     else if ($form['#form_id'] == 'entity_embed_dialog' && $embed_button = $form_state->get('embed_button')) {
       // Check that we're using file_browser.
