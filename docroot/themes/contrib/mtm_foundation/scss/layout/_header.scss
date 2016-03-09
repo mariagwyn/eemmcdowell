@@ -10,10 +10,15 @@
           display: inline-block;
           padding-right: rem-calc(40px);
           &.main-menu-logo {
-            width: 10em;
             a:hover {
               border-bottom:none;
               color:transparent;
+            }
+            img {
+              position: relative;
+              margin-top: -6rem;
+              margin-bottom: -6rem;
+              width: 12em;
             }
           }
           @media #{$medium-only},#{$small-only} {
@@ -64,6 +69,7 @@
 
 /* Theme for the meta region */
 .meta-wrap {
+  height: 4rem;
     max-width: none;
     margin: 0;
     background-color: $primary-alt-color;

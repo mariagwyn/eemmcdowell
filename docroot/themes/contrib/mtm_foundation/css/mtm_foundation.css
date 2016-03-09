@@ -10284,14 +10284,17 @@ th.hide-for-touch {
   display: inline-block;
   padding-right: 2.5rem;
 }
-/* line 12, ../scss/layout/_header.scss */
-.header-wrap #block-mtm-foundation-main-menu .menu-wrap ul li.main-menu-logo {
-  width: 10em;
-}
-/* line 14, ../scss/layout/_header.scss */
+/* line 13, ../scss/layout/_header.scss */
 .header-wrap #block-mtm-foundation-main-menu .menu-wrap ul li.main-menu-logo a:hover {
   border-bottom: none;
   color: transparent;
+}
+/* line 17, ../scss/layout/_header.scss */
+.header-wrap #block-mtm-foundation-main-menu .menu-wrap ul li.main-menu-logo img {
+  position: relative;
+  margin-top: -6rem;
+  margin-bottom: -6rem;
+  width: 12em;
 }
 @media only screen and (min-width: 40.0625em) and (max-width: 64em), only screen and (max-width: 40em) {
   /* line 9, ../scss/layout/_header.scss */
@@ -10299,71 +10302,72 @@ th.hide-for-touch {
     padding-right: 0.625rem;
   }
 }
-/* line 22, ../scss/layout/_header.scss */
+/* line 27, ../scss/layout/_header.scss */
 .header-wrap #block-mtm-foundation-main-menu .menu-wrap ul li a {
   text-transform: uppercase;
   color: #000000;
 }
-/* line 25, ../scss/layout/_header.scss */
+/* line 30, ../scss/layout/_header.scss */
 .header-wrap #block-mtm-foundation-main-menu .menu-wrap ul li a.is-active, .header-wrap #block-mtm-foundation-main-menu .menu-wrap ul li a:hover {
   color: #bbdeef;
   border-bottom: 1px solid #bbdeef;
 }
 @media only screen and (min-width: 40.0625em) and (max-width: 64em), only screen and (max-width: 40em) {
-  /* line 30, ../scss/layout/_header.scss */
+  /* line 35, ../scss/layout/_header.scss */
   .header-wrap #block-mtm-foundation-main-menu .menu-wrap ul li.main-menu-logo {
     float: left;
     padding-bottom: 1.25rem;
   }
 }
-/* line 36, ../scss/layout/_header.scss */
+/* line 41, ../scss/layout/_header.scss */
 .header-wrap #block-mtm-foundation-main-menu .menu-wrap ul li.menu-item {
   padding-top: 1.25rem;
 }
 @media only screen and (max-width: 40em) {
-  /* line 36, ../scss/layout/_header.scss */
+  /* line 41, ../scss/layout/_header.scss */
   .header-wrap #block-mtm-foundation-main-menu .menu-wrap ul li.menu-item {
     display: none;
   }
 }
-/* line 41, ../scss/layout/_header.scss */
+/* line 46, ../scss/layout/_header.scss */
 .header-wrap #block-mtm-foundation-main-menu .menu-wrap ul li.menu-item:hover {
   background-color: transparent;
 }
-/* line 48, ../scss/layout/_header.scss */
+/* line 53, ../scss/layout/_header.scss */
 .header-wrap #block-mtm-foundation-main-menu .menu-mobile-wrap {
   display: none;
   float: right;
 }
 @media only screen and (max-width: 40em) {
-  /* line 48, ../scss/layout/_header.scss */
+  /* line 53, ../scss/layout/_header.scss */
   .header-wrap #block-mtm-foundation-main-menu .menu-mobile-wrap {
     display: block;
   }
 }
-/* line 54, ../scss/layout/_header.scss */
+/* line 59, ../scss/layout/_header.scss */
 .header-wrap #block-mtm-foundation-main-menu .menu-mobile-wrap .main-menu-logo {
   display: none;
 }
-/* line 57, ../scss/layout/_header.scss */
+/* line 62, ../scss/layout/_header.scss */
 .header-wrap #block-mtm-foundation-main-menu .menu-mobile-wrap .menu-icon {
   color: purple;
   font-size: 1.25rem;
 }
 
 /* Theme for the meta region */
-/* line 66, ../scss/layout/_header.scss */
+/* line 71, ../scss/layout/_header.scss */
 .meta-wrap {
+  height: 4rem;
   max-width: none;
   margin: 0;
   background-color: #5282a5;
   padding: 0.625rem;
 }
-/* line 71, ../scss/layout/_header.scss */
+/* line 77, ../scss/layout/_header.scss */
 .meta-wrap a {
   color: white;
 }
-/* line 76, ../scss/layout/_header.scss */
+/* line 82, ../scss/layout/_header.scss */
 .meta-wrap .meta-login .account-link:before {
   background-image: url(../images/user.svg);
   background-size: 20px;
@@ -10374,11 +10378,11 @@ th.hide-for-touch {
   left: -10px;
   top: 1px;
 }
-/* line 87, ../scss/layout/_header.scss */
+/* line 93, ../scss/layout/_header.scss */
 .meta-wrap .meta-login a {
   padding-right: 0.625rem;
 }
-/* line 91, ../scss/layout/_header.scss */
+/* line 97, ../scss/layout/_header.scss */
 .meta-wrap .meta-login .language-link:after {
   border: inset 5px;
   content: "";
@@ -10555,18 +10559,19 @@ blockquote:before {
   position: relative;
   z-index: 2;
   border-bottom: 1px solid #222222;
+  margin-top: 2rem;
 }
 
-/* line 9, ../scss/theme/_main.scss */
+/* line 10, ../scss/theme/_main.scss */
 .mtm-landing-home {
   /* Slideshow block styles */
   /* This is the primary-region service promo HTML block */
   /* Article view theme */
 }
 @media only screen and (min-width: 40.0625em) {
-  /* line 9, ../scss/theme/_main.scss */
+  /* line 10, ../scss/theme/_main.scss */
   .mtm-landing-home {
-    margin-top: -8.125rem;
+    margin-top: -7rem;
   }
 }
 /* line 16, ../scss/theme/_main.scss */
@@ -10809,68 +10814,70 @@ blockquote:before {
 }
 
 /* line 203, ../scss/theme/_main.scss */
-.services.services-block-text {
-  text-align: center;
-}
-/* line 205, ../scss/theme/_main.scss */
-.services.services-block-text .views-row {
-  min-height: 11.25rem;
-}
-/* line 207, ../scss/theme/_main.scss */
-.services .field-name-field-icon-css {
+.field-name-field-icon-css {
   font-size: 1.875rem;
   height: 1.875rem;
   width: 60%;
   margin: 0 auto 0.9375rem;
 }
 @media only screen and (max-width: 40em) {
-  /* line 207, ../scss/theme/_main.scss */
-  .services .field-name-field-icon-css {
+  /* line 203, ../scss/theme/_main.scss */
+  .field-name-field-icon-css {
     top: 25;
     font-size: 1.875rem;
   }
 }
-/* line 216, ../scss/theme/_main.scss */
-.services .field-name-field-icon-css i {
+/* line 212, ../scss/theme/_main.scss */
+.field-name-field-icon-css i {
   width: 22.5%;
   float: left;
+  text-align: center;
 }
-/* line 220, ../scss/theme/_main.scss */
-.services .field-name-field-icon-css .rule {
+/* line 217, ../scss/theme/_main.scss */
+.field-name-field-icon-css .rule {
   background: url(../images/rule-gray.png) repeat-x 20%;
   width: 38.5%;
   float: left;
   height: 1.875rem;
 }
-/* line 227, ../scss/theme/_main.scss */
+
+/* line 226, ../scss/theme/_main.scss */
+.services.services-block-text {
+  text-align: center;
+}
+/* line 228, ../scss/theme/_main.scss */
+.services.services-block-text .views-row {
+  min-height: 11.25rem;
+}
+/* line 230, ../scss/theme/_main.scss */
 .services .views-field-field-subtitle {
   font-size: 1rem;
 }
 
-/* line 232, ../scss/theme/_main.scss */
+/* line 235, ../scss/theme/_main.scss */
 .node-article .field-name-body {
   margin: 0 1.875rem 0 1.875rem;
 }
 
-/* line 238, ../scss/theme/_main.scss */
+/* line 241, ../scss/theme/_main.scss */
 section[rel~="schema:comment"] .filter-wrapper {
   display: none;
 }
-/* line 241, ../scss/theme/_main.scss */
+/* line 244, ../scss/theme/_main.scss */
 section[rel~="schema:comment"] h2.field-label {
   font-size: 1.5em;
   margin-top: 20px;
   border-top: 1px solid #000;
   padding-top: 20px;
 }
-/* line 247, ../scss/theme/_main.scss */
+/* line 250, ../scss/theme/_main.scss */
 section[rel~="schema:comment"] .field-items {
   font-size: 1.3em;
   color: #bbdeef;
 }
 
 /* Contact page styles */
-/* line 258, ../scss/theme/_main.scss */
+/* line 261, ../scss/theme/_main.scss */
 .contact-hero img {
   width: 100%;
 }

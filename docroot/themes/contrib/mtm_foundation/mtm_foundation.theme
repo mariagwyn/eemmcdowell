@@ -78,12 +78,6 @@ function mtm_foundation_preprocess_page(&$variables) {
     // We already display the title in node--full.html.twig
     unset($variables['title']);
   }
-  // Wrap tabs so we can float them above our hero images.
-  $variables['page']['content']['tabs'] = [
-    '#type' => 'container',
-    '#attributes' => ['class' => ['tab-wrap']],
-    0 => $variables['page']['content']['tabs']
-  ];
 }
 
 /**
