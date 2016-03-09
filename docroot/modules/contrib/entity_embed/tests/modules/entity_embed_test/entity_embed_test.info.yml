@@ -5,8 +5,8 @@ description: 'Support module for the Entity Embed module tests.'
 package: Testing
 # version: VERSION
 
-# Information added by Drupal.org packaging script on 2016-01-27
+# Information added by Drupal.org packaging script on 2016-02-28
 version: '8.x-1.x-dev'
 core: '8.x'
 project: 'entity_embed'
-datestamp: 1453884376
+datestamp: 1456668244

@@ -20,11 +20,11 @@
 
       // On iFrame load, hide the real nested "Select Files" button.
       $('body').once('entity-browser-modal').on('entityBrowserIFrameAppend', function () {
-        $(this).find('.entity-embed-dialog iframe').load(function() {
+        $(this).find('.entity-embed-dialog iframe').load(function () {
           $(this).contents().find('.entity-browser-modal-target').parent().hide();
         });
       });
     }
-  }
+  };
 
 }(jQuery, Drupal));
