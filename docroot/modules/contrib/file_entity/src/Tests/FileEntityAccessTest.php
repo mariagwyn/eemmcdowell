@@ -6,7 +6,7 @@
  */
 
 namespace Drupal\file_entity\Tests;
-use Drupal\Core\Language\LanguageInterface;
+
 use Drupal\file\FileInterface;
 use Drupal\file_entity\FileEntityAccessControlHandler;
 
@@ -48,7 +48,7 @@ class FileEntityAccessTest extends FileEntityTestBase {
         $expected,
         $op === 'create' ?
           $this->accessControlHandler->createAccess($file, $account) :
-          $this->accessControlHandler->access($file, $op, LanguageInterface::LANGCODE_DEFAULT, $account)
+          $this->accessControlHandler->access($file, $op, $account)
       );
     }
   }
@@ -150,11 +150,11 @@ class FileEntityAccessTest extends FileEntityTestBase {
     $url = "file/{$file->id()}/download";
     $web_user = $this->drupalCreateUser(array());
     $this->drupalLogin($web_user);
-    $this->drupalGet($url, array('query' => array('token' => file_entity_get_download_token($file))));
+    $this->drupalGet($url, array('query' => array('token' => $file->getDownloadToken())));
     $this->assertResponse(403, 'Users without access can not download the file');
     $web_user = $this->drupalCreateUser(array('download any document files'));
     $this->drupalLogin($web_user);
-    $this->drupalGet($url, array('query' => array('token' => file_entity_get_download_token($file))));
+    $this->drupalGet($url, array('query' => array('token' => $file->getDownloadToken())));
     $this->assertResponse(200, 'Users with access can download the file');
     $this->drupalGet($url, array('query' => array('token' => 'invalid-token')));
     $this->assertResponse(403, 'Cannot download file with in invalid token.');

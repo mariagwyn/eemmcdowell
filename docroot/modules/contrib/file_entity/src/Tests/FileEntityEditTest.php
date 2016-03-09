@@ -18,8 +18,13 @@ class FileEntityEditTest extends FileEntityTestBase {
   protected $web_user;
   protected $admin_user;
 
+  public static $modules = ['block'];
+
   function setUp() {
     parent::setUp();
+    // Add the tasks and actions blocks.
+    $this->drupalPlaceBlock('local_actions_block');
+    $this->drupalPlaceBlock('local_tasks_block');
 
     $this->web_user = $this->drupalCreateUser(array('edit own document files', 'create files'));
     $this->admin_user = $this->drupalCreateUser(array('bypass file access', 'administer files'));
@@ -53,8 +58,8 @@ class FileEntityEditTest extends FileEntityTestBase {
     $this->assertEqual($edit_url, $actual_url, t('On edit page.'));
 
     // Check that the name field is displayed with the correct value.
-    $active = '<span class="element-invisible">' . t('(active tab)') . '</span>';
-    $link_text = t('!local-task-title!active', array('!local-task-title' => t('Edit'), '!active' => $active));
+    $active = t('(active tab)');
+    $link_text = t('@local-task-title<span class="element-invisible">@active</span>', array('@local-task-title' => t('Edit'), '@active' => $active));
     $this->assertText(strip_tags($link_text), 0, t('Edit tab found and marked active.'));
     $this->assertFieldByName($name_key, $file->label(), t('Name field displayed.'));
 

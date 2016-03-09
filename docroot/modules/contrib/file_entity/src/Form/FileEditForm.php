@@ -8,14 +8,20 @@
 namespace Drupal\file_entity\Form;
 
 use Drupal\Core\Entity\ContentEntityForm;
+use Drupal\Core\Entity\Entity;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\file\Entity\File;
 use Drupal\file\FileInterface;
+use Drupal\file_entity\Entity\FileEntity;
 use Drupal\file_entity\Entity\FileType;
+use Drupal\file_entity\UploadValidatorsTrait;
 
 /**
  * Form controller for file type forms.
  */
 class FileEditForm extends ContentEntityForm {
+
+  use UploadValidatorsTrait;
 
   /**
    * {@inheritdoc}
@@ -38,7 +44,7 @@ class FileEditForm extends ContentEntityForm {
       ));
 
       // Add a 'replace this file' upload field if the file is writeable.
-      if (file_entity_file_is_writeable($file)) {
+      if ($file->isWritable()) {
         // Set up replacement file validation.
         $replacement_options = array();
         // Replacement file must have the same extension as the original file.
@@ -47,7 +53,7 @@ class FileEditForm extends ContentEntityForm {
         $form['replace_upload'] = array(
           '#type' => 'managed_file',
           '#title' => $this->t('Replace file'),
-          '#upload_validators' => FileAddForm::getUploadValidators($replacement_options),
+          '#upload_validators' => $this->getUploadValidators($replacement_options),
         );
 
         $file_upload_help = array(
@@ -118,10 +124,15 @@ class FileEditForm extends ContentEntityForm {
     // Check if a replacement file has been uploaded.
     if ($form_state->getValue('replace_upload')) {
       $replacement = $form_state->getValue('replace_upload')[0];
-      $log_args = array('@old' => $this->entity->getFilename(), '@new' => $replacement->getFilename());
+      if ($replacement instanceof FileEntity) {
+        $entity_replacement = $replacement;
+      } else {
+        $entity_replacement = File::load($replacement);
+      }
+      $log_args = array('@old' => $this->entity->getFilename(), '@new' => $entity_replacement->getFileName());
       // Move file from temp to permanent home.
-      if (file_unmanaged_copy($replacement->getFileUri(), $this->entity->getFileUri(), FILE_EXISTS_REPLACE)) {
-        $replacement->delete();
+      if (file_unmanaged_copy($entity_replacement->getFileUri(), $this->entity->getFileUri(), FILE_EXISTS_REPLACE)) {
+        $entity_replacement->delete();
         \Drupal::logger('file_entity')->info('File @old was replaced by @new', $log_args);
       }
       else {
