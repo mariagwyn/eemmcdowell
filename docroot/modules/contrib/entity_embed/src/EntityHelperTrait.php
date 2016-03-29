@@ -196,15 +196,15 @@ trait EntityHelperTrait {
 
     // Maintain data-align if it is there.
     if (isset($context['data-align'])) {
-      $build['#attributes']['data-align'] = $context['data-align'];
+      $build['#item_attributes']['data-align'] = $context['data-align'];
     }
     elseif ((isset($context['class']))) {
-      $build['#attributes']['class'][] = $context['class'];
+      $build['#item_attributes']['class'][] = $context['class'];
     }
 
     // Maintain data-caption if it is there.
     if (isset($context['data-caption'])) {
-      $build['#attributes']['data-caption'] = $context['data-caption'];
+      $build['#item_attributes']['data-caption'] = $context['data-caption'];
     }
 
     // @todo Should this hook get invoked if $build is an empty array?

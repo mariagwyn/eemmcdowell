@@ -87,7 +87,7 @@ function file_browser_form_entity_embed_dialog_alter(&$form, \Drupal\Core\Form\F
  * Implements hook_preprocess_details().
  */
 function file_browser_preprocess_details(&$variables) {
-  if ($variables['element']['#id'] == 'edit-field-file-browser-reference') {
+  if (isset($variables['element']['#id']) && $variables['element']['#id'] == 'edit-field-file-browser-reference') {
     $variables['#attached']['library'][] = 'file_browser/iframe';
   }
 }
