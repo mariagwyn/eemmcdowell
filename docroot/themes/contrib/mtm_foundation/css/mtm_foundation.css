@@ -609,7 +609,7 @@ body {
 /* line 502, ../../zurb_foundation/scss/foundation/components/_global.scss */
 body {
   background: #fff;
-  color: #222222;
+  color: #295B9C;
   cursor: auto;
   font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
@@ -2260,8 +2260,8 @@ select {
   padding: 0.875rem 1.5rem 0.875rem 0.875rem;
   position: relative;
   transition: opacity 300ms ease-out;
-  background-color: #222222;
-  border-color: #1d1d1d;
+  background-color: #295B9C;
+  border-color: #234e86;
   color: white;
 }
 /* line 115, ../../zurb_foundation/scss/foundation/components/_alert-boxes.scss */
@@ -2296,16 +2296,16 @@ select {
   color: white;
 }
 /* line 121, ../../zurb_foundation/scss/foundation/components/_alert-boxes.scss */
-.alert-box.alert, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.alert-box {
-  background-color: #a32c20;
-  border-color: #8c261c;
+.alert-box.alert {
+  background-color: #9A1697;
+  border-color: #841382;
   color: white;
 }
 /* line 122, ../../zurb_foundation/scss/foundation/components/_alert-boxes.scss */
 .alert-box.secondary {
-  background-color: #bbdeef;
-  border-color: #8bc7e4;
-  color: #1c5875;
+  background-color: #9A1697;
+  border-color: #841382;
+  color: white;
 }
 /* line 123, ../../zurb_foundation/scss/foundation/components/_alert-boxes.scss */
 .alert-box.warning {
@@ -2317,7 +2317,7 @@ select {
 .alert-box.info {
   background-color: #a0d3e8;
   border-color: #74bfdd;
-  color: #1c5875;
+  color: #340733;
 }
 /* line 125, ../../zurb_foundation/scss/foundation/components/_alert-boxes.scss */
 .alert-box.alert-close {
@@ -2863,13 +2863,13 @@ select {
   margin-left: 0;
   overflow: hidden;
   padding: 0.5625rem 0.875rem 0.5625rem;
-  background-color: #e0f0f8;
-  border-color: #badeef;
+  background-color: #ec7bea;
+  border-color: #e85ce5;
   border-radius: 3px;
 }
 /* line 123, ../../zurb_foundation/scss/foundation/components/_breadcrumbs.scss */
 .breadcrumbs > * {
-  color: #222222;
+  color: #295B9C;
   float: left;
   font-size: 0.6875rem;
   line-height: 0.6875rem;
@@ -2882,7 +2882,7 @@ select {
 }
 /* line 71, ../../zurb_foundation/scss/foundation/components/_breadcrumbs.scss */
 .breadcrumbs > * a {
-  color: #222222;
+  color: #295B9C;
 }
 /* line 76, ../../zurb_foundation/scss/foundation/components/_breadcrumbs.scss */
 .breadcrumbs > *.current {
@@ -2951,14 +2951,14 @@ button, .button, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-l
   display: inline-block;
   padding: 1rem 2rem 1.0625rem 2rem;
   font-size: 1rem;
-  background-color: #222222;
-  border-color: #0e0e0e;
+  background-color: #295B9C;
+  border-color: #10243e;
   color: white;
   transition: background-color 300ms ease-out;
 }
 /* line 163, ../../zurb_foundation/scss/foundation/components/_buttons.scss */
 button:hover, button:focus, .button:hover, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a:hover, .button:focus, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a:focus {
-  background-color: #0e0e0e;
+  background-color: #10243e;
 }
 /* line 169, ../../zurb_foundation/scss/foundation/components/_buttons.scss */
 button:hover, button:focus, .button:hover, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a:hover, .button:focus, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a:focus {
@@ -2966,13 +2966,13 @@ button:hover, button:focus, .button:hover, .mtm-landing-home .mgm-tools-slidesho
 }
 /* line 225, ../../zurb_foundation/scss/foundation/components/_buttons.scss */
 button.secondary, .button.secondary, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.secondary {
-  background-color: #bbdeef;
-  border-color: #20678a;
-  color: #333333;
+  background-color: #9A1697;
+  border-color: #3e093c;
+  color: white;
 }
 /* line 163, ../../zurb_foundation/scss/foundation/components/_buttons.scss */
 button.secondary:hover, button.secondary:focus, .button.secondary:hover, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.secondary:hover, .button.secondary:focus, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.secondary:focus {
-  background-color: #20678a;
+  background-color: #3e093c;
 }
 /* line 169, ../../zurb_foundation/scss/foundation/components/_buttons.scss */
 button.secondary:hover, button.secondary:focus, .button.secondary:hover, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.secondary:hover, .button.secondary:focus, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.secondary:focus {
@@ -2993,17 +2993,17 @@ button.success:hover, button.success:focus, .button.success:hover, .mtm-landing-
   color: white;
 }
 /* line 227, ../../zurb_foundation/scss/foundation/components/_buttons.scss */
-button.alert, .button.alert, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a {
-  background-color: #a32c20;
-  border-color: #41120d;
+button.alert, .button.alert, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.alert {
+  background-color: #9A1697;
+  border-color: #3e093c;
   color: white;
 }
 /* line 163, ../../zurb_foundation/scss/foundation/components/_buttons.scss */
-button.alert:hover, button.alert:focus, .button.alert:hover, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a:hover, .button.alert:focus, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a:focus {
-  background-color: #41120d;
+button.alert:hover, button.alert:focus, .button.alert:hover, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.alert:hover, .button.alert:focus, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.alert:focus {
+  background-color: #3e093c;
 }
 /* line 169, ../../zurb_foundation/scss/foundation/components/_buttons.scss */
-button.alert:hover, button.alert:focus, .button.alert:hover, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a:hover, .button.alert:focus, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a:focus {
+button.alert:hover, button.alert:focus, .button.alert:hover, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.alert:hover, .button.alert:focus, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.alert:focus {
   color: white;
 }
 /* line 228, ../../zurb_foundation/scss/foundation/components/_buttons.scss */
@@ -3079,8 +3079,8 @@ button.round, .button.round, .mtm-landing-home .mgm-tools-slideshow .field-name-
 }
 /* line 242, ../../zurb_foundation/scss/foundation/components/_buttons.scss */
 button.disabled, button[disabled], .button.disabled, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.disabled, .button[disabled], .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a[disabled] {
-  background-color: #222222;
-  border-color: #0e0e0e;
+  background-color: #295B9C;
+  border-color: #10243e;
   color: white;
   box-shadow: none;
   cursor: default;
@@ -3088,7 +3088,7 @@ button.disabled, button[disabled], .button.disabled, .mtm-landing-home .mgm-tool
 }
 /* line 163, ../../zurb_foundation/scss/foundation/components/_buttons.scss */
 button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.disabled:hover, .button.disabled:focus, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.disabled:focus, .button[disabled]:hover, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a[disabled]:hover, .button[disabled]:focus, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a[disabled]:focus {
-  background-color: #0e0e0e;
+  background-color: #10243e;
 }
 /* line 169, ../../zurb_foundation/scss/foundation/components/_buttons.scss */
 button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.disabled:hover, .button.disabled:focus, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.disabled:focus, .button[disabled]:hover, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a[disabled]:hover, .button[disabled]:focus, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a[disabled]:focus {
@@ -3096,20 +3096,20 @@ button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[dis
 }
 /* line 180, ../../zurb_foundation/scss/foundation/components/_buttons.scss */
 button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.disabled:hover, .button.disabled:focus, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.disabled:focus, .button[disabled]:hover, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a[disabled]:hover, .button[disabled]:focus, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a[disabled]:focus {
-  background-color: #222222;
+  background-color: #295B9C;
 }
 /* line 243, ../../zurb_foundation/scss/foundation/components/_buttons.scss */
 button.disabled.secondary, button[disabled].secondary, .button.disabled.secondary, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.disabled.secondary, .button[disabled].secondary, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a[disabled].secondary {
-  background-color: #bbdeef;
-  border-color: #20678a;
-  color: #333333;
+  background-color: #9A1697;
+  border-color: #3e093c;
+  color: white;
   box-shadow: none;
   cursor: default;
   opacity: 0.7;
 }
 /* line 163, ../../zurb_foundation/scss/foundation/components/_buttons.scss */
 button.disabled.secondary:hover, button.disabled.secondary:focus, button[disabled].secondary:hover, button[disabled].secondary:focus, .button.disabled.secondary:hover, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.disabled.secondary:hover, .button.disabled.secondary:focus, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.disabled.secondary:focus, .button[disabled].secondary:hover, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a[disabled].secondary:hover, .button[disabled].secondary:focus, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a[disabled].secondary:focus {
-  background-color: #20678a;
+  background-color: #3e093c;
 }
 /* line 169, ../../zurb_foundation/scss/foundation/components/_buttons.scss */
 button.disabled.secondary:hover, button.disabled.secondary:focus, button[disabled].secondary:hover, button[disabled].secondary:focus, .button.disabled.secondary:hover, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.disabled.secondary:hover, .button.disabled.secondary:focus, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.disabled.secondary:focus, .button[disabled].secondary:hover, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a[disabled].secondary:hover, .button[disabled].secondary:focus, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a[disabled].secondary:focus {
@@ -3117,7 +3117,7 @@ button.disabled.secondary:hover, button.disabled.secondary:focus, button[disable
 }
 /* line 180, ../../zurb_foundation/scss/foundation/components/_buttons.scss */
 button.disabled.secondary:hover, button.disabled.secondary:focus, button[disabled].secondary:hover, button[disabled].secondary:focus, .button.disabled.secondary:hover, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.disabled.secondary:hover, .button.disabled.secondary:focus, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.disabled.secondary:focus, .button[disabled].secondary:hover, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a[disabled].secondary:hover, .button[disabled].secondary:focus, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a[disabled].secondary:focus {
-  background-color: #bbdeef;
+  background-color: #9A1697;
 }
 /* line 244, ../../zurb_foundation/scss/foundation/components/_buttons.scss */
 button.disabled.success, button[disabled].success, .button.disabled.success, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.disabled.success, .button[disabled].success, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a[disabled].success {
@@ -3141,25 +3141,25 @@ button.disabled.success:hover, button.disabled.success:focus, button[disabled].s
   background-color: #43AC6A;
 }
 /* line 245, ../../zurb_foundation/scss/foundation/components/_buttons.scss */
-button.disabled.alert, button[disabled].alert, .button.disabled.alert, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.disabled, .button[disabled].alert, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a[disabled] {
-  background-color: #a32c20;
-  border-color: #41120d;
+button.disabled.alert, button[disabled].alert, .button.disabled.alert, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.disabled.alert, .button[disabled].alert, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a[disabled].alert {
+  background-color: #9A1697;
+  border-color: #3e093c;
   color: white;
   box-shadow: none;
   cursor: default;
   opacity: 0.7;
 }
 /* line 163, ../../zurb_foundation/scss/foundation/components/_buttons.scss */
-button.disabled.alert:hover, button.disabled.alert:focus, button[disabled].alert:hover, button[disabled].alert:focus, .button.disabled.alert:hover, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.disabled:hover, .button.disabled.alert:focus, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.disabled:focus, .button[disabled].alert:hover, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a[disabled]:hover, .button[disabled].alert:focus, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a[disabled]:focus {
-  background-color: #41120d;
+button.disabled.alert:hover, button.disabled.alert:focus, button[disabled].alert:hover, button[disabled].alert:focus, .button.disabled.alert:hover, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.disabled.alert:hover, .button.disabled.alert:focus, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.disabled.alert:focus, .button[disabled].alert:hover, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a[disabled].alert:hover, .button[disabled].alert:focus, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a[disabled].alert:focus {
+  background-color: #3e093c;
 }
 /* line 169, ../../zurb_foundation/scss/foundation/components/_buttons.scss */
-button.disabled.alert:hover, button.disabled.alert:focus, button[disabled].alert:hover, button[disabled].alert:focus, .button.disabled.alert:hover, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.disabled:hover, .button.disabled.alert:focus, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.disabled:focus, .button[disabled].alert:hover, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a[disabled]:hover, .button[disabled].alert:focus, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a[disabled]:focus {
+button.disabled.alert:hover, button.disabled.alert:focus, button[disabled].alert:hover, button[disabled].alert:focus, .button.disabled.alert:hover, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.disabled.alert:hover, .button.disabled.alert:focus, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.disabled.alert:focus, .button[disabled].alert:hover, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a[disabled].alert:hover, .button[disabled].alert:focus, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a[disabled].alert:focus {
   color: white;
 }
 /* line 180, ../../zurb_foundation/scss/foundation/components/_buttons.scss */
-button.disabled.alert:hover, button.disabled.alert:focus, button[disabled].alert:hover, button[disabled].alert:focus, .button.disabled.alert:hover, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.disabled:hover, .button.disabled.alert:focus, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.disabled:focus, .button[disabled].alert:hover, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a[disabled]:hover, .button[disabled].alert:focus, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a[disabled]:focus {
-  background-color: #a32c20;
+button.disabled.alert:hover, button.disabled.alert:focus, button[disabled].alert:hover, button[disabled].alert:focus, .button.disabled.alert:hover, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.disabled.alert:hover, .button.disabled.alert:focus, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.disabled.alert:focus, .button[disabled].alert:hover, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a[disabled].alert:hover, .button[disabled].alert:focus, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a[disabled].alert:focus {
+  background-color: #9A1697;
 }
 /* line 246, ../../zurb_foundation/scss/foundation/components/_buttons.scss */
 button.disabled.warning, button[disabled].warning, .button.disabled.warning, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.disabled.warning, .button[disabled].warning, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a[disabled].warning {
@@ -4932,7 +4932,7 @@ fieldset legend {
   margin-bottom: 1rem;
   margin-top: -1px;
   padding: 0.375rem 0.5625rem 0.5625rem;
-  background: #a32c20;
+  background: #9A1697;
   color: white;
 }
 /* line 554, ../../zurb_foundation/scss/foundation/components/_forms.scss */
@@ -4949,7 +4949,7 @@ span.error, small.error {
   margin-bottom: 1rem;
   margin-top: -1px;
   padding: 0.375rem 0.5625rem 0.5625rem;
-  background: #a32c20;
+  background: #9A1697;
   color: white;
 }
 
@@ -4967,7 +4967,7 @@ span.error, small.error {
 /* line 573, ../../zurb_foundation/scss/foundation/components/_forms.scss */
 .error label,
 .error label.error {
-  color: #a32c20;
+  color: #9A1697;
 }
 /* line 578, ../../zurb_foundation/scss/foundation/components/_forms.scss */
 .error small.error {
@@ -4978,7 +4978,7 @@ span.error, small.error {
   margin-bottom: 1rem;
   margin-top: -1px;
   padding: 0.375rem 0.5625rem 0.5625rem;
-  background: #a32c20;
+  background: #9A1697;
   color: white;
 }
 /* line 583, ../../zurb_foundation/scss/foundation/components/_forms.scss */
@@ -5006,7 +5006,7 @@ select.error {
 
 /* line 605, ../../zurb_foundation/scss/foundation/components/_forms.scss */
 label.error {
-  color: #a32c20;
+  color: #9A1697;
 }
 
 /* line 347, ../../zurb_foundation/scss/foundation/components/_icon-bar.scss */
@@ -5128,7 +5128,7 @@ label.error {
 }
 /* line 182, ../../zurb_foundation/scss/foundation/components/_icon-bar.scss */
 .icon-bar > a:hover {
-  background: #222222;
+  background: #295B9C;
 }
 /* line 186, ../../zurb_foundation/scss/foundation/components/_icon-bar.scss */
 .icon-bar > a:hover label {
@@ -5140,7 +5140,7 @@ label.error {
 }
 /* line 191, ../../zurb_foundation/scss/foundation/components/_icon-bar.scss */
 .icon-bar > a.active {
-  background: #222222;
+  background: #295B9C;
 }
 /* line 195, ../../zurb_foundation/scss/foundation/components/_icon-bar.scss */
 .icon-bar > a.active label {
@@ -5695,7 +5695,7 @@ kbd {
   white-space: nowrap;
   padding: 0.25rem 0.5rem 0.25rem;
   font-size: 0.6875rem;
-  background-color: #222222;
+  background-color: #295B9C;
   color: white;
 }
 /* line 96, ../../zurb_foundation/scss/foundation/components/_labels.scss */
@@ -5707,8 +5707,8 @@ kbd {
   border-radius: 1000px;
 }
 /* line 99, ../../zurb_foundation/scss/foundation/components/_labels.scss */
-.label.alert, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.label {
-  background-color: #a32c20;
+.label.alert {
+  background-color: #9A1697;
   color: white;
 }
 /* line 100, ../../zurb_foundation/scss/foundation/components/_labels.scss */
@@ -5723,8 +5723,8 @@ kbd {
 }
 /* line 102, ../../zurb_foundation/scss/foundation/components/_labels.scss */
 .label.secondary {
-  background-color: #bbdeef;
-  color: #333333;
+  background-color: #9A1697;
+  color: white;
 }
 /* line 103, ../../zurb_foundation/scss/foundation/components/_labels.scss */
 .label.info {
@@ -6131,14 +6131,14 @@ ul.pagination li.unavailable:hover a, ul.pagination li.unavailable a:focus, ul.p
 }
 /* line 69, ../../zurb_foundation/scss/foundation/components/_pagination.scss */
 ul.pagination li.current a, ul.pagination li.current button {
-  background: #222222;
+  background: #295B9C;
   color: white;
   cursor: default;
   font-weight: bold;
 }
 /* line 75, ../../zurb_foundation/scss/foundation/components/_pagination.scss */
 ul.pagination li.current a:hover, ul.pagination li.current a:focus, ul.pagination li.current button:hover, ul.pagination li.current button:focus {
-  background: #222222;
+  background: #295B9C;
 }
 /* line 137, ../../zurb_foundation/scss/foundation/components/_pagination.scss */
 ul.pagination li {
@@ -6196,7 +6196,7 @@ ul.pagination li {
   border-color: #d8d8d8;
   margin-bottom: 1.25rem;
   padding: 1.25rem;
-  background: #f2f2f2;
+  background: #f0f5fb;
   color: #333333;
 }
 /* line 61, ../../zurb_foundation/scss/foundation/components/_panels.scss */
@@ -6222,11 +6222,11 @@ ul.pagination li {
 }
 /* line 90, ../../zurb_foundation/scss/foundation/components/_panels.scss */
 .panel.callout a:not(.button) {
-  color: #222222;
+  color: #295B9C;
 }
 /* line 93, ../../zurb_foundation/scss/foundation/components/_panels.scss */
 .panel.callout a:not(.button):hover, .panel.callout a:not(.button):focus {
-  color: #1d1d1d;
+  color: #234e86;
 }
 /* line 100, ../../zurb_foundation/scss/foundation/components/_panels.scss */
 .panel.radius {
@@ -6304,7 +6304,7 @@ ul.pagination li {
 }
 /* line 63, ../../zurb_foundation/scss/foundation/components/_progress-bars.scss */
 .progress .meter {
-  background: #222222;
+  background: #295B9C;
   display: block;
   height: 100%;
   float: left;
@@ -6312,7 +6312,7 @@ ul.pagination li {
 }
 /* line 66, ../../zurb_foundation/scss/foundation/components/_progress-bars.scss */
 .progress .meter.secondary {
-  background: #bbdeef;
+  background: #9A1697;
   display: block;
   height: 100%;
   float: left;
@@ -6327,8 +6327,8 @@ ul.pagination li {
   width: 0%;
 }
 /* line 68, ../../zurb_foundation/scss/foundation/components/_progress-bars.scss */
-.progress .meter.alert, .progress .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.meter, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link .progress a.meter {
-  background: #a32c20;
+.progress .meter.alert {
+  background: #9A1697;
   display: block;
   height: 100%;
   float: left;
@@ -6336,7 +6336,7 @@ ul.pagination li {
 }
 /* line 70, ../../zurb_foundation/scss/foundation/components/_progress-bars.scss */
 .progress.secondary .meter {
-  background: #bbdeef;
+  background: #9A1697;
   display: block;
   height: 100%;
   float: left;
@@ -6351,8 +6351,8 @@ ul.pagination li {
   width: 0%;
 }
 /* line 72, ../../zurb_foundation/scss/foundation/components/_progress-bars.scss */
-.progress.alert .meter, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.progress .meter {
-  background: #a32c20;
+.progress.alert .meter {
+  background: #9A1697;
   display: block;
   height: 100%;
   float: left;
@@ -6421,12 +6421,12 @@ ul.pagination li {
 }
 /* line 153, ../../zurb_foundation/scss/foundation/components/_range-slider.scss */
 .range-slider.radius .range-slider-handle {
-  background: #222222;
+  background: #295B9C;
   border-radius: 3px;
 }
 /* line 118, ../../zurb_foundation/scss/foundation/components/_range-slider.scss */
 .range-slider.radius .range-slider-handle:hover {
-  background: #1e1e1e;
+  background: #245089;
 }
 /* line 155, ../../zurb_foundation/scss/foundation/components/_range-slider.scss */
 .range-slider.round {
@@ -6435,12 +6435,12 @@ ul.pagination li {
 }
 /* line 157, ../../zurb_foundation/scss/foundation/components/_range-slider.scss */
 .range-slider.round .range-slider-handle {
-  background: #222222;
+  background: #295B9C;
   border-radius: 1000px;
 }
 /* line 118, ../../zurb_foundation/scss/foundation/components/_range-slider.scss */
 .range-slider.round .range-slider-handle:hover {
-  background: #1e1e1e;
+  background: #245089;
 }
 /* line 159, ../../zurb_foundation/scss/foundation/components/_range-slider.scss */
 .range-slider.disabled, .range-slider[disabled] {
@@ -6450,18 +6450,18 @@ ul.pagination li {
 }
 /* line 161, ../../zurb_foundation/scss/foundation/components/_range-slider.scss */
 .range-slider.disabled .range-slider-handle, .range-slider[disabled] .range-slider-handle {
-  background: #222222;
+  background: #295B9C;
   cursor: default;
   opacity: 0.7;
 }
 /* line 118, ../../zurb_foundation/scss/foundation/components/_range-slider.scss */
 .range-slider.disabled .range-slider-handle:hover, .range-slider[disabled] .range-slider-handle:hover {
-  background: #1e1e1e;
+  background: #245089;
 }
 
 /* line 164, ../../zurb_foundation/scss/foundation/components/_range-slider.scss */
 .range-slider-active-segment {
-  background: #b8dcee;
+  background: #981695;
   border-bottom-left-radius: inherit;
   border-top-left-radius: inherit;
   display: inline-block;
@@ -6481,11 +6481,11 @@ ul.pagination li {
   z-index: 1;
   -ms-touch-action: manipulation;
   touch-action: manipulation;
-  background: #222222;
+  background: #295B9C;
 }
 /* line 118, ../../zurb_foundation/scss/foundation/components/_range-slider.scss */
 .range-slider-handle:hover {
-  background: #1e1e1e;
+  background: #245089;
 }
 
 /* line 172, ../../zurb_foundation/scss/foundation/components/_reveal.scss */
@@ -6669,7 +6669,7 @@ ul.pagination li {
 }
 /* line 76, ../../zurb_foundation/scss/foundation/components/_side-nav.scss */
 .side-nav li a:not(.button) {
-  color: #222222;
+  color: #295B9C;
   display: block;
   margin: 0;
   padding: 0.4375rem 0.875rem;
@@ -6677,15 +6677,15 @@ ul.pagination li {
 /* line 81, ../../zurb_foundation/scss/foundation/components/_side-nav.scss */
 .side-nav li a:not(.button):hover, .side-nav li a:not(.button):focus {
   background: rgba(0, 0, 0, 0.025);
-  color: #646464;
+  color: #5189d1;
 }
 /* line 86, ../../zurb_foundation/scss/foundation/components/_side-nav.scss */
 .side-nav li a:not(.button):active {
-  color: #646464;
+  color: #5189d1;
 }
 /* line 91, ../../zurb_foundation/scss/foundation/components/_side-nav.scss */
 .side-nav li.active > a:first-child:not(.button) {
-  color: #646464;
+  color: #5189d1;
   font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
 }
@@ -6699,7 +6699,7 @@ ul.pagination li {
 }
 /* line 105, ../../zurb_foundation/scss/foundation/components/_side-nav.scss */
 .side-nav li.heading {
-  color: #222222;
+  color: #295B9C;
   font-size: 0.875rem;
   font-weight: bold;
   text-transform: uppercase;
@@ -6762,7 +6762,7 @@ ul.pagination li {
   border-color: white transparent transparent transparent;
 }
 /* line 103, ../../zurb_foundation/scss/foundation/components/_split-buttons.scss */
-.split.button.alert span, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.split span {
+.split.button.alert span, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a.split.alert span {
   border-left-color: rgba(255, 255, 255, 0.5);
 }
 /* line 103, ../../zurb_foundation/scss/foundation/components/_split-buttons.scss */
@@ -6897,7 +6897,7 @@ ul.pagination li {
 .sub-nav dd.active a,
 .sub-nav li.active a {
   border-radius: 3px;
-  background: #222222;
+  background: #295B9C;
   color: white;
   cursor: default;
   font-weight: normal;
@@ -6907,7 +6907,7 @@ ul.pagination li {
 .sub-nav dt.active a:hover,
 .sub-nav dd.active a:hover,
 .sub-nav li.active a:hover {
-  background: #1d1d1d;
+  background: #234e86;
 }
 
 /* line 215, ../../zurb_foundation/scss/foundation/components/_switches.scss */
@@ -6970,7 +6970,7 @@ ul.pagination li {
 }
 /* line 110, ../../zurb_foundation/scss/foundation/components/_switches.scss */
 .switch input:checked + label {
-  background: #222222;
+  background: #295B9C;
 }
 /* line 114, ../../zurb_foundation/scss/foundation/components/_switches.scss */
 .switch input:checked + label:after {
@@ -7001,7 +7001,7 @@ ul.pagination li {
 }
 /* line 166, ../../zurb_foundation/scss/foundation/components/_switches.scss */
 .switch input:checked + label {
-  background: #222222;
+  background: #295B9C;
 }
 /* line 126, ../../zurb_foundation/scss/foundation/components/_switches.scss */
 .switch.large label {
@@ -7271,7 +7271,7 @@ table tr td {
 }
 /* line 48, ../../zurb_foundation/scss/foundation/components/_thumbs.scss */
 .th:hover, .th:focus {
-  box-shadow: 0 0 6px 1px rgba(34, 34, 34, 0.5);
+  box-shadow: 0 0 6px 1px rgba(41, 91, 156, 0.5);
 }
 /* line 63, ../../zurb_foundation/scss/foundation/components/_thumbs.scss */
 .th.radius {
@@ -7288,8 +7288,8 @@ table tr td {
 }
 /* line 44, ../../zurb_foundation/scss/foundation/components/_tooltips.scss */
 .has-tip:hover, .has-tip:focus {
-  border-bottom: dotted 1px #0f0f0f;
-  color: #222222;
+  border-bottom: dotted 1px #122946;
+  color: #295B9C;
 }
 /* line 50, ../../zurb_foundation/scss/foundation/components/_tooltips.scss */
 .has-tip.tip-left, .has-tip.tip-right {
@@ -7342,8 +7342,8 @@ table tr td {
 }
 /* line 95, ../../zurb_foundation/scss/foundation/components/_tooltips.scss */
 .tooltip.opened {
-  border-bottom: dotted 1px #0f0f0f !important;
-  color: #222222 !important;
+  border-bottom: dotted 1px #122946 !important;
+  color: #295B9C !important;
 }
 
 /* line 101, ../../zurb_foundation/scss/foundation/components/_tooltips.scss */
@@ -7397,7 +7397,7 @@ meta.foundation-mq-topbar {
 /* line 119, ../../zurb_foundation/scss/foundation/components/_top-bar.scss */
 .contain-to-grid {
   width: 100%;
-  background: #222222;
+  background: #295B9C;
 }
 /* line 123, ../../zurb_foundation/scss/foundation/components/_top-bar.scss */
 .contain-to-grid .top-bar {
@@ -7433,7 +7433,7 @@ meta.foundation-mq-topbar {
 
 /* line 156, ../../zurb_foundation/scss/foundation/components/_top-bar.scss */
 .top-bar {
-  background: #222222;
+  background: #295B9C;
   height: 2.8125rem;
   line-height: 2.8125rem;
   margin-bottom: 0;
@@ -7556,7 +7556,7 @@ meta.foundation-mq-topbar {
 }
 /* line 272, ../../zurb_foundation/scss/foundation/components/_top-bar.scss */
 .top-bar.expanded .title-area {
-  background: #222222;
+  background: #295B9C;
 }
 /* line 277, ../../zurb_foundation/scss/foundation/components/_top-bar.scss */
 .top-bar.expanded .toggle-topbar a {
@@ -7597,14 +7597,14 @@ meta.foundation-mq-topbar {
 /* line 323, ../../zurb_foundation/scss/foundation/components/_top-bar.scss */
 .top-bar-section .divider,
 .top-bar-section [role="separator"] {
-  border-top: solid 1px #111111;
+  border-top: solid 1px #152e4e;
   clear: both;
   height: 1px;
   width: 100%;
 }
 /* line 331, ../../zurb_foundation/scss/foundation/components/_top-bar.scss */
 .top-bar-section ul li {
-  background: #bbdeef;
+  background: #9A1697;
 }
 /* line 334, ../../zurb_foundation/scss/foundation/components/_top-bar.scss */
 .top-bar-section ul li > a {
@@ -7623,13 +7623,13 @@ meta.foundation-mq-topbar {
   font-size: 1rem;
   padding-left: 0.9375rem;
   padding-right: 0.9375rem;
-  background-color: #222222;
-  border-color: #0e0e0e;
+  background-color: #295B9C;
+  border-color: #10243e;
   color: white;
 }
 /* line 163, ../../zurb_foundation/scss/foundation/components/_buttons.scss */
 .top-bar-section ul li > a.button:hover, .top-bar-section ul .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link li > a:hover, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link .top-bar-section ul li > a:hover, .top-bar-section ul li > a.button:focus, .top-bar-section ul .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link li > a:focus, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link .top-bar-section ul li > a:focus {
-  background-color: #0e0e0e;
+  background-color: #10243e;
 }
 /* line 169, ../../zurb_foundation/scss/foundation/components/_buttons.scss */
 .top-bar-section ul li > a.button:hover, .top-bar-section ul .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link li > a:hover, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link .top-bar-section ul li > a:hover, .top-bar-section ul li > a.button:focus, .top-bar-section ul .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link li > a:focus, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link .top-bar-section ul li > a:focus {
@@ -7637,13 +7637,13 @@ meta.foundation-mq-topbar {
 }
 /* line 352, ../../zurb_foundation/scss/foundation/components/_top-bar.scss */
 .top-bar-section ul li > a.button.secondary, .top-bar-section ul .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link li > a.secondary, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link .top-bar-section ul li > a.secondary {
-  background-color: #bbdeef;
-  border-color: #20678a;
-  color: #333333;
+  background-color: #9A1697;
+  border-color: #3e093c;
+  color: white;
 }
 /* line 163, ../../zurb_foundation/scss/foundation/components/_buttons.scss */
 .top-bar-section ul li > a.button.secondary:hover, .top-bar-section ul .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link li > a.secondary:hover, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link .top-bar-section ul li > a.secondary:hover, .top-bar-section ul li > a.button.secondary:focus, .top-bar-section ul .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link li > a.secondary:focus, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link .top-bar-section ul li > a.secondary:focus {
-  background-color: #20678a;
+  background-color: #3e093c;
 }
 /* line 169, ../../zurb_foundation/scss/foundation/components/_buttons.scss */
 .top-bar-section ul li > a.button.secondary:hover, .top-bar-section ul .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link li > a.secondary:hover, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link .top-bar-section ul li > a.secondary:hover, .top-bar-section ul li > a.button.secondary:focus, .top-bar-section ul .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link li > a.secondary:focus, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link .top-bar-section ul li > a.secondary:focus {
@@ -7664,17 +7664,17 @@ meta.foundation-mq-topbar {
   color: white;
 }
 /* line 354, ../../zurb_foundation/scss/foundation/components/_top-bar.scss */
-.top-bar-section ul li > a.button.alert, .top-bar-section ul .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link li > a, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link .top-bar-section ul li > a {
-  background-color: #a32c20;
-  border-color: #41120d;
+.top-bar-section ul li > a.button.alert, .top-bar-section ul .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link li > a.alert, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link .top-bar-section ul li > a.alert {
+  background-color: #9A1697;
+  border-color: #3e093c;
   color: white;
 }
 /* line 163, ../../zurb_foundation/scss/foundation/components/_buttons.scss */
-.top-bar-section ul li > a.button.alert:hover, .top-bar-section ul .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link li > a:hover, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link .top-bar-section ul li > a:hover, .top-bar-section ul li > a.button.alert:focus, .top-bar-section ul .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link li > a:focus, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link .top-bar-section ul li > a:focus {
-  background-color: #41120d;
+.top-bar-section ul li > a.button.alert:hover, .top-bar-section ul .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link li > a.alert:hover, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link .top-bar-section ul li > a.alert:hover, .top-bar-section ul li > a.button.alert:focus, .top-bar-section ul .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link li > a.alert:focus, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link .top-bar-section ul li > a.alert:focus {
+  background-color: #3e093c;
 }
 /* line 169, ../../zurb_foundation/scss/foundation/components/_buttons.scss */
-.top-bar-section ul li > a.button.alert:hover, .top-bar-section ul .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link li > a:hover, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link .top-bar-section ul li > a:hover, .top-bar-section ul li > a.button.alert:focus, .top-bar-section ul .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link li > a:focus, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link .top-bar-section ul li > a:focus {
+.top-bar-section ul li > a.button.alert:hover, .top-bar-section ul .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link li > a.alert:hover, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link .top-bar-section ul li > a.alert:hover, .top-bar-section ul li > a.button.alert:focus, .top-bar-section ul .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link li > a.alert:focus, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link .top-bar-section ul li > a.alert:focus {
   color: white;
 }
 /* line 355, ../../zurb_foundation/scss/foundation/components/_top-bar.scss */
@@ -7710,13 +7710,13 @@ meta.foundation-mq-topbar {
   font-size: 1rem;
   padding-left: 0.9375rem;
   padding-right: 0.9375rem;
-  background-color: #222222;
-  border-color: #0e0e0e;
+  background-color: #295B9C;
+  border-color: #10243e;
   color: white;
 }
 /* line 163, ../../zurb_foundation/scss/foundation/components/_buttons.scss */
 .top-bar-section ul li > button:hover, .top-bar-section ul li > button:focus {
-  background-color: #0e0e0e;
+  background-color: #10243e;
 }
 /* line 169, ../../zurb_foundation/scss/foundation/components/_buttons.scss */
 .top-bar-section ul li > button:hover, .top-bar-section ul li > button:focus {
@@ -7724,13 +7724,13 @@ meta.foundation-mq-topbar {
 }
 /* line 365, ../../zurb_foundation/scss/foundation/components/_top-bar.scss */
 .top-bar-section ul li > button.secondary {
-  background-color: #bbdeef;
-  border-color: #20678a;
-  color: #333333;
+  background-color: #9A1697;
+  border-color: #3e093c;
+  color: white;
 }
 /* line 163, ../../zurb_foundation/scss/foundation/components/_buttons.scss */
 .top-bar-section ul li > button.secondary:hover, .top-bar-section ul li > button.secondary:focus {
-  background-color: #20678a;
+  background-color: #3e093c;
 }
 /* line 169, ../../zurb_foundation/scss/foundation/components/_buttons.scss */
 .top-bar-section ul li > button.secondary:hover, .top-bar-section ul li > button.secondary:focus {
@@ -7752,13 +7752,13 @@ meta.foundation-mq-topbar {
 }
 /* line 367, ../../zurb_foundation/scss/foundation/components/_top-bar.scss */
 .top-bar-section ul li > button.alert {
-  background-color: #a32c20;
-  border-color: #41120d;
+  background-color: #9A1697;
+  border-color: #3e093c;
   color: white;
 }
 /* line 163, ../../zurb_foundation/scss/foundation/components/_buttons.scss */
 .top-bar-section ul li > button.alert:hover, .top-bar-section ul li > button.alert:focus {
-  background-color: #41120d;
+  background-color: #3e093c;
 }
 /* line 169, ../../zurb_foundation/scss/foundation/components/_buttons.scss */
 .top-bar-section ul li > button.alert:hover, .top-bar-section ul li > button.alert:focus {
@@ -7795,17 +7795,17 @@ meta.foundation-mq-topbar {
 /* line 373, ../../zurb_foundation/scss/foundation/components/_top-bar.scss */
 .top-bar-section ul li:hover:not(.has-form) > a {
   background-color: #606060;
-  color: #222222;
-  background: #bbdeef;
+  color: #295B9C;
+  background: #9A1697;
 }
 /* line 383, ../../zurb_foundation/scss/foundation/components/_top-bar.scss */
 .top-bar-section ul li.active > a {
-  background: #222222;
+  background: #295B9C;
   color: white;
 }
 /* line 387, ../../zurb_foundation/scss/foundation/components/_top-bar.scss */
 .top-bar-section ul li.active > a:hover {
-  background: #1d1d1d;
+  background: #234e86;
   color: white;
 }
 /* line 395, ../../zurb_foundation/scss/foundation/components/_top-bar.scss */
@@ -7920,7 +7920,7 @@ meta.foundation-mq-topbar {
 @media only screen and (min-width: 40.0625em) {
   /* line 492, ../../zurb_foundation/scss/foundation/components/_top-bar.scss */
   .top-bar {
-    background: #222222;
+    background: #295B9C;
     overflow: visible;
   }
   /* line 239, ../../zurb_foundation/scss/foundation/components/_global.scss */
@@ -7971,7 +7971,7 @@ meta.foundation-mq-topbar {
   }
   /* line 525, ../../zurb_foundation/scss/foundation/components/_top-bar.scss */
   .top-bar.expanded {
-    background: #222222;
+    background: #295B9C;
   }
 
   /* line 530, ../../zurb_foundation/scss/foundation/components/_top-bar.scss */
@@ -8003,30 +8003,30 @@ meta.foundation-mq-topbar {
   /* line 553, ../../zurb_foundation/scss/foundation/components/_top-bar.scss */
   .top-bar-section li.hover > a:not(.button) {
     background-color: #606060;
-    background: #bbdeef;
-    color: #222222;
+    background: #9A1697;
+    color: #295B9C;
   }
   /* line 563, ../../zurb_foundation/scss/foundation/components/_top-bar.scss */
   .top-bar-section li:not(.has-form) a:not(.button) {
-    background: #222222;
+    background: #295B9C;
     line-height: 2.8125rem;
     padding: 0 0.9375rem;
   }
   /* line 567, ../../zurb_foundation/scss/foundation/components/_top-bar.scss */
   .top-bar-section li:not(.has-form) a:not(.button):hover {
     background-color: #606060;
-    background: #bbdeef;
+    background: #9A1697;
   }
   /* line 577, ../../zurb_foundation/scss/foundation/components/_top-bar.scss */
   .top-bar-section li.active:not(.has-form) a:not(.button) {
-    background: #222222;
+    background: #295B9C;
     color: white;
     line-height: 2.8125rem;
     padding: 0 0.9375rem;
   }
   /* line 582, ../../zurb_foundation/scss/foundation/components/_top-bar.scss */
   .top-bar-section li.active:not(.has-form) a:not(.button):hover {
-    background: #1d1d1d;
+    background: #234e86;
     color: white;
   }
   /* line 592, ../../zurb_foundation/scss/foundation/components/_top-bar.scss */
@@ -8094,7 +8094,7 @@ meta.foundation-mq-topbar {
   }
   /* line 640, ../../zurb_foundation/scss/foundation/components/_top-bar.scss */
   .top-bar-section .dropdown li a {
-    background: #bbdeef;
+    background: #9A1697;
     color: white;
     line-height: 2.8125rem;
     padding: 12px 0.9375rem;
@@ -8102,14 +8102,14 @@ meta.foundation-mq-topbar {
   }
   /* line 649, ../../zurb_foundation/scss/foundation/components/_top-bar.scss */
   .top-bar-section .dropdown li:not(.has-form):not(.active) > a:not(.button) {
-    background: #bbdeef;
+    background: #9A1697;
     color: white;
   }
   /* line 654, ../../zurb_foundation/scss/foundation/components/_top-bar.scss */
   .top-bar-section .dropdown li:not(.has-form):not(.active):hover > a:not(.button) {
     background-color: #606060;
-    color: #222222;
-    background: #bbdeef;
+    color: #295B9C;
+    background: #9A1697;
   }
   /* line 663, ../../zurb_foundation/scss/foundation/components/_top-bar.scss */
   .top-bar-section .dropdown li label {
@@ -8124,7 +8124,7 @@ meta.foundation-mq-topbar {
   /* line 676, ../../zurb_foundation/scss/foundation/components/_top-bar.scss */
   .top-bar-section > ul > .divider,
   .top-bar-section > ul > [role="separator"] {
-    border-right: solid 1px #3f3f3f;
+    border-right: solid 1px #316ebc;
     border-bottom: none;
     border-top: none;
     clear: none;
@@ -8133,7 +8133,7 @@ meta.foundation-mq-topbar {
   }
   /* line 686, ../../zurb_foundation/scss/foundation/components/_top-bar.scss */
   .top-bar-section .has-form {
-    background: #222222;
+    background: #295B9C;
     height: 2.8125rem;
     padding: 0 0.9375rem;
   }
@@ -8159,12 +8159,12 @@ meta.foundation-mq-topbar {
   /* line 716, ../../zurb_foundation/scss/foundation/components/_top-bar.scss */
   .no-js .top-bar-section ul li:hover > a {
     background-color: #606060;
-    background: #bbdeef;
-    color: #222222;
+    background: #9A1697;
+    color: #295B9C;
   }
   /* line 725, ../../zurb_foundation/scss/foundation/components/_top-bar.scss */
   .no-js .top-bar-section ul li:active > a {
-    background: #222222;
+    background: #295B9C;
     color: white;
   }
   /* line 733, ../../zurb_foundation/scss/foundation/components/_top-bar.scss */
@@ -8446,13 +8446,13 @@ td {
 /* Default Link Styles */
 /* line 220, ../../zurb_foundation/scss/foundation/components/_type.scss */
 a {
-  color: #a32c20;
+  color: #9A1697;
   line-height: inherit;
   text-decoration: none;
 }
 /* line 225, ../../zurb_foundation/scss/foundation/components/_type.scss */
 a:hover, a:focus {
-  color: #8c261c;
+  color: #c31cbf;
 }
 /* line 233, ../../zurb_foundation/scss/foundation/components/_type.scss */
 a img {
@@ -8484,7 +8484,7 @@ p aside {
 /* Default header styles */
 /* line 255, ../../zurb_foundation/scss/foundation/components/_type.scss */
 h1, h2, h3, h4, h5, h6 {
-  color: #5282a5;
+  color: #84A6DC;
   font-family: "gilda", Georgia, Cambria, "Georgia", serif;
   font-style: normal;
   font-weight: normal;
@@ -8495,7 +8495,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 /* line 265, ../../zurb_foundation/scss/foundation/components/_type.scss */
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
-  color: #8daec6;
+  color: #afc5e8;
   font-size: 60%;
   line-height: 0;
 }
@@ -8533,7 +8533,7 @@ h6 {
 /* line 279, ../../zurb_foundation/scss/foundation/components/_type.scss */
 .subheader {
   line-height: 1.4;
-  color: #8daec6;
+  color: #afc5e8;
   font-weight: normal;
   margin-top: 0.2rem;
   margin-bottom: 0.5rem;
@@ -8571,8 +8571,8 @@ small {
 
 /* line 307, ../../zurb_foundation/scss/foundation/components/_type.scss */
 code {
-  background-color: #ebf5fa;
-  border-color: #c3e2f1;
+  background-color: #f2a7f1;
+  border-color: #ed83eb;
   border-style: solid;
   border-width: 1px;
   color: #333333;
@@ -8667,7 +8667,7 @@ abbr,
 acronym {
   text-transform: uppercase;
   font-size: 90%;
-  color: #222222;
+  color: #295B9C;
   cursor: help;
 }
 
@@ -8691,7 +8691,7 @@ blockquote {
 blockquote cite {
   display: block;
   font-size: 0.8125rem;
-  color: #789fbc;
+  color: #a0bae4;
 }
 /* line 414, ../../zurb_foundation/scss/foundation/components/_type.scss */
 blockquote cite:before {
@@ -8700,14 +8700,14 @@ blockquote cite:before {
 /* line 418, ../../zurb_foundation/scss/foundation/components/_type.scss */
 blockquote cite a,
 blockquote cite a:visited {
-  color: #789fbc;
+  color: #a0bae4;
 }
 
 /* line 424, ../../zurb_foundation/scss/foundation/components/_type.scss */
 blockquote,
 blockquote p {
   line-height: 1.6;
-  color: #8daec6;
+  color: #afc5e8;
 }
 
 /* Microformats */
@@ -10272,102 +10272,125 @@ th.hide-for-touch {
 /* Theme for the header region */
 /* line 2, ../scss/layout/_header.scss */
 .header-wrap {
-  background-color: rgba(255, 255, 255, 0.7);
+  position: relative;
+  z-index: 2;
+  border-bottom: 1px solid #295B9C;
+  background-color: #295B9C;
 }
-/* line 6, ../scss/layout/_header.scss */
+/* line 8, ../scss/layout/_header.scss */
+.header-wrap #block-mtm-foundation-branding, .header-wrap #block-brandingfront {
+  float: left;
+  position: absolute;
+  background: white;
+  border-radius: 0 0 20% 20%;
+  border: 2px solid #295B9C;
+  border-top: 0;
+}
+/* line 15, ../scss/layout/_header.scss */
+.header-wrap #block-mtm-foundation-branding img, .header-wrap #block-brandingfront img {
+  padding: 1em 0;
+}
+/* line 20, ../scss/layout/_header.scss */
+.header-wrap #block-brandingfront img {
+  padding: .5em 0;
+}
+/* line 26, ../scss/layout/_header.scss */
 .header-wrap #block-mtm-foundation-main-menu .menu-wrap ul {
-  text-align: center;
   padding-top: 1.875rem;
 }
-/* line 9, ../scss/layout/_header.scss */
+/* line 29, ../scss/layout/_header.scss */
 .header-wrap #block-mtm-foundation-main-menu .menu-wrap ul li {
   display: inline-block;
-  padding-right: 2.5rem;
+  padding-right: 1.25rem;
 }
-/* line 13, ../scss/layout/_header.scss */
+/* line 33, ../scss/layout/_header.scss */
 .header-wrap #block-mtm-foundation-main-menu .menu-wrap ul li.main-menu-logo a:hover {
   border-bottom: none;
   color: transparent;
 }
-/* line 17, ../scss/layout/_header.scss */
+/* line 37, ../scss/layout/_header.scss */
 .header-wrap #block-mtm-foundation-main-menu .menu-wrap ul li.main-menu-logo img {
   position: relative;
   margin-top: -6rem;
   margin-bottom: -6rem;
   width: 12em;
+  background: #ffffff;
+  border-radius: 30%;
+  border: 4px double #295B9C;
 }
 @media only screen and (min-width: 40.0625em) and (max-width: 64em), only screen and (max-width: 40em) {
-  /* line 9, ../scss/layout/_header.scss */
+  /* line 29, ../scss/layout/_header.scss */
   .header-wrap #block-mtm-foundation-main-menu .menu-wrap ul li {
     padding-right: 0.625rem;
   }
 }
-/* line 27, ../scss/layout/_header.scss */
+/* line 50, ../scss/layout/_header.scss */
 .header-wrap #block-mtm-foundation-main-menu .menu-wrap ul li a {
   text-transform: uppercase;
-  color: #000000;
+  color: #ffffff;
 }
-/* line 30, ../scss/layout/_header.scss */
+/* line 53, ../scss/layout/_header.scss */
 .header-wrap #block-mtm-foundation-main-menu .menu-wrap ul li a.is-active, .header-wrap #block-mtm-foundation-main-menu .menu-wrap ul li a:hover {
-  color: #bbdeef;
-  border-bottom: 1px solid #bbdeef;
+  color: #84A6DC;
+  border-bottom: 1px solid #84A6DC;
 }
 @media only screen and (min-width: 40.0625em) and (max-width: 64em), only screen and (max-width: 40em) {
-  /* line 35, ../scss/layout/_header.scss */
+  /* line 58, ../scss/layout/_header.scss */
   .header-wrap #block-mtm-foundation-main-menu .menu-wrap ul li.main-menu-logo {
     float: left;
     padding-bottom: 1.25rem;
   }
 }
-/* line 41, ../scss/layout/_header.scss */
+/* line 64, ../scss/layout/_header.scss */
 .header-wrap #block-mtm-foundation-main-menu .menu-wrap ul li.menu-item {
   padding-top: 1.25rem;
 }
 @media only screen and (max-width: 40em) {
-  /* line 41, ../scss/layout/_header.scss */
+  /* line 64, ../scss/layout/_header.scss */
   .header-wrap #block-mtm-foundation-main-menu .menu-wrap ul li.menu-item {
     display: none;
   }
 }
-/* line 46, ../scss/layout/_header.scss */
+/* line 69, ../scss/layout/_header.scss */
 .header-wrap #block-mtm-foundation-main-menu .menu-wrap ul li.menu-item:hover {
   background-color: transparent;
 }
-/* line 53, ../scss/layout/_header.scss */
+/* line 76, ../scss/layout/_header.scss */
 .header-wrap #block-mtm-foundation-main-menu .menu-mobile-wrap {
   display: none;
   float: right;
 }
 @media only screen and (max-width: 40em) {
-  /* line 53, ../scss/layout/_header.scss */
+  /* line 76, ../scss/layout/_header.scss */
   .header-wrap #block-mtm-foundation-main-menu .menu-mobile-wrap {
     display: block;
   }
 }
-/* line 59, ../scss/layout/_header.scss */
+/* line 82, ../scss/layout/_header.scss */
 .header-wrap #block-mtm-foundation-main-menu .menu-mobile-wrap .main-menu-logo {
   display: none;
 }
-/* line 62, ../scss/layout/_header.scss */
+/* line 85, ../scss/layout/_header.scss */
 .header-wrap #block-mtm-foundation-main-menu .menu-mobile-wrap .menu-icon {
   color: purple;
   font-size: 1.25rem;
 }
 
 /* Theme for the meta region */
-/* line 71, ../scss/layout/_header.scss */
+/* line 94, ../scss/layout/_header.scss */
 .meta-wrap {
+  display: none;
   height: 4rem;
   max-width: none;
   margin: 0;
-  background-color: #5282a5;
+  background-color: #84A6DC;
   padding: 0.625rem;
 }
-/* line 77, ../scss/layout/_header.scss */
+/* line 101, ../scss/layout/_header.scss */
 .meta-wrap a {
   color: white;
 }
-/* line 82, ../scss/layout/_header.scss */
+/* line 106, ../scss/layout/_header.scss */
 .meta-wrap .meta-login .account-link:before {
   background-image: url(../images/user.svg);
   background-size: 20px;
@@ -10378,11 +10401,11 @@ th.hide-for-touch {
   left: -10px;
   top: 1px;
 }
-/* line 93, ../scss/layout/_header.scss */
+/* line 117, ../scss/layout/_header.scss */
 .meta-wrap .meta-login a {
   padding-right: 0.625rem;
 }
-/* line 97, ../scss/layout/_header.scss */
+/* line 121, ../scss/layout/_header.scss */
 .meta-wrap .meta-login .language-link:after {
   border: inset 5px;
   content: "";
@@ -10397,13 +10420,21 @@ th.hide-for-touch {
 
 /* line 2, ../scss/layout/_footer.scss */
 footer {
-  background: #5282a5;
+  background: #295B9C;
   color: #ffffff;
   padding: 1.25rem 0;
 }
+/* line 6, ../scss/layout/_footer.scss */
+footer a {
+  color: #ffffff;
+}
+/* line 8, ../scss/layout/_footer.scss */
+footer a:hover, footer a:focus {
+  color: #FFBE4C;
+}
 
 /* Add a generic full width rule for any element */
-/* line 4, ../scss/theme/_components.scss */
+/* line 3, ../scss/theme/_components.scss */
 .full-width, .block-region-top {
   width: 100vw;
   left: calc(-50vw + 50%);
@@ -10413,7 +10444,7 @@ footer {
 
 /*** Multi-Column Settings ***/
 /* The primary region should float over the top region a bit */
-/* line 12, ../scss/theme/_components.scss */
+/* line 11, ../scss/theme/_components.scss */
 .row.row-primary {
   margin-top: -4.375rem;
   position: relative;
@@ -10422,89 +10453,106 @@ footer {
   padding: 1.5625rem;
 }
 @media only screen and (max-width: 40em) {
-  /* line 12, ../scss/theme/_components.scss */
+  /* line 11, ../scss/theme/_components.scss */
   .row.row-primary {
     margin-top: inherit;
   }
 }
 
-/* line 23, ../scss/theme/_components.scss */
+/* line 22, ../scss/theme/_components.scss */
 #block-pagetitle {
   text-align: center;
 }
-/* line 25, ../scss/theme/_components.scss */
+/* line 24, ../scss/theme/_components.scss */
 #block-pagetitle h1 {
   text-transform: capitalize;
   font-family: merriweather;
 }
-/* line 29, ../scss/theme/_components.scss */
+/* line 28, ../scss/theme/_components.scss */
 #block-pagetitle .block-title {
   margin: 0;
 }
 
-/* line 34, ../scss/theme/_components.scss */
+/* line 33, ../scss/theme/_components.scss */
 .field-name-field-hero-image img {
   width: 100%;
 }
 
 /* Generic hero block styles */
-/* line 40, ../scss/theme/_components.scss */
+/* line 39, ../scss/theme/_components.scss */
 .hero-block-fields, .field-node--field-hero-block {
   color: #ffffff;
   z-index: 100;
 }
-/* line 43, ../scss/theme/_components.scss */
-.hero-block-fields .field-block-content--field-first-line, .hero-block-fields .field-block-content--field-second-line, .hero-block-fields .field-block-content--field-hero-link, .field-node--field-hero-block .field-block-content--field-first-line, .field-node--field-hero-block .field-block-content--field-second-line, .field-node--field-hero-block .field-block-content--field-hero-link {
+/* line 42, ../scss/theme/_components.scss */
+.hero-block-fields .field-block-content--field-first-line, .hero-block-fields .field-block-content--field-second-line, .hero-block-fields .field-block-content--field-hero-link, .hero-block-fields .field-block-content--field-photo-credit, .field-node--field-hero-block .field-block-content--field-first-line, .field-node--field-hero-block .field-block-content--field-second-line, .field-node--field-hero-block .field-block-content--field-hero-link, .field-node--field-hero-block .field-block-content--field-photo-credit {
   position: absolute;
   text-align: center;
   width: 100%;
   padding-right: 1.875rem;
 }
-/* line 49, ../scss/theme/_components.scss */
+/* line 48, ../scss/theme/_components.scss */
 .hero-block-fields .field-block-content--field-first-line, .field-node--field-hero-block .field-block-content--field-first-line {
   top: 20%;
   font-size: 5rem;
   text-transform: capitalize;
 }
 @media only screen and (max-width: 40em) {
-  /* line 49, ../scss/theme/_components.scss */
+  /* line 48, ../scss/theme/_components.scss */
   .hero-block-fields .field-block-content--field-first-line, .field-node--field-hero-block .field-block-content--field-first-line {
     top: 0;
     font-size: 1.875rem;
   }
 }
-/* line 58, ../scss/theme/_components.scss */
+/* line 57, ../scss/theme/_components.scss */
 .hero-block-fields .field-block-content--field-second-line, .field-node--field-hero-block .field-block-content--field-second-line {
   top: 60%;
   font-size: 1.5625rem;
   text-transform: capitalize;
 }
 @media only screen and (max-width: 40em) {
-  /* line 58, ../scss/theme/_components.scss */
+  /* line 57, ../scss/theme/_components.scss */
   .hero-block-fields .field-block-content--field-second-line, .field-node--field-hero-block .field-block-content--field-second-line {
     top: 40%;
     font-size: 1.25rem;
   }
 }
-/* line 67, ../scss/theme/_components.scss */
+/* line 66, ../scss/theme/_components.scss */
 .hero-block-fields .field-block-content--field-hero-link, .field-node--field-hero-block .field-block-content--field-hero-link {
   top: 80%;
   font-size: 1.5625rem;
 }
 @media only screen and (max-width: 40em) {
-  /* line 67, ../scss/theme/_components.scss */
+  /* line 66, ../scss/theme/_components.scss */
   .hero-block-fields .field-block-content--field-hero-link, .field-node--field-hero-block .field-block-content--field-hero-link {
     top: 50%;
     font-size: 1.25rem;
   }
 }
+/* line 74, ../scss/theme/_components.scss */
+.hero-block-fields .field-block-content--field-photo-credit, .field-node--field-hero-block .field-block-content--field-photo-credit {
+  bottom: 10%;
+  text-align: left;
+  padding-left: 1.875rem;
+  font-size: 0.75rem;
+}
+@media only screen and (max-width: 40em) {
+  /* line 74, ../scss/theme/_components.scss */
+  .hero-block-fields .field-block-content--field-photo-credit, .field-node--field-hero-block .field-block-content--field-photo-credit {
+    font-size: 0.5rem;
+  }
+}
 
 /* Generic slideshow style */
-/* line 79, ../scss/theme/_components.scss */
+/* line 87, ../scss/theme/_components.scss */
 .mgm-tools-slideshow .slick-slide {
   position: relative;
 }
-/* line 82, ../scss/theme/_components.scss */
+/* line 89, ../scss/theme/_components.scss */
+.mgm-tools-slideshow .slick-slide img {
+  padding: 0;
+}
+/* line 93, ../scss/theme/_components.scss */
 .mgm-tools-slideshow .slick-dots {
   position: absolute;
   bottom: 4.375rem;
@@ -10513,119 +10561,128 @@ footer {
   margin: 0;
 }
 @media only screen and (max-width: 40em) {
-  /* line 82, ../scss/theme/_components.scss */
+  /* line 93, ../scss/theme/_components.scss */
   .mgm-tools-slideshow .slick-dots {
     display: none !important;
   }
 }
-/* line 90, ../scss/theme/_components.scss */
+/* line 102, ../scss/theme/_components.scss */
 .mgm-tools-slideshow .slick-dots li {
   display: inline-block;
   padding-right: 1.25rem;
 }
-/* line 93, ../scss/theme/_components.scss */
+/* line 105, ../scss/theme/_components.scss */
 .mgm-tools-slideshow .slick-dots li:last-child {
   padding-right: 0;
 }
-/* line 98, ../scss/theme/_components.scss */
+/* line 109, ../scss/theme/_components.scss */
 .mgm-tools-slideshow .slick-dots button {
   height: 1.25rem;
   width: 1.25rem;
   padding: 0.3125rem;
   border-radius: 0.625rem;
   color: transparent;
+  background-color: #295B9C;
 }
-/* line 106, ../scss/theme/_components.scss */
+/* line 118, ../scss/theme/_components.scss */
 .mgm-tools-slideshow .slick-dots .slick-active button {
-  background-color: #222222;
+  background-color: #84A6DC;
 }
 
-/* line 113, ../scss/theme/_components.scss */
+/* line 1, ../scss/theme/_main.scss */
 blockquote {
   border: 0;
   font-weight: bold;
-  color: #222222;
+  color: #295B9C;
   font-style: italic;
   margin-left: 1.875rem;
 }
-/* line 119, ../scss/theme/_components.scss */
+/* line 7, ../scss/theme/_main.scss */
 blockquote:before {
   content: "\"";
 }
 
-/* Homepage styles */
-/* line 3, ../scss/theme/_main.scss */
-.header-wrap {
-  position: relative;
-  z-index: 2;
-  border-bottom: 1px solid #222222;
-  margin-top: 2rem;
+/* line 12, ../scss/theme/_main.scss */
+img {
+  padding: 1em;
+}
+/* line 14, ../scss/theme/_main.scss */
+img .align-left {
+  clear: both;
+  padding-left: 0;
+}
+/* line 18, ../scss/theme/_main.scss */
+img .align-right {
+  clear: both;
+  padding-right: 0;
 }
 
-/* line 10, ../scss/theme/_main.scss */
+/* line 24, ../scss/theme/_main.scss */
+h1.page-title {
+  font-size: 3rem;
+  padding: .25em 0 1em .25em;
+}
+
+/* Homepage styles */
+/* line 30, ../scss/theme/_main.scss */
 .mtm-landing-home {
   /* Slideshow block styles */
   /* This is the primary-region service promo HTML block */
   /* Article view theme */
 }
-@media only screen and (min-width: 40.0625em) {
-  /* line 10, ../scss/theme/_main.scss */
-  .mtm-landing-home {
-    margin-top: -7rem;
-  }
-}
-/* line 16, ../scss/theme/_main.scss */
+/* line 34, ../scss/theme/_main.scss */
 .mtm-landing-home .hero-block-fields .field-block-content--field-first-line, .mtm-landing-home .field-node--field-hero-block .field-block-content--field-first-line {
+  max-width: 62.5rem;
+  width: 100%;
+  margin: 0 auto;
   font-size: 3.125rem;
 }
 @media only screen and (max-width: 40em) {
-  /* line 16, ../scss/theme/_main.scss */
+  /* line 34, ../scss/theme/_main.scss */
   .mtm-landing-home .hero-block-fields .field-block-content--field-first-line, .mtm-landing-home .field-node--field-hero-block .field-block-content--field-first-line {
     font-size: 1.25rem;
   }
 }
-/* line 22, ../scss/theme/_main.scss */
+/* line 43, ../scss/theme/_main.scss */
 .mtm-landing-home .hero-block-fields .field-block-content--field-second-line, .mtm-landing-home .field-node--field-hero-block .field-block-content--field-second-line {
   font-size: 1.5625rem;
 }
 @media only screen and (max-width: 40em) {
-  /* line 22, ../scss/theme/_main.scss */
+  /* line 43, ../scss/theme/_main.scss */
   .mtm-landing-home .hero-block-fields .field-block-content--field-second-line, .mtm-landing-home .field-node--field-hero-block .field-block-content--field-second-line {
     font-size: 1.25rem;
   }
 }
-/* line 28, ../scss/theme/_main.scss */
+/* line 49, ../scss/theme/_main.scss */
 .mtm-landing-home .hero-block-fields .field-block-content--field-hero-link, .mtm-landing-home .field-node--field-hero-block .field-block-content--field-hero-link {
   font-size: 1.5625rem;
 }
 @media only screen and (max-width: 40em) {
-  /* line 28, ../scss/theme/_main.scss */
+  /* line 49, ../scss/theme/_main.scss */
   .mtm-landing-home .hero-block-fields .field-block-content--field-hero-link, .mtm-landing-home .field-node--field-hero-block .field-block-content--field-hero-link {
     font-size: 1.25rem;
   }
 }
-/* line 36, ../scss/theme/_main.scss */
-.mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-image img {
-  -webkit-filter: sepia(1);
-  -moz-filter: sepia(1);
-  -ms-filter: sepia(1);
-  -o-filter: sepia(1);
-  filter: sepia(1);
+/* line 57, ../scss/theme/_main.scss */
+.mtm-landing-home .mgm-tools-slideshow .slick-dots {
+  position: relative;
+  text-align: right;
+  margin: 0 auto;
+  max-width: 62.5rem;
+  padding-right: 1.875rem;
 }
-/* line 39, ../scss/theme/_main.scss */
+/* line 64, ../scss/theme/_main.scss */
 .mtm-landing-home .mgm-tools-slideshow .hero-block-fields {
-  position: absolute;
-  top: 25%;
-  height: 21.875rem;
-  width: 18.75rem;
-  color: #bbdeef;
-  background-color: rgba(34, 34, 34, 0.5);
-  background-size: contain;
-  background-repeat: no-repeat;
+  max-width: 62.5rem;
+  margin: 0 auto;
   width: 100%;
+  position: relative;
+  height: 21.875rem;
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.25);
 }
 @media only screen and (min-width: 40.0625em) and (max-width: 64em), only screen and (max-width: 40em) {
-  /* line 39, ../scss/theme/_main.scss */
+  /* line 64, ../scss/theme/_main.scss */
   .mtm-landing-home .mgm-tools-slideshow .hero-block-fields {
     height: inherit;
     left: 0;
@@ -10633,57 +10690,90 @@ blockquote:before {
   }
 }
 @media only screen and (min-width: 40.0625em) and (max-width: 64em) {
-  /* line 39, ../scss/theme/_main.scss */
+  /* line 64, ../scss/theme/_main.scss */
   .mtm-landing-home .mgm-tools-slideshow .hero-block-fields {
     padding-top: 9.375rem;
   }
 }
+/* line 88, ../scss/theme/_main.scss */
+.mtm-landing-home .mgm-tools-slideshow .field-block-content--field-first-line, .mtm-landing-home .mgm-tools-slideshow .field-block-content--field-second-line, .mtm-landing-home .mgm-tools-slideshow .field-block-content--field-hero-link {
+  text-align: right;
+}
+/* line 91, ../scss/theme/_main.scss */
+.mtm-landing-home .mgm-tools-slideshow .field-name-field-image img {
+  -webkit-filter: grayscale(1);
+  -moz-filter: grayscale(1);
+  -ms-filter: grayscale(1);
+  -o-filter: grayscale(1);
+  filter: grayscale(1);
+}
+/* line 94, ../scss/theme/_main.scss */
+.mtm-landing-home .mgm-tools-slideshow .field-name-field-first-line {
+  top: 10%;
+}
 @media only screen and (max-width: 40em) {
-  /* line 58, ../scss/theme/_main.scss */
+  /* line 94, ../scss/theme/_main.scss */
   .mtm-landing-home .mgm-tools-slideshow .field-name-field-first-line {
     font-size: 1.25rem;
   }
 }
-/* line 64, ../scss/theme/_main.scss */
+/* line 101, ../scss/theme/_main.scss */
 .mtm-landing-home .mgm-tools-slideshow .field-name-field-second-line {
-  top: 50%;
+  top: 40%;
+  -webkit-text-stroke-width: 0;
+  color: #ffffff;
 }
 @media only screen and (min-width: 40.0625em) and (max-width: 64em), only screen and (max-width: 40em) {
-  /* line 64, ../scss/theme/_main.scss */
+  /* line 101, ../scss/theme/_main.scss */
   .mtm-landing-home .mgm-tools-slideshow .field-name-field-second-line {
     padding-top: 0;
   }
 }
+/* line 109, ../scss/theme/_main.scss */
+.mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link {
+  top: 60%;
+  -webkit-text-stroke-width: 0;
+}
 @media only screen and (min-width: 40.0625em) and (max-width: 64em), only screen and (max-width: 40em) {
-  /* line 70, ../scss/theme/_main.scss */
+  /* line 109, ../scss/theme/_main.scss */
   .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link {
     padding-top: 0.3125rem;
   }
 }
-/* line 74, ../scss/theme/_main.scss */
+/* line 115, ../scss/theme/_main.scss */
 .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a {
   text-transform: uppercase;
 }
-/* line 82, ../scss/theme/_main.scss */
+/* line 121, ../scss/theme/_main.scss */
+.mtm-landing-home .mgm-tools-slideshow .field-name-field-photo-credit {
+  -webkit-text-stroke-width: 0;
+  color: #ffffff;
+}
+/* line 125, ../scss/theme/_main.scss */
+.mtm-landing-home .mgm-tools-slideshow .field-block-content--field-image {
+  position: absolute;
+  top: 0;
+}
+/* line 131, ../scss/theme/_main.scss */
 .mtm-landing-home .homepage-service-promo {
   text-align: center;
 }
-/* line 84, ../scss/theme/_main.scss */
+/* line 133, ../scss/theme/_main.scss */
 .mtm-landing-home .homepage-service-promo h3 {
   color: #606060;
 }
-/* line 86, ../scss/theme/_main.scss */
+/* line 135, ../scss/theme/_main.scss */
 .mtm-landing-home .homepage-service-promo h3 strong, .mtm-landing-home .homepage-service-promo h3 b {
-  color: #5282a5;
+  color: #84A6DC;
 }
-/* line 90, ../scss/theme/_main.scss */
+/* line 139, ../scss/theme/_main.scss */
 .mtm-landing-home .homepage-service-promo hr {
   margin: 1.25rem auto 3.125rem;
   width: 70%;
   border-width: 0.1875rem;
-  border-color: #5282a5;
+  border-color: #84A6DC;
 }
-/* line 96, ../scss/theme/_main.scss */
+/* line 145, ../scss/theme/_main.scss */
 .mtm-landing-home .homepage-service-promo figure {
   display: inline-block;
   vertical-align: top;
@@ -10691,39 +10781,39 @@ blockquote:before {
   padding: 0 1.875rem 0 1.875rem;
   border-right: 0.0625rem solid #818181;
 }
-/* line 97, ../scss/theme/_main.scss */
+/* line 146, ../scss/theme/_main.scss */
 .mtm-landing-home .homepage-service-promo figure h4 {
-  color: #222222;
+  color: #295B9C;
   text-transform: uppercase;
   font-size: 1.125rem;
   margin-top: 1.25rem;
 }
 @media only screen and (min-width: 40.0625em) and (max-width: 64em), only screen and (max-width: 40em) {
-  /* line 96, ../scss/theme/_main.scss */
+  /* line 145, ../scss/theme/_main.scss */
   .mtm-landing-home .homepage-service-promo figure {
     border-right: none;
   }
 }
-/* line 111, ../scss/theme/_main.scss */
+/* line 160, ../scss/theme/_main.scss */
 .mtm-landing-home .homepage-service-promo figure:last-child {
   padding-right: 0;
   border-right: none;
 }
 @media only screen and (max-width: 40em) {
-  /* line 111, ../scss/theme/_main.scss */
+  /* line 160, ../scss/theme/_main.scss */
   .mtm-landing-home .homepage-service-promo figure:last-child {
     padding-right: 1.875rem;
   }
 }
-/* line 118, ../scss/theme/_main.scss */
+/* line 167, ../scss/theme/_main.scss */
 .mtm-landing-home .homepage-service-promo figure:first-child {
   padding-left: 0;
 }
-/* line 124, ../scss/theme/_main.scss */
+/* line 173, ../scss/theme/_main.scss */
 .mtm-landing-home .homepage-articles {
   /* Format the title */
 }
-/* line 126, ../scss/theme/_main.scss */
+/* line 175, ../scss/theme/_main.scss */
 .mtm-landing-home .homepage-articles .block-title {
   text-align: center;
   font-size: 1.875rem;
@@ -10734,7 +10824,7 @@ blockquote:before {
   position: relative;
   /* Add an arrow in the center(ish) of the div */
 }
-/* line 135, ../scss/theme/_main.scss */
+/* line 184, ../scss/theme/_main.scss */
 .mtm-landing-home .homepage-articles .block-title:after {
   top: 100%;
   left: 50%;
@@ -10749,63 +10839,63 @@ blockquote:before {
   margin-left: -0.625rem;
 }
 @media only screen and (min-width: 40.0625em) and (max-width: 64em), only screen and (max-width: 40em) {
-  /* line 150, ../scss/theme/_main.scss */
+  /* line 199, ../scss/theme/_main.scss */
   .mtm-landing-home .homepage-articles .views-row {
     margin-top: 1.25rem;
   }
 }
-/* line 154, ../scss/theme/_main.scss */
+/* line 203, ../scss/theme/_main.scss */
 .mtm-landing-home .homepage-articles .views-field-title {
   text-align: center;
   margin: 1.25rem;
 }
-/* line 157, ../scss/theme/_main.scss */
+/* line 206, ../scss/theme/_main.scss */
 .mtm-landing-home .homepage-articles .views-field-title a {
   color: inherit;
 }
-/* line 161, ../scss/theme/_main.scss */
+/* line 210, ../scss/theme/_main.scss */
 .mtm-landing-home .homepage-articles .views-field-body {
   margin-left: 0.625rem;
 }
-/* line 163, ../scss/theme/_main.scss */
+/* line 212, ../scss/theme/_main.scss */
 .mtm-landing-home .homepage-articles .views-field-body a {
-  color: #a32c20;
+  color: #9A1697;
 }
 @media only screen and (min-width: 40.0625em) and (max-width: 64em), only screen and (max-width: 40em) {
-  /* line 167, ../scss/theme/_main.scss */
+  /* line 216, ../scss/theme/_main.scss */
   .mtm-landing-home .homepage-articles .views-field-field-image {
     text-align: center;
   }
 }
 
 /* Article/Service node styles */
-/* line 177, ../scss/theme/_main.scss */
+/* line 226, ../scss/theme/_main.scss */
 .node-article, .node-service {
   /* Float the edit buttons on the hero image */
 }
-/* line 179, ../scss/theme/_main.scss */
+/* line 228, ../scss/theme/_main.scss */
 .node-article .field-name-field-image img, .node-service .field-name-field-image img {
   width: 100%;
 }
 @media only screen and (min-width: 40.0625em) {
-  /* line 179, ../scss/theme/_main.scss */
+  /* line 228, ../scss/theme/_main.scss */
   .node-article .field-name-field-image img, .node-service .field-name-field-image img {
     margin-top: -8.125rem;
   }
 }
-/* line 185, ../scss/theme/_main.scss */
+/* line 234, ../scss/theme/_main.scss */
 .node-article .tab-wrap, .node-service .tab-wrap {
   position: absolute;
   z-index: 1;
 }
-/* line 189, ../scss/theme/_main.scss */
+/* line 238, ../scss/theme/_main.scss */
 .node-article article, .node-service article {
   background-color: #ffffff;
   padding: 1.5625rem;
   position: relative;
   z-index: 1;
 }
-/* line 194, ../scss/theme/_main.scss */
+/* line 243, ../scss/theme/_main.scss */
 .node-article article .node-title, .node-service article .node-title {
   text-transform: uppercase;
   text-align: center;
@@ -10813,7 +10903,7 @@ blockquote:before {
   margin-bottom: 1.25rem;
 }
 
-/* line 203, ../scss/theme/_main.scss */
+/* line 252, ../scss/theme/_main.scss */
 .field-name-field-icon-css {
   font-size: 1.875rem;
   height: 1.875rem;
@@ -10821,19 +10911,19 @@ blockquote:before {
   margin: 0 auto 0.9375rem;
 }
 @media only screen and (max-width: 40em) {
-  /* line 203, ../scss/theme/_main.scss */
+  /* line 252, ../scss/theme/_main.scss */
   .field-name-field-icon-css {
     top: 25;
     font-size: 1.875rem;
   }
 }
-/* line 212, ../scss/theme/_main.scss */
+/* line 261, ../scss/theme/_main.scss */
 .field-name-field-icon-css i {
   width: 22.5%;
   float: left;
   text-align: center;
 }
-/* line 217, ../scss/theme/_main.scss */
+/* line 266, ../scss/theme/_main.scss */
 .field-name-field-icon-css .rule {
   background: url(../images/rule-gray.png) repeat-x 20%;
   width: 38.5%;
@@ -10841,43 +10931,43 @@ blockquote:before {
   height: 1.875rem;
 }
 
-/* line 226, ../scss/theme/_main.scss */
+/* line 275, ../scss/theme/_main.scss */
 .services.services-block-text {
   text-align: center;
 }
-/* line 228, ../scss/theme/_main.scss */
+/* line 277, ../scss/theme/_main.scss */
 .services.services-block-text .views-row {
   min-height: 11.25rem;
 }
-/* line 230, ../scss/theme/_main.scss */
+/* line 279, ../scss/theme/_main.scss */
 .services .views-field-field-subtitle {
   font-size: 1rem;
 }
 
-/* line 235, ../scss/theme/_main.scss */
+/* line 284, ../scss/theme/_main.scss */
 .node-article .field-name-body {
   margin: 0 1.875rem 0 1.875rem;
 }
 
-/* line 241, ../scss/theme/_main.scss */
+/* line 290, ../scss/theme/_main.scss */
 section[rel~="schema:comment"] .filter-wrapper {
   display: none;
 }
-/* line 244, ../scss/theme/_main.scss */
+/* line 293, ../scss/theme/_main.scss */
 section[rel~="schema:comment"] h2.field-label {
   font-size: 1.5em;
   margin-top: 20px;
   border-top: 1px solid #000;
   padding-top: 20px;
 }
-/* line 250, ../scss/theme/_main.scss */
+/* line 299, ../scss/theme/_main.scss */
 section[rel~="schema:comment"] .field-items {
   font-size: 1.3em;
-  color: #bbdeef;
+  color: #9A1697;
 }
 
 /* Contact page styles */
-/* line 261, ../scss/theme/_main.scss */
+/* line 308, ../scss/theme/_main.scss */
 .contact-hero img {
   width: 100%;
 }

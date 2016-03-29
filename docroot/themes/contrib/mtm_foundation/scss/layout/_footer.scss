@@ -1,6 +1,13 @@
 // Non-modular or client styles for .l-footer region.
 footer {
-  background: $primary-alt-color;
+  background: $primary-color;
   color: $background-color;
   padding: rem-calc(20) 0;
+  a {
+    color: $background-color;
+    &:hover,
+    &:focus {
+      color: $tertiary-color;
+    }
+  }
 }

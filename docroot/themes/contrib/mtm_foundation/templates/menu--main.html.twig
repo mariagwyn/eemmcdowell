@@ -41,13 +41,8 @@
     {% endif %}
       {% for i,item in items %}
         {%
-          set item_classes = [
-            item.below is not empty ? 'has-flyout'
-          ]
+          set item_classes = [ item.below is not empty ? 'has-flyout' ]
         %}
-        {% if loop.index == 3 and menu_level == 0 %}
-          <li class="main-menu-logo">{{ linked_logo }}</li>
-        {% endif %}
         <li{{ item.attributes.addClass(item_classes) }}>
           {{ link(item.title, item.url) }}
           {% if item.below %}

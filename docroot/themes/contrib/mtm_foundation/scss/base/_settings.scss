@@ -146,16 +146,16 @@ $seafoam     :#bbdeef;
 $light-green :#eff8f7;
 $blue        :#5282a5;
 
-$dark-brown: #9B7B73;
-$medium-tan: lighten($dark-brown, 50%);
+$dark-brown: #775E32;
+$medium-tan: #A48F6E;
 // We use these as default colors throughout
-$primary-color: $jet;
-$primary-alt-color: $blue;
-$secondary-color: $seafoam;
-$tertiary-color:$base;
-$button-alt-color:#ed444d;
-$alert-color: #a32c20;
-$border-color: #bebbbb;
+$primary-color: #295B9C;
+$primary-alt-color: #84A6DC;
+$secondary-color: #9A1697;
+$tertiary-color:#FFBE4C;
+$button-alt-color:#7491BC;
+$alert-color: $secondary-color;
+$border-color: #E6DCC8;
 $background-color: #ffffff;
 // $success-color: #43AC6A;
 // $warning-color: #f08a24;
@@ -297,7 +297,7 @@ $h6-font-reduction: rem-calc(3);
 // $anchor-text-decoration: none;
 $anchor-text-decoration-hover: none;
 $anchor-font-color: $alert-color;
-$anchor-font-color-hover: scale-color($anchor-font-color, $lightness: -14%);
+$anchor-font-color-hover: scale-color($anchor-font-color, $lightness: 14%);
 
 // We use these to style the <hr> element
 // $hr-border-width: 1px;
