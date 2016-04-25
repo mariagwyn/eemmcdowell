@@ -1,7 +1,0 @@
-name: 'Block Class'
-type: module
-description: 'Allows assigning classes to Blocks'
-package: Other
-core: 8.x
-dependencies:
-  - block
