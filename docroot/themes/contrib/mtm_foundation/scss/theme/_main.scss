@@ -25,6 +25,84 @@ h1.page-title {
   font-size: rem-calc(48);
   padding: .25em 0 1em .25em;
 }
+
+.field-name-field-subtitle p {
+  @extend h2;
+  color: $secondary-color;
+  text-align: center;
+}
+
+.field-name-field-icon-css {
+  font-size: rem-calc(30px);
+  height: rem-calc(30px);
+  width: 60%;
+  margin: 0 auto rem-calc(15px);
+  @media #{$small-only} {
+      top: 25;
+      font-size: rem-calc(30px);
+  }
+  i {
+    width: 22.5%;
+    float:left;
+    text-align: center;
+  }
+  .rule {
+    background: url(../images/rule-gray.png) repeat-x 20%;
+    width: 38.5%;
+    float: left;
+    height: rem-calc(30px);
+  }
+}
+/* Article/Service node styles */
+
+.node-article, .node-service {
+  .field-name-body {
+      margin: 0 rem-calc(30px) 0 rem-calc(30px);
+      background: green;
+  }
+  .field-name-field-image {
+    img {
+        width: 100%;
+        @media #{$medium-up} {margin-top:rem-calc(-130px);}
+    }
+  }
+  /* Float the edit buttons on the hero image */
+  .tab-wrap {
+    position: absolute;
+    z-index: 1;
+  }
+  article {
+    background-color: $background-color;
+    padding: rem-calc(25px);
+    position: relative;
+    z-index: 1;
+    .node-title {
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: rem-calc(20px);
+    }
+  }
+}
+
+.node--type-service-page {
+  .page-title {display: none;}
+  &.services-block-text {
+    text-align: center;
+    .views-row {min-height: rem-calc(180);}
+  }
+  .field-name-field-hero-block {
+    color: $background-color;
+    .field-name-field-first-line {}
+    .field-name-field-second-line {}
+    .field-name-field-photo-credit {}
+  }
+}
+.node-article {
+}
+
+
+
 /* Homepage styles */
 
 .mtm-landing-home {
@@ -92,7 +170,6 @@ h1.page-title {
       @include filter(grayscale, 1);
     }
     .field-name-field-first-line {
-      top: 10%;
       //font-size: rem-calc(30px);
       @media #{$small-only} {
           font-size: rem-calc(20px);
@@ -127,164 +204,8 @@ h1.page-title {
       top:0;
     }
   }
-  /* This is the primary-region service promo HTML block */
-  .homepage-service-promo {
-      text-align: center;
-      h3 {
-          color: $charcoal;
-          strong,b {
-              color: $primary-alt-color;
-          }
-      }
-      hr {
-          margin: rem-calc(20px) auto rem-calc(50px);
-          width: 70%;
-          border-width: rem-calc(3px);
-          border-color: $primary-alt-color;
-      }
-      figure {
-          h4 {
-              color: $primary-color;
-              text-transform: uppercase;
-              font-size: rem-calc(18px);
-              margin-top: rem-calc(20px);
-          }
-          display: inline-block;
-          vertical-align: top;
-          margin: 0;
-          padding: 0 rem-calc(30px) 0 rem-calc(30px);
-          border-right: rem-calc(1px) solid $light-gray;
-          @media #{$medium-only},#{$small-only} {
-              border-right: none;
-          }
-          &:last-child {
-              padding-right: 0;
-              border-right: none;
-              @media #{$small-only} {
-                  padding-right: rem-calc(30px);
-              }
-          }
-          &:first-child {
-              padding-left: 0;
-          }
-      }
-  }
-  /* Article view theme */
-  .homepage-articles {
-      /* Format the title */
-      .block-title {
-          text-align: center;
-          font-size: rem-calc(30px);
-          font-weight: 200;
-          padding: rem-calc(10px);
-          margin-bottom: rem-calc(10px);
-          background-color: $seafoam;
-          position: relative;
-          /* Add an arrow in the center(ish) of the div */
-          &:after {
-              top: 100%;
-              left: 50%;
-              border: solid transparent;
-              content: " ";
-              height: 0;
-              width: 0;
-              position: absolute;
-              pointer-events: none;
-              border-top-color: $seafoam;
-              border-width: rem-calc(10px);
-              margin-left: rem-calc(-10px);
-          }
-      }
-      @media #{$medium-only},#{$small-only} {
-          .views-row {
-              margin-top: rem-calc(20px);
-          }
-      }
-      .views-field-title {
-          text-align: center;
-          margin: rem-calc(20px);
-          a {
-              color: inherit;
-          }
-      }
-      .views-field-body {
-          margin-left: rem-calc(10px);
-          a {
-              color: $alert-color;
-          }
-      }
-      .views-field-field-image {
-          @media #{$medium-only},#{$small-only} {
-              text-align: center;
-          }
-      }
-  }
 }
 
-/* Article/Service node styles */
-
-.node-article, .node-service {
-  .field-name-field-image {
-    img {
-        width: 100%;
-        @media #{$medium-up} {margin-top:rem-calc(-130px);}
-    }
-  }
-  /* Float the edit buttons on the hero image */
-  .tab-wrap {
-    position: absolute;
-    z-index: 1;
-  }
-  article {
-    background-color: $background-color;
-    padding: rem-calc(25px);
-    position: relative;
-    z-index: 1;
-    .node-title {
-        text-transform: uppercase;
-        text-align: center;
-        font-weight: bold;
-        margin-bottom: rem-calc(20px);
-    }
-  }
-}
-
-.field-name-field-icon-css {
-  font-size: rem-calc(30px);
-  height: rem-calc(30px);
-  width: 60%;
-  margin: 0 auto rem-calc(15px);
-  @media #{$small-only} {
-      top: 25;
-      font-size: rem-calc(30px);
-  }
-  i {
-    width: 22.5%;
-    float:left;
-    text-align: center;
-  }
-  .rule {
-    background: url(../images/rule-gray.png) repeat-x 20%;
-    width: 38.5%;
-    float: left;
-    height: rem-calc(30px);
-  }
-}
-
-.services {
-  &.services-block-text {
-    text-align: center;
-    .views-row {min-height: rem-calc(180);}
-  }
-  .views-field-field-subtitle {
-    font-size: rem-calc(16); // size of h5
-  }
-}
-.node-article {
-  .field-name-body {
-      margin: 0 rem-calc(30px) 0 rem-calc(30px);
-  }
-}
 
 section[rel~="schema:comment"] {
   .filter-wrapper {
@@ -302,8 +223,9 @@ section[rel~="schema:comment"] {
   }
 }
 
+/* Social Media Buttons */
+ul.platforms {margin-left: 0;}
 /* Contact page styles */
-
 .contact-hero {
   img {
       width: 100%;

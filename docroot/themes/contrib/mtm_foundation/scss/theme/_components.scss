@@ -36,8 +36,16 @@
 }
 
 /* Generic hero block styles */
-.hero-block-fields, .field-node--field-hero-block {
+.hero-block {
   color: $background-color;
+  a {
+    color: $background-color;
+    &:hover {
+      color: $tertiary-color;
+    }
+  }
+}
+.hero-block-fields, .field-node--field-hero-block {
   z-index: 100;
   .field-block-content--field-first-line, .field-block-content--field-second-line, .field-block-content--field-hero-link, .field-block-content--field-photo-credit {
     position: absolute;
@@ -46,8 +54,9 @@
     padding-right: $column-gutter;
   }
   .field-block-content--field-first-line {
-    top: 20%;
+    top: 15%;
     font-size: rem-calc(80);
+    @include stroke(1px, $primary-color);
     @media #{$small-only} {
         top: 0;
         font-size: rem-calc(30px);
@@ -57,11 +66,11 @@
   .field-block-content--field-second-line {
     top: 60%;
     font-size: rem-calc(25px);
+    @include stroke(.5px, $primary-color);
     @media #{$small-only} {
         top: 40%;
         font-size: rem-calc(20px);
     }
-    text-transform: capitalize;
   }
   .field-block-content--field-hero-link {
     top: 80%;

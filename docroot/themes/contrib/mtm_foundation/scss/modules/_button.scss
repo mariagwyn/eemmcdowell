@@ -1,0 +1,54 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+//
+// @variables
+//
+$include-html-button-classes: $include-html-classes !default;
+
+// We use this to control the display property.
+$button-display: inline-block !default;
+$button-margin-bottom: rem-calc(20) !default;
+
+// We use these to control button text styles.
+$button-font-family: $body-font-family !default;
+$button-font-color: $body-bg !default;
+$button-font-color-alt: $body-font-color !default;
+
+.button-group {
+    float: right;
+}
+textarea, select {
+    width: auto;
+}
+input {
+  transition: all 0.25s;
+
+  &[type="search"]::-webkit-search-decoration {
+    display: none;
+  }
+  &:focus {
+    box-shadow: $success-color 0 0 5px 0;
+  }
+  &.text, &[type="text"], &[type="button"], &[type="submit"] {
+    -webkit-appearance: none;
+    border-radius: 0;
+  }
+  &[type="reset"], &[type="submit"], &[type="button"] {
+//    border-radius: 1rem;
+    padding: 0 1rem;
+    height: 2.3125rem;
+    &::-moz-focus-inner {
+      border: 0;
+      padding: 0;
+    }
+  }
+  .form-actions & {
+    margin-right: 5px;
+  }
+}
+
+button:focus, a.button:focus, select:focus, textarea:focus {
+  box-shadow: $success-color 0 0 5px 0;
+}

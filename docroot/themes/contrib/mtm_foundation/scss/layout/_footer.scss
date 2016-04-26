@@ -3,6 +3,7 @@ footer {
   background: $primary-color;
   color: $background-color;
   padding: rem-calc(20) 0;
+  margin-top: rem-calc(20);
   a {
     color: $background-color;
     &:hover,
@@ -10,4 +11,11 @@ footer {
       color: $tertiary-color;
     }
   }
+}
+#block-mtm-foundation-footer {
+  ul li {list-style: none;}
+}
+#footer-middle {
+  padding-left: rem-calc(20);
+  padding-right: rem-calc(20);
 }
