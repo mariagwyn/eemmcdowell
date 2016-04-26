@@ -136,7 +136,7 @@ class AddToAnySettingsForm extends ConfigFormBase {
       '#type'          => 'checkboxes',
       '#title'         => t('Node types'),
       '#description'   => t('Display buttons for these node types.'),
-      '#default_value' => ( ! empty($addtoany_settings->get('nodetypes')) ) ? $addtoany_settings->get('nodetypes') : array(),
+      '#default_value' => $addtoany_settings->get('nodetypes'),
       '#options'       => node_type_get_names(),
     );
     $form['addtoany_placement_settings']['addtoany_display_in_teasers'] = array(
@@ -214,7 +214,7 @@ class AddToAnySettingsForm extends ConfigFormBase {
       ->set('display_weight', $values['addtoany_display_weight'])
       ->set('universal_button', $values['addtoany_universal_button'])
       ->set('universal_button_placement', $values['addtoany_universal_button_placement'])
-      ->set('nodetypes', $values['addtoany_nodetypes'])
+      ->set('nodetypes', array_values(array_filter($values['addtoany_nodetypes'])))
       ->set('no_3p', $values['addtoany_no_3p'])
       ->save();
 

@@ -6,8 +6,8 @@ package: Testing
 dependencies:
   - embed
 
-# Information added by Drupal.org packaging script on 2015-12-08
-version: '8.x-1.x-dev'
+# Information added by Drupal.org packaging script on 2016-04-14
+version: '8.x-1.0-rc2'
 core: '8.x'
 project: 'embed'
-datestamp: 1449605953
+datestamp: 1460597942

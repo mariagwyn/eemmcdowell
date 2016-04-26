@@ -8,13 +8,17 @@
   /**
    * Registers behaviours related to view widget.
    */
+
   Drupal.behaviors.FileBrowserView = {
     attach: function (context) {
+      $('.view-content').prepend('<div class="grid-sizer"></div><div class="gutter-sizer"></div>').once();
       $('.view-content').imagesLoaded(function () {
         $('.view-content').masonry({
+          columnWidth: '.grid-sizer',
+          gutter: '.gutter-sizer',
           itemSelector: '.grid-item',
-          columnWidth: 350,
-          gutter: 5
+          percentPosition: true,
+          isFitWidth:true
         });
       });
 

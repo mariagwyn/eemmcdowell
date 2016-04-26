@@ -19,6 +19,9 @@
 .addtoany_list.a2a_kit_size_32 > a {
 	font-size: 32px;
 }
+.addtoany_list .a2a_counter img {
+  float: left;
+}
 .addtoany_list a span.a2a_img {
 	display: inline-block;
 	height: 16px;

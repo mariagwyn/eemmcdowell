@@ -13,7 +13,7 @@ use Drupal\Core\Extension\Extension;
 function git_deploy_system_info_alter(array &$info, Extension $file, $type) {
   static $core_info = NULL;
 
-  $is_core = ($file->origin === 'core') && preg_match('!-dev$!', $info['version']);
+  $is_core = ($file->origin === 'core') && array_key_exists('version', $info)  &&  preg_match('!-dev$!', $info['version']);
   if ($is_core) {
     // If a core version check already happened, just reuse that info.
     if (!empty($core_info)) {

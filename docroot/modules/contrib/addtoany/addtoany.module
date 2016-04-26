@@ -12,16 +12,6 @@ use Drupal\Component\Utility\Html;
 use Drupal\Component\Utility\UrlHelper;
 
 /**
- * Implements hook_install().
- */
-function addtoany_install() {
-  drupal_set_message(
-    t('AddToAny settings are available in @hint',
-    array('@hint' => t('Configuration > System > AddToAny'))
-  ));
-}
-
-/**
  * Implements hook_permission().
  */
 function addtoany_permission() {
@@ -57,9 +47,9 @@ function addtoany_node_view(array &$build, EntityInterface $node, EntityViewDisp
   $teaser = ($view_mode == 'teaser') ? TRUE : FALSE;
 
   // Display in content section?
-  $show = (!empty($type) && in_array($type, $types, TRUE) && ($published) && ($config->get('display_in_nodecont') != 0)
+  $show = (!empty($type) && in_array($type, $types, TRUE) && ($published) && ($config->get('display_in_nodecont'))
      && (
-       (!$teaser) || ($teaser && $config->get('display_in_teasers') != 0)
+       (!$teaser) || ($teaser && $config->get('display_in_teasers'))
     )
   );
   $weight = $config->get('display_weight');
@@ -91,7 +81,7 @@ function addtoany_page_attachments(&$page) {
 	$javascript_header = 'window.a2a_config=window.a2a_config||{};'
 	  . 'a2a_config.callbacks=a2a_config.callbacks||[];'
 	  . 'a2a_config.templates=a2a_config.templates||{};'
-		. (($config->get('no_3p') != '1') ? "" : "a2a_config.no_3p=1;")
+		. (($config->get('no_3p')) ? 'a2a_config.no_3p=1;' : '')
 		. $config->get('additional_js');
 
   // Add AddToAny initial JS config.
@@ -101,7 +91,7 @@ function addtoany_page_attachments(&$page) {
       // Add a <script> tag.
       '#tag' => 'script',
       // Add JavaScript to the <script> tag.
-      '#value' => $javascript_header,
+      '#value' => \Drupal\Core\Render\Markup::create($javascript_header),
       // Give weight so it appears after meta tags, etc.
       '#weight' => 10,
     ],

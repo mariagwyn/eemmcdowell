@@ -60,7 +60,6 @@ class SyndicationParser extends PluginBase implements ParserInterface {
         ->set('guid', $entry->getId())
         ->set('url', $entry->getLink())
         ->set('description', $entry->getDescription())
-        ->set('content', $entry->getContent())
         ->set('tags', $entry->getCategories()->getValues())
         ->set('feed_title', $channel->getTitle())
         ->set('feed_description', $channel->getDescription())
@@ -69,6 +68,7 @@ class SyndicationParser extends PluginBase implements ParserInterface {
       if ($image = $channel->getImage()) {
         $item->set('feed_image_uri', $image['uri']);
       }
+
       if ($enclosure = $entry->getEnclosure()) {
         $item->set('enclosures', [rawurldecode($enclosure->url)]);
       }
@@ -125,15 +125,6 @@ class SyndicationParser extends PluginBase implements ParserInterface {
       'description' => [
         'label' => $this->t('Description'),
         'description' => $this->t('Description of the feed item.'),
-        'suggested' => ['body'],
-        'suggestions' => [
-          'targets' => ['body'],
-          'types' => ['field_item:text_with_summary' => []],
-        ],
-      ],
-      'content' => [
-        'label' => $this->t('Content (Atom)'),
-        'description' => $this->t('Content of the feed item.'),
         'suggested' => ['body'],
         'suggestions' => [
           'targets' => ['body'],

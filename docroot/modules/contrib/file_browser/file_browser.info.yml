@@ -10,6 +10,7 @@ dependencies:
   - dropzonejs_eb_widget
   - field
   - file
+  - image
   - menu_ui
   - node
   - path

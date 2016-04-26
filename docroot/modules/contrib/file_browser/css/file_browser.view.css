@@ -1,6 +1,7 @@
 /**
- * @file file_browser.view.css
- */
+* @file file_browser.view.css
+*/
+
 
 /* Generic styles */
 
@@ -8,20 +9,75 @@
   padding: 20px;
 }
 
+/* set default standard media queries for responsive grid. */
+@media only screen and (min-width: 320px) {
+  .grid-sizer,
+  .grid-item {
+      width: 96%;
+  }
+  .gutter-sizer {
+      width: 20px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .grid-sizer,
+  .grid-item {
+      width: 46%;
+  }
+  .gutter-sizer {
+      width: 20px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .grid-sizer,
+  .grid-item {
+      width: 23%;
+  }
+  .gutter-sizer {
+      width: 10px;
+  }
+}
+
+/* Jump back down for XL screens to better utilize the space. */
+@media only screen and (min-width: 1600px) {
+  .grid-sizer,
+  .grid-item {
+      width: 15%;
+  }
+  .gutter-sizer {
+      width: 10px;
+  }
+}
+
 .grid-item {
-  width: 350px;
   display: block;
   text-align: center;
-  border: 2px solid #b8b8b8;
+  background: #383838;
+  overflow: hidden;
   transition: .2s;
+  border: 2px solid lightgray;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.13);
+}
+
+.grid-item:hover {
+  border: 2px solid #37802f;
 }
 
 .grid-item.checked {
   border: 2px solid #37802f;
 }
 
+.view-content {
+  margin: 0 auto;
+  width: 100% !important;
+}
+
 .grid-item img {
   vertical-align: bottom;
+  width: 100%;
+  height: auto;
 }
 
 .grid-item img::selection {
@@ -54,10 +110,11 @@
   z-index: 1;
   width: 100%;
   bottom: 0;
-  background-color: rgba(0,0,0,.5);
+  background-color: rgba(0, 0, 0, .8);
 }
 
-.grid-item-info-left,.grid-item-info-right {
+.grid-item-info-left,
+.grid-item-info-right {
   padding: 5px;
   color: white;
 }
@@ -65,7 +122,6 @@
 .grid-item-info-left {
   float: left;
   text-align: left;
-  width: 175px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -80,8 +136,11 @@
   padding-bottom: 50px;
 }
 
+
 /* Remove border above tabs. */
-.file-browser-form .is-collapse-enabled .tabs:before, .file-browser-form .is-horizontal .tabs:before {
+
+.file-browser-form .is-collapse-enabled .tabs:before,
+.file-browser-form .is-horizontal .tabs:before {
   background-color: transparent;
 }
 
