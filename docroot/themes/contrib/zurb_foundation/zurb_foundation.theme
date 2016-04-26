@@ -260,14 +260,11 @@ function zurb_foundation_preprocess_page(&$variables) {
   }
 
   $variables['logo_img'] = '';
-
-  $logo = theme_get_setting('logo.url');
-
-  if (!empty($logo)) {
+  if (!empty($variables['logo'])) {
     $elements = array(
       '#theme' => 'image',
-      '#uri' => $logo,
       '#attributes' => array(
+        'src' => $variables['logo'],
         'alt' => strip_tags($site_name) . ' ' . t('logo'),
         'title' => strip_tags($site_name) . ' ' . t('Home'),
         'class' => array('logo'),

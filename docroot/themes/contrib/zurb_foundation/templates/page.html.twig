@@ -31,7 +31,15 @@
  *   added to make the site slogan visually hidden, but still accessible.
  *
  * Page content (in order of occurrence in the default page.html.twig):
- * - messages: Status and error messages. Should be displayed prominently.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title: The page title, for use in the actual content.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ * - tabs: Tabs linking to any sub-pages beneath the current page (e.g., the
+ *   view and edit tabs when displaying a node).
+ * - action_links: Actions local to the page, such as "Add menu" on the menu
+ *   administration interface.
  * - node: Fully loaded node, if there is an automatically-loaded node
  *   associated with the page and the node ID is the second argument in the
  *   page's path (e.g. node/12345 and node/12345/revisions, but not
@@ -55,13 +63,13 @@
  */
 #}
 
-<div class="off-canvas-wrap" data-offcanvas>
+<section class="off-canvas-wrap" data-offcanvas>
   <div class="inner-wrap">
-    <aside class="left-off-canvas-menu" role="complementary">
+    <aside class="left-off-canvas-menu">
       {{ page.left_off_canvas }}
     </aside>
 
-    <aside class="right-off-canvas-menu" role="complementary">
+    <aside class="right-off-canvas-menu">
       {{ page.right_off_canvas }}
     </aside>
 
@@ -77,14 +85,14 @@
         {% endif %}
       {% endif %}
 
-      <header class="row" role="banner" aria-label="{{ 'Site header'|t }}">
+      <header class="row">
         {% if linked_site_name or linked_logo %}
           <div class="large-2 columns">
             {% if linked_logo %}
               {{ linked_logo }}
             {% endif %}
           </div>
-          <div class="left large-4 columns">
+          <div class="large-4 columns">
             {% if is_front %}
               <h1 id="site-name">{{ linked_site_name }}</h1>
             {% else %}
@@ -154,7 +162,7 @@
       {% endif %}
 
       <div class="row">
-        <main id="main" class="{{ main_grid }} columns" role="main">
+        <div id="main" class="{{ main_grid }} columns">
           {% if page.highlighted %}
             {% spaceless %}
               {{ page.highlighted }}
@@ -162,10 +170,23 @@
           {% endif %}
           <a id="main-content"></a>
           {% if breadcrumb %} {{ breadcrumb }} {% endif %}
-          <section>
-            {{ page.content }}
-          </section>
-        </main>
+          {% if title and not is_front %}
+            {{ title_prefix }}
+            <h1 id="page-title" class="title">{{ title }}</h1>
+            {{ title_suffix }}
+          {% endif %}
+
+          {% if tabs %}
+            {{ tabs }}
+            {% if tabs2 %} {{ tabs2 }} {% endif %}
+          {% endif %}
+          {% if action_links %}
+            <ul class="action-links">
+              {{ action_links }}
+            </ul>
+          {% endif %}
+          {{ page.content }}
+        </div>
         {% if page.sidebar_first %}
           <div id="sidebar-first" class="{{ sidebar_first_grid }} columns sidebar ">
             {{ page.sidebar_first }}
@@ -207,4 +228,4 @@
     <a class="exit-off-canvas"></a>
 
   </div>
-</div>
+</section>
