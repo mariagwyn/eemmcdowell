@@ -10673,7 +10673,7 @@ button:focus, a.button:focus, .mtm-landing-home .mgm-tools-slideshow .field-name
 
 /*** Multi-Column Settings ***/
 /* The primary region should float over the top region a bit */
-/* line 11, ../scss/theme/_components.scss */
+/* line 12, ../scss/theme/_components.scss */
 .row.row-primary {
   margin-top: -4.375rem;
   background-color: #ffffff;
@@ -10682,63 +10682,63 @@ button:focus, a.button:focus, .mtm-landing-home .mgm-tools-slideshow .field-name
   padding: 1.5625rem;
 }
 @media only screen and (max-width: 40em) {
-  /* line 11, ../scss/theme/_components.scss */
+  /* line 12, ../scss/theme/_components.scss */
   .row.row-primary {
     margin-top: inherit;
   }
 }
 
-/* line 22, ../scss/theme/_components.scss */
+/* line 23, ../scss/theme/_components.scss */
 .row.row-middle {
   padding: 1.5625rem;
 }
 
-/* line 25, ../scss/theme/_components.scss */
+/* line 26, ../scss/theme/_components.scss */
 #block-pagetitle {
   text-align: center;
 }
-/* line 27, ../scss/theme/_components.scss */
+/* line 28, ../scss/theme/_components.scss */
 #block-pagetitle h1, #block-pagetitle .field-name-field-subtitle p, .field-name-field-subtitle #block-pagetitle p {
   text-transform: capitalize;
   font-family: merriweather;
 }
-/* line 31, ../scss/theme/_components.scss */
+/* line 32, ../scss/theme/_components.scss */
 #block-pagetitle .block-title {
   margin: 0;
 }
 
-/* line 36, ../scss/theme/_components.scss */
+/* line 37, ../scss/theme/_components.scss */
 .field-name-field-hero-image img {
   width: 100%;
 }
 
 /* Generic hero block styles */
-/* line 42, ../scss/theme/_components.scss */
+/* line 43, ../scss/theme/_components.scss */
 .hero-block {
   color: #ffffff;
 }
-/* line 44, ../scss/theme/_components.scss */
+/* line 45, ../scss/theme/_components.scss */
 .hero-block a {
   color: #ffffff;
 }
-/* line 46, ../scss/theme/_components.scss */
+/* line 47, ../scss/theme/_components.scss */
 .hero-block a:hover {
   color: #FFBE4C;
 }
 
-/* line 51, ../scss/theme/_components.scss */
+/* line 52, ../scss/theme/_components.scss */
 .hero-block-fields, .field-node--field-hero-block {
   color: #ffffff;
   z-index: 100;
 }
-/* line 54, ../scss/theme/_components.scss */
+/* line 55, ../scss/theme/_components.scss */
 .hero-block-fields .field-block-content--field-first-line, .hero-block-fields .field-block-content--field-second-line, .hero-block-fields .field-block-content--field-hero-link, .hero-block-fields .field-block-content--field-photo-credit, .field-node--field-hero-block .field-block-content--field-first-line, .field-node--field-hero-block .field-block-content--field-second-line, .field-node--field-hero-block .field-block-content--field-hero-link, .field-node--field-hero-block .field-block-content--field-photo-credit {
   position: absolute;
   text-align: center;
   width: 100%;
   padding-right: 2.15625rem;
 }
-/* line 60, ../scss/theme/_components.scss */
+/* line 61, ../scss/theme/_components.scss */
 .hero-block-fields .field-block-content--field-first-line, .field-node--field-hero-block .field-block-content--field-first-line {
   top: 15%;
   width: 100%;
@@ -10749,19 +10749,19 @@ button:focus, a.button:focus, .mtm-landing-home .mgm-tools-slideshow .field-name
   text-transform: capitalize;
 }
 @media only screen and (min-width: 40.0625em) and (max-width: 64em), only screen and (max-width: 40em) {
-  /* line 60, ../scss/theme/_components.scss */
+  /* line 61, ../scss/theme/_components.scss */
   .hero-block-fields .field-block-content--field-first-line, .field-node--field-hero-block .field-block-content--field-first-line {
     padding-top: 0;
   }
 }
 @media only screen and (max-width: 40em) {
-  /* line 60, ../scss/theme/_components.scss */
+  /* line 61, ../scss/theme/_components.scss */
   .hero-block-fields .field-block-content--field-first-line, .field-node--field-hero-block .field-block-content--field-first-line {
     font-size: 2rem;
     top: 1.25rem;
   }
 }
-/* line 78, ../scss/theme/_components.scss */
+/* line 79, ../scss/theme/_components.scss */
 .hero-block-fields .field-block-content--field-second-line, .field-node--field-hero-block .field-block-content--field-second-line {
   top: 60%;
   font-size: 1.5625rem;
@@ -10769,31 +10769,31 @@ button:focus, a.button:focus, .mtm-landing-home .mgm-tools-slideshow .field-name
   text-shadow: 4px 4px 6px rgba(41, 91, 156, 0.6);
 }
 @media only screen and (min-width: 40.0625em) and (max-width: 64em), only screen and (max-width: 40em) {
-  /* line 78, ../scss/theme/_components.scss */
+  /* line 79, ../scss/theme/_components.scss */
   .hero-block-fields .field-block-content--field-second-line, .field-node--field-hero-block .field-block-content--field-second-line {
     padding-top: 0;
   }
 }
 @media only screen and (max-width: 40em) {
-  /* line 78, ../scss/theme/_components.scss */
+  /* line 79, ../scss/theme/_components.scss */
   .hero-block-fields .field-block-content--field-second-line, .field-node--field-hero-block .field-block-content--field-second-line {
     top: 4.375rem;
     font-size: 0.9375rem;
   }
 }
-/* line 93, ../scss/theme/_components.scss */
+/* line 94, ../scss/theme/_components.scss */
 .hero-block-fields .field-block-content--field-hero-link, .field-node--field-hero-block .field-block-content--field-hero-link {
   top: 80%;
   font-size: 1.5625rem;
 }
 @media only screen and (max-width: 40em) {
-  /* line 93, ../scss/theme/_components.scss */
+  /* line 94, ../scss/theme/_components.scss */
   .hero-block-fields .field-block-content--field-hero-link, .field-node--field-hero-block .field-block-content--field-hero-link {
     top: 50%;
     font-size: 1.25rem;
   }
 }
-/* line 101, ../scss/theme/_components.scss */
+/* line 102, ../scss/theme/_components.scss */
 .hero-block-fields .field-block-content--field-photo-credit, .field-node--field-hero-block .field-block-content--field-photo-credit {
   bottom: 1%;
   text-align: left;
@@ -10801,19 +10801,19 @@ button:focus, a.button:focus, .mtm-landing-home .mgm-tools-slideshow .field-name
   font-size: 0.75rem;
 }
 @media only screen and (max-width: 40em) {
-  /* line 101, ../scss/theme/_components.scss */
+  /* line 102, ../scss/theme/_components.scss */
   .hero-block-fields .field-block-content--field-photo-credit, .field-node--field-hero-block .field-block-content--field-photo-credit {
     display: none;
   }
 }
-/* line 111, ../scss/theme/_components.scss */
+/* line 112, ../scss/theme/_components.scss */
 .hero-block-fields .field-block-content--field-image img, .field-node--field-hero-block .field-block-content--field-image img {
   padding: 0 0 1em 0;
 }
 
 /* Hero blocks as Node Headers */
 @media only screen and (min-width: 40.0625em) and (max-width: 64em), only screen and (max-width: 40em) {
-  /* line 118, ../scss/theme/_components.scss */
+  /* line 119, ../scss/theme/_components.scss */
   .field-node--field-hero-block .field-block-content--field-first-line {
     font-size: 1.25rem;
     top: 0.625rem;
@@ -10822,16 +10822,16 @@ button:focus, a.button:focus, .mtm-landing-home .mgm-tools-slideshow .field-name
 }
 
 /* Generic slideshow style */
-/* line 132, ../scss/theme/_components.scss */
+/* line 133, ../scss/theme/_components.scss */
 .mgm-tools-slideshow .slick-slide {
   position: relative;
   min-height: 10rem;
 }
-/* line 135, ../scss/theme/_components.scss */
+/* line 136, ../scss/theme/_components.scss */
 .mgm-tools-slideshow .slick-slide img {
   padding: 0;
 }
-/* line 139, ../scss/theme/_components.scss */
+/* line 140, ../scss/theme/_components.scss */
 .mgm-tools-slideshow .slick-dots {
   position: absolute;
   bottom: 4.375rem;
@@ -10840,21 +10840,21 @@ button:focus, a.button:focus, .mtm-landing-home .mgm-tools-slideshow .field-name
   margin: 0;
 }
 @media only screen and (max-width: 40em) {
-  /* line 139, ../scss/theme/_components.scss */
+  /* line 140, ../scss/theme/_components.scss */
   .mgm-tools-slideshow .slick-dots {
     display: none !important;
   }
 }
-/* line 148, ../scss/theme/_components.scss */
+/* line 149, ../scss/theme/_components.scss */
 .mgm-tools-slideshow .slick-dots li {
   display: inline-block;
   padding-right: 1.25rem;
 }
-/* line 151, ../scss/theme/_components.scss */
+/* line 152, ../scss/theme/_components.scss */
 .mgm-tools-slideshow .slick-dots li:last-child {
   padding-right: 0;
 }
-/* line 155, ../scss/theme/_components.scss */
+/* line 156, ../scss/theme/_components.scss */
 .mgm-tools-slideshow .slick-dots button {
   height: 1.25rem;
   width: 1.25rem;
@@ -10863,7 +10863,7 @@ button:focus, a.button:focus, .mtm-landing-home .mgm-tools-slideshow .field-name
   color: transparent;
   background-color: #295B9C;
 }
-/* line 164, ../scss/theme/_components.scss */
+/* line 165, ../scss/theme/_components.scss */
 .mgm-tools-slideshow .slick-dots .slick-active button {
   background-color: #84A6DC;
 }
