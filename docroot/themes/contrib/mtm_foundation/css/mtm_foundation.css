@@ -10526,72 +10526,61 @@ footer a:hover, footer a:focus {
   }
 }
 /* Add responsive styles for overall site */
-@media all and (min-width: 1000px) {
-  /* line 47, ../scss/layout/_responsive.scss */
-  body {
-    background: aquamarine;
-  }
-}
 @media only screen {
-  /* line 50, ../scss/layout/_responsive.scss */
+  /* line 49, ../scss/layout/_responsive.scss */
   .article-feed-item {
     min-height: 3em;
   }
 }
 @media only screen and (max-width: 40em) {
   /* line 54, ../scss/layout/_responsive.scss */
-  body {
-    background: orange;
-  }
-
-  /* line 56, ../scss/layout/_responsive.scss */
   #block-mtm-foundation-main-menu .menu-wrap {
     display: none;
   }
 
-  /* line 58, ../scss/layout/_responsive.scss */
+  /* line 56, ../scss/layout/_responsive.scss */
   header#page-header {
     height: 3rem;
   }
-  /* line 60, ../scss/layout/_responsive.scss */
+  /* line 58, ../scss/layout/_responsive.scss */
   header#page-header:before {
     height: 3rem;
   }
 
-  /* line 64, ../scss/layout/_responsive.scss */
+  /* line 62, ../scss/layout/_responsive.scss */
   h1#site-name, .field-name-field-subtitle p#site-name {
     font-size: 2em;
   }
 
-  /* line 67, ../scss/layout/_responsive.scss */
+  /* line 65, ../scss/layout/_responsive.scss */
   h3#site-slogan {
     font-size: .7em;
     line-height: 1.2em;
   }
 
-  /* line 72, ../scss/layout/_responsive.scss */
+  /* line 70, ../scss/layout/_responsive.scss */
   #footer-first:before {
     border-radius: 1rem 1rem 0 0;
   }
 
-  /* line 77, ../scss/layout/_responsive.scss */
+  /* line 75, ../scss/layout/_responsive.scss */
   #footer-last:before {
     border-radius: 0;
   }
 }
 @media only screen and (min-width: 40.0625em) and (max-width: 64em) {
-  /* line 85, ../scss/layout/_responsive.scss */
+  /* line 83, ../scss/layout/_responsive.scss */
   h1#site-name, .field-name-field-subtitle p#site-name {
     font-size: 4em;
   }
 
-  /* line 88, ../scss/layout/_responsive.scss */
+  /* line 86, ../scss/layout/_responsive.scss */
   h3#site-slogan {
     font-size: 1em;
   }
 }
 @media only screen and (min-width: 64.0625em) {
-  /* line 92, ../scss/layout/_responsive.scss */
+  /* line 90, ../scss/layout/_responsive.scss */
   .article-feed-item {
     min-height: 6em;
   }

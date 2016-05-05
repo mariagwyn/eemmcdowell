@@ -44,14 +44,12 @@
 }
 
 @media all and (min-width: 1000px) {
-  body {background: aquamarine;}
 }
 @media #{$small-up} {
   .article-feed-item {
     min-height: 3em;
   }}
 @media #{$small-only} {
-  body {background: orange;}
   #block-mtm-foundation-main-menu {
     .menu-wrap {display:none;}
   }
