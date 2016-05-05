@@ -10999,6 +10999,11 @@ h1.page-title, .field-name-field-subtitle p.page-title {
   margin-bottom: 1.25rem;
 }
 
+/* line 101, ../scss/theme/_main.scss */
+.path-frontpage .block-mtm-foundation-page-title {
+  display: none;
+}
+
 /* line 103, ../scss/theme/_main.scss */
 .node--type-service-page .block-mtm-foundation-page-title {
   display: none;
