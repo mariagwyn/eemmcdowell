@@ -1,5 +1,4 @@
 @media all and (min-width: 360px) {
-  body {background: pink;}
   .figure img {
     width: 100%;
     max-width: none;
@@ -13,7 +12,6 @@
 }
 
 @media all and (min-width: 570px) {
-  body {background: yellow;}
   #search-block-form {
     .form-submit {
       width: 20%;
@@ -40,7 +38,6 @@
 
 /* Add responsive styles for overall site */
 @media all and (min-width: 736px) {
-  body {background: salmon;}
   ul, ol {
   //  margin-left: 3em;
   }

@@ -10491,11 +10491,6 @@ footer a:hover, footer a:focus {
 
 @media all and (min-width: 360px) {
   /* line 2, ../scss/layout/_responsive.scss */
-  body {
-    background: pink;
-  }
-
-  /* line 3, ../scss/layout/_responsive.scss */
   .figure img {
     width: 100%;
     max-width: none;
@@ -10503,111 +10498,100 @@ footer a:hover, footer a:focus {
 }
 @media all and (min-width: 570px) {
   /* line 16, ../scss/layout/_responsive.scss */
-  body {
-    background: yellow;
-  }
-
-  /* line 18, ../scss/layout/_responsive.scss */
   #search-block-form .form-submit {
     width: 20%;
   }
-  /* line 21, ../scss/layout/_responsive.scss */
+  /* line 19, ../scss/layout/_responsive.scss */
   #search-block-form .form-text {
     width: 80%;
   }
 
-  /* line 25, ../scss/layout/_responsive.scss */
+  /* line 23, ../scss/layout/_responsive.scss */
   textarea, select {
     width: auto;
   }
 
-  /* line 29, ../scss/layout/_responsive.scss */
+  /* line 27, ../scss/layout/_responsive.scss */
   input[type="email"], input[type="password"], input[type="search"], input[type="text"] {
     width: auto;
   }
-  /* line 32, ../scss/layout/_responsive.scss */
+  /* line 30, ../scss/layout/_responsive.scss */
   input[type="reset"], input[type="submit"], input[type="button"] {
     width: auto;
   }
 
-  /* line 36, ../scss/layout/_responsive.scss */
+  /* line 34, ../scss/layout/_responsive.scss */
   button, a.button, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a {
     width: auto;
   }
 }
 /* Add responsive styles for overall site */
-@media all and (min-width: 736px) {
-  /* line 43, ../scss/layout/_responsive.scss */
-  body {
-    background: salmon;
-  }
-}
 @media all and (min-width: 1000px) {
-  /* line 50, ../scss/layout/_responsive.scss */
+  /* line 47, ../scss/layout/_responsive.scss */
   body {
     background: aquamarine;
   }
 }
 @media only screen {
-  /* line 53, ../scss/layout/_responsive.scss */
+  /* line 50, ../scss/layout/_responsive.scss */
   .article-feed-item {
     min-height: 3em;
   }
 }
 @media only screen and (max-width: 40em) {
-  /* line 57, ../scss/layout/_responsive.scss */
+  /* line 54, ../scss/layout/_responsive.scss */
   body {
     background: orange;
   }
 
-  /* line 59, ../scss/layout/_responsive.scss */
+  /* line 56, ../scss/layout/_responsive.scss */
   #block-mtm-foundation-main-menu .menu-wrap {
     display: none;
   }
 
-  /* line 61, ../scss/layout/_responsive.scss */
+  /* line 58, ../scss/layout/_responsive.scss */
   header#page-header {
     height: 3rem;
   }
-  /* line 63, ../scss/layout/_responsive.scss */
+  /* line 60, ../scss/layout/_responsive.scss */
   header#page-header:before {
     height: 3rem;
   }
 
-  /* line 67, ../scss/layout/_responsive.scss */
+  /* line 64, ../scss/layout/_responsive.scss */
   h1#site-name, .field-name-field-subtitle p#site-name {
     font-size: 2em;
   }
 
-  /* line 70, ../scss/layout/_responsive.scss */
+  /* line 67, ../scss/layout/_responsive.scss */
   h3#site-slogan {
     font-size: .7em;
     line-height: 1.2em;
   }
 
-  /* line 75, ../scss/layout/_responsive.scss */
+  /* line 72, ../scss/layout/_responsive.scss */
   #footer-first:before {
     border-radius: 1rem 1rem 0 0;
   }
 
-  /* line 80, ../scss/layout/_responsive.scss */
+  /* line 77, ../scss/layout/_responsive.scss */
   #footer-last:before {
     border-radius: 0;
   }
 }
 @media only screen and (min-width: 40.0625em) and (max-width: 64em) {
-  /* line 88, ../scss/layout/_responsive.scss */
+  /* line 85, ../scss/layout/_responsive.scss */
   h1#site-name, .field-name-field-subtitle p#site-name {
     font-size: 4em;
   }
 
-  /* line 91, ../scss/layout/_responsive.scss */
+  /* line 88, ../scss/layout/_responsive.scss */
   h3#site-slogan {
     font-size: 1em;
   }
 }
 @media only screen and (min-width: 64.0625em) {
-  /* line 95, ../scss/layout/_responsive.scss */
+  /* line 92, ../scss/layout/_responsive.scss */
   .article-feed-item {
     min-height: 6em;
   }
