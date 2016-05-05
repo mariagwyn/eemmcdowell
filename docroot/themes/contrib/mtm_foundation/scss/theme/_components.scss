@@ -10,14 +10,17 @@
 /* The primary region should float over the top region a bit */
 .row.row-primary {
   margin-top: rem-calc(-70px);
+  background-color: $background-color;
   position: relative;
   z-index: 1;
-  background-color: $background-color;
   padding: rem-calc(25px);
   @media #{$small-only} {
       margin-top: inherit;
   }
   div[class^='block-region-'] {}
+}
+.row.row-middle {
+  padding: rem-calc(25px);
 }
 #block-pagetitle {
   text-align: center;
@@ -46,30 +49,45 @@
   }
 }
 .hero-block-fields, .field-node--field-hero-block {
+  color: $background-color;
   z-index: 100;
   .field-block-content--field-first-line, .field-block-content--field-second-line, .field-block-content--field-hero-link, .field-block-content--field-photo-credit {
     position: absolute;
     text-align: center;
     width: 100%;
-    padding-right: $column-gutter;
+    padding-right: $column-gutter + ($column-gutter * .15);
   }
   .field-block-content--field-first-line {
     top: 15%;
-    font-size: rem-calc(80);
-    @include stroke(1px, $primary-color);
+    width: 100%;
+    margin: 0 auto;
+    font-size: rem-calc(50px);
+    @include text-shadow;
+    text-align: right;
+    @media #{$medium-only},#{$small-only} {
+      padding-top: 0;
+    }
     @media #{$small-only} {
-        top: 0;
-        font-size: rem-calc(30px);
+      font-size: rem-calc(32px);
+      top: rem-calc(20px);
+    }
+    @media #{$medium-only} {
     }
     text-transform: capitalize;
   }
   .field-block-content--field-second-line {
     top: 60%;
     font-size: rem-calc(25px);
-    @include stroke(.5px, $primary-color);
+    text-align: right;
+    @include text-shadow;
+    @media #{$medium-only},#{$small-only} {
+      padding-top: 0;
+    }
     @media #{$small-only} {
-        top: 40%;
-        font-size: rem-calc(20px);
+      top: rem-calc(70px);
+      font-size: rem-calc(15px);
+    }
+    @media #{$medium-only} {
     }
   }
   .field-block-content--field-hero-link {
@@ -81,20 +99,39 @@
     }
   }
   .field-block-content--field-photo-credit {
-    bottom: 10%;
+    bottom: 1%;
     text-align: left;
     padding-left: $column-gutter;
     font-size: rem-calc(12px);
     @media #{$small-only} {
-        font-size: rem-calc(8px);
+      display:none;
+    }
+  }
+  .field-block-content--field-image {
+    img {
+      padding: 0 0 1em 0;
     }
   }
 }
-
+/* Hero blocks as Node Headers */
+.field-node--field-hero-block {
+  .field-block-content--field-first-line {
+    @media #{$medium-only},#{$small-only} {
+      font-size: rem-calc(20px);
+      top: rem-calc(10px);
+      padding-top: 0;
+    }
+    @media #{$small-only} {
+    }
+    @media #{$medium-only} {
+    }
+  }
+}
 /* Generic slideshow style */
 .mgm-tools-slideshow {
   .slick-slide {
     position: relative;
+    min-height: 10rem;
     img {
       padding: 0;
     }
@@ -127,6 +164,6 @@
       button {
           background-color: $primary-alt-color;
       }
-  }
+    }
   }
 }

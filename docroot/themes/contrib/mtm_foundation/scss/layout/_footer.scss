@@ -15,7 +15,25 @@ footer {
 #block-mtm-foundation-footer {
   ul li {list-style: none;}
 }
+#footer-first {
+  @media #{$medium-only},#{$small-only} {
+    text-align: center;
+  }
+}
+.block-contactinformation {
+  h2 {font-size: 1.2rem;}
+}
 #footer-middle {
   padding-left: rem-calc(20);
   padding-right: rem-calc(20);
+  @media #{$medium-only},#{$small-only} {
+    padding-top: rem-calc(20px);
+    text-align: center;
+  }
+}
+#footer-last {
+  @media #{$medium-only},#{$small-only} {
+    padding-top: rem-calc(20px);
+    text-align: center;
+  }
 }

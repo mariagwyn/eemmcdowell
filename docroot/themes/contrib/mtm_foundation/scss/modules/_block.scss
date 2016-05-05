@@ -17,3 +17,8 @@ form#search-block-form {
     }
   }
 }
+.services-block {
+  @media #{$medium-only},#{$small-only} {
+    text-align: center;
+  }
+}

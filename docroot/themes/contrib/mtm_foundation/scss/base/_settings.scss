@@ -254,8 +254,8 @@ $h5-font-size: rem-calc(16);
 $h6-font-size: rem-calc(15);
 
 // We use these to control header size reduction on small screens
-$h1-font-reduction: rem-calc(10);
-$h2-font-reduction: rem-calc(10);
+$h1-font-reduction: rem-calc(3);
+$h2-font-reduction: rem-calc(3);
 $h3-font-reduction: rem-calc(5);
 $h4-font-reduction: rem-calc(5);
 $h5-font-reduction: rem-calc(3);
@@ -296,7 +296,7 @@ $h6-font-reduction: rem-calc(3);
 // We use these to style anchors
 // $anchor-text-decoration: none;
 $anchor-text-decoration-hover: none;
-$anchor-font-color: $tertiary-color;
+$anchor-font-color: $secondary-color;
 $anchor-font-color-hover: scale-color($anchor-font-color, $lightness: 14%);
 
 // We use these to style the <hr> element

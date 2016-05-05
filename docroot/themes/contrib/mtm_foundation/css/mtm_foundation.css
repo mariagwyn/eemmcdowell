@@ -223,7 +223,7 @@ dfn {
  * contexts in Firefox 4+, Safari, and Chrome.
  */
 /* line 136, ../../zurb_foundation/scss/normalize.scss */
-h1 {
+h1, .field-name-field-subtitle p {
   font-size: 2em;
   margin: 0.67em 0;
 }
@@ -5546,10 +5546,8 @@ label.error {
 
 /* Typography */
 /* line 112, ../../zurb_foundation/scss/foundation/components/_joyride.scss */
-.joyride-tip-guide h1,
+.joyride-tip-guide h1, .joyride-tip-guide .field-name-field-subtitle p, .field-name-field-subtitle .joyride-tip-guide p,
 .joyride-tip-guide h2,
-.joyride-tip-guide .field-name-field-subtitle p,
-.field-name-field-subtitle .joyride-tip-guide p,
 .joyride-tip-guide h3,
 .joyride-tip-guide h4,
 .joyride-tip-guide h5,
@@ -6179,16 +6177,16 @@ ul.pagination li {
   margin-bottom: 0;
 }
 /* line 67, ../../zurb_foundation/scss/foundation/components/_panels.scss */
-.panel h1, .panel h2, .panel .field-name-field-subtitle p, .field-name-field-subtitle .panel p, .panel h3, .panel h4, .panel h5, .panel h6, .panel p, .panel li, .panel dl {
+.panel h1, .panel .field-name-field-subtitle p, .field-name-field-subtitle .panel p, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6, .panel p, .panel li, .panel dl {
   color: #333333;
 }
 /* line 74, ../../zurb_foundation/scss/foundation/components/_panels.scss */
-.panel h1, .panel h2, .panel .field-name-field-subtitle p, .field-name-field-subtitle .panel p, .panel h3, .panel h4, .panel h5, .panel h6 {
+.panel h1, .panel .field-name-field-subtitle p, .field-name-field-subtitle .panel p, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6 {
   line-height: 1;
   margin-bottom: 0.625rem;
 }
 /* line 76, ../../zurb_foundation/scss/foundation/components/_panels.scss */
-.panel h1.subheader, .panel h2.subheader, .panel .field-name-field-subtitle p.subheader, .field-name-field-subtitle .panel p.subheader, .panel h3.subheader, .panel h4.subheader, .panel h5.subheader, .panel h6.subheader {
+.panel h1.subheader, .panel .field-name-field-subtitle p.subheader, .field-name-field-subtitle .panel p.subheader, .panel h2.subheader, .panel h3.subheader, .panel h4.subheader, .panel h5.subheader, .panel h6.subheader {
   line-height: 1.4;
 }
 /* line 88, ../../zurb_foundation/scss/foundation/components/_panels.scss */
@@ -6210,16 +6208,16 @@ ul.pagination li {
   margin-bottom: 0;
 }
 /* line 67, ../../zurb_foundation/scss/foundation/components/_panels.scss */
-.panel.callout h1, .panel.callout h2, .panel.callout .field-name-field-subtitle p, .field-name-field-subtitle .panel.callout p, .panel.callout h3, .panel.callout h4, .panel.callout h5, .panel.callout h6, .panel.callout p, .panel.callout li, .panel.callout dl {
+.panel.callout h1, .panel.callout .field-name-field-subtitle p, .field-name-field-subtitle .panel.callout p, .panel.callout h2, .panel.callout h3, .panel.callout h4, .panel.callout h5, .panel.callout h6, .panel.callout p, .panel.callout li, .panel.callout dl {
   color: #333333;
 }
 /* line 74, ../../zurb_foundation/scss/foundation/components/_panels.scss */
-.panel.callout h1, .panel.callout h2, .panel.callout .field-name-field-subtitle p, .field-name-field-subtitle .panel.callout p, .panel.callout h3, .panel.callout h4, .panel.callout h5, .panel.callout h6 {
+.panel.callout h1, .panel.callout .field-name-field-subtitle p, .field-name-field-subtitle .panel.callout p, .panel.callout h2, .panel.callout h3, .panel.callout h4, .panel.callout h5, .panel.callout h6 {
   line-height: 1;
   margin-bottom: 0.625rem;
 }
 /* line 76, ../../zurb_foundation/scss/foundation/components/_panels.scss */
-.panel.callout h1.subheader, .panel.callout h2.subheader, .panel.callout .field-name-field-subtitle p.subheader, .field-name-field-subtitle .panel.callout p.subheader, .panel.callout h3.subheader, .panel.callout h4.subheader, .panel.callout h5.subheader, .panel.callout h6.subheader {
+.panel.callout h1.subheader, .panel.callout .field-name-field-subtitle p.subheader, .field-name-field-subtitle .panel.callout p.subheader, .panel.callout h2.subheader, .panel.callout h3.subheader, .panel.callout h4.subheader, .panel.callout h5.subheader, .panel.callout h6.subheader {
   line-height: 1.4;
 }
 /* line 90, ../../zurb_foundation/scss/foundation/components/_panels.scss */
@@ -7491,13 +7489,13 @@ meta.foundation-mq-topbar {
   margin: 0;
 }
 /* line 214, ../../zurb_foundation/scss/foundation/components/_top-bar.scss */
-.top-bar .name h1, .top-bar .name h2, .top-bar .name .field-name-field-subtitle p, .field-name-field-subtitle .top-bar .name p, .top-bar .name h3, .top-bar .name h4, .top-bar .name p, .top-bar .name span {
+.top-bar .name h1, .top-bar .name .field-name-field-subtitle p, .field-name-field-subtitle .top-bar .name p, .top-bar .name h2, .top-bar .name h3, .top-bar .name h4, .top-bar .name p, .top-bar .name span {
   font-size: 1.0625rem;
   line-height: 2.8125rem;
   margin: 0;
 }
 /* line 219, ../../zurb_foundation/scss/foundation/components/_top-bar.scss */
-.top-bar .name h1 a, .top-bar .name h2 a, .top-bar .name .field-name-field-subtitle p a, .field-name-field-subtitle .top-bar .name p a, .top-bar .name h3 a, .top-bar .name h4 a, .top-bar .name p a, .top-bar .name span a {
+.top-bar .name h1 a, .top-bar .name .field-name-field-subtitle p a, .field-name-field-subtitle .top-bar .name p a, .top-bar .name h2 a, .top-bar .name h3 a, .top-bar .name h4 a, .top-bar .name p a, .top-bar .name span a {
   color: white;
   display: block;
   font-weight: normal;
@@ -7943,10 +7941,8 @@ meta.foundation-mq-topbar {
     float: left;
   }
   /* line 500, ../../zurb_foundation/scss/foundation/components/_top-bar.scss */
-  .top-bar .name h1 a,
+  .top-bar .name h1 a, .top-bar .name .field-name-field-subtitle p a, .field-name-field-subtitle .top-bar .name p a,
   .top-bar .name h2 a,
-  .top-bar .name .field-name-field-subtitle p a,
-  .field-name-field-subtitle .top-bar .name p a,
   .top-bar .name h3 a,
   .top-bar .name h4 a,
   .top-bar .name h5 a,
@@ -8432,8 +8428,8 @@ ul,
 ol,
 li,
 h1,
-h2,
 .field-name-field-subtitle p,
+h2,
 h3,
 h4,
 h5,
@@ -8451,13 +8447,13 @@ td {
 /* Default Link Styles */
 /* line 220, ../../zurb_foundation/scss/foundation/components/_type.scss */
 a {
-  color: #FFBE4C;
+  color: #9A1697;
   line-height: inherit;
   text-decoration: none;
 }
 /* line 225, ../../zurb_foundation/scss/foundation/components/_type.scss */
 a:hover, a:focus {
-  color: #ffc765;
+  color: #c31cbf;
 }
 /* line 233, ../../zurb_foundation/scss/foundation/components/_type.scss */
 a img {
@@ -8488,7 +8484,7 @@ p aside {
 
 /* Default header styles */
 /* line 255, ../../zurb_foundation/scss/foundation/components/_type.scss */
-h1, h2, .field-name-field-subtitle p, h3, h4, h5, h6 {
+h1, .field-name-field-subtitle p, h2, h3, h4, h5, h6 {
   color: #84A6DC;
   font-family: "gilda", Georgia, Cambria, "Georgia", serif;
   font-style: normal;
@@ -8499,20 +8495,20 @@ h1, h2, .field-name-field-subtitle p, h3, h4, h5, h6 {
   text-rendering: optimizeLegibility;
 }
 /* line 265, ../../zurb_foundation/scss/foundation/components/_type.scss */
-h1 small, h2 small, .field-name-field-subtitle p small, h3 small, h4 small, h5 small, h6 small {
+h1 small, .field-name-field-subtitle p small, h2 small, h3 small, h4 small, h5 small, h6 small {
   color: #afc5e8;
   font-size: 60%;
   line-height: 0;
 }
 
 /* line 272, ../../zurb_foundation/scss/foundation/components/_type.scss */
-h1 {
-  font-size: 1.375rem;
+h1, .field-name-field-subtitle p {
+  font-size: 1.8125rem;
 }
 
 /* line 273, ../../zurb_foundation/scss/foundation/components/_type.scss */
-h2, .field-name-field-subtitle p {
-  font-size: 0.875rem;
+h2 {
+  font-size: 1.3125rem;
 }
 
 /* line 274, ../../zurb_foundation/scss/foundation/components/_type.scss */
@@ -8749,17 +8745,17 @@ blockquote p {
 
 @media only screen and (min-width: 40.0625em) {
   /* line 461, ../../zurb_foundation/scss/foundation/components/_type.scss */
-  h1, h2, .field-name-field-subtitle p, h3, h4, h5, h6 {
+  h1, .field-name-field-subtitle p, h2, h3, h4, h5, h6 {
     line-height: 1.4;
   }
 
   /* line 462, ../../zurb_foundation/scss/foundation/components/_type.scss */
-  h1 {
+  h1, .field-name-field-subtitle p {
     font-size: 2rem;
   }
 
   /* line 463, ../../zurb_foundation/scss/foundation/components/_type.scss */
-  h2, .field-name-field-subtitle p {
+  h2 {
     font-size: 1.5rem;
   }
 
@@ -8852,14 +8848,13 @@ blockquote p {
   /* line 512, ../../zurb_foundation/scss/foundation/components/_type.scss */
   p,
   h2,
-  .field-name-field-subtitle p,
   h3 {
     orphans: 3;
     widows: 3;
   }
 
   /* line 519, ../../zurb_foundation/scss/foundation/components/_type.scss */
-  h2, .field-name-field-subtitle p,
+  h2,
   h3 {
     page-break-after: avoid;
   }
@@ -8907,14 +8902,14 @@ blockquote p {
   position: relative;
 }
 /* line 185, ../../zurb_foundation/scss/foundation/components/_offcanvas.scss */
-.tab-bar h1, .tab-bar h2, .tab-bar .field-name-field-subtitle p, .field-name-field-subtitle .tab-bar p, .tab-bar h3, .tab-bar h4, .tab-bar h5, .tab-bar h6 {
+.tab-bar h1, .tab-bar .field-name-field-subtitle p, .field-name-field-subtitle .tab-bar p, .tab-bar h2, .tab-bar h3, .tab-bar h4, .tab-bar h5, .tab-bar h6 {
   color: white;
   font-weight: bold;
   line-height: 2.8125rem;
   margin: 0;
 }
 /* line 191, ../../zurb_foundation/scss/foundation/components/_offcanvas.scss */
-.tab-bar h1, .tab-bar h2, .tab-bar .field-name-field-subtitle p, .field-name-field-subtitle .tab-bar p, .tab-bar h3, .tab-bar h4 {
+.tab-bar h1, .tab-bar .field-name-field-subtitle p, .field-name-field-subtitle .tab-bar p, .tab-bar h2, .tab-bar h3, .tab-bar h4 {
   font-size: 1rem;
 }
 
@@ -10300,21 +10295,37 @@ th.hide-for-touch {
 .header-wrap #block-brandingfront img {
   padding: .5em 0;
 }
-/* line 26, ../scss/layout/_header.scss */
+@media only screen and (min-width: 40.0625em) and (max-width: 64em), only screen and (max-width: 40em) {
+  /* line 24, ../scss/layout/_header.scss */
+  .header-wrap #block-brandingfront.column {
+    padding: 0 .3rem;
+  }
+}
+/* line 30, ../scss/layout/_header.scss */
+.header-wrap #block-mtm-foundation-branding img {
+  padding: .5em 0;
+}
+@media only screen and (min-width: 40.0625em) and (max-width: 64em), only screen and (max-width: 40em) {
+  /* line 34, ../scss/layout/_header.scss */
+  .header-wrap #block-mtm-foundation-branding.column {
+    padding: 0 .3rem;
+  }
+}
+/* line 41, ../scss/layout/_header.scss */
 .header-wrap #block-mtm-foundation-main-menu .menu-wrap ul {
   padding-top: 1.875rem;
 }
-/* line 29, ../scss/layout/_header.scss */
+/* line 44, ../scss/layout/_header.scss */
 .header-wrap #block-mtm-foundation-main-menu .menu-wrap ul li {
   display: inline-block;
   padding-right: 1.25rem;
 }
-/* line 33, ../scss/layout/_header.scss */
+/* line 48, ../scss/layout/_header.scss */
 .header-wrap #block-mtm-foundation-main-menu .menu-wrap ul li.main-menu-logo a:hover {
   border-bottom: none;
   color: transparent;
 }
-/* line 37, ../scss/layout/_header.scss */
+/* line 52, ../scss/layout/_header.scss */
 .header-wrap #block-mtm-foundation-main-menu .menu-wrap ul li.main-menu-logo img {
   position: relative;
   margin-top: -6rem;
@@ -10325,65 +10336,65 @@ th.hide-for-touch {
   border: 4px double #295B9C;
 }
 @media only screen and (min-width: 40.0625em) and (max-width: 64em), only screen and (max-width: 40em) {
-  /* line 29, ../scss/layout/_header.scss */
+  /* line 44, ../scss/layout/_header.scss */
   .header-wrap #block-mtm-foundation-main-menu .menu-wrap ul li {
     padding-right: 0.625rem;
   }
 }
-/* line 50, ../scss/layout/_header.scss */
+/* line 65, ../scss/layout/_header.scss */
 .header-wrap #block-mtm-foundation-main-menu .menu-wrap ul li a {
   text-transform: uppercase;
   color: #ffffff;
 }
-/* line 53, ../scss/layout/_header.scss */
+/* line 68, ../scss/layout/_header.scss */
 .header-wrap #block-mtm-foundation-main-menu .menu-wrap ul li a.is-active, .header-wrap #block-mtm-foundation-main-menu .menu-wrap ul li a:hover {
   color: #84A6DC;
   border-bottom: 1px solid #84A6DC;
 }
 @media only screen and (min-width: 40.0625em) and (max-width: 64em), only screen and (max-width: 40em) {
-  /* line 58, ../scss/layout/_header.scss */
+  /* line 73, ../scss/layout/_header.scss */
   .header-wrap #block-mtm-foundation-main-menu .menu-wrap ul li.main-menu-logo {
     float: left;
     padding-bottom: 1.25rem;
   }
 }
-/* line 64, ../scss/layout/_header.scss */
+/* line 79, ../scss/layout/_header.scss */
 .header-wrap #block-mtm-foundation-main-menu .menu-wrap ul li.menu-item {
   padding-top: 1.25rem;
 }
 @media only screen and (max-width: 40em) {
-  /* line 64, ../scss/layout/_header.scss */
+  /* line 79, ../scss/layout/_header.scss */
   .header-wrap #block-mtm-foundation-main-menu .menu-wrap ul li.menu-item {
     display: none;
   }
 }
-/* line 69, ../scss/layout/_header.scss */
+/* line 84, ../scss/layout/_header.scss */
 .header-wrap #block-mtm-foundation-main-menu .menu-wrap ul li.menu-item:hover {
   background-color: transparent;
 }
-/* line 76, ../scss/layout/_header.scss */
+/* line 91, ../scss/layout/_header.scss */
 .header-wrap #block-mtm-foundation-main-menu .menu-mobile-wrap {
   display: none;
   float: right;
 }
 @media only screen and (max-width: 40em) {
-  /* line 76, ../scss/layout/_header.scss */
+  /* line 91, ../scss/layout/_header.scss */
   .header-wrap #block-mtm-foundation-main-menu .menu-mobile-wrap {
     display: block;
   }
 }
-/* line 82, ../scss/layout/_header.scss */
+/* line 97, ../scss/layout/_header.scss */
 .header-wrap #block-mtm-foundation-main-menu .menu-mobile-wrap .main-menu-logo {
   display: none;
 }
-/* line 85, ../scss/layout/_header.scss */
+/* line 100, ../scss/layout/_header.scss */
 .header-wrap #block-mtm-foundation-main-menu .menu-mobile-wrap .menu-icon {
-  color: purple;
+  color: #ffffff;
   font-size: 1.25rem;
 }
 
 /* Theme for the meta region */
-/* line 94, ../scss/layout/_header.scss */
+/* line 109, ../scss/layout/_header.scss */
 .meta-wrap {
   display: none;
   height: 4rem;
@@ -10392,11 +10403,11 @@ th.hide-for-touch {
   background-color: #84A6DC;
   padding: 0.625rem;
 }
-/* line 101, ../scss/layout/_header.scss */
+/* line 116, ../scss/layout/_header.scss */
 .meta-wrap a {
   color: white;
 }
-/* line 106, ../scss/layout/_header.scss */
+/* line 121, ../scss/layout/_header.scss */
 .meta-wrap .meta-login .account-link:before {
   background-image: url(../images/user.svg);
   background-size: 20px;
@@ -10407,11 +10418,11 @@ th.hide-for-touch {
   left: -10px;
   top: 1px;
 }
-/* line 117, ../scss/layout/_header.scss */
+/* line 132, ../scss/layout/_header.scss */
 .meta-wrap .meta-login a {
   padding-right: 0.625rem;
 }
-/* line 121, ../scss/layout/_header.scss */
+/* line 136, ../scss/layout/_header.scss */
 .meta-wrap .meta-login .language-link:after {
   border: inset 5px;
   content: "";
@@ -10445,12 +10456,162 @@ footer a:hover, footer a:focus {
   list-style: none;
 }
 
-/* line 18, ../scss/layout/_footer.scss */
+@media only screen and (min-width: 40.0625em) and (max-width: 64em), only screen and (max-width: 40em) {
+  /* line 18, ../scss/layout/_footer.scss */
+  #footer-first {
+    text-align: center;
+  }
+}
+
+/* line 24, ../scss/layout/_footer.scss */
+.block-contactinformation h2 {
+  font-size: 1.2rem;
+}
+
+/* line 26, ../scss/layout/_footer.scss */
 #footer-middle {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
 }
+@media only screen and (min-width: 40.0625em) and (max-width: 64em), only screen and (max-width: 40em) {
+  /* line 26, ../scss/layout/_footer.scss */
+  #footer-middle {
+    padding-top: 1.25rem;
+    text-align: center;
+  }
+}
 
+@media only screen and (min-width: 40.0625em) and (max-width: 64em), only screen and (max-width: 40em) {
+  /* line 34, ../scss/layout/_footer.scss */
+  #footer-last {
+    padding-top: 1.25rem;
+    text-align: center;
+  }
+}
+
+@media all and (min-width: 360px) {
+  /* line 2, ../scss/layout/_responsive.scss */
+  body {
+    background: pink;
+  }
+
+  /* line 3, ../scss/layout/_responsive.scss */
+  .figure img {
+    width: 100%;
+    max-width: none;
+  }
+}
+@media all and (min-width: 570px) {
+  /* line 16, ../scss/layout/_responsive.scss */
+  body {
+    background: yellow;
+  }
+
+  /* line 18, ../scss/layout/_responsive.scss */
+  #search-block-form .form-submit {
+    width: 20%;
+  }
+  /* line 21, ../scss/layout/_responsive.scss */
+  #search-block-form .form-text {
+    width: 80%;
+  }
+
+  /* line 25, ../scss/layout/_responsive.scss */
+  textarea, select {
+    width: auto;
+  }
+
+  /* line 29, ../scss/layout/_responsive.scss */
+  input[type="email"], input[type="password"], input[type="search"], input[type="text"] {
+    width: auto;
+  }
+  /* line 32, ../scss/layout/_responsive.scss */
+  input[type="reset"], input[type="submit"], input[type="button"] {
+    width: auto;
+  }
+
+  /* line 36, ../scss/layout/_responsive.scss */
+  button, a.button, .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a {
+    width: auto;
+  }
+}
+/* Add responsive styles for overall site */
+@media all and (min-width: 736px) {
+  /* line 43, ../scss/layout/_responsive.scss */
+  body {
+    background: salmon;
+  }
+}
+@media all and (min-width: 1000px) {
+  /* line 50, ../scss/layout/_responsive.scss */
+  body {
+    background: aquamarine;
+  }
+}
+@media only screen {
+  /* line 53, ../scss/layout/_responsive.scss */
+  .article-feed-item {
+    min-height: 3em;
+  }
+}
+@media only screen and (max-width: 40em) {
+  /* line 57, ../scss/layout/_responsive.scss */
+  body {
+    background: orange;
+  }
+
+  /* line 59, ../scss/layout/_responsive.scss */
+  #block-mtm-foundation-main-menu .menu-wrap {
+    display: none;
+  }
+
+  /* line 61, ../scss/layout/_responsive.scss */
+  header#page-header {
+    height: 3rem;
+  }
+  /* line 63, ../scss/layout/_responsive.scss */
+  header#page-header:before {
+    height: 3rem;
+  }
+
+  /* line 67, ../scss/layout/_responsive.scss */
+  h1#site-name, .field-name-field-subtitle p#site-name {
+    font-size: 2em;
+  }
+
+  /* line 70, ../scss/layout/_responsive.scss */
+  h3#site-slogan {
+    font-size: .7em;
+    line-height: 1.2em;
+  }
+
+  /* line 75, ../scss/layout/_responsive.scss */
+  #footer-first:before {
+    border-radius: 1rem 1rem 0 0;
+  }
+
+  /* line 80, ../scss/layout/_responsive.scss */
+  #footer-last:before {
+    border-radius: 0;
+  }
+}
+@media only screen and (min-width: 40.0625em) and (max-width: 64em) {
+  /* line 88, ../scss/layout/_responsive.scss */
+  h1#site-name, .field-name-field-subtitle p#site-name {
+    font-size: 4em;
+  }
+
+  /* line 91, ../scss/layout/_responsive.scss */
+  h3#site-slogan {
+    font-size: 1em;
+  }
+}
+@media only screen and (min-width: 64.0625em) {
+  /* line 95, ../scss/layout/_responsive.scss */
+  .article-feed-item {
+    min-height: 6em;
+  }
+}
 /* line 2, ../scss/modules/_block.scss */
 form#search-block-form {
   margin: .5em 1em 1em 1em;
@@ -10472,6 +10633,13 @@ form#search-block-form input[type="submit"] {
   padding: 3px 0;
   border-radius: 0 1rem 1rem 0;
   width: 30%;
+}
+
+@media only screen and (min-width: 40.0625em) and (max-width: 64em), only screen and (max-width: 40em) {
+  /* line 20, ../scss/modules/_block.scss */
+  .services-block {
+    text-align: center;
+  }
 }
 
 /* line 19, ../scss/modules/_button.scss */
@@ -10535,9 +10703,9 @@ button:focus, a.button:focus, .mtm-landing-home .mgm-tools-slideshow .field-name
 /* line 11, ../scss/theme/_components.scss */
 .row.row-primary {
   margin-top: -4.375rem;
+  background-color: #ffffff;
   position: relative;
   z-index: 1;
-  background-color: #ffffff;
   padding: 1.5625rem;
 }
 @media only screen and (max-width: 40em) {
@@ -10548,112 +10716,149 @@ button:focus, a.button:focus, .mtm-landing-home .mgm-tools-slideshow .field-name
 }
 
 /* line 22, ../scss/theme/_components.scss */
+.row.row-middle {
+  padding: 1.5625rem;
+}
+
+/* line 25, ../scss/theme/_components.scss */
 #block-pagetitle {
   text-align: center;
 }
-/* line 24, ../scss/theme/_components.scss */
-#block-pagetitle h1 {
+/* line 27, ../scss/theme/_components.scss */
+#block-pagetitle h1, #block-pagetitle .field-name-field-subtitle p, .field-name-field-subtitle #block-pagetitle p {
   text-transform: capitalize;
   font-family: merriweather;
 }
-/* line 28, ../scss/theme/_components.scss */
+/* line 31, ../scss/theme/_components.scss */
 #block-pagetitle .block-title {
   margin: 0;
 }
 
-/* line 33, ../scss/theme/_components.scss */
+/* line 36, ../scss/theme/_components.scss */
 .field-name-field-hero-image img {
   width: 100%;
 }
 
 /* Generic hero block styles */
-/* line 39, ../scss/theme/_components.scss */
+/* line 42, ../scss/theme/_components.scss */
 .hero-block {
   color: #ffffff;
 }
-/* line 41, ../scss/theme/_components.scss */
+/* line 44, ../scss/theme/_components.scss */
 .hero-block a {
   color: #ffffff;
 }
-/* line 43, ../scss/theme/_components.scss */
+/* line 46, ../scss/theme/_components.scss */
 .hero-block a:hover {
   color: #FFBE4C;
 }
 
-/* line 48, ../scss/theme/_components.scss */
+/* line 51, ../scss/theme/_components.scss */
 .hero-block-fields, .field-node--field-hero-block {
+  color: #ffffff;
   z-index: 100;
 }
-/* line 50, ../scss/theme/_components.scss */
+/* line 54, ../scss/theme/_components.scss */
 .hero-block-fields .field-block-content--field-first-line, .hero-block-fields .field-block-content--field-second-line, .hero-block-fields .field-block-content--field-hero-link, .hero-block-fields .field-block-content--field-photo-credit, .field-node--field-hero-block .field-block-content--field-first-line, .field-node--field-hero-block .field-block-content--field-second-line, .field-node--field-hero-block .field-block-content--field-hero-link, .field-node--field-hero-block .field-block-content--field-photo-credit {
   position: absolute;
   text-align: center;
   width: 100%;
-  padding-right: 1.875rem;
+  padding-right: 2.15625rem;
 }
-/* line 56, ../scss/theme/_components.scss */
+/* line 60, ../scss/theme/_components.scss */
 .hero-block-fields .field-block-content--field-first-line, .field-node--field-hero-block .field-block-content--field-first-line {
   top: 15%;
-  font-size: 5rem;
-  text-shadow: 0 0 0 transparent, -1px -1px 0 #295B9C, 0px -1px 0 #295B9C, 1px -1px 0 #295B9C, -1px 0px 0 #295B9C, 0px 0px 0 #295B9C, 1px 0px 0 #295B9C, -1px 1px 0 #295B9C, 0px 1px 0 #295B9C, 1px 1px 0 #295B9C;
+  width: 100%;
+  margin: 0 auto;
+  font-size: 3.125rem;
+  text-shadow: 4px 4px 6px rgba(41, 91, 156, 0.6);
+  text-align: right;
   text-transform: capitalize;
 }
-@media only screen and (max-width: 40em) {
-  /* line 56, ../scss/theme/_components.scss */
+@media only screen and (min-width: 40.0625em) and (max-width: 64em), only screen and (max-width: 40em) {
+  /* line 60, ../scss/theme/_components.scss */
   .hero-block-fields .field-block-content--field-first-line, .field-node--field-hero-block .field-block-content--field-first-line {
-    top: 0;
-    font-size: 1.875rem;
+    padding-top: 0;
   }
 }
-/* line 66, ../scss/theme/_components.scss */
+@media only screen and (max-width: 40em) {
+  /* line 60, ../scss/theme/_components.scss */
+  .hero-block-fields .field-block-content--field-first-line, .field-node--field-hero-block .field-block-content--field-first-line {
+    font-size: 2rem;
+    top: 1.25rem;
+  }
+}
+/* line 78, ../scss/theme/_components.scss */
 .hero-block-fields .field-block-content--field-second-line, .field-node--field-hero-block .field-block-content--field-second-line {
   top: 60%;
   font-size: 1.5625rem;
-  text-shadow: 0 0 0 transparent, -1px -1px 0 #295B9C, 0px -1px 0 #295B9C, 1px -1px 0 #295B9C, -1px 0px 0 #295B9C, 0px 0px 0 #295B9C, 1px 0px 0 #295B9C, -1px 1px 0 #295B9C, 0px 1px 0 #295B9C, 1px 1px 0 #295B9C;
+  text-align: right;
+  text-shadow: 4px 4px 6px rgba(41, 91, 156, 0.6);
 }
-@media only screen and (max-width: 40em) {
-  /* line 66, ../scss/theme/_components.scss */
+@media only screen and (min-width: 40.0625em) and (max-width: 64em), only screen and (max-width: 40em) {
+  /* line 78, ../scss/theme/_components.scss */
   .hero-block-fields .field-block-content--field-second-line, .field-node--field-hero-block .field-block-content--field-second-line {
-    top: 40%;
-    font-size: 1.25rem;
+    padding-top: 0;
   }
 }
-/* line 75, ../scss/theme/_components.scss */
+@media only screen and (max-width: 40em) {
+  /* line 78, ../scss/theme/_components.scss */
+  .hero-block-fields .field-block-content--field-second-line, .field-node--field-hero-block .field-block-content--field-second-line {
+    top: 4.375rem;
+    font-size: 0.9375rem;
+  }
+}
+/* line 93, ../scss/theme/_components.scss */
 .hero-block-fields .field-block-content--field-hero-link, .field-node--field-hero-block .field-block-content--field-hero-link {
   top: 80%;
   font-size: 1.5625rem;
 }
 @media only screen and (max-width: 40em) {
-  /* line 75, ../scss/theme/_components.scss */
+  /* line 93, ../scss/theme/_components.scss */
   .hero-block-fields .field-block-content--field-hero-link, .field-node--field-hero-block .field-block-content--field-hero-link {
     top: 50%;
     font-size: 1.25rem;
   }
 }
-/* line 83, ../scss/theme/_components.scss */
+/* line 101, ../scss/theme/_components.scss */
 .hero-block-fields .field-block-content--field-photo-credit, .field-node--field-hero-block .field-block-content--field-photo-credit {
-  bottom: 10%;
+  bottom: 1%;
   text-align: left;
   padding-left: 1.875rem;
   font-size: 0.75rem;
 }
 @media only screen and (max-width: 40em) {
-  /* line 83, ../scss/theme/_components.scss */
+  /* line 101, ../scss/theme/_components.scss */
   .hero-block-fields .field-block-content--field-photo-credit, .field-node--field-hero-block .field-block-content--field-photo-credit {
-    font-size: 0.5rem;
+    display: none;
+  }
+}
+/* line 111, ../scss/theme/_components.scss */
+.hero-block-fields .field-block-content--field-image img, .field-node--field-hero-block .field-block-content--field-image img {
+  padding: 0 0 1em 0;
+}
+
+/* Hero blocks as Node Headers */
+@media only screen and (min-width: 40.0625em) and (max-width: 64em), only screen and (max-width: 40em) {
+  /* line 118, ../scss/theme/_components.scss */
+  .field-node--field-hero-block .field-block-content--field-first-line {
+    font-size: 1.25rem;
+    top: 0.625rem;
+    padding-top: 0;
   }
 }
 
 /* Generic slideshow style */
-/* line 96, ../scss/theme/_components.scss */
+/* line 132, ../scss/theme/_components.scss */
 .mgm-tools-slideshow .slick-slide {
   position: relative;
+  min-height: 10rem;
 }
-/* line 98, ../scss/theme/_components.scss */
+/* line 135, ../scss/theme/_components.scss */
 .mgm-tools-slideshow .slick-slide img {
   padding: 0;
 }
-/* line 102, ../scss/theme/_components.scss */
+/* line 139, ../scss/theme/_components.scss */
 .mgm-tools-slideshow .slick-dots {
   position: absolute;
   bottom: 4.375rem;
@@ -10662,21 +10867,21 @@ button:focus, a.button:focus, .mtm-landing-home .mgm-tools-slideshow .field-name
   margin: 0;
 }
 @media only screen and (max-width: 40em) {
-  /* line 102, ../scss/theme/_components.scss */
+  /* line 139, ../scss/theme/_components.scss */
   .mgm-tools-slideshow .slick-dots {
     display: none !important;
   }
 }
-/* line 111, ../scss/theme/_components.scss */
+/* line 148, ../scss/theme/_components.scss */
 .mgm-tools-slideshow .slick-dots li {
   display: inline-block;
   padding-right: 1.25rem;
 }
-/* line 114, ../scss/theme/_components.scss */
+/* line 151, ../scss/theme/_components.scss */
 .mgm-tools-slideshow .slick-dots li:last-child {
   padding-right: 0;
 }
-/* line 118, ../scss/theme/_components.scss */
+/* line 155, ../scss/theme/_components.scss */
 .mgm-tools-slideshow .slick-dots button {
   height: 1.25rem;
   width: 1.25rem;
@@ -10685,12 +10890,17 @@ button:focus, a.button:focus, .mtm-landing-home .mgm-tools-slideshow .field-name
   color: transparent;
   background-color: #295B9C;
 }
-/* line 127, ../scss/theme/_components.scss */
+/* line 164, ../scss/theme/_components.scss */
 .mgm-tools-slideshow .slick-dots .slick-active button {
   background-color: #84A6DC;
 }
 
 /* line 1, ../scss/theme/_main.scss */
+[class*="block-grid-"] {
+  margin: 0;
+}
+
+/* line 4, ../scss/theme/_main.scss */
 blockquote {
   border: 0;
   font-weight: bold;
@@ -10698,39 +10908,57 @@ blockquote {
   font-style: italic;
   margin-left: 1.875rem;
 }
-/* line 7, ../scss/theme/_main.scss */
+/* line 10, ../scss/theme/_main.scss */
 blockquote:before {
   content: "\"";
 }
 
-/* line 12, ../scss/theme/_main.scss */
+/* line 15, ../scss/theme/_main.scss */
 img {
   padding: 1em;
 }
-/* line 14, ../scss/theme/_main.scss */
+/* line 17, ../scss/theme/_main.scss */
 img .align-left {
   clear: both;
   padding-left: 0;
 }
-/* line 18, ../scss/theme/_main.scss */
+/* line 21, ../scss/theme/_main.scss */
 img .align-right {
   clear: both;
   padding-right: 0;
 }
 
-/* line 24, ../scss/theme/_main.scss */
-h1.page-title {
-  font-size: 3rem;
-  padding: .25em 0 1em .25em;
+/* line 26, ../scss/theme/_main.scss */
+.block-mtm-foundation-page-title {
+  padding-bottom: 3.75rem;
+}
+@media only screen and (min-width: 40.0625em) and (max-width: 64em) {
+  /* line 26, ../scss/theme/_main.scss */
+  .block-mtm-foundation-page-title {
+    padding-bottom: 1.25rem;
+  }
+}
+@media only screen and (max-width: 40em) {
+  /* line 26, ../scss/theme/_main.scss */
+  .block-mtm-foundation-page-title {
+    padding-bottom: 0;
+  }
 }
 
-/* line 29, ../scss/theme/_main.scss */
+/* line 35, ../scss/theme/_main.scss */
+h1.page-title, .field-name-field-subtitle p.page-title {
+  font-size: 3rem;
+  padding: .25em 0 1em .25em;
+  text-align: right;
+}
+
+/* line 43, ../scss/theme/_main.scss */
 .field-name-field-subtitle p {
   color: #9A1697;
   text-align: center;
 }
 
-/* line 35, ../scss/theme/_main.scss */
+/* line 49, ../scss/theme/_main.scss */
 .field-name-field-icon-css {
   font-size: 1.875rem;
   height: 1.875rem;
@@ -10738,19 +10966,19 @@ h1.page-title {
   margin: 0 auto 0.9375rem;
 }
 @media only screen and (max-width: 40em) {
-  /* line 35, ../scss/theme/_main.scss */
+  /* line 49, ../scss/theme/_main.scss */
   .field-name-field-icon-css {
     top: 25;
     font-size: 1.875rem;
   }
 }
-/* line 44, ../scss/theme/_main.scss */
+/* line 58, ../scss/theme/_main.scss */
 .field-name-field-icon-css i {
   width: 22.5%;
   float: left;
   text-align: center;
 }
-/* line 49, ../scss/theme/_main.scss */
+/* line 63, ../scss/theme/_main.scss */
 .field-name-field-icon-css .rule {
   background: url(../images/rule-gray.png) repeat-x 20%;
   width: 38.5%;
@@ -10759,38 +10987,38 @@ h1.page-title {
 }
 
 /* Article/Service node styles */
-/* line 58, ../scss/theme/_main.scss */
+/* line 72, ../scss/theme/_main.scss */
 .node-article, .node-service {
   /* Float the edit buttons on the hero image */
 }
-/* line 59, ../scss/theme/_main.scss */
+/* line 73, ../scss/theme/_main.scss */
 .node-article .field-name-body, .node-service .field-name-body {
   margin: 0 1.875rem 0 1.875rem;
   background: green;
 }
-/* line 64, ../scss/theme/_main.scss */
+/* line 78, ../scss/theme/_main.scss */
 .node-article .field-name-field-image img, .node-service .field-name-field-image img {
   width: 100%;
 }
 @media only screen and (min-width: 40.0625em) {
-  /* line 64, ../scss/theme/_main.scss */
+  /* line 78, ../scss/theme/_main.scss */
   .node-article .field-name-field-image img, .node-service .field-name-field-image img {
     margin-top: -8.125rem;
   }
 }
-/* line 70, ../scss/theme/_main.scss */
+/* line 84, ../scss/theme/_main.scss */
 .node-article .tab-wrap, .node-service .tab-wrap {
   position: absolute;
   z-index: 1;
 }
-/* line 74, ../scss/theme/_main.scss */
+/* line 88, ../scss/theme/_main.scss */
 .node-article article, .node-service article {
   background-color: #ffffff;
   padding: 1.5625rem;
   position: relative;
   z-index: 1;
 }
-/* line 79, ../scss/theme/_main.scss */
+/* line 93, ../scss/theme/_main.scss */
 .node-article article .node-title, .node-service article .node-title {
   text-transform: uppercase;
   text-align: center;
@@ -10798,62 +11026,25 @@ h1.page-title {
   margin-bottom: 1.25rem;
 }
 
-/* line 89, ../scss/theme/_main.scss */
-.node--type-service-page .page-title {
+/* line 103, ../scss/theme/_main.scss */
+.node--type-service-page .block-mtm-foundation-page-title {
   display: none;
 }
-/* line 90, ../scss/theme/_main.scss */
+/* line 104, ../scss/theme/_main.scss */
 .node--type-service-page.services-block-text {
   text-align: center;
 }
-/* line 92, ../scss/theme/_main.scss */
+/* line 106, ../scss/theme/_main.scss */
 .node--type-service-page.services-block-text .views-row {
   min-height: 11.25rem;
 }
-/* line 94, ../scss/theme/_main.scss */
-.node--type-service-page .field-name-field-hero-block {
-  color: #ffffff;
-}
 
 /* Homepage styles */
-/* line 108, ../scss/theme/_main.scss */
+/* line 121, ../scss/theme/_main.scss */
 .mtm-landing-home {
   /* Slideshow block styles */
 }
-/* line 112, ../scss/theme/_main.scss */
-.mtm-landing-home .hero-block-fields .field-block-content--field-first-line, .mtm-landing-home .field-node--field-hero-block .field-block-content--field-first-line {
-  max-width: 62.5rem;
-  width: 100%;
-  margin: 0 auto;
-  font-size: 3.125rem;
-}
-@media only screen and (max-width: 40em) {
-  /* line 112, ../scss/theme/_main.scss */
-  .mtm-landing-home .hero-block-fields .field-block-content--field-first-line, .mtm-landing-home .field-node--field-hero-block .field-block-content--field-first-line {
-    font-size: 1.25rem;
-  }
-}
-/* line 121, ../scss/theme/_main.scss */
-.mtm-landing-home .hero-block-fields .field-block-content--field-second-line, .mtm-landing-home .field-node--field-hero-block .field-block-content--field-second-line {
-  font-size: 1.5625rem;
-}
-@media only screen and (max-width: 40em) {
-  /* line 121, ../scss/theme/_main.scss */
-  .mtm-landing-home .hero-block-fields .field-block-content--field-second-line, .mtm-landing-home .field-node--field-hero-block .field-block-content--field-second-line {
-    font-size: 1.25rem;
-  }
-}
-/* line 127, ../scss/theme/_main.scss */
-.mtm-landing-home .hero-block-fields .field-block-content--field-hero-link, .mtm-landing-home .field-node--field-hero-block .field-block-content--field-hero-link {
-  font-size: 1.5625rem;
-}
-@media only screen and (max-width: 40em) {
-  /* line 127, ../scss/theme/_main.scss */
-  .mtm-landing-home .hero-block-fields .field-block-content--field-hero-link, .mtm-landing-home .field-node--field-hero-block .field-block-content--field-hero-link {
-    font-size: 1.25rem;
-  }
-}
-/* line 135, ../scss/theme/_main.scss */
+/* line 133, ../scss/theme/_main.scss */
 .mtm-landing-home .mgm-tools-slideshow .slick-dots {
   position: relative;
   text-align: right;
@@ -10861,7 +11052,7 @@ h1.page-title {
   max-width: 62.5rem;
   padding-right: 1.875rem;
 }
-/* line 142, ../scss/theme/_main.scss */
+/* line 140, ../scss/theme/_main.scss */
 .mtm-landing-home .mgm-tools-slideshow .hero-block-fields {
   max-width: 62.5rem;
   margin: 0 auto;
@@ -10872,7 +11063,7 @@ h1.page-title {
   background-color: rgba(255, 255, 255, 0.25);
 }
 @media only screen and (min-width: 40.0625em) and (max-width: 64em), only screen and (max-width: 40em) {
-  /* line 142, ../scss/theme/_main.scss */
+  /* line 140, ../scss/theme/_main.scss */
   .mtm-landing-home .mgm-tools-slideshow .hero-block-fields {
     height: inherit;
     left: 0;
@@ -10880,16 +11071,16 @@ h1.page-title {
   }
 }
 @media only screen and (min-width: 40.0625em) and (max-width: 64em) {
-  /* line 142, ../scss/theme/_main.scss */
+  /* line 140, ../scss/theme/_main.scss */
   .mtm-landing-home .mgm-tools-slideshow .hero-block-fields {
     padding-top: 9.375rem;
   }
 }
-/* line 166, ../scss/theme/_main.scss */
+/* line 157, ../scss/theme/_main.scss */
 .mtm-landing-home .mgm-tools-slideshow .field-block-content--field-first-line, .mtm-landing-home .mgm-tools-slideshow .field-block-content--field-second-line, .mtm-landing-home .mgm-tools-slideshow .field-block-content--field-hero-link {
   text-align: right;
 }
-/* line 169, ../scss/theme/_main.scss */
+/* line 160, ../scss/theme/_main.scss */
 .mtm-landing-home .mgm-tools-slideshow .field-name-field-image img {
   -webkit-filter: grayscale(1);
   -moz-filter: grayscale(1);
@@ -10898,74 +11089,92 @@ h1.page-title {
   filter: grayscale(1);
 }
 @media only screen and (max-width: 40em) {
-  /* line 172, ../scss/theme/_main.scss */
+  /* line 163, ../scss/theme/_main.scss */
   .mtm-landing-home .mgm-tools-slideshow .field-name-field-first-line {
     font-size: 1.25rem;
+    top: 1.25rem;
   }
 }
-/* line 178, ../scss/theme/_main.scss */
+/* line 170, ../scss/theme/_main.scss */
 .mtm-landing-home .mgm-tools-slideshow .field-name-field-second-line {
   top: 40%;
   -webkit-text-stroke-width: 0;
   color: #ffffff;
 }
 @media only screen and (min-width: 40.0625em) and (max-width: 64em), only screen and (max-width: 40em) {
-  /* line 178, ../scss/theme/_main.scss */
+  /* line 170, ../scss/theme/_main.scss */
   .mtm-landing-home .mgm-tools-slideshow .field-name-field-second-line {
     padding-top: 0;
+    top: 5rem;
+    font-size: 1rem;
   }
 }
-/* line 186, ../scss/theme/_main.scss */
+/* line 180, ../scss/theme/_main.scss */
 .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link {
   top: 60%;
   -webkit-text-stroke-width: 0;
 }
 @media only screen and (min-width: 40.0625em) and (max-width: 64em), only screen and (max-width: 40em) {
-  /* line 186, ../scss/theme/_main.scss */
+  /* line 180, ../scss/theme/_main.scss */
   .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link {
     padding-top: 0.3125rem;
+    top: 6.875rem;
   }
 }
-/* line 192, ../scss/theme/_main.scss */
+/* line 187, ../scss/theme/_main.scss */
 .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a {
   text-transform: uppercase;
+}
+@media only screen and (min-width: 40.0625em) and (max-width: 64em), only screen and (max-width: 40em) {
+  /* line 187, ../scss/theme/_main.scss */
+  .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a {
+    padding: 0.625rem;
+    font-size: 0.6875rem;
+    margin: 0 0 .25rem 0;
+  }
 }
 /* line 198, ../scss/theme/_main.scss */
 .mtm-landing-home .mgm-tools-slideshow .field-name-field-photo-credit {
   -webkit-text-stroke-width: 0;
   color: #ffffff;
 }
-/* line 202, ../scss/theme/_main.scss */
+@media only screen and (min-width: 40.0625em) and (max-width: 64em), only screen and (max-width: 40em) {
+  /* line 198, ../scss/theme/_main.scss */
+  .mtm-landing-home .mgm-tools-slideshow .field-name-field-photo-credit {
+    display: none;
+  }
+}
+/* line 205, ../scss/theme/_main.scss */
 .mtm-landing-home .mgm-tools-slideshow .field-block-content--field-image {
   position: absolute;
   top: 0;
 }
 
-/* line 211, ../scss/theme/_main.scss */
+/* line 214, ../scss/theme/_main.scss */
 section[rel~="schema:comment"] .filter-wrapper {
   display: none;
 }
-/* line 214, ../scss/theme/_main.scss */
-section[rel~="schema:comment"] h2.field-label, section[rel~="schema:comment"] .field-name-field-subtitle p.field-label, .field-name-field-subtitle section[rel~="schema:comment"] p.field-label {
+/* line 217, ../scss/theme/_main.scss */
+section[rel~="schema:comment"] h2.field-label {
   font-size: 1.5em;
   margin-top: 20px;
   border-top: 1px solid #000;
   padding-top: 20px;
 }
-/* line 220, ../scss/theme/_main.scss */
+/* line 223, ../scss/theme/_main.scss */
 section[rel~="schema:comment"] .field-items {
   font-size: 1.3em;
   color: #9A1697;
 }
 
 /* Social Media Buttons */
-/* line 227, ../scss/theme/_main.scss */
+/* line 230, ../scss/theme/_main.scss */
 ul.platforms {
   margin-left: 0;
 }
 
 /* Contact page styles */
-/* line 230, ../scss/theme/_main.scss */
+/* line 233, ../scss/theme/_main.scss */
 .contact-hero img {
   width: 100%;
 }

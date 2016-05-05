@@ -4,7 +4,7 @@
   z-index: 2;
   border-bottom:1px solid $primary-color;
   //margin-top: 2rem;
-  background-color: $primary-color;;
+  background-color: $primary-color;
   #block-mtm-foundation-branding, #block-brandingfront {
     float: left;
     position: absolute;
@@ -19,6 +19,21 @@
   #block-brandingfront {
     img {
       padding: .5em 0;
+    }
+    @media #{$medium-only},#{$small-only} {
+      &.column {
+        padding: 0 .3rem;
+      }
+    }
+  }
+  #block-mtm-foundation-branding {
+    img {
+      padding: .5em 0;
+    }
+    @media #{$medium-only},#{$small-only} {
+      &.column {
+        padding: 0 .3rem;
+      }
     }
   }
   #block-mtm-foundation-main-menu {
@@ -83,7 +98,7 @@
         display: none;
       }
       .menu-icon {
-        color: purple;
+        color: $background_color;
         font-size: rem-calc(20px);
       }
     }
