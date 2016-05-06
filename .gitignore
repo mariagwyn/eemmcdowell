@@ -2,7 +2,7 @@
 docroot/files
 docroot/sites/*/files
 docroot/sites/*/private
-
+*/_dev.scss
 *.DS_Store
 
 .sass-cache*
