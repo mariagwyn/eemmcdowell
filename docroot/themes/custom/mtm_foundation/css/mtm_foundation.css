@@ -10585,6 +10585,25 @@ footer a:hover, footer a:focus {
     min-height: 6em;
   }
 }
+/* Add responsive styles for overall site */
+@media only screen and (min-width: 40.0625em) and (max-width: 64em) {
+  /* line 4, ../scss/layout/_dev.scss */
+  body {
+    background: salmon;
+  }
+}
+@media only screen and (max-width: 40em) {
+  /* line 7, ../scss/layout/_dev.scss */
+  body {
+    background: orange;
+  }
+}
+@media only screen and (min-width: 64.0625em) and (max-width: 90em) {
+  /* line 10, ../scss/layout/_dev.scss */
+  body {
+    background: aquamarine;
+  }
+}
 /* line 2, ../scss/modules/_block.scss */
 form#search-block-form {
   margin: .5em 1em 1em 1em;

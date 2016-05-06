@@ -1,0 +1,11 @@
+
+/* Add responsive styles for overall site */
+@media #{$medium-only} {
+  body {background: salmon;}
+}
+@media #{$small-only} {
+  body {background: orange;}
+}
+@media #{$large-only} {
+  body {background: aquamarine;}
+}
