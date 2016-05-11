@@ -4403,39 +4403,6 @@
         "homepage": "https://www.drupal.org/project/git_deploy"
     },
     {
-        "name": "drupal/google_analytics",
-        "version": "8.2.0-rc1",
-        "version_normalized": "8.2.0.0-RC1",
-        "source": {
-            "type": "git",
-            "url": "https://git.drupal.org/project/google_analytics",
-            "reference": "0057c3fcba967cb3bfe7c9ee8891d5fa7fee0bdb"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/google_analytics-8.x-2.0-rc1.zip",
-            "reference": "0057c3fcba967cb3bfe7c9ee8891d5fa7fee0bdb",
-            "shasum": null
-        },
-        "require": {
-            "drupal/core": "8.*"
-        },
-        "time": "2015-11-22 01:44:31",
-        "type": "drupal-module",
-        "extra": {
-            "branch-alias": {
-                "dev-8.x-2.x": "8.2.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "notification-url": "https://packagist.drupal-composer.org/downloads/",
-        "license": [
-            "GPL-2.0+"
-        ],
-        "description": "Allows your site to be tracked by Google Analytics by adding a Javascript tracking code to every page.",
-        "homepage": "https://www.drupal.org/project/google_analytics"
-    },
-    {
         "name": "drupal/inline_entity_form",
         "version": "8.1.0-alpha6",
         "version_normalized": "8.1.0.0-alpha6",
@@ -6830,7 +6797,7 @@
         "dist": {
             "type": "zip",
             "url": "https://ftp.drupal.org/files/projects/ctools-8.x-3.0-alpha26.zip",
-            "reference": null,
+            "reference": "c14a5eee970c3d0aab02e88f6c6a4d18091439b8",
             "shasum": null
         },
         "require": {
@@ -6859,5 +6826,48 @@
         ],
         "description": "Provides a number of utility and helper APIs for Drupal developers and site builders.",
         "homepage": "https://www.drupal.org/project/ctools"
+    },
+    {
+        "name": "drupal/google_analytics",
+        "version": "8.2.0",
+        "version_normalized": "8.2.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupal.org/project/google_analytics",
+            "reference": "99802b6a9f7711d30838acaa1af9ce2cf5b4d614"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://ftp.drupal.org/files/projects/google_analytics-8.x-2.0.zip",
+            "reference": null,
+            "shasum": null
+        },
+        "require": {
+            "drupal/core": "8.*"
+        },
+        "time": "2016-04-23 19:09:32",
+        "type": "drupal-module",
+        "extra": {
+            "branch-alias": {
+                "dev-8.x-2.x": "8.2.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packagist.drupal-composer.org/downloads/",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "hass",
+                "homepage": "https://www.drupal.org/u/hass"
+            },
+            {
+                "name": "See other contributors",
+                "homepage": "https://www.drupal.org/node/49388/committers"
+            }
+        ],
+        "description": "Allows your site to be tracked by Google Analytics by adding a Javascript tracking code to every page.",
+        "homepage": "https://www.drupal.org/project/google_analytics"
     }
 ]
