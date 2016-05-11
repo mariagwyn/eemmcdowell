@@ -1,7 +1,7 @@
 name: File Browser
 description: 'Provides a default Entity Browser for files, using Masonry and Imagesloaded.'
 type: module
-core: 8.x
+# core: 8.x
 dependencies:
   - entity_browser
   - entity_embed
@@ -16,3 +16,9 @@ dependencies:
   - path
   - text
   - views
+
+# Information added by Drupal.org packaging script on 2016-05-05
+version: '8.x-1.x-dev'
+core: '8.x'
+project: 'file_browser'
+datestamp: 1462468441

@@ -6846,7 +6846,7 @@
         "dist": {
             "type": "zip",
             "url": "https://ftp.drupal.org/files/projects/pathauto-8.x-1.0-alpha3.zip",
-            "reference": null,
+            "reference": "c4952e15e2906ff2040bc01f5e8f37d23950269e",
             "shasum": null
         },
         "require": {
