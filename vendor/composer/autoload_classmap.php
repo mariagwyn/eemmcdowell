@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'CallbackFilterIterator' => $vendorDir . '/symfony/polyfill-php54/Resources/stubs/CallbackFilterIterator.php',
     'Console_Table' => $vendorDir . '/pear/console_table/Table.php',
+    'Drupal' => $baseDir . '/docroot/core/lib/Drupal.php',
     'DrupalProject\\composer\\ScriptHandler' => $baseDir . '/scripts/composer/ScriptHandler.php',
     'Drupal\\Component\\Utility\\Timer' => $baseDir . '/docroot/core/lib/Drupal/Component/Utility/Timer.php',
     'Drupal\\Component\\Utility\\Unicode' => $baseDir . '/docroot/core/lib/Drupal/Component/Utility/Unicode.php',

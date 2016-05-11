@@ -17,33 +17,31 @@
     "drupal-composer/drupal-scaffold": "^1.3.1",
     "cweagans/composer-patches": "~1.0",
     "drupal/core": "~8.0",
-    "drush/drush": "~8.0",
     "drupal/console": "~0.10",
     "drupal/addtoany": "~8.1",
-    "drupal/admin_toolbar": "8.1.*",
-    "drupal/composer_manager": "8.1.*",
-    "drupal/devel": "8.1.*",
-    "drupal/ctools": "8.x",
-    "drupal/dropzonejs": "8.1.*",
-    "drupal/embed": "8.1.*",
-    "drupal/entity_browser": "8.1.*",
-    "drupal/entity_embed": "8.1.*",
+    "drupal/admin_toolbar": "~8.1",
+    "drupal/devel": "~8.1",
+    "drupal/ctools": "~8.3",
+    "drupal/dropzonejs": "~8.1",
+    "drupal/embed": "~8.1",
+    "drupal/entity_browser": "~8.1",
+    "drupal/entity_embed": "~8.1",
     "drupal/feeds": "~8",
     "drupal/field_group": "8.1.*",
     "drupal/file_browser": "~8",
     "drupal/footnotes": "8.2.*",
     "drupal/geolocation": "8.1.*",
-    "drupal/git_deploy": "8.2.*",
-    "drupal/google_analytics": "8.2.0-rc1",
+    "drupal/git_deploy": "~8.2",
+    "drupal/google_analytics": "~8.2",
     "drupal/inline_entity_form": "~8",
     "drupal/layout_plugin": "~8.0",
     "drupal/page_manager": "~8.0",
-    "drupal/panels": "8.3.*",
-    "drupal/pathauto": "8.1.0-alpha2",
-    "drupal/social_media_links": "8.2.*",
+    "drupal/panels": "~8.3",
+    "drupal/pathauto": "~8.1",
+    "drupal/social_media_links": "~8.2",
     "drupal/token": "~8",
-    "drupal/adminimal_theme": "8.1.*",
-    "drupal/zurb_foundation": "8.5.*",
+    "drupal/adminimal_theme": "~8.1",
+    "drupal/zurb_foundation": "~8.5",
     "mariagwyn/mgm_tools": "master"
   },
   "require-dev": {
@@ -91,7 +89,8 @@
     },
     "drupal-scaffold": {
       "excludes": [
-        "robots.txt"
+        "robots.txt",
+        "docroot/sites/development.services.yml"
       ]
     }
   }
