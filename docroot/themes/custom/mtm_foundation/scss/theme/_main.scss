@@ -11,16 +11,24 @@ blockquote {
       content: "\"";
   }
 }
-
+.field-name-field-quote {
+  display: block;
+  text-align: auto;
+  color: $primary-alt-color;
+}
 img {
   padding: 1em;
-  .align-left {
-    clear: both;;
+}
+.float-left {
+  float:left;
+  img {
     padding-left: 0;
   }
-  .align-right {
-    clear: both;
-    padding-right:0;
+}
+.float-right {
+  float:right;
+  img {
+      padding-right: 0;
   }
 }
 .block-mtm-foundation-page-title {
