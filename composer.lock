@@ -1784,16 +1784,16 @@
         },
         {
             "name": "drupal/pathauto",
-            "version": "8.1.0-alpha2",
+            "version": "8.1.0-alpha3",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/pathauto",
-                "reference": "c816d16cff1f05f7bd61283d0a66a2064f596357"
+                "reference": "c4952e15e2906ff2040bc01f5e8f37d23950269e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/pathauto-8.x-1.0-alpha2.zip",
-                "reference": "c816d16cff1f05f7bd61283d0a66a2064f596357",
+                "url": "https://ftp.drupal.org/files/projects/pathauto-8.x-1.0-alpha3.zip",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -1814,7 +1814,7 @@
             ],
             "description": "Provides a mechanism for modules to automatically generate aliases for the content they manage.",
             "homepage": "https://www.drupal.org/project/pathauto",
-            "time": "2016-02-26 22:51:00"
+            "time": "2016-04-18 18:44:27"
         },
         {
             "name": "drupal/social_media_links",
