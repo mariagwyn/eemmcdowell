@@ -3990,7 +3990,7 @@
         "source": {
             "type": "git",
             "url": "https://git.drupal.org/project/devel",
-            "reference": "5efd60daa5d8e47af94d5cf610903072b27cb5d7"
+            "reference": "ebb184dcb29d652ef26093b703895c0ba61f2a6e"
         },
         "require": {
             "drupal/core": "8.*"
@@ -4005,7 +4005,7 @@
             "drupal/core": "Required by drupal/devel_generate, drupal/devel_node_access, drupal/kint, drupal/webprofiler",
             "drupal/menu_ui": "Required by drupal/devel_node_access"
         },
-        "time": "2016-04-24 14:29:34",
+        "time": "2016-05-10 19:17:16",
         "type": "drupal-module",
         "extra": {
             "branch-alias": {
