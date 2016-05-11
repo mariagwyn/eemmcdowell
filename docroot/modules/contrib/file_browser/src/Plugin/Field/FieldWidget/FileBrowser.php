@@ -123,7 +123,7 @@ class FileBrowser extends EntityReference {
 
     $current = [
       '#type' => 'table',
-      '#header' => [$this->t('Preview'), $this->t('Metadata'), ['data' => $this->t('Operations'), 'colspan' => 2], t('Order', array(), array('context' => 'Sort order'))],
+      '#header' => [$this->t('Preview'), $this->t('Filename'), $this->t('Metadata'), ['data' => $this->t('Operations'), 'colspan' => 2], t('Order', array(), array('context' => 'Sort order'))],
       '#empty' => $this->t('No files yet'),
       '#attributes' => ['class' => ['entities-list']],
       '#tabledrag' => array(
@@ -160,6 +160,7 @@ class FileBrowser extends EntityReference {
 
       // Find the default description.
       $description = '';
+      $display_field = $this->fieldDefinition->getSetting('display_default');
       $alt = '';
       $title = '';
       $weight = $delta;
@@ -167,6 +168,7 @@ class FileBrowser extends EntityReference {
         if ($item->target_id == $entity->id()) {
           if ($this->fieldDefinition->getType() == 'file') {
             $description = $item->description;
+            $display_field = $item->display;
           }
           elseif ($this->fieldDefinition->getType() == 'image') {
             $alt = $item->alt;
@@ -182,11 +184,19 @@ class FileBrowser extends EntityReference {
           'data-entity-id' => $entity->id()
         ],
         'display' => $display,
+        'filename' => ['#markup' => $entity->label()],
         'meta' => [
+          'display_field' => [
+            '#type' => 'checkbox',
+            '#title' => t('Include file in display'),
+            '#default_value' => (bool) $display_field,
+            '#access' => $this->fieldDefinition->getType() == 'file' && $this->fieldDefinition->getSetting('display_field'),
+          ],
           'description' => [
             '#type' => $config->get('description.type'),
             '#title' =>$this->t('Description'),
             '#default_value' => $description,
+            '#size' => 45,
             '#maxlength' => $config->get('description.length'),
             '#description' =>$this->t('The description may be used as the label of the link to the file.'),
             '#access' => $this->fieldDefinition->getType() == 'file' && $this->fieldDefinition->getSetting('description_field'),
@@ -195,6 +205,7 @@ class FileBrowser extends EntityReference {
             '#type' => 'textfield',
             '#title' =>$this->t('Alternative text'),
             '#default_value' => $alt,
+            '#size' => 45,
             '#maxlength' => 512,
             '#description' =>$this->t('This text will be used by screen readers, search engines, or when the image cannot be loaded.'),
             '#access' => $this->fieldDefinition->getType() == 'image' && $this->fieldDefinition->getSetting('alt_field'),
@@ -204,6 +215,7 @@ class FileBrowser extends EntityReference {
             '#type' => 'textfield',
             '#title' =>$this->t('Title'),
             '#default_value' => $title,
+            '#size' => 45,
             '#maxlength' => 1024,
             '#description' =>$this->t('The title is used as a tool tip when the user hovers the mouse over the image.'),
             '#access' => $this->fieldDefinition->getType() == 'image' && $this->fieldDefinition->getSetting('title_field'),
@@ -261,14 +273,21 @@ class FileBrowser extends EntityReference {
         'target_id' => $id,
         '_weight' => $values['current'][$id]['_weight'],
       ];
-      if ($this->fieldDefinition->getType() == 'file' && isset($values['current'][$id]['meta']['description'])) {
-        $item_values['description'] = $values['current'][$id]['meta']['description'];
+      if ($this->fieldDefinition->getType() == 'file') {
+        if (isset($values['current'][$id]['meta']['description'])) {
+          $item_values['description'] = $values['current'][$id]['meta']['description'];
+        }
+        if ($this->fieldDefinition->getSetting('display_field') && isset($values['current'][$id]['meta']['display_field'])) {
+          $item_values['display'] = $values['current'][$id]['meta']['display_field'];
+        }
       }
-      if ($this->fieldDefinition->getType() == 'image' && isset($values['current'][$id]['meta']['alt'])) {
-        $item_values['alt'] = $values['current'][$id]['meta']['alt'];
-      }
-      if ($this->fieldDefinition->getType() == 'image' && isset($values['current'][$id]['meta']['title'])) {
-        $item_values['title'] = $values['current'][$id]['meta']['title'];
+      if ($this->fieldDefinition->getType() == 'image') {
+        if (isset($values['current'][$id]['meta']['alt'])) {
+          $item_values['alt'] = $values['current'][$id]['meta']['alt'];
+        }
+        if (isset($values['current'][$id]['meta']['title'])) {
+          $item_values['title'] = $values['current'][$id]['meta']['title'];
+        }
       }
       $return[] = $item_values;
     }

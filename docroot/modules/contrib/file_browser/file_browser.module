@@ -31,6 +31,7 @@ function file_browser_form_alter(&$form, FormStateInterface &$form_state) {
         $form['#form_id'] == 'entity_browser_browse_files_modal_form') {
       // Attach our library.
       $form['#attached']['library'][] = 'file_browser/view';
+      $form['#attached']['library'][] = 'file_browser/dropzone_css';
 
       // Style the submit button.
       $form['actions']['submit']['#value'] = t('Select Files');

@@ -4,6 +4,12 @@ iframe:
     theme:
       css/file_browser.iframe.css: {}
 
+dropzone_css:
+  version: VERSION
+  css:
+    theme:
+      css/file_browser.dropzone.css: {}
+
 view:
   version: VERSION
   js:

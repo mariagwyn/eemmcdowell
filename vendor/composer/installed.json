@@ -4275,7 +4275,7 @@
         "source": {
             "type": "git",
             "url": "https://git.drupal.org/project/file_browser.git",
-            "reference": "b02f775bc7a9bdf70c3e505b50ddb55c3e9c1f96"
+            "reference": "90d1a42c0ca30e7eb4669190bf0cfd2fe5f14d07"
         },
         "require": {
             "drupal/core": "8.*",
@@ -4299,7 +4299,7 @@
         "suggest": {
             "drupal/core": "Required by drupal/file_browser_example"
         },
-        "time": "2016-04-13 20:27:43",
+        "time": "2016-05-05 17:10:28",
         "type": "drupal-module",
         "extra": {
             "branch-alias": {
@@ -6839,7 +6839,7 @@
         "dist": {
             "type": "zip",
             "url": "https://ftp.drupal.org/files/projects/google_analytics-8.x-2.0.zip",
-            "reference": null,
+            "reference": "99802b6a9f7711d30838acaa1af9ce2cf5b4d614",
             "shasum": null
         },
         "require": {
