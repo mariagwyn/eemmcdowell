@@ -31,7 +31,7 @@ class EntityBrowserTest extends KernelTestBase {
    *
    * @var array
    */
-  public static $modules = ['system', 'user', 'entity_browser', 'entity_browser_test'];
+  public static $modules = ['system', 'user', 'views', 'entity_browser', 'entity_browser_test'];
 
   /**
    * The entity browser storage.
@@ -64,6 +64,8 @@ class EntityBrowserTest extends KernelTestBase {
     $this->controller = $this->container->get('entity.manager')->getStorage('entity_browser');
     $this->widgetUUID = $this->container->get('uuid')->generate();
     $this->routeProvider = $this->container->get('router.route_provider');
+
+    $this->installSchema('system', ['router']);
   }
 
   /**
@@ -91,6 +93,7 @@ class EntityBrowserTest extends KernelTestBase {
       'selection_display_configuration' => [],
       'widget_selector' => 'single',
       'widget_selector_configuration' => [],
+      'submit_text' => 'Select entities',
       'widgets' => [
         $this->widgetUUID => [
           'id' => 'view',
@@ -148,7 +151,9 @@ class EntityBrowserTest extends KernelTestBase {
     $expected_properties = [
       'langcode' => $this->container->get('language_manager')->getDefaultLanguage()->getId(),
       'status' => TRUE,
-      'dependencies' => [],
+      'dependencies' => [
+        'module' => ['views'],
+      ],
       'name' => 'test_browser',
       'label' => 'Testing entity browser instance',
       'display' => 'standalone',
@@ -169,6 +174,7 @@ class EntityBrowserTest extends KernelTestBase {
           ],
         ],
       ],
+      'submit_text' => 'Select entities',
     ];
 
     $this->assertEquals($actual_properties, $expected_properties, 'Actual config properties are structured as expected.');

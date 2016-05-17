@@ -24,8 +24,8 @@
     "drupal/ctools": "~8.3",
     "drupal/dropzonejs": "~8.1",
     "drupal/embed": "~8.1",
-    "drupal/entity_browser": "~8.1",
-    "drupal/entity_embed": "~8.1",
+    "drupal/entity_browser": "8.1.x-dev",
+    "drupal/entity_embed": "8.1.x-dev",
     "drupal/feeds": "~8",
     "drupal/field_group": "8.1.*",
     "drupal/file_browser": "~8",
@@ -83,7 +83,6 @@
       "docroot/modules/contrib/{$name}/": ["type:drupal-module"],
       "docroot/themes/contrib/{$name}/": ["type:drupal-theme"],
       "docroot/libraries/{$name}/": ["type:drupal-library"],
-      "drush/{$name}/": ["type:drupal-drush"],
       "docroot/profiles/{$name}/": ["type:drupal-profile"],
       "docroot/modules/custom/{$name}/": ["type:drupal-module-custom"]
     },

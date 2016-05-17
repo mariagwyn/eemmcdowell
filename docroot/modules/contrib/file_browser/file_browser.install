@@ -5,18 +5,21 @@
  * Defines library requirements and install routines for File Browser.
  */
 
+use \Drupal\Core\Config\ExtensionInstallStorage;
+
 /**
  * Implements hook_install().
  */
 function file_browser_install() {
-  // Add an icon for File Browser.
-  $data = file_get_contents(dirname(__FILE__) . '/file_browser_icon.png');
-  $file = file_save_data($data, 'public://file_browser_icon.png', FILE_EXISTS_REPLACE);
-  $configuration = \Drupal::configFactory()->get('embed.button.file_browser');
-  $uuid = $configuration->get('icon_uuid');
-  // Set file uuid same as default config.
-  $file->set('uuid', $uuid);
-  $file->save();
+  // Add an icon for File Browser if we aren't installing from configuration.
+  if (!\Drupal::isConfigSyncing()) {
+    $data = file_get_contents(dirname(__FILE__) . '/file_browser_icon.png');
+    $file = file_save_data($data, 'public://file_browser_icon.png', FILE_EXISTS_REPLACE);
+    // Set file uuid same as default config.
+    $uuid = (new ExtensionInstallStorage(\Drupal::service('config.storage')))->read('embed.button.file_browser')['icon_uuid'];
+    $file->set('uuid', $uuid);
+    $file->save();
+  }
 }
 
 /**

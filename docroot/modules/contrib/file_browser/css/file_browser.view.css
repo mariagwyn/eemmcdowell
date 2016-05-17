@@ -53,12 +53,20 @@
 
 .grid-item {
   display: block;
+  opacity: 0;
   text-align: center;
   background: #383838;
   overflow: hidden;
   transition: .2s;
   border: 2px solid lightgray;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.13);
+}
+
+.grid-item.item-style {
+  opacity:1;
+  transition: opacity .25s ease-in-out;
+  -moz-transition: opacity .25s ease-in-out;
+  -webkit-transition: opacity .25s ease-in-out;
 }
 
 .grid-item:hover {
