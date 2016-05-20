@@ -6267,7 +6267,7 @@
         "source": {
             "type": "git",
             "url": "https://git.drupal.org/project/entity_browser.git",
-            "reference": "17b03a04eb4705e63535fa3649a9821b27878930"
+            "reference": "c22460474ebd99d6f48f8d9746622c230cc01853"
         },
         "require": {
             "drupal/core": "8.*"
@@ -6284,7 +6284,7 @@
             "drupal/node": "Required by drupal/entity_browser_example",
             "drupal/views": "Required by drupal/entity_browser_example"
         },
-        "time": "2016-05-13 08:11:46",
+        "time": "2016-05-20 09:18:08",
         "type": "drupal-module",
         "extra": {
             "branch-alias": {
@@ -6313,7 +6313,7 @@
                 "role": "contributor"
             }
         ],
-        "description": "Entity browsing and selecting component.",
+        "description": "Provide a generic entity browser/picker/selector.",
         "homepage": "http://drupal.org/project/entity_browser"
     },
     {
