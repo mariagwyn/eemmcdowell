@@ -19,6 +19,24 @@ blockquote {
 img {
   padding: 1em;
 }
+figcaption {
+  font-size: .8rem;
+  font-style: italic;
+}
+.align-left {
+  margin-left: 0;
+  img {
+    padding-left: 0;
+  }
+  figcaption {text-align:left;}
+}
+.align-right {
+  margin-right: 0;
+  img {
+    padding-right: 0;
+  }
+  figcaption {text-align:right;}
+}
 .float-left {
   float:left;
   img {
@@ -206,6 +224,7 @@ h1.page-title {
     .field-name-field-photo-credit {
       -webkit-text-stroke-width: 0;
       color: $background-color;
+      padding-bottom: 2rem;
       @media #{$medium-only},#{$small-only} {
         display: none;
       }

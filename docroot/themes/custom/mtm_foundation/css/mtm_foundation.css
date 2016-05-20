@@ -10800,20 +10800,24 @@ button:focus, a.button:focus, .mtm-landing-home .mgm-tools-slideshow .field-name
   padding-left: 1.875rem;
   font-size: 0.75rem;
 }
+/* line 107, ../scss/theme/_components.scss */
+.hero-block-fields .field-block-content--field-photo-credit p, .field-node--field-hero-block .field-block-content--field-photo-credit p {
+  margin-bottom: 0;
+}
 @media only screen and (max-width: 40em) {
   /* line 102, ../scss/theme/_components.scss */
   .hero-block-fields .field-block-content--field-photo-credit, .field-node--field-hero-block .field-block-content--field-photo-credit {
     display: none;
   }
 }
-/* line 112, ../scss/theme/_components.scss */
+/* line 113, ../scss/theme/_components.scss */
 .hero-block-fields .field-block-content--field-image img, .field-node--field-hero-block .field-block-content--field-image img {
-  padding: 0 0 1em 0;
+  padding: 0;
 }
 
 /* Hero blocks as Node Headers */
 @media only screen and (min-width: 40.0625em) and (max-width: 64em), only screen and (max-width: 40em) {
-  /* line 119, ../scss/theme/_components.scss */
+  /* line 120, ../scss/theme/_components.scss */
   .field-node--field-hero-block .field-block-content--field-first-line {
     font-size: 1.25rem;
     top: 0.625rem;
@@ -10822,16 +10826,16 @@ button:focus, a.button:focus, .mtm-landing-home .mgm-tools-slideshow .field-name
 }
 
 /* Generic slideshow style */
-/* line 133, ../scss/theme/_components.scss */
+/* line 134, ../scss/theme/_components.scss */
 .mgm-tools-slideshow .slick-slide {
   position: relative;
   min-height: 10rem;
 }
-/* line 136, ../scss/theme/_components.scss */
+/* line 137, ../scss/theme/_components.scss */
 .mgm-tools-slideshow .slick-slide img {
   padding: 0;
 }
-/* line 140, ../scss/theme/_components.scss */
+/* line 141, ../scss/theme/_components.scss */
 .mgm-tools-slideshow .slick-dots {
   position: absolute;
   bottom: 4.375rem;
@@ -10840,21 +10844,21 @@ button:focus, a.button:focus, .mtm-landing-home .mgm-tools-slideshow .field-name
   margin: 0;
 }
 @media only screen and (max-width: 40em) {
-  /* line 140, ../scss/theme/_components.scss */
+  /* line 141, ../scss/theme/_components.scss */
   .mgm-tools-slideshow .slick-dots {
     display: none !important;
   }
 }
-/* line 149, ../scss/theme/_components.scss */
+/* line 150, ../scss/theme/_components.scss */
 .mgm-tools-slideshow .slick-dots li {
   display: inline-block;
   padding-right: 1.25rem;
 }
-/* line 152, ../scss/theme/_components.scss */
+/* line 153, ../scss/theme/_components.scss */
 .mgm-tools-slideshow .slick-dots li:last-child {
   padding-right: 0;
 }
-/* line 156, ../scss/theme/_components.scss */
+/* line 157, ../scss/theme/_components.scss */
 .mgm-tools-slideshow .slick-dots button {
   height: 1.25rem;
   width: 1.25rem;
@@ -10863,7 +10867,7 @@ button:focus, a.button:focus, .mtm-landing-home .mgm-tools-slideshow .field-name
   color: transparent;
   background-color: #295B9C;
 }
-/* line 165, ../scss/theme/_components.scss */
+/* line 166, ../scss/theme/_components.scss */
 .mgm-tools-slideshow .slick-dots .slick-active button {
   background-color: #84A6DC;
 }
@@ -10899,54 +10903,86 @@ img {
 }
 
 /* line 22, ../scss/theme/_main.scss */
+figcaption {
+  font-size: .8rem;
+  font-style: italic;
+}
+
+/* line 26, ../scss/theme/_main.scss */
+.align-left {
+  margin-left: 0;
+}
+/* line 28, ../scss/theme/_main.scss */
+.align-left img {
+  padding-left: 0;
+}
+/* line 31, ../scss/theme/_main.scss */
+.align-left figcaption {
+  text-align: left;
+}
+
+/* line 33, ../scss/theme/_main.scss */
+.align-right {
+  margin-right: 0;
+}
+/* line 35, ../scss/theme/_main.scss */
+.align-right img {
+  padding-right: 0;
+}
+/* line 38, ../scss/theme/_main.scss */
+.align-right figcaption {
+  text-align: right;
+}
+
+/* line 40, ../scss/theme/_main.scss */
 .float-left {
   float: left;
 }
-/* line 24, ../scss/theme/_main.scss */
+/* line 42, ../scss/theme/_main.scss */
 .float-left img {
   padding-left: 0;
 }
 
-/* line 28, ../scss/theme/_main.scss */
+/* line 46, ../scss/theme/_main.scss */
 .float-right {
   float: right;
 }
-/* line 30, ../scss/theme/_main.scss */
+/* line 48, ../scss/theme/_main.scss */
 .float-right img {
   padding-right: 0;
 }
 
-/* line 34, ../scss/theme/_main.scss */
+/* line 52, ../scss/theme/_main.scss */
 .block-mtm-foundation-page-title {
   padding-bottom: 3.75rem;
 }
 @media only screen and (min-width: 40.0625em) and (max-width: 64em) {
-  /* line 34, ../scss/theme/_main.scss */
+  /* line 52, ../scss/theme/_main.scss */
   .block-mtm-foundation-page-title {
     padding-bottom: 1.25rem;
   }
 }
 @media only screen and (max-width: 40em) {
-  /* line 34, ../scss/theme/_main.scss */
+  /* line 52, ../scss/theme/_main.scss */
   .block-mtm-foundation-page-title {
     padding-bottom: 0;
   }
 }
 
-/* line 43, ../scss/theme/_main.scss */
+/* line 61, ../scss/theme/_main.scss */
 h1.page-title, .field-name-field-subtitle p.page-title {
   font-size: 3rem;
   padding: .25em 0 1em .25em;
   text-align: right;
 }
 
-/* line 51, ../scss/theme/_main.scss */
+/* line 69, ../scss/theme/_main.scss */
 .field-name-field-subtitle p {
   color: #9A1697;
   text-align: center;
 }
 
-/* line 57, ../scss/theme/_main.scss */
+/* line 75, ../scss/theme/_main.scss */
 .field-name-field-icon-css {
   font-size: 1.875rem;
   height: 1.875rem;
@@ -10954,19 +10990,19 @@ h1.page-title, .field-name-field-subtitle p.page-title {
   margin: 0 auto 0.9375rem;
 }
 @media only screen and (max-width: 40em) {
-  /* line 57, ../scss/theme/_main.scss */
+  /* line 75, ../scss/theme/_main.scss */
   .field-name-field-icon-css {
     top: 25;
     font-size: 1.875rem;
   }
 }
-/* line 66, ../scss/theme/_main.scss */
+/* line 84, ../scss/theme/_main.scss */
 .field-name-field-icon-css i {
   width: 22.5%;
   float: left;
   text-align: center;
 }
-/* line 71, ../scss/theme/_main.scss */
+/* line 89, ../scss/theme/_main.scss */
 .field-name-field-icon-css .rule {
   background: url(../images/rule-gray.png) repeat-x 20%;
   width: 38.5%;
@@ -10975,38 +11011,38 @@ h1.page-title, .field-name-field-subtitle p.page-title {
 }
 
 /* Article/Service node styles */
-/* line 80, ../scss/theme/_main.scss */
+/* line 98, ../scss/theme/_main.scss */
 .node-article, .node-service {
   /* Float the edit buttons on the hero image */
 }
-/* line 81, ../scss/theme/_main.scss */
+/* line 99, ../scss/theme/_main.scss */
 .node-article .field-name-body, .node-service .field-name-body {
   margin: 0 1.875rem 0 1.875rem;
   background: green;
 }
-/* line 86, ../scss/theme/_main.scss */
+/* line 104, ../scss/theme/_main.scss */
 .node-article .field-name-field-image img, .node-service .field-name-field-image img {
   width: 100%;
 }
 @media only screen and (min-width: 40.0625em) {
-  /* line 86, ../scss/theme/_main.scss */
+  /* line 104, ../scss/theme/_main.scss */
   .node-article .field-name-field-image img, .node-service .field-name-field-image img {
     margin-top: -8.125rem;
   }
 }
-/* line 92, ../scss/theme/_main.scss */
+/* line 110, ../scss/theme/_main.scss */
 .node-article .tab-wrap, .node-service .tab-wrap {
   position: absolute;
   z-index: 1;
 }
-/* line 96, ../scss/theme/_main.scss */
+/* line 114, ../scss/theme/_main.scss */
 .node-article article, .node-service article {
   background-color: #ffffff;
   padding: 1.5625rem;
   position: relative;
   z-index: 1;
 }
-/* line 101, ../scss/theme/_main.scss */
+/* line 119, ../scss/theme/_main.scss */
 .node-article article .node-title, .node-service article .node-title {
   text-transform: uppercase;
   text-align: center;
@@ -11014,30 +11050,30 @@ h1.page-title, .field-name-field-subtitle p.page-title {
   margin-bottom: 1.25rem;
 }
 
-/* line 109, ../scss/theme/_main.scss */
+/* line 127, ../scss/theme/_main.scss */
 .path-frontpage .block-mtm-foundation-page-title {
   display: none;
 }
 
-/* line 111, ../scss/theme/_main.scss */
+/* line 129, ../scss/theme/_main.scss */
 .node--type-service-page .block-mtm-foundation-page-title {
   display: none;
 }
-/* line 112, ../scss/theme/_main.scss */
+/* line 130, ../scss/theme/_main.scss */
 .node--type-service-page.services-block-text {
   text-align: center;
 }
-/* line 114, ../scss/theme/_main.scss */
+/* line 132, ../scss/theme/_main.scss */
 .node--type-service-page.services-block-text .views-row {
   min-height: 11.25rem;
 }
 
 /* Homepage styles */
-/* line 129, ../scss/theme/_main.scss */
+/* line 147, ../scss/theme/_main.scss */
 .mtm-landing-home {
   /* Slideshow block styles */
 }
-/* line 141, ../scss/theme/_main.scss */
+/* line 159, ../scss/theme/_main.scss */
 .mtm-landing-home .mgm-tools-slideshow .slick-dots {
   position: relative;
   text-align: right;
@@ -11045,7 +11081,7 @@ h1.page-title, .field-name-field-subtitle p.page-title {
   max-width: 62.5rem;
   padding-right: 1.875rem;
 }
-/* line 148, ../scss/theme/_main.scss */
+/* line 166, ../scss/theme/_main.scss */
 .mtm-landing-home .mgm-tools-slideshow .hero-block-fields {
   max-width: 62.5rem;
   margin: 0 auto;
@@ -11056,7 +11092,7 @@ h1.page-title, .field-name-field-subtitle p.page-title {
   background-color: rgba(255, 255, 255, 0.25);
 }
 @media only screen and (min-width: 40.0625em) and (max-width: 64em), only screen and (max-width: 40em) {
-  /* line 148, ../scss/theme/_main.scss */
+  /* line 166, ../scss/theme/_main.scss */
   .mtm-landing-home .mgm-tools-slideshow .hero-block-fields {
     height: inherit;
     left: 0;
@@ -11064,16 +11100,16 @@ h1.page-title, .field-name-field-subtitle p.page-title {
   }
 }
 @media only screen and (min-width: 40.0625em) and (max-width: 64em) {
-  /* line 148, ../scss/theme/_main.scss */
+  /* line 166, ../scss/theme/_main.scss */
   .mtm-landing-home .mgm-tools-slideshow .hero-block-fields {
     padding-top: 9.375rem;
   }
 }
-/* line 165, ../scss/theme/_main.scss */
+/* line 183, ../scss/theme/_main.scss */
 .mtm-landing-home .mgm-tools-slideshow .field-block-content--field-first-line, .mtm-landing-home .mgm-tools-slideshow .field-block-content--field-second-line, .mtm-landing-home .mgm-tools-slideshow .field-block-content--field-hero-link {
   text-align: right;
 }
-/* line 168, ../scss/theme/_main.scss */
+/* line 186, ../scss/theme/_main.scss */
 .mtm-landing-home .mgm-tools-slideshow .field-name-field-image img {
   -webkit-filter: grayscale(1);
   -moz-filter: grayscale(1);
@@ -11082,92 +11118,93 @@ h1.page-title, .field-name-field-subtitle p.page-title {
   filter: grayscale(1);
 }
 @media only screen and (max-width: 40em) {
-  /* line 171, ../scss/theme/_main.scss */
+  /* line 189, ../scss/theme/_main.scss */
   .mtm-landing-home .mgm-tools-slideshow .field-name-field-first-line {
     font-size: 1.25rem;
     top: 1.25rem;
   }
 }
-/* line 178, ../scss/theme/_main.scss */
+/* line 196, ../scss/theme/_main.scss */
 .mtm-landing-home .mgm-tools-slideshow .field-name-field-second-line {
   top: 40%;
   -webkit-text-stroke-width: 0;
   color: #ffffff;
 }
 @media only screen and (min-width: 40.0625em) and (max-width: 64em), only screen and (max-width: 40em) {
-  /* line 178, ../scss/theme/_main.scss */
+  /* line 196, ../scss/theme/_main.scss */
   .mtm-landing-home .mgm-tools-slideshow .field-name-field-second-line {
     padding-top: 0;
     top: 5rem;
     font-size: 1rem;
   }
 }
-/* line 188, ../scss/theme/_main.scss */
+/* line 206, ../scss/theme/_main.scss */
 .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link {
   top: 60%;
   -webkit-text-stroke-width: 0;
 }
 @media only screen and (min-width: 40.0625em) and (max-width: 64em), only screen and (max-width: 40em) {
-  /* line 188, ../scss/theme/_main.scss */
+  /* line 206, ../scss/theme/_main.scss */
   .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link {
     padding-top: 0.3125rem;
     top: 6.875rem;
   }
 }
-/* line 195, ../scss/theme/_main.scss */
+/* line 213, ../scss/theme/_main.scss */
 .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a {
   text-transform: uppercase;
 }
 @media only screen and (min-width: 40.0625em) and (max-width: 64em), only screen and (max-width: 40em) {
-  /* line 195, ../scss/theme/_main.scss */
+  /* line 213, ../scss/theme/_main.scss */
   .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a {
     padding: 0.625rem;
     font-size: 0.6875rem;
     margin: 0 0 .25rem 0;
   }
 }
-/* line 206, ../scss/theme/_main.scss */
+/* line 224, ../scss/theme/_main.scss */
 .mtm-landing-home .mgm-tools-slideshow .field-name-field-photo-credit {
   -webkit-text-stroke-width: 0;
   color: #ffffff;
+  padding-bottom: 2rem;
 }
 @media only screen and (min-width: 40.0625em) and (max-width: 64em), only screen and (max-width: 40em) {
-  /* line 206, ../scss/theme/_main.scss */
+  /* line 224, ../scss/theme/_main.scss */
   .mtm-landing-home .mgm-tools-slideshow .field-name-field-photo-credit {
     display: none;
   }
 }
-/* line 213, ../scss/theme/_main.scss */
+/* line 232, ../scss/theme/_main.scss */
 .mtm-landing-home .mgm-tools-slideshow .field-block-content--field-image {
   position: absolute;
   top: 0;
 }
 
-/* line 222, ../scss/theme/_main.scss */
+/* line 241, ../scss/theme/_main.scss */
 section[rel~="schema:comment"] .filter-wrapper {
   display: none;
 }
-/* line 225, ../scss/theme/_main.scss */
+/* line 244, ../scss/theme/_main.scss */
 section[rel~="schema:comment"] h2.field-label {
   font-size: 1.5em;
   margin-top: 20px;
   border-top: 1px solid #000;
   padding-top: 20px;
 }
-/* line 231, ../scss/theme/_main.scss */
+/* line 250, ../scss/theme/_main.scss */
 section[rel~="schema:comment"] .field-items {
   font-size: 1.3em;
   color: #9A1697;
 }
 
 /* Social Media Buttons */
-/* line 238, ../scss/theme/_main.scss */
+/* line 257, ../scss/theme/_main.scss */
 ul.platforms {
   margin-left: 0;
 }
 
 /* Contact page styles */
-/* line 241, ../scss/theme/_main.scss */
+/* line 260, ../scss/theme/_main.scss */
 .contact-hero img {
   width: 100%;
 }
