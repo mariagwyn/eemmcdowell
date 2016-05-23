@@ -4091,9 +4091,9 @@ button::-moz-focus-inner {
   list-style: none;
   margin-left: 0;
   position: absolute;
-  background: white;
-  border: solid 1px #cccccc;
-  font-size: 0.875rem;
+  background: #295B9C;
+  border: solid 2px #FFBE4C;
+  font-size: 1.125rem;
   height: auto;
   max-height: none;
   width: 100%;
@@ -4134,7 +4134,7 @@ button::-moz-focus-inner {
   display: block;
   height: 0;
   width: 0;
-  border-color: transparent transparent #cccccc transparent;
+  border-color: transparent transparent #FFBE4C transparent;
   border-bottom-style: solid;
   position: absolute;
   top: -14px;
@@ -4158,9 +4158,9 @@ button::-moz-focus-inner {
   list-style: none;
   margin-left: 0;
   position: absolute;
-  background: white;
-  border: solid 1px #cccccc;
-  font-size: 0.875rem;
+  background: #295B9C;
+  border: solid 2px #FFBE4C;
+  font-size: 1.125rem;
   height: auto;
   max-height: none;
   width: 100%;
@@ -4202,7 +4202,7 @@ button::-moz-focus-inner {
   display: block;
   height: 0;
   width: 0;
-  border-color: transparent #cccccc transparent transparent;
+  border-color: transparent #FFBE4C transparent transparent;
   border-right-style: solid;
   position: absolute;
   top: 9px;
@@ -4216,9 +4216,9 @@ button::-moz-focus-inner {
   list-style: none;
   margin-left: 0;
   position: absolute;
-  background: white;
-  border: solid 1px #cccccc;
-  font-size: 0.875rem;
+  background: #295B9C;
+  border: solid 2px #FFBE4C;
+  font-size: 1.125rem;
   height: auto;
   max-height: none;
   width: 100%;
@@ -4261,7 +4261,7 @@ button::-moz-focus-inner {
   display: block;
   height: 0;
   width: 0;
-  border-color: transparent transparent transparent #cccccc;
+  border-color: transparent transparent transparent #FFBE4C;
   border-left-style: solid;
   position: absolute;
   top: 9px;
@@ -4276,9 +4276,9 @@ button::-moz-focus-inner {
   list-style: none;
   margin-left: 0;
   position: absolute;
-  background: white;
-  border: solid 1px #cccccc;
-  font-size: 0.875rem;
+  background: #295B9C;
+  border: solid 2px #FFBE4C;
+  font-size: 1.125rem;
   height: auto;
   max-height: none;
   width: 100%;
@@ -4322,7 +4322,7 @@ button::-moz-focus-inner {
   display: block;
   height: 0;
   width: 0;
-  border-color: #cccccc transparent transparent transparent;
+  border-color: #FFBE4C transparent transparent transparent;
   border-top-style: solid;
   bottom: -14px;
   position: absolute;
@@ -4334,19 +4334,19 @@ button::-moz-focus-inner {
 /* line 245, ../../../contrib/zurb_foundation/scss/foundation/components/_dropdown.scss */
 .f-dropdown li {
   cursor: pointer;
-  font-size: 0.875rem;
-  line-height: 1.125rem;
+  font-size: 1.125rem;
+  line-height: 1.5rem;
   margin: 0;
 }
 /* line 215, ../../../contrib/zurb_foundation/scss/foundation/components/_dropdown.scss */
 .f-dropdown li:hover, .f-dropdown li:focus {
-  background: #EEEEEE;
+  background: #FFBE4C;
 }
 /* line 218, ../../../contrib/zurb_foundation/scss/foundation/components/_dropdown.scss */
 .f-dropdown li a {
   display: block;
   padding: 0.5rem;
-  color: #606060;
+  color: #ffffff;
 }
 /* line 248, ../../../contrib/zurb_foundation/scss/foundation/components/_dropdown.scss */
 .f-dropdown.content {
@@ -4355,12 +4355,12 @@ button::-moz-focus-inner {
   list-style: none;
   margin-left: 0;
   position: absolute;
-  background: white;
-  border: solid 1px #cccccc;
-  font-size: 0.875rem;
+  background: #295B9C;
+  border: solid 2px #FFBE4C;
+  font-size: 1.125rem;
   height: auto;
   max-height: none;
-  padding: 1.25rem;
+  padding: 0.625rem;
   width: 100%;
   z-index: 89;
   max-width: 200px;
@@ -10435,6 +10435,15 @@ th.hide-for-touch {
   margin-left: 5px;
 }
 
+/* line 145, ../scss/layout/_header.scss */
+#menu-mobile ul {
+  margin-left: 0;
+}
+/* line 146, ../scss/layout/_header.scss */
+#menu-mobile li {
+  list-style: none;
+}
+
 /* line 2, ../scss/layout/_footer.scss */
 footer {
   background: #295B9C;
@@ -10583,6 +10592,18 @@ footer a:hover, footer a:focus {
   /* line 90, ../scss/layout/_responsive.scss */
   .article-feed-item {
     min-height: 6em;
+  }
+}
+@media only screen and (max-width: 40em) {
+  /* line 102, ../scss/layout/_responsive.scss */
+  body {
+    background-color: salmon;
+  }
+}
+@media only screen and (min-width: 40.0625em) and (max-width: 64em) {
+  /* line 107, ../scss/layout/_responsive.scss */
+  body {
+    background-color: aquamarine;
   }
 }
 /* line 2, ../scss/modules/_block.scss */
@@ -10812,7 +10833,7 @@ button:focus, a.button:focus, .mtm-landing-home .mgm-tools-slideshow .field-name
 }
 /* line 113, ../scss/theme/_components.scss */
 .hero-block-fields .field-block-content--field-image img, .field-node--field-hero-block .field-block-content--field-image img {
-  padding: 0;
+  padding: 1rem 0;
 }
 
 /* Hero blocks as Node Headers */
@@ -11135,7 +11156,7 @@ h1.page-title, .field-name-field-subtitle p.page-title {
   .mtm-landing-home .mgm-tools-slideshow .field-name-field-second-line {
     padding-top: 0;
     top: 5rem;
-    font-size: 1rem;
+    font-size: .9rem;
   }
 }
 /* line 206, ../scss/theme/_main.scss */

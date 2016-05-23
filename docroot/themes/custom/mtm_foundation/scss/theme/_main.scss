@@ -200,7 +200,7 @@ h1.page-title {
         @media #{$medium-only},#{$small-only} {
           padding-top: 0;
           top: rem-calc(80px);
-          font-size: 1rem;
+          font-size: .9rem;
         }
     }
     .field-name-field-hero-link {
