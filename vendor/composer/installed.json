@@ -3051,40 +3051,6 @@
         "homepage": "https://www.drupal.org/project/footnotes"
     },
     {
-        "name": "drupal/geolocation",
-        "version": "8.1.5",
-        "version_normalized": "8.1.5.0",
-        "source": {
-            "type": "git",
-            "url": "https://git.drupal.org/project/geolocation",
-            "reference": "6d279d17c722bf612e21bfdbe0545a972c105845"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/geolocation-8.x-1.5.zip",
-            "reference": "6d279d17c722bf612e21bfdbe0545a972c105845",
-            "shasum": null
-        },
-        "require": {
-            "drupal/core": "8.*",
-            "drupal/field": "8.*"
-        },
-        "time": "2016-01-27 12:15:59",
-        "type": "drupal-module",
-        "extra": {
-            "branch-alias": {
-                "dev-8.x-1.x": "8.1.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "notification-url": "https://packagist.drupal-composer.org/downloads/",
-        "license": [
-            "GPL-2.0+"
-        ],
-        "description": "Provides a simple geolocation field type to store and display location data (lat, lng).",
-        "homepage": "https://www.drupal.org/project/geolocation"
-    },
-    {
         "name": "drupal/git_deploy",
         "version": "dev-8.x-2.x",
         "version_normalized": "dev-8.x-2.x",
@@ -6345,5 +6311,33 @@
         ],
         "description": "Allows entities to be embedded using a text editor.",
         "homepage": "https://www.drupal.org/project/entity_embed"
+    },
+    {
+        "name": "drupal/geolocation",
+        "version": "dev-8.x-1.x",
+        "version_normalized": "dev-8.x-1.x",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupal.org/project/geolocation",
+            "reference": "9705f66969ce9168002ffe24ddcbba9d194b006c"
+        },
+        "require": {
+            "drupal/core": "8.*",
+            "drupal/field": "8.*"
+        },
+        "time": "2016-04-28 15:34:47",
+        "type": "drupal-module",
+        "extra": {
+            "branch-alias": {
+                "dev-8.x-1.x": "8.1.x-dev"
+            }
+        },
+        "installation-source": "source",
+        "notification-url": "https://packagist.drupal-composer.org/downloads/",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "description": "Provides a simple geolocation field type to store and display location data (lat, lng).",
+        "homepage": "https://www.drupal.org/project/geolocation"
     }
 ]

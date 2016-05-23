@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ec718cd4f0abc4bd4c7d8ed978c07ca9",
-    "content-hash": "aaa2babe5f5ad01738c044fbaaab36d9",
+    "hash": "88b1e2b9bd99ef4f2fba4676a598d3cd",
+    "content-hash": "eea47cab670cf396203934e97807d719",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1503,17 +1503,11 @@
         },
         {
             "name": "drupal/geolocation",
-            "version": "8.1.5",
+            "version": "dev-8.x-1.x",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/geolocation",
-                "reference": "6d279d17c722bf612e21bfdbe0545a972c105845"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/geolocation-8.x-1.5.zip",
-                "reference": "6d279d17c722bf612e21bfdbe0545a972c105845",
-                "shasum": null
+                "reference": "9705f66969ce9168002ffe24ddcbba9d194b006c"
             },
             "require": {
                 "drupal/core": "8.*",
@@ -1531,7 +1525,7 @@
             ],
             "description": "Provides a simple geolocation field type to store and display location data (lat, lng).",
             "homepage": "https://www.drupal.org/project/geolocation",
-            "time": "2016-01-27 12:15:59"
+            "time": "2016-04-28 15:34:47"
         },
         {
             "name": "drupal/git_deploy",
@@ -6132,6 +6126,7 @@
     "stability-flags": {
         "drupal/entity_browser": 20,
         "drupal/entity_embed": 20,
+        "drupal/geolocation": 20,
         "jcalderonzumba/gastonjs": 20
     },
     "prefer-stable": true,
