@@ -98,3 +98,13 @@
 
 @media #{$xxlarge-up} { }
 @media #{$xxlarge-only} { }
+@media #{$small-only} {
+  body {
+    background-color: salmon;
+  }
+}
+@media #{$medium-only} {
+  body {
+    background-color: aquamarine;
+  }
+}

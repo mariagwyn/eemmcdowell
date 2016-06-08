@@ -3,6 +3,11 @@ docroot/files
 docroot/sites/*/files
 docroot/sites/*/private
 */_dev.scss
-*.DS_Store
 
 .sass-cache*
+
+# Mac Stuff
+*.DS_Store
+
+# Dev Tools
+*.idea

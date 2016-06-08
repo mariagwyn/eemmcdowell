@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\geolocation\Plugin\views\style\CommonMap.
- */
-
 namespace Drupal\geolocation\Plugin\views\style;
 
 use Drupal\views\Plugin\views\style\StylePluginBase;
@@ -13,6 +8,8 @@ use Drupal\geolocation\Plugin\views\field\GeolocationField;
 use Drupal\Component\Utility\Html;
 
 /**
+ * Allow to display several field items on a common map.
+ *
  * @ingroup views_style_plugins
  *
  * @ViewsStyle(
@@ -60,7 +57,7 @@ class CommonMap extends StylePluginBase {
         ],
         'drupalSettings' => [
           'geolocation' => [
-            'commonMap' => []
+            'commonMap' => [],
           ],
         ],
       ],
@@ -103,8 +100,6 @@ class CommonMap extends StylePluginBase {
           '#title' => empty($title_build) ? '' : $title_build,
           '#position' => $position,
         ];
-
-
       }
     }
 
@@ -131,18 +126,17 @@ class CommonMap extends StylePluginBase {
         break;
       }
 
-
       switch ($id) {
 
         case 'fixed_value':
           $centre = [
-            'lat' => (float)$option['settings']['latitude'],
-            'lng' => (float)$option['settings']['longitude'],
+            'lat' => (float) $option['settings']['latitude'],
+            'lng' => (float) $option['settings']['longitude'],
           ];
-          $zoom = (int)$option['settings']['zoom'];
+          $zoom = (int) $option['settings']['zoom'];
           break;
 
-        case (preg_match('/proximity_filter_*/', $id) ? true : false) :
+        case (preg_match('/proximity_filter_*/', $id) ? TRUE : FALSE):
           $filter_id = substr($id, 17);
           /** @var \Drupal\geolocation\Plugin\views\filter\ProximityFilter $handler */
           $handler = $this->displayHandler->getHandler('filter', $filter_id);
@@ -158,7 +152,7 @@ class CommonMap extends StylePluginBase {
           if (!empty($build['#locations'][0]['#position'])) {
             $centre = $build['#locations'][0]['#position'];
           }
-          $zoom = (int)$option['settings']['zoom'];
+          $zoom = (int) $option['settings']['zoom'];
           break;
 
         case 'fit_bounds':
@@ -177,6 +171,15 @@ class CommonMap extends StylePluginBase {
     }
     $build['#fitbounds'] = $fitbounds;
 
+    $build['#mapTypeControl'] = $this->options['mapTypeControl'];
+    $build['#streetViewControl'] = $this->options['streetViewControl'];
+    $build['#zoomControl'] = $this->options['zoomControl'];
+    $build['#scrollwheel'] = $this->options['scrollwheel'];
+    $build['#disableDoubleClickZoom'] = $this->options['disableDoubleClickZoom'];
+    $build['#draggable'] = $this->options['draggable'];
+    $build['#height'] = $this->options['height'];
+    $build['#width'] = $this->options['width'];
+
     return $build;
   }
 
@@ -189,6 +192,14 @@ class CommonMap extends StylePluginBase {
     $options['geolocation_field'] = ['default' => ''];
     $options['title_field'] = ['default' => ''];
     $options['centre'] = ['default' => ''];
+    $options['mapTypeControl'] = ['default' => TRUE];
+    $options['streetViewControl'] = ['default' => TRUE];
+    $options['zoomControl'] = ['default' => TRUE];
+    $options['scrollwheel'] = ['default' => TRUE];
+    $options['disableDoubleClickZoom'] = ['default' => FALSE];
+    $options['draggable'] = ['default' => TRUE];
+    $options['height'] = ['default' => '400px'];
+    $options['width'] = ['default' => '100%'];
 
     return $options;
   }
@@ -259,7 +270,15 @@ class CommonMap extends StylePluginBase {
     $form['centre'] = [
       '#type' => 'table',
       '#prefix' => t('Please note: Each option will, if it can be applied, supersede any following option.'),
-      '#header' => [ t('Enable'), t('Option'), t('settings'), array('data' => t('Settings'), 'colspan' => '1')],
+      '#header' => [
+        t('Enable'),
+        t('Option'),
+        t('settings'),
+        [
+          'data' => t('Settings'),
+          'colspan' => '1',
+        ],
+      ],
       '#attributes' => ['id' => 'geolocation-centre-options'],
       '#tabledrag' => [
         [
@@ -271,7 +290,7 @@ class CommonMap extends StylePluginBase {
     ];
 
     foreach ($options as $id => $label) {
-      $weight = $this->options['centre'][$id]['weight'] ?: 0;
+      $weight = isset($this->options['centre'][$id]['weight']) ? $this->options['centre'][$id]['weight'] : 0;
       $form['centre'][$id]['#weight'] = $weight;
 
       $form['centre'][$id]['enable'] = [
@@ -300,14 +319,14 @@ class CommonMap extends StylePluginBase {
       'latitude' => [
         '#type' => 'textfield',
         '#title' => t('Latitude'),
-        '#default_value' => $this->options['centre']['fixed_value']['settings']['latitude'],
+        '#default_value' => isset($this->options['centre']['fixed_value']['settings']['latitude']) ? $this->options['centre']['fixed_value']['settings']['latitude'] : '',
         '#size' => 60,
         '#maxlength' => 128,
       ],
       'longitude' => [
         '#type' => 'textfield',
         '#title' => t('Longitude'),
-        '#default_value' => $this->options['centre']['fixed_value']['settings']['longitude'],
+        '#default_value' => isset($this->options['centre']['fixed_value']['settings']['longitude']) ? $this->options['centre']['fixed_value']['settings']['longitude'] : '',
         '#size' => 60,
         '#maxlength' => 128,
       ],
@@ -342,5 +361,59 @@ class CommonMap extends StylePluginBase {
     ];
 
     uasort($form['centre'], 'Drupal\Component\Utility\SortArray::sortByWeightProperty');
+
+    $form['mapTypeControl'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Map type control'),
+      '#description' => $this->t('Allow the user to change the map type.'),
+      '#default_value' => $this->options['mapTypeControl'],
+    ];
+    $form['streetViewControl'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Street view control'),
+      '#description' => $this->t('Allow the user to switch to google street view.'),
+      '#default_value' => $this->options['streetViewControl'],
+    ];
+    $form['zoomControl'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Zoom control'),
+      '#description' => $this->t('Show zoom controls.'),
+      '#default_value' => $this->options['zoomControl'],
+    ];
+    $form['scrollwheel'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Scrollwheel'),
+      '#description' => $this->t('Allow the user to zoom the map using the scrollwheel.'),
+      '#default_value' => $this->options['scrollwheel'],
+    ];
+    $form['disableDoubleClickZoom'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Disable double click zoom'),
+      '#description' => $this->t('Disables the double click zoom functionality.'),
+      '#default_value' => $this->options['disableDoubleClickZoom'],
+    ];
+    $form['draggable'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Draggable'),
+      '#description' => $this->t('Allow the user to change the field of view.'),
+      '#default_value' => $this->options['draggable'],
+    ];
+    $form['height'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Height'),
+      '#description' => $this->t('Enter the dimensions and the measurement units. E.g. 200px or 100%.'),
+      '#size' => 4,
+      '#default_value' => $this->options['height'],
+      '#required' => TRUE,
+    ];
+    $form['width'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Width'),
+      '#description' => $this->t('Enter the dimensions and the measurement units. E.g. 200px or 100%.'),
+      '#size' => 4,
+      '#default_value' => $this->options['width'],
+      '#required' => TRUE,
+    ];
   }
+
 }

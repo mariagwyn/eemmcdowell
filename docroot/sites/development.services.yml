@@ -5,10 +5,3 @@
 services:
   cache.backend.null:
     class: Drupal\Core\Cache\NullBackendFactory
-
-# Enable Twig debugging.
-parameters:
- twig.config:
-   debug: true
-   auto_reload: true
-   cache: false
