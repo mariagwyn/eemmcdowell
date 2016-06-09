@@ -4037,7 +4037,7 @@
         "source": {
             "type": "git",
             "url": "https://git.drupal.org/project/entity_browser.git",
-            "reference": "3342d2b4e485ba073defcfc097cb9339f92a632e"
+            "reference": "c81f82ac7008486374111e9eaeb9984c8b44651c"
         },
         "require": {
             "drupal/core": "8.*"
@@ -4054,7 +4054,7 @@
             "drupal/node": "Required by drupal/entity_browser_example",
             "drupal/views": "Required by drupal/entity_browser_example"
         },
-        "time": "2016-06-03 15:07:33",
+        "time": "2016-06-09 11:24:15",
         "type": "drupal-module",
         "extra": {
             "branch-alias": {
@@ -4093,7 +4093,7 @@
         "source": {
             "type": "git",
             "url": "https://git.drupal.org/project/entity_embed.git",
-            "reference": "63ce40ccdda6b10c7362a6b0e36452bf223c1b40"
+            "reference": "607254d27e9d7fced98d5e78710e714590ce3a03"
         },
         "require": {
             "drupal/core": "8.*",
@@ -4101,7 +4101,7 @@
             "drupal/embed": "8.*",
             "drupal/filter": "8.*"
         },
-        "time": "2016-05-26 21:38:16",
+        "time": "2016-06-09 10:31:50",
         "type": "drupal-module",
         "extra": {
             "branch-alias": {
@@ -5765,7 +5765,7 @@
         "dist": {
             "type": "zip",
             "url": "https://ftp.drupal.org/files/projects/admin_toolbar-8.x-1.15.zip",
-            "reference": null,
+            "reference": "f8380381183bc76babaec9dfe392511011d54904",
             "shasum": null
         },
         "require": {
@@ -6721,7 +6721,7 @@
         "dist": {
             "type": "zip",
             "url": "https://ftp.drupal.org/files/projects/memcache-8.x-2.0-alpha1.zip",
-            "reference": null,
+            "reference": "ed786f33095fa2478761676ceed0bb0b16a63f0d",
             "shasum": null
         },
         "require": {
