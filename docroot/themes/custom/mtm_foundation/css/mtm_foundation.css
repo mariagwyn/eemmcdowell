@@ -10594,36 +10594,6 @@ footer a:hover, footer a:focus {
     min-height: 6em;
   }
 }
-@media only screen and (min-width: 64.0625em) and (max-width: 90em) {
-  /* line 94, ../scss/layout/_responsive.scss */
-  body {
-    background-color: red;
-  }
-}
-@media only screen and (min-width: 90.0625em) and (max-width: 120em) {
-  /* line 101, ../scss/layout/_responsive.scss */
-  body {
-    background-color: purple;
-  }
-}
-@media only screen and (min-width: 120.0625em) and (max-width: 6249999.9375em) {
-  /* line 108, ../scss/layout/_responsive.scss */
-  body {
-    background-color: green;
-  }
-}
-@media only screen and (max-width: 40em) {
-  /* line 113, ../scss/layout/_responsive.scss */
-  body {
-    background-color: salmon;
-  }
-}
-@media only screen and (min-width: 40.0625em) and (max-width: 64em) {
-  /* line 118, ../scss/layout/_responsive.scss */
-  body {
-    background-color: aquamarine;
-  }
-}
 /* line 2, ../scss/modules/_block.scss */
 form#search-block-form {
   margin: .5em 1em 1em 1em;
