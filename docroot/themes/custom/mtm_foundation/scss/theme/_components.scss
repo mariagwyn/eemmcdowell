@@ -10,8 +10,6 @@
 /*** Multi-Column Settings ***/
 /* The primary region should float over the top region a bit */
 .row.row-primary {
-  margin-top: rem-calc(-70px);
-  background-color: $background-color;
   position: relative;
   z-index: 1;
   padding: rem-calc(25px);
@@ -56,7 +54,7 @@
     position: absolute;
     text-align: center;
     width: 100%;
-    padding-right: $column-gutter + ($column-gutter * .15);
+    padding-right: $column-gutter + ($column-gutter * .25);
   }
   .field-block-content--field-first-line {
     top: 15%;
@@ -65,16 +63,16 @@
     font-size: rem-calc(50px);
     @include text-shadow;
     text-align: right;
+    text-transform: capitalize;
     @media #{$medium-only},#{$small-only} {
       padding-top: 0;
     }
     @media #{$small-only} {
-      font-size: rem-calc(32px);
-      top: rem-calc(20px);
+      font-size: rem-calc(28px);
+      top: rem-calc(16px);
     }
     @media #{$medium-only} {
     }
-    text-transform: capitalize;
   }
   .field-block-content--field-second-line {
     top: 60%;
@@ -86,7 +84,7 @@
     }
     @media #{$small-only} {
       top: rem-calc(70px);
-      font-size: rem-calc(15px);
+      font-size: rem-calc(12px);
     }
     @media #{$medium-only} {
     }
@@ -104,6 +102,7 @@
     text-align: left;
     padding-left: $column-gutter;
     font-size: rem-calc(12px);
+    padding-bottom: $column-gutter/2;
     p {margin-bottom: 0;}
     @media #{$small-only} {
       display:none;
@@ -112,6 +111,7 @@
   .field-block-content--field-image {
     img {
       padding: 1rem 0;
+      width: 100%;
     }
   }
 }
@@ -119,8 +119,8 @@
 .field-node--field-hero-block {
   .field-block-content--field-first-line {
     @media #{$medium-only},#{$small-only} {
-      font-size: rem-calc(20px);
-      top: rem-calc(10px);
+      font-size: rem-calc(35px);
+      top: rem-calc(30px);
       padding-top: 0;
     }
     @media #{$small-only} {
@@ -140,7 +140,7 @@
   }
   .slick-dots {
     position: absolute;
-    bottom: rem-calc(70px);
+    bottom: rem-calc(30px);
     width: 100%;
     text-align: center;
     margin: 0;

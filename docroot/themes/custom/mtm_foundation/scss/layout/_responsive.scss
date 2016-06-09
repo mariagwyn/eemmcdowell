@@ -91,13 +91,24 @@
     min-height: 6em;
   }}
 @media #{$large-only} {
+  body {
+    background-color: red;
+  }
 }
 
 @media #{$xlarge-up} { }
-@media #{$xlarge-only} { }
+@media #{$xlarge-only} {
+  body {
+    background-color: purple;
+  }
+}
 
 @media #{$xxlarge-up} { }
-@media #{$xxlarge-only} { }
+@media #{$xxlarge-only} {
+  body {
+    background-color: green;
+  }
+}
 @media #{$small-only} {
   body {
     background-color: salmon;

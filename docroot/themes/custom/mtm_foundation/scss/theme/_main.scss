@@ -171,13 +171,16 @@ h1.page-title {
       height: rem-calc(350px);
       color: $background-color;
       background-color: rgba($background-color,.25);
-      @media #{$medium-only},#{$small-only} {
-        height: inherit;
-        left: 0;
-        top: 0;
+      @media #{$large-only},#{$medium-only} {
+        height: rem-calc(250px);
       }
       @media #{$medium-only} {
         padding-top: rem-calc(150px);
+      }
+      @media #{$small-only} {
+        height: rem-calc(150px);
+        left: 0;
+        top: 0;
       }
     }
     .field-block-content--field-first-line, .field-block-content--field-second-line, .field-block-content--field-hero-link {
@@ -188,6 +191,9 @@ h1.page-title {
     }
     .field-name-field-first-line {
       //font-size: rem-calc(30px);
+      @media #{$medium-only} {
+        top: 5%;
+      }
       @media #{$small-only} {
         font-size: rem-calc(20px);
         top: rem-calc(20px);
@@ -197,7 +203,10 @@ h1.page-title {
         top: 40%;
         -webkit-text-stroke-width: 0;
         color: $background-color;
-        @media #{$medium-only},#{$small-only} {
+        @media #{$medium-only} {
+          top: 35%;
+        }
+        @media #{$small-only} {
           padding-top: 0;
           top: rem-calc(80px);
           font-size: .9rem;
@@ -206,7 +215,10 @@ h1.page-title {
     .field-name-field-hero-link {
       top: 60%;
       -webkit-text-stroke-width: 0;
-      @media #{$medium-only},#{$small-only} {
+      @media #{$medium-only} {
+        top: 50%;
+      }
+      @media #{$small-only} {
         padding-top: rem-calc(5px);
         top: rem-calc(110px);
       }
@@ -224,8 +236,7 @@ h1.page-title {
     .field-name-field-photo-credit {
       -webkit-text-stroke-width: 0;
       color: $background-color;
-      padding-bottom: 2rem;
-      @media #{$medium-only},#{$small-only} {
+      @media #{$small-only} {
         display: none;
       }
     }

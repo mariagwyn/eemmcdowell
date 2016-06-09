@@ -10594,14 +10594,32 @@ footer a:hover, footer a:focus {
     min-height: 6em;
   }
 }
+@media only screen and (min-width: 64.0625em) and (max-width: 90em) {
+  /* line 94, ../scss/layout/_responsive.scss */
+  body {
+    background-color: red;
+  }
+}
+@media only screen and (min-width: 90.0625em) and (max-width: 120em) {
+  /* line 101, ../scss/layout/_responsive.scss */
+  body {
+    background-color: purple;
+  }
+}
+@media only screen and (min-width: 120.0625em) and (max-width: 6249999.9375em) {
+  /* line 108, ../scss/layout/_responsive.scss */
+  body {
+    background-color: green;
+  }
+}
 @media only screen and (max-width: 40em) {
-  /* line 102, ../scss/layout/_responsive.scss */
+  /* line 113, ../scss/layout/_responsive.scss */
   body {
     background-color: salmon;
   }
 }
 @media only screen and (min-width: 40.0625em) and (max-width: 64em) {
-  /* line 107, ../scss/layout/_responsive.scss */
+  /* line 118, ../scss/layout/_responsive.scss */
   body {
     background-color: aquamarine;
   }
@@ -10696,8 +10714,6 @@ button:focus, a.button:focus, .mtm-landing-home .mgm-tools-slideshow .field-name
 /* The primary region should float over the top region a bit */
 /* line 12, ../scss/theme/_components.scss */
 .row.row-primary {
-  margin-top: -4.375rem;
-  background-color: #ffffff;
   position: relative;
   z-index: 1;
   padding: 1.5625rem;
@@ -10709,57 +10725,57 @@ button:focus, a.button:focus, .mtm-landing-home .mgm-tools-slideshow .field-name
   }
 }
 
-/* line 23, ../scss/theme/_components.scss */
+/* line 21, ../scss/theme/_components.scss */
 .row.row-middle {
   padding: 1.5625rem;
 }
 
-/* line 26, ../scss/theme/_components.scss */
+/* line 24, ../scss/theme/_components.scss */
 #block-pagetitle {
   text-align: center;
 }
-/* line 28, ../scss/theme/_components.scss */
+/* line 26, ../scss/theme/_components.scss */
 #block-pagetitle h1, #block-pagetitle .field-name-field-subtitle p, .field-name-field-subtitle #block-pagetitle p {
   text-transform: capitalize;
   font-family: merriweather;
 }
-/* line 32, ../scss/theme/_components.scss */
+/* line 30, ../scss/theme/_components.scss */
 #block-pagetitle .block-title {
   margin: 0;
 }
 
-/* line 37, ../scss/theme/_components.scss */
+/* line 35, ../scss/theme/_components.scss */
 .field-name-field-hero-image img {
   width: 100%;
 }
 
 /* Generic hero block styles */
-/* line 43, ../scss/theme/_components.scss */
+/* line 41, ../scss/theme/_components.scss */
 .hero-block {
   color: #ffffff;
 }
-/* line 45, ../scss/theme/_components.scss */
+/* line 43, ../scss/theme/_components.scss */
 .hero-block a {
   color: #ffffff;
 }
-/* line 47, ../scss/theme/_components.scss */
+/* line 45, ../scss/theme/_components.scss */
 .hero-block a:hover {
   color: #FFBE4C;
 }
 
-/* line 52, ../scss/theme/_components.scss */
+/* line 50, ../scss/theme/_components.scss */
 .hero-block-fields, .field-node--field-hero-block {
   color: #ffffff;
   z-index: 100;
 }
-/* line 55, ../scss/theme/_components.scss */
+/* line 53, ../scss/theme/_components.scss */
 .hero-block-fields .field-block-content--field-first-line, .hero-block-fields .field-block-content--field-second-line, .hero-block-fields .field-block-content--field-hero-link, .hero-block-fields .field-block-content--field-photo-credit, .field-node--field-hero-block .field-block-content--field-first-line, .field-node--field-hero-block .field-block-content--field-second-line, .field-node--field-hero-block .field-block-content--field-hero-link, .field-node--field-hero-block .field-block-content--field-photo-credit {
   position: absolute;
   text-align: center;
   width: 100%;
-  padding-right: 2.15625rem;
+  padding-right: 2.34375rem;
 }
-/* line 61, ../scss/theme/_components.scss */
+/* line 59, ../scss/theme/_components.scss */
 .hero-block-fields .field-block-content--field-first-line, .field-node--field-hero-block .field-block-content--field-first-line {
   top: 15%;
   width: 100%;
@@ -10770,19 +10786,19 @@ button:focus, a.button:focus, .mtm-landing-home .mgm-tools-slideshow .field-name
   text-transform: capitalize;
 }
 @media only screen and (min-width: 40.0625em) and (max-width: 64em), only screen and (max-width: 40em) {
-  /* line 61, ../scss/theme/_components.scss */
+  /* line 59, ../scss/theme/_components.scss */
   .hero-block-fields .field-block-content--field-first-line, .field-node--field-hero-block .field-block-content--field-first-line {
     padding-top: 0;
   }
 }
 @media only screen and (max-width: 40em) {
-  /* line 61, ../scss/theme/_components.scss */
+  /* line 59, ../scss/theme/_components.scss */
   .hero-block-fields .field-block-content--field-first-line, .field-node--field-hero-block .field-block-content--field-first-line {
-    font-size: 2rem;
-    top: 1.25rem;
+    font-size: 1.75rem;
+    top: 1rem;
   }
 }
-/* line 79, ../scss/theme/_components.scss */
+/* line 77, ../scss/theme/_components.scss */
 .hero-block-fields .field-block-content--field-second-line, .field-node--field-hero-block .field-block-content--field-second-line {
   top: 60%;
   font-size: 1.5625rem;
@@ -10790,58 +10806,60 @@ button:focus, a.button:focus, .mtm-landing-home .mgm-tools-slideshow .field-name
   text-shadow: 4px 4px 6px rgba(41, 91, 156, 0.6);
 }
 @media only screen and (min-width: 40.0625em) and (max-width: 64em), only screen and (max-width: 40em) {
-  /* line 79, ../scss/theme/_components.scss */
+  /* line 77, ../scss/theme/_components.scss */
   .hero-block-fields .field-block-content--field-second-line, .field-node--field-hero-block .field-block-content--field-second-line {
     padding-top: 0;
   }
 }
 @media only screen and (max-width: 40em) {
-  /* line 79, ../scss/theme/_components.scss */
+  /* line 77, ../scss/theme/_components.scss */
   .hero-block-fields .field-block-content--field-second-line, .field-node--field-hero-block .field-block-content--field-second-line {
     top: 4.375rem;
-    font-size: 0.9375rem;
+    font-size: 0.75rem;
   }
 }
-/* line 94, ../scss/theme/_components.scss */
+/* line 92, ../scss/theme/_components.scss */
 .hero-block-fields .field-block-content--field-hero-link, .field-node--field-hero-block .field-block-content--field-hero-link {
   top: 80%;
   font-size: 1.5625rem;
 }
 @media only screen and (max-width: 40em) {
-  /* line 94, ../scss/theme/_components.scss */
+  /* line 92, ../scss/theme/_components.scss */
   .hero-block-fields .field-block-content--field-hero-link, .field-node--field-hero-block .field-block-content--field-hero-link {
     top: 50%;
     font-size: 1.25rem;
   }
 }
-/* line 102, ../scss/theme/_components.scss */
+/* line 100, ../scss/theme/_components.scss */
 .hero-block-fields .field-block-content--field-photo-credit, .field-node--field-hero-block .field-block-content--field-photo-credit {
   bottom: 1%;
   text-align: left;
   padding-left: 1.875rem;
   font-size: 0.75rem;
+  padding-bottom: 0.9375rem;
 }
-/* line 107, ../scss/theme/_components.scss */
+/* line 106, ../scss/theme/_components.scss */
 .hero-block-fields .field-block-content--field-photo-credit p, .field-node--field-hero-block .field-block-content--field-photo-credit p {
   margin-bottom: 0;
 }
 @media only screen and (max-width: 40em) {
-  /* line 102, ../scss/theme/_components.scss */
+  /* line 100, ../scss/theme/_components.scss */
   .hero-block-fields .field-block-content--field-photo-credit, .field-node--field-hero-block .field-block-content--field-photo-credit {
     display: none;
   }
 }
-/* line 113, ../scss/theme/_components.scss */
+/* line 112, ../scss/theme/_components.scss */
 .hero-block-fields .field-block-content--field-image img, .field-node--field-hero-block .field-block-content--field-image img {
   padding: 1rem 0;
+  width: 100%;
 }
 
 /* Hero blocks as Node Headers */
 @media only screen and (min-width: 40.0625em) and (max-width: 64em), only screen and (max-width: 40em) {
   /* line 120, ../scss/theme/_components.scss */
   .field-node--field-hero-block .field-block-content--field-first-line {
-    font-size: 1.25rem;
-    top: 0.625rem;
+    font-size: 2.1875rem;
+    top: 1.875rem;
     padding-top: 0;
   }
 }
@@ -10859,7 +10877,7 @@ button:focus, a.button:focus, .mtm-landing-home .mgm-tools-slideshow .field-name
 /* line 141, ../scss/theme/_components.scss */
 .mgm-tools-slideshow .slick-dots {
   position: absolute;
-  bottom: 4.375rem;
+  bottom: 1.875rem;
   width: 100%;
   text-align: center;
   margin: 0;
@@ -11112,12 +11130,10 @@ h1.page-title, .field-name-field-subtitle p.page-title {
   color: #ffffff;
   background-color: rgba(255, 255, 255, 0.25);
 }
-@media only screen and (min-width: 40.0625em) and (max-width: 64em), only screen and (max-width: 40em) {
+@media only screen and (min-width: 64.0625em) and (max-width: 90em), only screen and (min-width: 40.0625em) and (max-width: 64em) {
   /* line 166, ../scss/theme/_main.scss */
   .mtm-landing-home .mgm-tools-slideshow .hero-block-fields {
-    height: inherit;
-    left: 0;
-    top: 0;
+    height: 15.625rem;
   }
 }
 @media only screen and (min-width: 40.0625em) and (max-width: 64em) {
@@ -11126,11 +11142,19 @@ h1.page-title, .field-name-field-subtitle p.page-title {
     padding-top: 9.375rem;
   }
 }
-/* line 183, ../scss/theme/_main.scss */
+@media only screen and (max-width: 40em) {
+  /* line 166, ../scss/theme/_main.scss */
+  .mtm-landing-home .mgm-tools-slideshow .hero-block-fields {
+    height: 9.375rem;
+    left: 0;
+    top: 0;
+  }
+}
+/* line 186, ../scss/theme/_main.scss */
 .mtm-landing-home .mgm-tools-slideshow .field-block-content--field-first-line, .mtm-landing-home .mgm-tools-slideshow .field-block-content--field-second-line, .mtm-landing-home .mgm-tools-slideshow .field-block-content--field-hero-link {
   text-align: right;
 }
-/* line 186, ../scss/theme/_main.scss */
+/* line 189, ../scss/theme/_main.scss */
 .mtm-landing-home .mgm-tools-slideshow .field-name-field-image img {
   -webkit-filter: grayscale(1);
   -moz-filter: grayscale(1);
@@ -11138,94 +11162,111 @@ h1.page-title, .field-name-field-subtitle p.page-title {
   -o-filter: grayscale(1);
   filter: grayscale(1);
 }
+@media only screen and (min-width: 40.0625em) and (max-width: 64em) {
+  /* line 192, ../scss/theme/_main.scss */
+  .mtm-landing-home .mgm-tools-slideshow .field-name-field-first-line {
+    top: 5%;
+  }
+}
 @media only screen and (max-width: 40em) {
-  /* line 189, ../scss/theme/_main.scss */
+  /* line 192, ../scss/theme/_main.scss */
   .mtm-landing-home .mgm-tools-slideshow .field-name-field-first-line {
     font-size: 1.25rem;
     top: 1.25rem;
   }
 }
-/* line 196, ../scss/theme/_main.scss */
+/* line 202, ../scss/theme/_main.scss */
 .mtm-landing-home .mgm-tools-slideshow .field-name-field-second-line {
   top: 40%;
   -webkit-text-stroke-width: 0;
   color: #ffffff;
 }
-@media only screen and (min-width: 40.0625em) and (max-width: 64em), only screen and (max-width: 40em) {
-  /* line 196, ../scss/theme/_main.scss */
+@media only screen and (min-width: 40.0625em) and (max-width: 64em) {
+  /* line 202, ../scss/theme/_main.scss */
+  .mtm-landing-home .mgm-tools-slideshow .field-name-field-second-line {
+    top: 35%;
+  }
+}
+@media only screen and (max-width: 40em) {
+  /* line 202, ../scss/theme/_main.scss */
   .mtm-landing-home .mgm-tools-slideshow .field-name-field-second-line {
     padding-top: 0;
     top: 5rem;
     font-size: .9rem;
   }
 }
-/* line 206, ../scss/theme/_main.scss */
+/* line 215, ../scss/theme/_main.scss */
 .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link {
   top: 60%;
   -webkit-text-stroke-width: 0;
 }
-@media only screen and (min-width: 40.0625em) and (max-width: 64em), only screen and (max-width: 40em) {
-  /* line 206, ../scss/theme/_main.scss */
+@media only screen and (min-width: 40.0625em) and (max-width: 64em) {
+  /* line 215, ../scss/theme/_main.scss */
+  .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link {
+    top: 50%;
+  }
+}
+@media only screen and (max-width: 40em) {
+  /* line 215, ../scss/theme/_main.scss */
   .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link {
     padding-top: 0.3125rem;
     top: 6.875rem;
   }
 }
-/* line 213, ../scss/theme/_main.scss */
+/* line 225, ../scss/theme/_main.scss */
 .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a {
   text-transform: uppercase;
 }
 @media only screen and (min-width: 40.0625em) and (max-width: 64em), only screen and (max-width: 40em) {
-  /* line 213, ../scss/theme/_main.scss */
+  /* line 225, ../scss/theme/_main.scss */
   .mtm-landing-home .mgm-tools-slideshow .field-name-field-hero-link a {
     padding: 0.625rem;
     font-size: 0.6875rem;
     margin: 0 0 .25rem 0;
   }
 }
-/* line 224, ../scss/theme/_main.scss */
+/* line 236, ../scss/theme/_main.scss */
 .mtm-landing-home .mgm-tools-slideshow .field-name-field-photo-credit {
   -webkit-text-stroke-width: 0;
   color: #ffffff;
-  padding-bottom: 2rem;
 }
-@media only screen and (min-width: 40.0625em) and (max-width: 64em), only screen and (max-width: 40em) {
-  /* line 224, ../scss/theme/_main.scss */
+@media only screen and (max-width: 40em) {
+  /* line 236, ../scss/theme/_main.scss */
   .mtm-landing-home .mgm-tools-slideshow .field-name-field-photo-credit {
     display: none;
   }
 }
-/* line 232, ../scss/theme/_main.scss */
+/* line 243, ../scss/theme/_main.scss */
 .mtm-landing-home .mgm-tools-slideshow .field-block-content--field-image {
   position: absolute;
   top: 0;
 }
 
-/* line 241, ../scss/theme/_main.scss */
+/* line 252, ../scss/theme/_main.scss */
 section[rel~="schema:comment"] .filter-wrapper {
   display: none;
 }
-/* line 244, ../scss/theme/_main.scss */
+/* line 255, ../scss/theme/_main.scss */
 section[rel~="schema:comment"] h2.field-label {
   font-size: 1.5em;
   margin-top: 20px;
   border-top: 1px solid #000;
   padding-top: 20px;
 }
-/* line 250, ../scss/theme/_main.scss */
+/* line 261, ../scss/theme/_main.scss */
 section[rel~="schema:comment"] .field-items {
   font-size: 1.3em;
   color: #9A1697;
 }
 
 /* Social Media Buttons */
-/* line 257, ../scss/theme/_main.scss */
+/* line 268, ../scss/theme/_main.scss */
 ul.platforms {
   margin-left: 0;
 }
 
 /* Contact page styles */
-/* line 260, ../scss/theme/_main.scss */
+/* line 271, ../scss/theme/_main.scss */
 .contact-hero img {
   width: 100%;
 }
