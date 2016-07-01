@@ -5,8 +5,8 @@ package: Other
 # core: 8.x
 configure: addtoany.admin_settings
 
-# Information added by Drupal.org packaging script on 2016-04-12
-version: '8.x-1.3'
+# Information added by Drupal.org packaging script on 2016-06-17
+version: '8.x-1.4'
 core: '8.x'
 project: 'addtoany'
-datestamp: 1460500740
+datestamp: 1466199541

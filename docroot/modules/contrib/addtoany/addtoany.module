@@ -175,21 +175,30 @@ function addtoany_create_buttons($url = NULL, $title = NULL) {
     $url = UrlHelper::stripDangerousProtocols($url);
   }
 
-  // Default to the current title, using the site name for the home page.
+  // Default to the current title if available, otherwise use the site name.
   if (!isset($title)) {
+    $site_name = \Drupal::config('system.site')->get('name');
+
     if ($is_front) {
-      $title  = \Drupal::config('system.site')->get('name');
+      $title = $site_name;
     }
     else {
       $request = \Drupal::request();
       $route_match = \Drupal::routeMatch();
       $title = \Drupal::service('title_resolver')->getTitle($request, $route_match->getRouteObject());
+      // Expecting array|string|null from getTitle
+      if (is_array($title)) {
+        $title['#allowed_tags'] = array();
+        $title = \Drupal::service('renderer')->renderPlain($title);
+      }
     }
+
+    $title = (empty($title)) ? $site_name : $title;
   }
 
   // Set the link name.
   $link_name = Html::escape($title);
-  // Set the link URL
+  // Set the link URL.
   $link_url = Html::escape($url);
 
 	//$javascript = _addtoany_create_script($_addtoany_num, $link_name, $link_url);

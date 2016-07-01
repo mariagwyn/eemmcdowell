@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Tests\feeds\Unit\Feeds\Parser\SyndicationParserTest.
- */
-
 namespace Drupal\Tests\feeds\Unit\Feeds\Parser;
 
 use Drupal\Component\Bridge\ZfExtensionManagerSfContainer;
@@ -94,7 +89,7 @@ class SyndicationParserTest extends FeedsUnitTestCase {
 
   public function testGetMappingSources() {
     // Not really much to test here.
-    $this->assertSame(count($this->parser->getMappingSources()), 15);
+    $this->assertSame(count($this->parser->getMappingSources()), 16);
   }
 
 }

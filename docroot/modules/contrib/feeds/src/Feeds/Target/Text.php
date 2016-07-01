@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\feeds\Feeds\Target\Text.
- */
-
 namespace Drupal\feeds\Feeds\Target;
 
 use Drupal\Core\Field\FieldDefinitionInterface;
@@ -103,7 +98,7 @@ class Text extends StringTarget implements ConfigurableTargetInterface {
    * {@inheritdoc}
    */
   public function getSummary() {
-    $formats = \Drupal::entityManager()
+    $formats = \Drupal::entityTypeManager()
       ->getStorage('filter_format')
       ->loadByProperties(['status' => '1', 'format' => $this->configuration['format']]);
 

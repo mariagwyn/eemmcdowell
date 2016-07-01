@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\feeds\Feeds\Parser\SyndicationParser.
- */
-
 namespace Drupal\feeds\Feeds\Parser;
 
 use Drupal\feeds\Exception\EmptyFeedException;
@@ -60,6 +55,7 @@ class SyndicationParser extends PluginBase implements ParserInterface {
         ->set('guid', $entry->getId())
         ->set('url', $entry->getLink())
         ->set('description', $entry->getDescription())
+        ->set('content', $entry->getContent())
         ->set('tags', $entry->getCategories()->getValues())
         ->set('feed_title', $channel->getTitle())
         ->set('feed_description', $channel->getDescription())
@@ -120,6 +116,15 @@ class SyndicationParser extends PluginBase implements ParserInterface {
         'suggestions' => [
           'targets' => ['subject', 'title', 'label', 'name'],
           'types' => ['field_item:text' => []],
+        ],
+      ],
+      'content' => [
+        'label' => $this->t('Content'),
+        'description' => $this->t('Content of the feed item.'),
+        'suggested' => ['body'],
+        'suggestions' => [
+          'targets' => ['body'],
+          'types' => ['field_item:text_with_summary' => []],
         ],
       ],
       'description' => [

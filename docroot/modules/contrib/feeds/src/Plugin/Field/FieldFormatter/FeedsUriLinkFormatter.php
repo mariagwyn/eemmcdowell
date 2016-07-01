@@ -1,13 +1,8 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\feeds\Plugin\Field\FieldFormatter\FeedsUriLinkFormatter.
- */
-
 namespace Drupal\feeds\Plugin\Field\FieldFormatter;
 
-use Drupal\Component\Utility\SafeMarkup;
+use Drupal\Component\Utility\Html;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\Plugin\Field\FieldFormatter\UriLinkFormatter;
 use Drupal\Core\Url;
@@ -46,7 +41,7 @@ class FeedsUriLinkFormatter extends UriLinkFormatter {
       }
       else {
         $elements[$delta] = [
-          '#markup' => SafeMarkup::checkPlain($item->value),
+          '#markup' => Html::escape($item->value),
         ];
       }
     }

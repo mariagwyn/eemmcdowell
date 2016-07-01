@@ -305,7 +305,8 @@ class EntityReference extends WidgetBase implements ContainerFactoryPluginInterf
         // need to check if submit came from this instance.
         $field_name_key = end($trigger['#parents']) === 'target_id' ? 2 : static::$deleteDepth + 1;
         $field_name_key = sizeof($trigger['#parents']) - $field_name_key;
-        $is_relevant_submit &= ($trigger['#parents'][$field_name_key] === $this->fieldDefinition->getName());
+        $is_relevant_submit &= ($trigger['#parents'][$field_name_key] === $this->fieldDefinition->getName()) &&
+          (array_slice($trigger['#parents'], 0, count($element['#field_parents'])) == $element['#field_parents']);
       }
     };
 
@@ -432,6 +433,18 @@ class EntityReference extends WidgetBase implements ContainerFactoryPluginInterf
     }
 
     return NestedArray::getValue($form, $parents);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function errorElement(array $element, \Symfony\Component\Validator\ConstraintViolationInterface $violation, array $form, \Drupal\Core\Form\FormStateInterface $form_state) {
+    if (($trigger = $form_state->getTriggeringElement())) {
+      // Can be triggered by "Remove" button.
+      if (end($trigger['#parents']) === 'remove_button') {
+        return FALSE;
+      }
+    }
   }
 
   /**

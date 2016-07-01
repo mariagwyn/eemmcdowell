@@ -28,8 +28,11 @@ class AddToAnyField extends DsFieldBase {
     $node = \Drupal::routeMatch()->getParameter('node');
 
     return array(
-      '#theme' => 'addtoany_standard',
       '#addtoany_html' => addtoany_create_node_buttons($node),
+      '#theme' => 'addtoany_standard',
+      '#cache' => array(
+        'contexts' => array('url'),
+      ),
     );
   }
 }

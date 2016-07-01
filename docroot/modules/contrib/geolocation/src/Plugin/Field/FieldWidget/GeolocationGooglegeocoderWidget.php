@@ -5,6 +5,7 @@ namespace Drupal\geolocation\Plugin\Field\FieldWidget;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\WidgetBase;
 use Drupal\Core\Form\FormStateInterface;
+use Symfony\Component\Validator\ConstraintViolationListInterface;
 
 /**
  * Plugin implementation of the 'geolocation_googlegeocoder' widget.
@@ -18,6 +19,88 @@ use Drupal\Core\Form\FormStateInterface;
  * )
  */
 class GeolocationGooglegeocoderWidget extends WidgetBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  public function flagErrors(FieldItemListInterface $items, ConstraintViolationListInterface $violations, array $form, FormStateInterface $form_state) {
+    foreach ($violations as $offset => $violation) {
+      if ($violation->getMessageTemplate() == 'This value should not be null.') {
+        $form_state->setErrorByName($items->getName(), t('No location has been selected yet for required field %field.', ['%field' => $items->getFieldDefinition()->getLabel()]));
+      }
+    }
+    parent::flagErrors($items, $violations, $form, $form_state);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function defaultSettings() {
+    return [
+      'populate_address_field' => NULL,
+      'target_address_field' => NULL,
+    ] + parent::defaultSettings();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function settingsForm(array $form, FormStateInterface $form_state) {
+
+    /** @var \Drupal\Core\Entity\EntityFieldManager $field_manager */
+    $field_manager = \Drupal::service('entity_field.manager');
+
+    /** @var \Drupal\Core\Field\FieldDefinitionInterface[] $field_definitions */
+    $field_definitions = $field_manager->getFieldDefinitions($this->fieldDefinition->getTargetEntityTypeId(), $this->fieldDefinition->getTargetBundle());
+
+    $address_fields = [];
+    foreach ($field_definitions as $field_definition) {
+      if ($field_definition->getType() == 'address' && $field_definition->getFieldStorageDefinition()->getCardinality() == 1) {
+        $address_fields[$field_definition->getName()] = $field_definition->getLabel();
+      }
+    }
+
+    if (empty($address_fields)) {
+      return NULL;
+    }
+
+    $element = [];
+
+    $element['populate_address_field'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Store retrieved address data in address field?'),
+      '#default_value' => $this->getSetting('populate_address_field'),
+    ];
+
+    $element['target_address_field'] = [
+      '#type' => 'select',
+      '#title' => $this->t('Select target field to append address data.'),
+      '#description' => $this->t('Only fields of type "address" with a cardinality of 1 are available.'),
+      '#options' => $address_fields,
+      '#default_value' => $this->getSetting('target_address_field'),
+      '#states' => [
+        // Only show this field when the 'toggle_me' checkbox is enabled.
+        'visible' => [
+          ':input[name="fields[' . $this->fieldDefinition->getName() . '][settings_edit_form][settings][populate_address_field]"]' => ['checked' => TRUE],
+        ],
+      ],
+    ];
+
+    return $element;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function settingsSummary() {
+    $summary = [];
+
+    if (!empty($this->getSetting('populate_address_field'))) {
+      $summary[] = t('Geocoded address will be stored in @field', array('@field' => $this->getSetting('target_address_field')));
+    }
+
+    return $summary;
+  }
 
   /**
    * {@inheritdoc}
@@ -56,12 +139,12 @@ class GeolocationGooglegeocoderWidget extends WidgetBase {
     $element['lat'] = [
       '#type' => 'hidden',
       '#default_value' => $lat_default_value,
-      '#attributes' => ['class' => ['geolocation-hidden-lat', "for-{$canvas_id}"]],
+      '#attributes' => ['class' => ['geolocation-hidden-lat']],
     ];
     $element['lng'] = [
       '#type' => 'hidden',
       '#default_value' => $lng_default_value,
-      '#attributes' => ['class' => ['geolocation-hidden-lng', "for-{$canvas_id}"]],
+      '#attributes' => ['class' => ['geolocation-hidden-lng']],
     ];
 
     // Add Google API key to js.
@@ -79,7 +162,8 @@ class GeolocationGooglegeocoderWidget extends WidgetBase {
         'library' => ['geolocation/geolocation.widgets.googlegeocoder'],
         'drupalSettings' => [
           'geolocation' => [
-            'widget_maps' => [
+            'widgetSettings' => [],
+            'widgetMaps' => [
               $canvas_id => [
                 'id' => $canvas_id,
                 'lat' => (float) $lat_default_value,
@@ -92,11 +176,33 @@ class GeolocationGooglegeocoderWidget extends WidgetBase {
         ],
       ],
     ];
+    if ($this->getSetting('populate_address_field')) {
+      $element['map_canvas']['#attached']['drupalSettings']['geolocation']['widgetSettings']['addressFieldTarget'] = $this->getSetting('target_address_field');
+
+      foreach ([
+        'country_code',
+        'administrative_area',
+        'locality',
+        'dependent_locality',
+        'postal_code',
+        'address_line1',
+      ] as $component) {
+        $element[$component] = [
+          '#type' => 'hidden',
+          '#attributes' => [
+            'class' => ['geolocation-hidden-' . $component],
+          ],
+        ];
+      }
+    }
 
     // Wrap the whole form in a container.
     $element += [
       '#type' => 'fieldset',
       '#title' => $element['#title'],
+      '#attributes' => [
+        'class' => ['canvas-' . $canvas_id],
+      ],
     ];
 
     return $element;

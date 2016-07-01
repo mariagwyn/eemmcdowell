@@ -1,12 +1,8 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\feeds\EventSubscriber\PubSubHubbub.
- */
-
 namespace Drupal\feeds\EventSubscriber;
 
+use Drupal\Core\Url as CoreUrl;
 use Drupal\Core\Entity\EntityManagerInterface;
 use Drupal\feeds\Component\HttpHelpers;
 use Drupal\feeds\Event\DeleteFeedsEvent;
@@ -171,7 +167,7 @@ class PubSubHubbub implements EventSubscriberInterface {
       'feeds_subscription_id' => $subscription->id(),
       'feeds_push_token' => $subscription->getToken(),
     ];
-    $callback = \Drupal::url('entity.feeds_feed.subscribe', $args, ['absolute' => TRUE]);
+    $callback = CoreUrl::fromRoute('entity.feeds_feed.subscribe', $args, ['absolute' => TRUE])->toString();
 
     $post_body = [
       'hub.callback' => $callback,

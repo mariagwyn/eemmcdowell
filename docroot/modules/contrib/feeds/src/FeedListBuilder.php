@@ -1,13 +1,8 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\feeds\FeedListBuilder.
- */
-
 namespace Drupal\feeds;
 
-use Drupal\Component\Utility\SafeMarkup;
+use Drupal\Component\Utility\Html;
 use Drupal\Core\Datetime\DateFormatter;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityListBuilder;
@@ -106,7 +101,7 @@ class FeedListBuilder extends EntityListBuilder {
       '#url' => $uri,
     ];
 
-    $row['type'] = SafeMarkup::checkPlain($entity->getType()->label());
+    $row['type'] = Html::escape($entity->getType()->label());
     $row['author']['data'] = [
       '#theme' => 'username',
       '#account' => $entity->getOwner(),
