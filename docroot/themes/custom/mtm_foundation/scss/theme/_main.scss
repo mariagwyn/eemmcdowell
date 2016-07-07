@@ -17,7 +17,8 @@ blockquote {
   color: $primary-alt-color;
 }
 img {
-  padding: 1em;
+  margin: 1em;
+  border: 1px solid $primary-color;
 }
 figcaption {
   font-size: .8rem;
@@ -26,27 +27,27 @@ figcaption {
 .align-left {
   margin-left: 0;
   img {
-    padding-left: 0;
+    margin-left: 0;
   }
   figcaption {text-align:left;}
 }
 .align-right {
   margin-right: 0;
   img {
-    padding-right: 0;
+    margin-right: 0;
   }
   figcaption {text-align:right;}
 }
 .float-left {
   float:left;
   img {
-    padding-left: 0;
+    margin-left: 0;
   }
 }
 .float-right {
   float:right;
   img {
-      padding-right: 0;
+    margin-right: 0;
   }
 }
 .block-mtm-foundation-page-title {

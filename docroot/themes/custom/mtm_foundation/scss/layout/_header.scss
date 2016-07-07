@@ -14,6 +14,8 @@
     border-top: 0;
     img {
       padding: 1em 0;
+      margin: 0;
+      border: 0;
     }
   }
   #block-brandingfront {
@@ -29,6 +31,7 @@
   #block-mtm-foundation-branding {
     img {
       padding: .5em 0;
+      margin: 0;
     }
     @media #{$medium-only},#{$small-only} {
       &.column {

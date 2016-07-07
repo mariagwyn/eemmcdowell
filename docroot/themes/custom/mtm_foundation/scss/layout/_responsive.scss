@@ -90,3 +90,32 @@
   .article-feed-item {
     min-height: 6em;
   }}
+@media #{$large-only} {
+  body {
+//    background-color: red;
+  }
+}
+
+@media #{$xlarge-up} { }
+@media #{$xlarge-only} {
+  body {
+//    background-color: purple;
+  }
+}
+
+@media #{$xxlarge-up} { }
+@media #{$xxlarge-only} {
+  body {
+//    background-color: green;
+  }
+}
+@media #{$small-only} {
+  body {
+//    background-color: salmon;
+  }
+}
+@media #{$medium-only} {
+  body {
+//    background-color: aquamarine;
+  }
+}
