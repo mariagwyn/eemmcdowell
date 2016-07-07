@@ -6,9 +6,9 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Acquia\\Lightning\\ScriptHandler' => $baseDir . '/scripts/ScriptHandler.php',
     'CallbackFilterIterator' => $vendorDir . '/symfony/polyfill-php54/Resources/stubs/CallbackFilterIterator.php',
     'Drupal' => $baseDir . '/docroot/core/lib/Drupal.php',
-    'DrupalProject\\composer\\ScriptHandler' => $baseDir . '/scripts/composer/ScriptHandler.php',
     'Drupal\\Component\\Utility\\Timer' => $baseDir . '/docroot/core/lib/Drupal/Component/Utility/Timer.php',
     'Drupal\\Component\\Utility\\Unicode' => $baseDir . '/docroot/core/lib/Drupal/Component/Utility/Unicode.php',
     'Drupal\\Core\\Database\\Database' => $baseDir . '/docroot/core/lib/Drupal/Core/Database/Database.php',

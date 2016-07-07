@@ -10,13 +10,61 @@
     {
       "type": "vcs",
       "url": "https://github.com/mariagwyn/mgm_tools"
-    }
+    },
+    {
+      "type"    : "package",
+      "package" : {
+        "name"    : "enyo/dropzone",
+        "version" : "dev-master",
+        "type"    : "drupal-library",
+        "source"  : {
+          "url"       : "https://github.com/enyo/dropzone.git",
+          "type"      : "git",
+          "reference" : "origin/master"
+        }
+      }
+    },
+    {
+          "type"    : "package",
+          "package" : {
+              "name"    : "desandro/imagesloaded",
+              "version" : "dev-master",
+              "type"    : "drupal-library",
+              "dist"    : {
+                  "url"  : "https://github.com/desandro/imagesloaded.git",
+                  "type" : "drupal-library"
+              },
+              "source"  : {
+                  "url"       : "https://github.com/desandro/imagesloaded.git",
+                  "type"      : "git",
+                  "reference" : "origin/master"
+              }
+          }
+      },
+      {
+          "type"    : "package",
+          "package" : {
+              "name"    : "desandro/masonry",
+              "version" : "dev-master",
+              "type"    : "drupal-library",
+              "dist"    : {
+                  "url"  : "https://github.com/desandro/masonry.git",
+                  "type" : "drupal-library"
+              },
+              "source"  : {
+                  "url"       : "https://github.com/desandro/masonry.git",
+                  "type"      : "git",
+                  "reference" : "origin/master"
+              }
+          }
+      }
   ],
   "require": {
     "composer/installers":                        "^1.0.20",
-    "drupal-composer/drupal-scaffold":            "^1.3.1",
-    "cweagans/composer-patches":                  "~1.0",
-    "drupal/core":                                "~8.1",
+    "drupal-composer/drupal-scaffold":            "^2.0.0",
+    "cweagans/composer-patches":                  "1.5.0",
+    "drupal/core":                                "8.1.4",
+    "drupal/lightning":                           "^8.1.0",
     "drupal/console":                             "~0.10",
     "drupal/addtoany":                            "~8.1",
     "drupal/admin_toolbar":                       "~8.1",
@@ -28,7 +76,7 @@
     "drupal/entity_embed":                        "8.1.x-dev",
     "drupal/feeds":                               "~8.3",
     "drupal/field_group":                         "8.1.*",
-    "drupal/file_browser":                        "~8.1",
+    "drupal/file_browser":                        "8.1.x-dev",
     "drupal/file_entity":                         "~8.2",
     "drupal/footnotes":                           "8.2.*",
     "drupal/geolocation":                         "8.1.x-dev",
@@ -45,18 +93,21 @@
     "drupal-composer/drupal-security-advisories": "8.0.x-dev",
     "drupal/social_media_links":                  "~8.2",
     "drupal/token":                               "~8.1",
+    "drupal/views_timelinejs":                    "~8.3",
     "drupal/adminimal_theme":                     "~8.1",
     "drupal/zurb_foundation":                     "~8.5",
     "mariagwyn/mgm_tools": "master"
   },
   "require-dev": {
-      "behat/mink": "~1.6",
-      "behat/mink-goutte-driver": "~1.2",
-      "jcalderonzumba/gastonjs": "^1.1@dev",
-      "jcalderonzumba/mink-phantomjs-driver": "~0.3.1",
-      "mikey179/vfsStream": "~1.2",
-      "phpunit/phpunit": "~4.8",
-      "symfony/css-selector": "2.7.*"
+    "behat/behat": "^3.1",
+    "drupal/drupal-extension": "^3.1",
+    "behat/mink": "~1.6",
+    "behat/mink-goutte-driver": "~1.2",
+    "jcalderonzumba/gastonjs": "~1.0.2",
+    "jcalderonzumba/mink-phantomjs-driver": "~0.3.1",
+    "mikey179/vfsStream": "~1.2",
+    "phpunit/phpunit": "~4.8",
+    "symfony/css-selector": "2.7.*"
   },
   "conflict": {
     "drupal/core": "7.*"
@@ -65,19 +116,21 @@
   "prefer-stable": true,
   "autoload": {
       "classmap": [
-          "scripts/composer/ScriptHandler.php"
+        "scripts/ScriptHandler.php"
       ]
   },
   "scripts": {
-      "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
-      "post-install-cmd": [
-          "DrupalProject\\composer\\ScriptHandler::buildScaffold",
-          "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
-      ],
-      "post-update-cmd": [
-          "DrupalProject\\composer\\ScriptHandler::buildScaffold",
-          "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
-      ]
+    "post-install-cmd": [
+      "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
+      "Acquia\\Lightning\\ScriptHandler::deployLibraries"
+    ],
+    "post-update-cmd": [
+      "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
+      "Acquia\\Lightning\\ScriptHandler::deployLibraries"
+    ]
+  },
+  "config": {
+      "bin-dir": "bin/"
   },
   "extra": {
     "_readme": [

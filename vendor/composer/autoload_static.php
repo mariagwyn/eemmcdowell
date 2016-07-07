@@ -482,9 +482,9 @@ class ComposerStaticInitdddb665fafbd76727badac39da199a9f
     );
 
     public static $classMap = array (
+        'Acquia\\Lightning\\ScriptHandler' => __DIR__ . '/../..' . '/scripts/ScriptHandler.php',
         'CallbackFilterIterator' => __DIR__ . '/..' . '/symfony/polyfill-php54/Resources/stubs/CallbackFilterIterator.php',
         'Drupal' => __DIR__ . '/../..' . '/docroot/core/lib/Drupal.php',
-        'DrupalProject\\composer\\ScriptHandler' => __DIR__ . '/../..' . '/scripts/composer/ScriptHandler.php',
         'Drupal\\Component\\Utility\\Timer' => __DIR__ . '/../..' . '/docroot/core/lib/Drupal/Component/Utility/Timer.php',
         'Drupal\\Component\\Utility\\Unicode' => __DIR__ . '/../..' . '/docroot/core/lib/Drupal/Component/Utility/Unicode.php',
         'Drupal\\Core\\Database\\Database' => __DIR__ . '/../..' . '/docroot/core/lib/Drupal/Core/Database/Database.php',
