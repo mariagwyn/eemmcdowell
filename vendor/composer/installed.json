@@ -461,70 +461,6 @@
         ]
     },
     {
-        "name": "guzzlehttp/guzzle",
-        "version": "6.2.0",
-        "version_normalized": "6.2.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/guzzle/guzzle.git",
-            "reference": "d094e337976dff9d8e2424e8485872194e768662"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/guzzle/guzzle/zipball/d094e337976dff9d8e2424e8485872194e768662",
-            "reference": "d094e337976dff9d8e2424e8485872194e768662",
-            "shasum": ""
-        },
-        "require": {
-            "guzzlehttp/promises": "~1.0",
-            "guzzlehttp/psr7": "~1.1",
-            "php": ">=5.5.0"
-        },
-        "require-dev": {
-            "ext-curl": "*",
-            "phpunit/phpunit": "~4.0",
-            "psr/log": "~1.0"
-        },
-        "time": "2016-03-21 20:02:09",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "6.2-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "files": [
-                "src/functions_include.php"
-            ],
-            "psr-4": {
-                "GuzzleHttp\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Michael Dowling",
-                "email": "mtdowling@gmail.com",
-                "homepage": "https://github.com/mtdowling"
-            }
-        ],
-        "description": "Guzzle is a PHP HTTP client library",
-        "homepage": "http://guzzlephp.org/",
-        "keywords": [
-            "client",
-            "curl",
-            "framework",
-            "http",
-            "http client",
-            "rest",
-            "web service"
-        ]
-    },
-    {
         "name": "zendframework/zend-stdlib",
         "version": "3.0.1",
         "version_normalized": "3.0.1.0",
@@ -1957,54 +1893,6 @@
             "phantomjs",
             "testing"
         ]
-    },
-    {
-        "name": "mikey179/vfsStream",
-        "version": "v1.6.3",
-        "version_normalized": "1.6.3.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/mikey179/vfsStream.git",
-            "reference": "c19925cd0390d3c436a0203ae859afa460d0474b"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/mikey179/vfsStream/zipball/c19925cd0390d3c436a0203ae859afa460d0474b",
-            "reference": "c19925cd0390d3c436a0203ae859afa460d0474b",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.0"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "~4.5"
-        },
-        "time": "2016-04-09 09:42:01",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.6.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "org\\bovigo\\vfs\\": "src/main/php"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "authors": [
-            {
-                "name": "Frank Kleine",
-                "homepage": "http://frankkleine.de/",
-                "role": "Developer"
-            }
-        ],
-        "description": "Virtual file system to mock the real file system in unit tests.",
-        "homepage": "http://vfs.bovigo.org/"
     },
     {
         "name": "phpunit/php-token-stream",
@@ -3880,126 +3768,6 @@
         ],
         "description": "Site security and configuration review module.",
         "homepage": "https://www.drupal.org/project/security_review"
-    },
-    {
-        "name": "roave/security-advisories",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/Roave/SecurityAdvisories.git",
-            "reference": "96f1ef760845211c8acbb15970e706db1e4b2c5e"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/96f1ef760845211c8acbb15970e706db1e4b2c5e",
-            "reference": "96f1ef760845211c8acbb15970e706db1e4b2c5e",
-            "shasum": ""
-        },
-        "conflict": {
-            "aws/aws-sdk-php": ">=3,<3.2.1",
-            "cakephp/cakephp": ">=3,<3.0.15|>=2,<2.4.99|>=2.5,<2.5.90|>=2.6,<2.6.12|>=1.3,<1.3.18|>=2.7,<2.7.6|>=3.1,<3.1.3",
-            "codeigniter/framework": "<3.0.3",
-            "composer/composer": "<=1.0.0-alpha11",
-            "contao/core": ">=2.11,<3|>=3,<3.1|>=3.1,<3.2|>=3.2,<3.2.19|>=3.3,<3.4|>=3.4,<3.4.4",
-            "doctrine/annotations": ">=1,<1.2.7",
-            "doctrine/cache": ">=1,<1.3.2|>=1.4,<1.4.2",
-            "doctrine/common": ">=2,<2.4.3|>=2.5,<2.5.1",
-            "doctrine/dbal": ">=2,<2.0.8|>=2.1,<2.1.2",
-            "doctrine/doctrine-bundle": "<1.5.2",
-            "doctrine/doctrine-module": "<=0.7.1",
-            "doctrine/mongodb-odm": ">=1,<1.0.2",
-            "doctrine/mongodb-odm-bundle": ">=2,<3.0.1",
-            "doctrine/orm": ">=2,<2.4.8|>=2.5,<2.5.1",
-            "dompdf/dompdf": ">=0.6,<0.6.2",
-            "firebase/php-jwt": "<2",
-            "friendsofsymfony/rest-bundle": ">=1.2,<1.2.2",
-            "friendsofsymfony/user-bundle": ">=1.2,<1.3|>=1.3,<1.3.5",
-            "illuminate/auth": ">=4,<4.0.99|>=4.1,<4.1.26",
-            "illuminate/database": ">=4,<4.0.99|>=4.1,<4.1.29",
-            "joomla/session": "<1.3.1",
-            "laravel/framework": ">=4,<4.0.99|>=4.1,<4.1.29",
-            "laravel/socialite": ">=1,<1.0.99|>=2,<2.0.10",
-            "monolog/monolog": ">=1.8,<1.12",
-            "namshi/jose": "<2.2",
-            "oro/crm": ">=1.7,<1.7.4",
-            "oro/platform": ">=1.7,<1.7.4",
-            "phpmailer/phpmailer": ">=5,<5.2.14",
-            "pusher/pusher-php-server": "<2.2.1",
-            "sabre/dav": ">=1.6,<1.6.99|>=1.7,<1.7.11|>=1.8,<1.8.9",
-            "shopware/shopware": "<4.3.7|>=5,<5.1|>=5.1,<5.1.5",
-            "silverstripe/cms": ">=3.1,<3.1.11|>=3,<=3.0.11",
-            "silverstripe/forum": "<=0.6.1|>=0.7,<=0.7.3",
-            "silverstripe/framework": ">=3,<3.1|>=3.1,<3.2|>=3.2,<3.3",
-            "silverstripe/userforms": "<3",
-            "simplesamlphp/simplesamlphp": "<=1.14.1",
-            "socalnick/scn-social-auth": "<1.15.2",
-            "swiftmailer/swiftmailer": ">=4,<4.99.99|>=5,<5.2.1",
-            "symfony/dependency-injection": ">=2,<2.0.17",
-            "symfony/form": ">=2.3,<2.3.35|>=2.4,<2.5|>=2.5,<2.6|>=2.6,<2.6.12|>=2.7,<2.7.7",
-            "symfony/framework-bundle": ">=2,<2.1|>=2.1,<2.2|>=2.2,<2.3|>=2.3,<2.3.18|>=2.4,<2.4.8|>=2.5,<2.5.2",
-            "symfony/http-foundation": ">=2,<2.1|>=2.1,<2.2|>=2.2,<2.3|>=2.3,<2.3.27|>=2.4,<2.5|>=2.5,<2.5.11|>=2.6,<2.6.6",
-            "symfony/http-kernel": ">=2,<2.1|>=2.1,<2.2|>=2.2,<2.3|>=2.3,<2.3.29|>=2.4,<2.5|>=2.5,<2.5.12|>=2.6,<2.6.8",
-            "symfony/routing": ">=2,<2.0.19",
-            "symfony/security": ">=2.3,<2.3.37|>=2.4,<2.5|>=2.5,<2.6|>=2.6,<2.6.13|>=2.7,<2.7.9|>=2,<2.0.25|>=2.1,<2.1.13|>=2.2,<2.2.9",
-            "symfony/security-core": ">=2.8,<2.8.6|>=3,<3.0.6|>=2.4,<2.5|>=2.5,<2.6|>=2.6,<2.6.13|>=2.7,<2.7.9",
-            "symfony/security-http": ">=2.4,<2.5|>=2.5,<2.6|>=2.6,<2.7|>=2.7,<2.7.13|>=2.3,<2.3.41|>=2.8,<2.8.6|>=3,<3.0.6",
-            "symfony/serializer": ">=2,<2.0.11",
-            "symfony/symfony": ">=2,<2.1|>=2.1,<2.2|>=2.2,<2.3|>=2.3,<2.3.41|>=2.4,<2.5|>=2.5,<2.6|>=2.6,<2.7|>=2.7,<2.7.13|>=2.8,<2.8.6|>=3,<3.0.6",
-            "symfony/translation": ">=2,<2.0.17",
-            "symfony/validator": ">=2,<2.0.24|>=2.1,<2.1.12|>=2.2,<2.2.5|>=2.3,<2.3.3",
-            "symfony/web-profiler-bundle": ">=2,<2.1|>=2.1,<2.2|>=2.2,<2.3|>=2.3,<2.3.19|>=2.4,<2.4.9|>=2.5,<2.5.4",
-            "symfony/yaml": ">=2,<2.0.22|>=2.1,<2.1.7",
-            "thelia/backoffice-default-template": ">=2.1,<2.1.2",
-            "thelia/thelia": ">=2.1.0-beta1,<2.1.3|>=2.1,<2.1.2",
-            "twig/twig": "<1.20",
-            "typo3/cms": ">=6.2,<6.2.25|>=7,<7.1|>=7.1,<7.2|>=7.2,<7.3|>=7.3,<7.4|>=7.4,<7.5|>=7.5,<7.6|>=7.6,<7.6.8|>=8,<8.1.1",
-            "typo3/flow": ">=1,<1.0.4|>=1.1,<1.1.1|>=2,<2.0.1|>=2.3,<2.3.7|>=3,<3.0.1",
-            "typo3/neos": ">=1.1,<1.1.3|>=1.2,<1.2.13|>=2,<2.0.4",
-            "willdurand/js-translation-bundle": "<2.1.1",
-            "yiisoft/yii": ">=1.1.14,<1.1.15",
-            "yiisoft/yii2": "<2.0.5",
-            "yiisoft/yii2-bootstrap": "<2.0.4",
-            "yiisoft/yii2-dev": "<2.0.4",
-            "yiisoft/yii2-gii": "<2.0.4",
-            "yiisoft/yii2-jui": "<2.0.4",
-            "zendframework/zend-cache": ">=2.4,<2.4.8|>=2.5,<2.5.3",
-            "zendframework/zend-captcha": ">=2,<2.4.9|>=2.5,<2.5.2",
-            "zendframework/zend-crypt": ">=2,<2.4.9|>=2.5,<2.5.2",
-            "zendframework/zend-db": ">=2,<2.0.99|>=2.1,<2.1.99|>=2.2,<2.2.10|>=2.3,<2.3.5",
-            "zendframework/zend-diactoros": ">=1,<1.0.4",
-            "zendframework/zend-form": ">=2,<2.2.7|>=2.3,<2.3.1",
-            "zendframework/zend-http": ">=2,<2.0.99|>=2.1,<2.1.99|>=2.3,<2.3.8|>=2.4,<2.4.1",
-            "zendframework/zend-json": ">=2.1,<2.1.6|>=2.2,<2.2.6",
-            "zendframework/zend-ldap": ">=2,<2.0.99|>=2.1,<2.1.99|>=2.2,<2.2.8|>=2.3,<2.3.3",
-            "zendframework/zend-mail": ">=2,<2.0.99|>=2.1,<2.1.99|>=2.3,<2.3.8|>=2.4,<2.4.1",
-            "zendframework/zend-navigation": ">=2,<2.2.7|>=2.3,<2.3.1",
-            "zendframework/zend-session": ">=2,<2.0.99|>=2.1,<2.1.99|>=2.2,<2.2.9|>=2.3,<2.3.4",
-            "zendframework/zend-validator": ">=2.3,<2.3.6",
-            "zendframework/zend-view": ">=2,<2.2.7|>=2.3,<2.3.1",
-            "zendframework/zend-xmlrpc": ">=2.1,<2.1.6|>=2.2,<2.2.6",
-            "zendframework/zendframework": ">=2,<2.4.9|>=2.5,<2.5.1",
-            "zendframework/zendframework1": ">=1,<1.11.15|>=1.12,<1.12.18",
-            "zendframework/zendopenid": ">=2,<2.0.2",
-            "zendframework/zendxml": ">=1,<1.0.1",
-            "zf-commons/zfc-user": "<1.2.2",
-            "zfcampus/zf-apigility-doctrine": ">=1,<1.0.3",
-            "zfr/zfr-oauth2-server-module": "<0.1.2"
-        },
-        "time": "2016-05-25 05:33:34",
-        "type": "metapackage",
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Marco Pivetta",
-                "email": "ocramius@gmail.com",
-                "role": "maintainer"
-            }
-        ],
-        "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it"
     },
     {
         "name": "drupal/memcache",
@@ -6752,18 +6520,181 @@
         "homepage": "https://www.drupal.org/project/file_browser"
     },
     {
-        "name": "drupal/core",
-        "version": "8.1.6",
-        "version_normalized": "8.1.6.0",
+        "name": "drupal/embed",
+        "version": "8.1.0-rc3",
+        "version_normalized": "8.1.0.0-RC3",
         "source": {
             "type": "git",
-            "url": "https://github.com/drupal-composer/drupal-core.git",
-            "reference": "a6555edbe58e0a6a1d107cbf8c6568dd5e4531a2"
+            "url": "https://git.drupal.org/project/embed.git",
+            "reference": "135281965da85d0cfa04f3c0c77ce7821dfab662"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/drupal-composer/drupal-core/zipball/a6555edbe58e0a6a1d107cbf8c6568dd5e4531a2",
-            "reference": "a6555edbe58e0a6a1d107cbf8c6568dd5e4531a2",
+            "url": "https://ftp.drupal.org/files/projects/embed-8.x-1.0-rc3.zip",
+            "reference": "135281965da85d0cfa04f3c0c77ce7821dfab662",
+            "shasum": null
+        },
+        "require": {
+            "drupal/core": "8.*"
+        },
+        "time": "2016-07-10 18:43:18",
+        "type": "drupal-module",
+        "extra": {
+            "branch-alias": {
+                "dev-8.x-1.x": "8.1.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packagist.drupal-composer.org/downloads/",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "description": "Provides a framework for different types of embeds in text editors.",
+        "homepage": "https://www.drupal.org/project/embed"
+    },
+    {
+        "name": "drupal/views_timelinejs",
+        "version": "8.3.0-beta2",
+        "version_normalized": "8.3.0.0-beta2",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupal.org/project/views_timelinejs",
+            "reference": "38c5b40e0bbbee825fe0b4de3d12452086d395f2"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://ftp.drupal.org/files/projects/views_timelinejs-8.x-3.0-beta2.zip",
+            "reference": "38c5b40e0bbbee825fe0b4de3d12452086d395f2",
+            "shasum": null
+        },
+        "require": {
+            "drupal/core": "8.*",
+            "drupal/views": "8.*"
+        },
+        "time": "2016-07-09 21:58:20",
+        "type": "drupal-module",
+        "extra": {
+            "branch-alias": {
+                "dev-8.x-3.x": "8.3.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packagist.drupal-composer.org/downloads/",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "description": "Provides a View style that displays rows in a Timeline.",
+        "homepage": "https://www.drupal.org/project/views_timelinejs"
+    },
+    {
+        "name": "drupal/lightning",
+        "version": "8.1.0-beta5",
+        "version_normalized": "8.1.0.0-beta5",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupal.org/project/lightning.git",
+            "reference": "c85e4d02cce8a606d5df29af2d6b92545d74042e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://ftp.drupal.org/files/projects/lightning-8.x-1.0-beta5.zip",
+            "reference": "c85e4d02cce8a606d5df29af2d6b92545d74042e",
+            "shasum": null
+        },
+        "require": {
+            "drupal/block_content": "8.*",
+            "drupal/breakpoint": "8.*",
+            "drupal/ckeditor": "8.*",
+            "drupal/config": "8.*",
+            "drupal/contact": "8.*",
+            "drupal/contextual": "8.*",
+            "drupal/core": "8.*",
+            "drupal/datetime": "8.*",
+            "drupal/dblog": "8.*",
+            "drupal/editor": "8.*",
+            "drupal/entity_reference": "8.*",
+            "drupal/field_ui": "8.*",
+            "drupal/file": "8.*",
+            "drupal/help": "8.*",
+            "drupal/history": "8.*",
+            "drupal/image": "8.*",
+            "drupal/menu_link_content": "8.*",
+            "drupal/menu_ui": "8.*",
+            "drupal/metatag": "8.*",
+            "drupal/node": "8.*",
+            "drupal/options": "8.*",
+            "drupal/page_cache": "8.*",
+            "drupal/path": "8.*",
+            "drupal/quickedit": "8.*",
+            "drupal/rdf": "8.*",
+            "drupal/shortcut": "8.*",
+            "drupal/taxonomy": "8.*",
+            "drupal/text": "8.*",
+            "drupal/toolbar": "8.*",
+            "drupal/views": "8.*",
+            "drupal/views_ui": "8.*"
+        },
+        "replace": {
+            "drupal/lightning_layout": "self.version",
+            "drupal/lightning_media": "self.version",
+            "drupal/lightning_media_image": "self.version",
+            "drupal/lightning_media_instagram": "self.version",
+            "drupal/lightning_media_twitter": "self.version",
+            "drupal/lightning_media_video": "self.version",
+            "drupal/lightning_workflow": "self.version"
+        },
+        "require-dev": {
+            "drupal/drupal-extension": "^3.1",
+            "guzzlehttp/guzzle": "^6.1",
+            "jakoch/phantomjs-installer": "1.9.8"
+        },
+        "suggest": {
+            "drupal/core": "Required by drupal/lightning_layout, drupal/lightning_media, drupal/lightning_media_image, drupal/lightning_media_instagram, drupal/lightning_media_twitter, drupal/lightning_media_video, drupal/lightning_workflow",
+            "drupal/entity_embed": "Required by drupal/lightning_media",
+            "drupal/image": "Required by drupal/lightning_media, drupal/lightning_media_image, drupal/lightning_media_instagram, drupal/lightning_media_twitter, drupal/lightning_media_video",
+            "drupal/inline_entity_form": "Required by drupal/lightning_workflow",
+            "drupal/lightning_media": "Required by drupal/lightning_media_image, drupal/lightning_media_instagram, drupal/lightning_media_twitter, drupal/lightning_media_video",
+            "drupal/media_entity": "Required by drupal/lightning_media",
+            "drupal/media_entity_embeddable_video": "Required by drupal/lightning_media_video",
+            "drupal/media_entity_image": "Required by drupal/lightning_media_image",
+            "drupal/media_entity_instagram": "Required by drupal/lightning_media_instagram",
+            "drupal/media_entity_twitter": "Required by drupal/lightning_media_twitter",
+            "drupal/page_manager": "Required by drupal/lightning_layout",
+            "drupal/panelizer": "Required by drupal/lightning_layout",
+            "drupal/rest": "Required by drupal/lightning_media",
+            "drupal/scheduled_updates": "Required by drupal/lightning_workflow",
+            "drupal/services": "Required by drupal/lightning_media",
+            "drupal/user": "Required by drupal/lightning_media",
+            "drupal/workbench_moderation": "Required by drupal/lightning_workflow"
+        },
+        "time": "2016-03-21 17:43:46",
+        "type": "drupal-profile",
+        "extra": {
+            "branch-alias": {
+                "dev-8.x-1.x": "8.1.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packagist.drupal-composer.org/downloads/",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "description": "A fast and feature-rich Drupal distribution.",
+        "homepage": "https://www.drupal.org/project/lightning"
+    },
+    {
+        "name": "drupal/core",
+        "version": "8.1.7",
+        "version_normalized": "8.1.7.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/drupal-composer/drupal-core.git",
+            "reference": "3870ff6a47e723e3dce857473329d2f143e88d93"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/drupal-composer/drupal-core/zipball/3870ff6a47e723e3dce857473329d2f143e88d93",
+            "reference": "3870ff6a47e723e3dce857473329d2f143e88d93",
             "shasum": ""
         },
         "require": {
@@ -6772,7 +6703,7 @@
             "doctrine/common": "2.5.*",
             "easyrdf/easyrdf": "0.9.*",
             "egulias/email-validator": "1.2.*",
-            "guzzlehttp/guzzle": "~6.1",
+            "guzzlehttp/guzzle": "~6.2",
             "masterminds/html5": "~2.1",
             "paragonie/random_compat": "~1.0",
             "php": ">=5.5.9",
@@ -6898,7 +6829,7 @@
             "phpunit/phpunit": "~4.8",
             "symfony/css-selector": "~2.8"
         },
-        "time": "2016-07-11 13:07:34",
+        "time": "2016-07-18 15:01:43",
         "type": "drupal-core",
         "installation-source": "dist",
         "autoload": {
@@ -6924,166 +6855,237 @@
         "description": "Drupal is an open source content management platform powering millions of websites and applications."
     },
     {
-        "name": "drupal/embed",
-        "version": "8.1.0-rc3",
-        "version_normalized": "8.1.0.0-RC3",
+        "name": "mikey179/vfsStream",
+        "version": "v1.6.4",
+        "version_normalized": "1.6.4.0",
         "source": {
             "type": "git",
-            "url": "https://git.drupal.org/project/embed.git",
-            "reference": "135281965da85d0cfa04f3c0c77ce7821dfab662"
+            "url": "https://github.com/mikey179/vfsStream.git",
+            "reference": "0247f57b2245e8ad2e689d7cee754b45fbabd592"
         },
         "dist": {
             "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/embed-8.x-1.0-rc3.zip",
-            "reference": null,
-            "shasum": null
+            "url": "https://api.github.com/repos/mikey179/vfsStream/zipball/0247f57b2245e8ad2e689d7cee754b45fbabd592",
+            "reference": "0247f57b2245e8ad2e689d7cee754b45fbabd592",
+            "shasum": ""
         },
         "require": {
-            "drupal/core": "8.*"
-        },
-        "time": "2016-07-10 18:43:18",
-        "type": "drupal-module",
-        "extra": {
-            "branch-alias": {
-                "dev-8.x-1.x": "8.1.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "notification-url": "https://packagist.drupal-composer.org/downloads/",
-        "license": [
-            "GPL-2.0+"
-        ],
-        "description": "Provides a framework for different types of embeds in text editors.",
-        "homepage": "https://www.drupal.org/project/embed"
-    },
-    {
-        "name": "drupal/views_timelinejs",
-        "version": "8.3.0-beta2",
-        "version_normalized": "8.3.0.0-beta2",
-        "source": {
-            "type": "git",
-            "url": "https://git.drupal.org/project/views_timelinejs",
-            "reference": "38c5b40e0bbbee825fe0b4de3d12452086d395f2"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/views_timelinejs-8.x-3.0-beta2.zip",
-            "reference": null,
-            "shasum": null
-        },
-        "require": {
-            "drupal/core": "8.*",
-            "drupal/views": "8.*"
-        },
-        "time": "2016-07-09 21:58:20",
-        "type": "drupal-module",
-        "extra": {
-            "branch-alias": {
-                "dev-8.x-3.x": "8.3.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "notification-url": "https://packagist.drupal-composer.org/downloads/",
-        "license": [
-            "GPL-2.0+"
-        ],
-        "description": "Provides a View style that displays rows in a Timeline.",
-        "homepage": "https://www.drupal.org/project/views_timelinejs"
-    },
-    {
-        "name": "drupal/lightning",
-        "version": "8.1.0-beta5",
-        "version_normalized": "8.1.0.0-beta5",
-        "source": {
-            "type": "git",
-            "url": "https://git.drupal.org/project/lightning.git",
-            "reference": "c85e4d02cce8a606d5df29af2d6b92545d74042e"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/lightning-8.x-1.0-beta5.zip",
-            "reference": null,
-            "shasum": null
-        },
-        "require": {
-            "drupal/block_content": "8.*",
-            "drupal/breakpoint": "8.*",
-            "drupal/ckeditor": "8.*",
-            "drupal/config": "8.*",
-            "drupal/contact": "8.*",
-            "drupal/contextual": "8.*",
-            "drupal/core": "8.*",
-            "drupal/datetime": "8.*",
-            "drupal/dblog": "8.*",
-            "drupal/editor": "8.*",
-            "drupal/entity_reference": "8.*",
-            "drupal/field_ui": "8.*",
-            "drupal/file": "8.*",
-            "drupal/help": "8.*",
-            "drupal/history": "8.*",
-            "drupal/image": "8.*",
-            "drupal/menu_link_content": "8.*",
-            "drupal/menu_ui": "8.*",
-            "drupal/metatag": "8.*",
-            "drupal/node": "8.*",
-            "drupal/options": "8.*",
-            "drupal/page_cache": "8.*",
-            "drupal/path": "8.*",
-            "drupal/quickedit": "8.*",
-            "drupal/rdf": "8.*",
-            "drupal/shortcut": "8.*",
-            "drupal/taxonomy": "8.*",
-            "drupal/text": "8.*",
-            "drupal/toolbar": "8.*",
-            "drupal/views": "8.*",
-            "drupal/views_ui": "8.*"
-        },
-        "replace": {
-            "drupal/lightning_layout": "self.version",
-            "drupal/lightning_media": "self.version",
-            "drupal/lightning_media_image": "self.version",
-            "drupal/lightning_media_instagram": "self.version",
-            "drupal/lightning_media_twitter": "self.version",
-            "drupal/lightning_media_video": "self.version",
-            "drupal/lightning_workflow": "self.version"
+            "php": ">=5.3.0"
         },
         "require-dev": {
-            "drupal/drupal-extension": "^3.1",
-            "guzzlehttp/guzzle": "^6.1",
-            "jakoch/phantomjs-installer": "1.9.8"
+            "phpunit/phpunit": "~4.5"
         },
-        "suggest": {
-            "drupal/core": "Required by drupal/lightning_layout, drupal/lightning_media, drupal/lightning_media_image, drupal/lightning_media_instagram, drupal/lightning_media_twitter, drupal/lightning_media_video, drupal/lightning_workflow",
-            "drupal/entity_embed": "Required by drupal/lightning_media",
-            "drupal/image": "Required by drupal/lightning_media, drupal/lightning_media_image, drupal/lightning_media_instagram, drupal/lightning_media_twitter, drupal/lightning_media_video",
-            "drupal/inline_entity_form": "Required by drupal/lightning_workflow",
-            "drupal/lightning_media": "Required by drupal/lightning_media_image, drupal/lightning_media_instagram, drupal/lightning_media_twitter, drupal/lightning_media_video",
-            "drupal/media_entity": "Required by drupal/lightning_media",
-            "drupal/media_entity_embeddable_video": "Required by drupal/lightning_media_video",
-            "drupal/media_entity_image": "Required by drupal/lightning_media_image",
-            "drupal/media_entity_instagram": "Required by drupal/lightning_media_instagram",
-            "drupal/media_entity_twitter": "Required by drupal/lightning_media_twitter",
-            "drupal/page_manager": "Required by drupal/lightning_layout",
-            "drupal/panelizer": "Required by drupal/lightning_layout",
-            "drupal/rest": "Required by drupal/lightning_media",
-            "drupal/scheduled_updates": "Required by drupal/lightning_workflow",
-            "drupal/services": "Required by drupal/lightning_media",
-            "drupal/user": "Required by drupal/lightning_media",
-            "drupal/workbench_moderation": "Required by drupal/lightning_workflow"
-        },
-        "time": "2016-03-21 17:43:46",
-        "type": "drupal-profile",
+        "time": "2016-07-18 14:02:57",
+        "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-8.x-1.x": "8.1.x-dev"
+                "dev-master": "1.6.x-dev"
             }
         },
         "installation-source": "dist",
-        "notification-url": "https://packagist.drupal-composer.org/downloads/",
+        "autoload": {
+            "psr-0": {
+                "org\\bovigo\\vfs\\": "src/main/php"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
         "license": [
-            "GPL-2.0+"
+            "BSD-3-Clause"
         ],
-        "description": "A fast and feature-rich Drupal distribution.",
-        "homepage": "https://www.drupal.org/project/lightning"
+        "authors": [
+            {
+                "name": "Frank Kleine",
+                "homepage": "http://frankkleine.de/",
+                "role": "Developer"
+            }
+        ],
+        "description": "Virtual file system to mock the real file system in unit tests.",
+        "homepage": "http://vfs.bovigo.org/"
+    },
+    {
+        "name": "guzzlehttp/guzzle",
+        "version": "6.2.1",
+        "version_normalized": "6.2.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/guzzle/guzzle.git",
+            "reference": "3f808fba627f2c5b69e2501217bf31af349c1427"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/guzzle/guzzle/zipball/3f808fba627f2c5b69e2501217bf31af349c1427",
+            "reference": "3f808fba627f2c5b69e2501217bf31af349c1427",
+            "shasum": ""
+        },
+        "require": {
+            "guzzlehttp/promises": "^1.0",
+            "guzzlehttp/psr7": "^1.3.1",
+            "php": ">=5.5"
+        },
+        "require-dev": {
+            "ext-curl": "*",
+            "phpunit/phpunit": "^4.0",
+            "psr/log": "^1.0"
+        },
+        "time": "2016-07-15 17:22:37",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "6.2-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "src/functions_include.php"
+            ],
+            "psr-4": {
+                "GuzzleHttp\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Michael Dowling",
+                "email": "mtdowling@gmail.com",
+                "homepage": "https://github.com/mtdowling"
+            }
+        ],
+        "description": "Guzzle is a PHP HTTP client library",
+        "homepage": "http://guzzlephp.org/",
+        "keywords": [
+            "client",
+            "curl",
+            "framework",
+            "http",
+            "http client",
+            "rest",
+            "web service"
+        ]
+    },
+    {
+        "name": "roave/security-advisories",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Roave/SecurityAdvisories.git",
+            "reference": "303b317d4f5eedfdb6e571b511f1c9d8ce038df2"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/303b317d4f5eedfdb6e571b511f1c9d8ce038df2",
+            "reference": "303b317d4f5eedfdb6e571b511f1c9d8ce038df2",
+            "shasum": ""
+        },
+        "conflict": {
+            "aws/aws-sdk-php": ">=3,<3.2.1",
+            "cakephp/cakephp": ">=3,<3.0.15|>=2,<2.4.99|>=2.5,<2.5.90|>=2.6,<2.6.12|>=1.3,<1.3.18|>=2.7,<2.7.6|>=3.1,<3.1.3",
+            "codeigniter/framework": "<3.0.3",
+            "composer/composer": "<=1.0.0-alpha11",
+            "contao-components/mediaelement": ">=2.14.2,<2.21.1",
+            "contao/core": ">=2.11,<3|>=3,<3.5.15",
+            "doctrine/annotations": ">=1,<1.2.7",
+            "doctrine/cache": ">=1,<1.3.2|>=1.4,<1.4.2",
+            "doctrine/common": ">=2,<2.4.3|>=2.5,<2.5.1",
+            "doctrine/dbal": ">=2,<2.0.8|>=2.1,<2.1.2",
+            "doctrine/doctrine-bundle": "<1.5.2",
+            "doctrine/doctrine-module": "<=0.7.1",
+            "doctrine/mongodb-odm": ">=1,<1.0.2",
+            "doctrine/mongodb-odm-bundle": ">=2,<3.0.1",
+            "doctrine/orm": ">=2,<2.4.8|>=2.5,<2.5.1",
+            "dompdf/dompdf": ">=0.6,<0.6.2",
+            "firebase/php-jwt": "<2",
+            "friendsofsymfony/rest-bundle": ">=1.2,<1.2.2",
+            "friendsofsymfony/user-bundle": ">=1.2,<1.3|>=1.3,<1.3.5",
+            "guzzlehttp/guzzle": ">=6,<6.2.1|>=4.0.0-rc2,<4.2.4|>=5,<5.3.1",
+            "illuminate/auth": ">=4,<4.0.99|>=4.1,<4.1.26",
+            "illuminate/database": ">=4,<4.0.99|>=4.1,<4.1.29",
+            "joomla/session": "<1.3.1",
+            "laravel/framework": ">=4,<4.0.99|>=4.1,<4.1.29",
+            "laravel/socialite": ">=1,<1.0.99|>=2,<2.0.10",
+            "monolog/monolog": ">=1.8,<1.12",
+            "namshi/jose": "<2.2",
+            "oro/crm": ">=1.7,<1.7.4",
+            "oro/platform": ">=1.7,<1.7.4",
+            "phpmailer/phpmailer": ">=5,<5.2.14",
+            "pusher/pusher-php-server": "<2.2.1",
+            "sabre/dav": ">=1.6,<1.6.99|>=1.7,<1.7.11|>=1.8,<1.8.9",
+            "shopware/shopware": "<4.3.7|>=5,<5.1|>=5.1,<5.1.5",
+            "silverstripe/cms": ">=3.1,<3.1.11|>=3,<=3.0.11",
+            "silverstripe/forum": "<=0.6.1|>=0.7,<=0.7.3",
+            "silverstripe/framework": ">=3,<3.1|>=3.1,<3.2|>=3.2,<3.3",
+            "silverstripe/userforms": "<3",
+            "simplesamlphp/simplesamlphp": "<=1.14.1",
+            "socalnick/scn-social-auth": "<1.15.2",
+            "swiftmailer/swiftmailer": ">=4,<4.99.99|>=5,<5.2.1",
+            "symfony/dependency-injection": ">=2,<2.0.17",
+            "symfony/form": ">=2.3,<2.3.35|>=2.4,<2.5|>=2.5,<2.6|>=2.6,<2.6.12|>=2.7,<2.7.7",
+            "symfony/framework-bundle": ">=2,<2.1|>=2.1,<2.2|>=2.2,<2.3|>=2.3,<2.3.18|>=2.4,<2.4.8|>=2.5,<2.5.2",
+            "symfony/http-foundation": ">=2,<2.1|>=2.1,<2.2|>=2.2,<2.3|>=2.3,<2.3.27|>=2.4,<2.5|>=2.5,<2.5.11|>=2.6,<2.6.6",
+            "symfony/http-kernel": ">=2,<2.1|>=2.1,<2.2|>=2.2,<2.3|>=2.3,<2.3.29|>=2.4,<2.5|>=2.5,<2.5.12|>=2.6,<2.6.8",
+            "symfony/routing": ">=2,<2.0.19",
+            "symfony/security": ">=2.3,<2.3.37|>=2.4,<2.5|>=2.5,<2.6|>=2.6,<2.6.13|>=2.7,<2.7.9|>=2,<2.0.25|>=2.1,<2.1.13|>=2.2,<2.2.9",
+            "symfony/security-core": ">=2.8,<2.8.6|>=3,<3.0.6|>=2.4,<2.5|>=2.5,<2.6|>=2.6,<2.6.13|>=2.7,<2.7.9",
+            "symfony/security-http": ">=2.4,<2.5|>=2.5,<2.6|>=2.6,<2.7|>=2.7,<2.7.13|>=2.3,<2.3.41|>=2.8,<2.8.6|>=3,<3.0.6",
+            "symfony/serializer": ">=2,<2.0.11",
+            "symfony/symfony": ">=2,<2.1|>=2.1,<2.2|>=2.2,<2.3|>=2.3,<2.3.41|>=2.4,<2.5|>=2.5,<2.6|>=2.6,<2.7|>=2.7,<2.7.13|>=2.8,<2.8.6|>=3,<3.0.6",
+            "symfony/translation": ">=2,<2.0.17",
+            "symfony/validator": ">=2,<2.0.24|>=2.1,<2.1.12|>=2.2,<2.2.5|>=2.3,<2.3.3",
+            "symfony/web-profiler-bundle": ">=2,<2.1|>=2.1,<2.2|>=2.2,<2.3|>=2.3,<2.3.19|>=2.4,<2.4.9|>=2.5,<2.5.4",
+            "symfony/yaml": ">=2,<2.0.22|>=2.1,<2.1.7",
+            "thelia/backoffice-default-template": ">=2.1,<2.1.2",
+            "thelia/thelia": ">=2.1.0-beta1,<2.1.3|>=2.1,<2.1.2",
+            "twig/twig": "<1.20",
+            "typo3/cms": ">=6.2,<6.2.25|>=7,<7.1|>=7.1,<7.2|>=7.2,<7.3|>=7.3,<7.4|>=7.6,<7.6.8|>=8,<8.1.1|>=7.4,<7.5|>=7.5,<7.6",
+            "typo3/flow": ">=1,<1.0.4|>=1.1,<1.1.1|>=2,<2.0.1|>=2.3,<2.3.7|>=3,<3.0.1",
+            "typo3/neos": ">=1.1,<1.1.3|>=1.2,<1.2.13|>=2,<2.0.4",
+            "willdurand/js-translation-bundle": "<2.1.1",
+            "yiisoft/yii": ">=1.1.14,<1.1.15",
+            "yiisoft/yii2": "<2.0.5",
+            "yiisoft/yii2-bootstrap": "<2.0.4",
+            "yiisoft/yii2-dev": "<2.0.4",
+            "yiisoft/yii2-gii": "<2.0.4",
+            "yiisoft/yii2-jui": "<2.0.4",
+            "zendframework/zend-cache": ">=2.4,<2.4.8|>=2.5,<2.5.3",
+            "zendframework/zend-captcha": ">=2,<2.4.9|>=2.5,<2.5.2",
+            "zendframework/zend-crypt": ">=2,<2.4.9|>=2.5,<2.5.2",
+            "zendframework/zend-db": ">=2,<2.0.99|>=2.1,<2.1.99|>=2.2,<2.2.10|>=2.3,<2.3.5",
+            "zendframework/zend-diactoros": ">=1,<1.0.4",
+            "zendframework/zend-form": ">=2,<2.2.7|>=2.3,<2.3.1",
+            "zendframework/zend-http": ">=2,<2.0.99|>=2.1,<2.1.99|>=2.3,<2.3.8|>=2.4,<2.4.1",
+            "zendframework/zend-json": ">=2.1,<2.1.6|>=2.2,<2.2.6",
+            "zendframework/zend-ldap": ">=2,<2.0.99|>=2.1,<2.1.99|>=2.2,<2.2.8|>=2.3,<2.3.3",
+            "zendframework/zend-mail": ">=2,<2.0.99|>=2.1,<2.1.99|>=2.3,<2.3.8|>=2.4,<2.4.1",
+            "zendframework/zend-navigation": ">=2,<2.2.7|>=2.3,<2.3.1",
+            "zendframework/zend-session": ">=2,<2.0.99|>=2.1,<2.1.99|>=2.2,<2.2.9|>=2.3,<2.3.4",
+            "zendframework/zend-validator": ">=2.3,<2.3.6",
+            "zendframework/zend-view": ">=2,<2.2.7|>=2.3,<2.3.1",
+            "zendframework/zend-xmlrpc": ">=2.1,<2.1.6|>=2.2,<2.2.6",
+            "zendframework/zendframework": ">=2,<2.4.9|>=2.5,<2.5.1",
+            "zendframework/zendframework1": "<1.12.19",
+            "zendframework/zendopenid": ">=2,<2.0.2",
+            "zendframework/zendxml": ">=1,<1.0.1",
+            "zf-commons/zfc-user": "<1.2.2",
+            "zfcampus/zf-apigility-doctrine": ">=1,<1.0.3",
+            "zfr/zfr-oauth2-server-module": "<0.1.2"
+        },
+        "time": "2016-07-18 19:33:42",
+        "type": "metapackage",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Marco Pivetta",
+                "email": "ocramius@gmail.com",
+                "role": "maintainer"
+            }
+        ],
+        "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it"
     }
 ]
