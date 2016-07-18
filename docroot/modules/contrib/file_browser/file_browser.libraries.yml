@@ -23,14 +23,6 @@ view:
     - file_browser/imagesloaded
     - file_browser/masonry
 
-entity_embed:
-  version: VERSION
-  js:
-    js/file_browser.entity_embed.js: {}
-  dependencies:
-    - core/jquery
-    - core/drupal
-
 imagesloaded:
   remote: https://github.com/desandro/imagesloaded
   version: VERSION

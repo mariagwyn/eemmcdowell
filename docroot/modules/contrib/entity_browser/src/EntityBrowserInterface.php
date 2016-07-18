@@ -1,14 +1,8 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\entity_browser\EntityBrowserInterface.
- */
-
 namespace Drupal\entity_browser;
 
 use Drupal\Core\Config\Entity\ConfigEntityInterface;
-use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Provides an interface defining an entity browser entity.
@@ -46,7 +40,7 @@ interface EntityBrowserInterface extends ConfigEntityInterface {
   public function setLabel($label);
 
   /**
-   * Sets the id of the display plugin
+   * Sets the id of the display plugin.
    *
    * @param string $display
    *   The id of the display plugin.
@@ -57,26 +51,7 @@ interface EntityBrowserInterface extends ConfigEntityInterface {
   public function setDisplay($display);
 
   /**
-   * Gets the text for the entity browser submit button.
-   *
-   * @return string
-   *   Text for the submit button.
-   */
-  public function getSubmitButtonText();
-
-  /**
-   * Sets the text for the entity browser submit button.
-   *
-   * @param string $submit_text
-   *   The text for the entity browser submit button.
-   *
-   * @return \Drupal\entity_browser\EntityBrowserInterface
-   *   The class instance this method is called on.
-   */
-  public function setSubmitButtonText($submit_text);
-
-  /**
-   * Sets the id of the widget selector plugin
+   * Sets the id of the widget selector plugin.
    *
    * @param string $display
    *   The id of the widget selector plugin.
@@ -87,7 +62,7 @@ interface EntityBrowserInterface extends ConfigEntityInterface {
   public function setWidgetSelector($widget_selector);
 
   /**
-   * Sets the id of the selection display plugin
+   * Sets the id of the selection display plugin.
    *
    * @param string $display
    *   The id of the selection display plugin.

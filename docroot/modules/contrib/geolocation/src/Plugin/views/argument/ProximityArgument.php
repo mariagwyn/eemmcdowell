@@ -5,6 +5,7 @@ namespace Drupal\geolocation\Plugin\views\argument;
 use Drupal\geolocation\GeolocationCore;
 use Drupal\views\Plugin\views\argument\Formula;
 use Drupal\views\Plugin\views\query\Sql;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Argument handler for geolocation proximity.
@@ -24,6 +25,14 @@ class ProximityArgument extends Formula {
   /**
    * {@inheritdoc}
    */
+  public function buildOptionsForm(&$form, FormStateInterface $form_state) {
+    parent::buildOptionsForm($form, $form_state);
+    $form['description']['#markup'] .= $this->t('<br/> Proximity format should be in the following format: <strong>"37.7749295,-122.41941550000001<=5miles"</strong> (defaults to km).');
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function getFormula() {
     // Parse argument for reference location.
     $values  = $this->getParsedReferenceLocation();
@@ -32,7 +41,7 @@ class ProximityArgument extends Formula {
       // Get the earth radius in from the units.
       $earth_radius = $values['units'] === 'mile' ? GeolocationCore::EARTH_RADIUS_MILE : GeolocationCore::EARTH_RADIUS_KM;
       // Build a formula for the where clause.
-      $formula = \Drupal::service('geolocation.core')->getQueryFragment($this->tableAlias, $this->realField, $values['lat'], $values['lng'], $earth_radius);
+      $formula = \Drupal::service('geolocation.core')->getProximityQueryFragment($this->tableAlias, $this->realField, $values['lat'], $values['lng'], $earth_radius);
       // Set the operator and value for the query.
       $this->proximity = $values['distance'];
       $this->operator = $values['operator'];
@@ -84,6 +93,8 @@ class ProximityArgument extends Formula {
           '=',
           '>=',
           '<=',
+          '>',
+          '<',
         ])) ? $values[3] : '<=',
         'distance' => (isset($values[4])) ? floatval($values[4]) : FALSE,
         'units' => (isset($values[5]) && strpos(strtolower($values[5]), 'mile') !== FALSE) ? 'mile' : 'km',

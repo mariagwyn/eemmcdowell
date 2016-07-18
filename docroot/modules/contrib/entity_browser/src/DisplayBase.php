@@ -3,8 +3,11 @@
 namespace Drupal\entity_browser;
 
 use Drupal\Component\Uuid\UuidInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\KeyValueStore\KeyValueStoreExpirableInterface;
 use Drupal\Core\Plugin\PluginBase;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\Core\Site\Settings;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
@@ -51,6 +54,13 @@ abstract class DisplayBase extends PluginBase implements DisplayInterface, Conta
   protected $uuid = NULL;
 
   /**
+   * The selection storage.
+   *
+   * @var \Drupal\Core\KeyValueStore\KeyValueStoreExpirableInterface
+   */
+  protected $selectionStorage;
+
+  /**
    * Constructs display plugin.
    *
    * @param array $configuration
@@ -61,14 +71,17 @@ abstract class DisplayBase extends PluginBase implements DisplayInterface, Conta
    *   The plugin implementation definition.
    * @param \Symfony\Component\EventDispatcher\EventDispatcherInterface $event_dispatcher
    *   Event dispatcher service.
-   * @param \Drupal\Component\Uuid\UuidInterface
+   * @param \Drupal\Component\Uuid\UuidInterface $uuid_generator
    *   UUID generator interface.
+   * @param \Drupal\Core\KeyValueStore\KeyValueStoreExpirableInterface $selection_storage
+   *   The selection storage.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, EventDispatcherInterface $event_dispatcher, UuidInterface $uuid_generator) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, EventDispatcherInterface $event_dispatcher, UuidInterface $uuid_generator, KeyValueStoreExpirableInterface $selection_storage) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->configuration += $this->defaultConfiguration();
     $this->eventDispatcher = $event_dispatcher;
     $this->uuidGenerator = $uuid_generator;
+    $this->selectionStorage = $selection_storage;
   }
 
   /**
@@ -80,7 +93,8 @@ abstract class DisplayBase extends PluginBase implements DisplayInterface, Conta
       $plugin_id,
       $plugin_definition,
       $container->get('event_dispatcher'),
-      $container->get('uuid')
+      $container->get('uuid'),
+      $container->get('entity_browser.selection_storage')
     );
   }
 
@@ -137,6 +151,19 @@ abstract class DisplayBase extends PluginBase implements DisplayInterface, Conta
    */
   public function setUuid($uuid) {
     $this->uuid = $uuid;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function displayEntityBrowser(array $element, FormStateInterface $form_state, array &$complete_form, array $persistent_data = []) {
+    // Store persistent data so that after being rendered widgets can still
+    // have access to contextual information.
+    $this->selectionStorage->setWithExpire(
+      $this->getUuid(),
+      $persistent_data,
+      Settings::get('entity_browser_expire', 21600)
+    );
   }
 
 }

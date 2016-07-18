@@ -1344,51 +1344,18 @@
         ]
     },
     {
-        "name": "drupal/embed",
-        "version": "8.1.0-rc2",
-        "version_normalized": "8.1.0.0-RC2",
-        "source": {
-            "type": "git",
-            "url": "https://git.drupal.org/project/embed.git",
-            "reference": "294666ad05ad930003308a5fcd1282cdeb63833a"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/embed-8.x-1.0-rc2.zip",
-            "reference": "294666ad05ad930003308a5fcd1282cdeb63833a",
-            "shasum": null
-        },
-        "require": {
-            "drupal/core": "8.*"
-        },
-        "time": "2016-04-14 01:03:52",
-        "type": "drupal-module",
-        "extra": {
-            "branch-alias": {
-                "dev-8.x-1.x": "8.1.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "notification-url": "https://packagist.drupal-composer.org/downloads/",
-        "license": [
-            "GPL-2.0+"
-        ],
-        "description": "Provides a framework for different types of embeds in text editors.",
-        "homepage": "https://www.drupal.org/project/embed"
-    },
-    {
         "name": "drupal/feeds",
         "version": "dev-8.x-3.x",
         "version_normalized": "dev-8.x-3.x",
         "source": {
             "type": "git",
             "url": "https://git.drupal.org/project/feeds",
-            "reference": "a62adba90110ac9bedbb2784078888d60bd3d948"
+            "reference": "4794fc07caef825dda7f83df045a89dad902cd52"
         },
         "require": {
             "drupal/core": "8.*"
         },
-        "time": "2016-06-30 08:03:47",
+        "time": "2016-07-12 23:48:53",
         "type": "drupal-module",
         "extra": {
             "branch-alias": {
@@ -2847,7 +2814,7 @@
         "source": {
             "type": "git",
             "url": "https://git.drupal.org/project/entity_browser.git",
-            "reference": "362da1837bd050bfb122153bf2a892a245ab3579"
+            "reference": "e0281d8d86f1e3a00a3e1080c5e8e07d8390188e"
         },
         "require": {
             "drupal/core": "8.*"
@@ -2864,7 +2831,7 @@
             "drupal/node": "Required by drupal/entity_browser_example",
             "drupal/views": "Required by drupal/entity_browser_example"
         },
-        "time": "2016-07-05 19:58:38",
+        "time": "2016-07-17 15:02:20",
         "type": "drupal-module",
         "extra": {
             "branch-alias": {
@@ -2903,13 +2870,13 @@
         "source": {
             "type": "git",
             "url": "https://git.drupal.org/project/geolocation",
-            "reference": "346adc47f206a3d37851602e52b91e7534040cab"
+            "reference": "da19fe770945254f219e10bcfe516f205d6d3e7e"
         },
         "require": {
             "drupal/core": "8.*",
             "drupal/field": "8.*"
         },
-        "time": "2016-06-30 11:09:20",
+        "time": "2016-07-14 10:57:11",
         "type": "drupal-module",
         "extra": {
             "branch-alias": {
@@ -5704,136 +5671,6 @@
         ]
     },
     {
-        "name": "drupal/lightning",
-        "version": "8.1.0-beta5",
-        "version_normalized": "8.1.0.0-beta5",
-        "source": {
-            "type": "git",
-            "url": "https://git.drupal.org/project/lightning.git",
-            "reference": "c85e4d02cce8a606d5df29af2d6b92545d74042e"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/lightning-8.x-1.0-beta5.zip",
-            "reference": "c85e4d02cce8a606d5df29af2d6b92545d74042e",
-            "shasum": null
-        },
-        "require": {
-            "drupal/block_content": "8.*",
-            "drupal/breakpoint": "8.*",
-            "drupal/ckeditor": "8.*",
-            "drupal/config": "8.*",
-            "drupal/contact": "8.*",
-            "drupal/contextual": "8.*",
-            "drupal/core": "8.*",
-            "drupal/datetime": "8.*",
-            "drupal/dblog": "8.*",
-            "drupal/editor": "8.*",
-            "drupal/entity_reference": "8.*",
-            "drupal/field_ui": "8.*",
-            "drupal/file": "8.*",
-            "drupal/help": "8.*",
-            "drupal/history": "8.*",
-            "drupal/image": "8.*",
-            "drupal/menu_link_content": "8.*",
-            "drupal/menu_ui": "8.*",
-            "drupal/metatag": "8.*",
-            "drupal/node": "8.*",
-            "drupal/options": "8.*",
-            "drupal/page_cache": "8.*",
-            "drupal/path": "8.*",
-            "drupal/quickedit": "8.*",
-            "drupal/rdf": "8.*",
-            "drupal/shortcut": "8.*",
-            "drupal/taxonomy": "8.*",
-            "drupal/text": "8.*",
-            "drupal/toolbar": "8.*",
-            "drupal/views": "8.*",
-            "drupal/views_ui": "8.*"
-        },
-        "replace": {
-            "drupal/lightning_layout": "self.version",
-            "drupal/lightning_media": "self.version",
-            "drupal/lightning_media_image": "self.version",
-            "drupal/lightning_media_instagram": "self.version",
-            "drupal/lightning_media_twitter": "self.version",
-            "drupal/lightning_media_video": "self.version",
-            "drupal/lightning_workflow": "self.version"
-        },
-        "require-dev": {
-            "drupal/drupal-extension": "^3.1",
-            "guzzlehttp/guzzle": "^6.1",
-            "jakoch/phantomjs-installer": "1.9.8"
-        },
-        "suggest": {
-            "drupal/core": "Required by drupal/lightning_layout, drupal/lightning_media, drupal/lightning_media_image, drupal/lightning_media_instagram, drupal/lightning_media_twitter, drupal/lightning_media_video, drupal/lightning_workflow",
-            "drupal/entity_embed": "Required by drupal/lightning_media",
-            "drupal/image": "Required by drupal/lightning_media, drupal/lightning_media_image, drupal/lightning_media_instagram, drupal/lightning_media_twitter, drupal/lightning_media_video",
-            "drupal/inline_entity_form": "Required by drupal/lightning_workflow",
-            "drupal/lightning_media": "Required by drupal/lightning_media_image, drupal/lightning_media_instagram, drupal/lightning_media_twitter, drupal/lightning_media_video",
-            "drupal/media_entity": "Required by drupal/lightning_media",
-            "drupal/media_entity_embeddable_video": "Required by drupal/lightning_media_video",
-            "drupal/media_entity_image": "Required by drupal/lightning_media_image",
-            "drupal/media_entity_instagram": "Required by drupal/lightning_media_instagram",
-            "drupal/media_entity_twitter": "Required by drupal/lightning_media_twitter",
-            "drupal/page_manager": "Required by drupal/lightning_layout",
-            "drupal/panelizer": "Required by drupal/lightning_layout",
-            "drupal/rest": "Required by drupal/lightning_media",
-            "drupal/scheduled_updates": "Required by drupal/lightning_workflow",
-            "drupal/services": "Required by drupal/lightning_media",
-            "drupal/user": "Required by drupal/lightning_media",
-            "drupal/workbench_moderation": "Required by drupal/lightning_workflow"
-        },
-        "time": "2016-03-21 17:43:46",
-        "type": "drupal-profile",
-        "extra": {
-            "branch-alias": {
-                "dev-8.x-1.x": "8.1.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "notification-url": "https://packagist.drupal-composer.org/downloads/",
-        "license": [
-            "GPL-2.0+"
-        ],
-        "description": "A fast and feature-rich Drupal distribution.",
-        "homepage": "https://www.drupal.org/project/lightning"
-    },
-    {
-        "name": "drupal/views_timelinejs",
-        "version": "8.3.0-beta1",
-        "version_normalized": "8.3.0.0-beta1",
-        "source": {
-            "type": "git",
-            "url": "https://git.drupal.org/project/views_timelinejs",
-            "reference": "11d87d123b4e0c14d203dbb2aa4f12abee5110a5"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/views_timelinejs-8.x-3.0-beta1.zip",
-            "reference": "11d87d123b4e0c14d203dbb2aa4f12abee5110a5",
-            "shasum": null
-        },
-        "require": {
-            "drupal/core": "8.*",
-            "drupal/views": "8.*"
-        },
-        "time": "2016-06-26 04:12:40",
-        "type": "drupal-module",
-        "extra": {
-            "branch-alias": {
-                "dev-8.x-3.x": "8.3.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "notification-url": "https://packagist.drupal-composer.org/downloads/",
-        "license": [
-            "GPL-2.0+"
-        ],
-        "description": "Provides a View style that displays rows in a Timeline.",
-        "homepage": "https://www.drupal.org/project/views_timelinejs"
-    },
-    {
         "name": "jcalderonzumba/gastonjs",
         "version": "v1.0.3",
         "version_normalized": "1.0.3.0",
@@ -6432,7 +6269,7 @@
         "source": {
             "type": "git",
             "url": "https://git.drupal.org/project/entity_embed.git",
-            "reference": "c248cda0da575d6a9f5f979497852137a6d07811"
+            "reference": "cc17745d6492574b3d8d6c1f4b195c493fc8a36c"
         },
         "require": {
             "drupal/core": "8.*",
@@ -6440,7 +6277,7 @@
             "drupal/embed": "8.*",
             "drupal/filter": "8.*"
         },
-        "time": "2016-07-05 12:08:46",
+        "time": "2016-07-12 22:22:54",
         "type": "drupal-module",
         "extra": {
             "branch-alias": {
@@ -6869,18 +6706,64 @@
         ]
     },
     {
+        "name": "drupal/file_browser",
+        "version": "dev-8.x-1.x",
+        "version_normalized": "dev-8.x-1.x",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupal.org/project/file_browser.git",
+            "reference": "c56191c9ba0ebc0297203322f9452561aebdc5cd"
+        },
+        "require": {
+            "drupal/core": "8.*",
+            "drupal/dropzonejs": "8.*",
+            "drupal/dropzonejs_eb_widget": "8.*",
+            "drupal/entity_browser": "8.*",
+            "drupal/entity_embed": "8.*",
+            "drupal/entity_reference": "8.*",
+            "drupal/field": "8.*",
+            "drupal/file": "8.*",
+            "drupal/image": "8.*",
+            "drupal/menu_ui": "8.*",
+            "drupal/node": "8.*",
+            "drupal/path": "8.*",
+            "drupal/text": "8.*",
+            "drupal/views": "8.*"
+        },
+        "replace": {
+            "drupal/file_browser_example": "self.version"
+        },
+        "suggest": {
+            "drupal/core": "Required by drupal/file_browser_example"
+        },
+        "time": "2016-07-17 16:16:37",
+        "type": "drupal-module",
+        "extra": {
+            "branch-alias": {
+                "dev-8.x-1.x": "8.1.x-dev"
+            }
+        },
+        "installation-source": "source",
+        "notification-url": "https://packagist.drupal-composer.org/downloads/",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "description": "Provides a default Entity Browser for files, using Masonry and Imagesloaded.",
+        "homepage": "https://www.drupal.org/project/file_browser"
+    },
+    {
         "name": "drupal/core",
-        "version": "8.1.4",
-        "version_normalized": "8.1.4.0",
+        "version": "8.1.6",
+        "version_normalized": "8.1.6.0",
         "source": {
             "type": "git",
             "url": "https://github.com/drupal-composer/drupal-core.git",
-            "reference": "f773dd668996b9dde92d2e9a99ee03a4287a0804"
+            "reference": "a6555edbe58e0a6a1d107cbf8c6568dd5e4531a2"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/drupal-composer/drupal-core/zipball/f773dd668996b9dde92d2e9a99ee03a4287a0804",
-            "reference": "f773dd668996b9dde92d2e9a99ee03a4287a0804",
+            "url": "https://api.github.com/repos/drupal-composer/drupal-core/zipball/a6555edbe58e0a6a1d107cbf8c6568dd5e4531a2",
+            "reference": "a6555edbe58e0a6a1d107cbf8c6568dd5e4531a2",
             "shasum": ""
         },
         "require": {
@@ -7015,7 +6898,7 @@
             "phpunit/phpunit": "~4.8",
             "symfony/css-selector": "~2.8"
         },
-        "time": "2016-07-05 08:59:22",
+        "time": "2016-07-11 13:07:34",
         "type": "drupal-core",
         "installation-source": "dist",
         "autoload": {
@@ -7041,49 +6924,166 @@
         "description": "Drupal is an open source content management platform powering millions of websites and applications."
     },
     {
-        "name": "drupal/file_browser",
-        "version": "dev-8.x-1.x",
-        "version_normalized": "dev-8.x-1.x",
+        "name": "drupal/embed",
+        "version": "8.1.0-rc3",
+        "version_normalized": "8.1.0.0-RC3",
         "source": {
             "type": "git",
-            "url": "https://git.drupal.org/project/file_browser.git",
-            "reference": "5f33316a52f83d2675f2c2f7176c6e1ec58f932b"
+            "url": "https://git.drupal.org/project/embed.git",
+            "reference": "135281965da85d0cfa04f3c0c77ce7821dfab662"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://ftp.drupal.org/files/projects/embed-8.x-1.0-rc3.zip",
+            "reference": null,
+            "shasum": null
         },
         "require": {
-            "drupal/core": "8.*",
-            "drupal/dropzonejs": "8.*",
-            "drupal/dropzonejs_eb_widget": "8.*",
-            "drupal/entity_browser": "8.*",
-            "drupal/entity_embed": "8.*",
-            "drupal/entity_reference": "8.*",
-            "drupal/field": "8.*",
-            "drupal/file": "8.*",
-            "drupal/image": "8.*",
-            "drupal/menu_ui": "8.*",
-            "drupal/node": "8.*",
-            "drupal/path": "8.*",
-            "drupal/text": "8.*",
-            "drupal/views": "8.*"
+            "drupal/core": "8.*"
         },
-        "replace": {
-            "drupal/file_browser_example": "self.version"
-        },
-        "suggest": {
-            "drupal/core": "Required by drupal/file_browser_example"
-        },
-        "time": "2016-06-29 21:26:52",
+        "time": "2016-07-10 18:43:18",
         "type": "drupal-module",
         "extra": {
             "branch-alias": {
                 "dev-8.x-1.x": "8.1.x-dev"
             }
         },
-        "installation-source": "source",
+        "installation-source": "dist",
         "notification-url": "https://packagist.drupal-composer.org/downloads/",
         "license": [
             "GPL-2.0+"
         ],
-        "description": "Provides a default Entity Browser for files, using Masonry and Imagesloaded.",
-        "homepage": "https://www.drupal.org/project/file_browser"
+        "description": "Provides a framework for different types of embeds in text editors.",
+        "homepage": "https://www.drupal.org/project/embed"
+    },
+    {
+        "name": "drupal/views_timelinejs",
+        "version": "8.3.0-beta2",
+        "version_normalized": "8.3.0.0-beta2",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupal.org/project/views_timelinejs",
+            "reference": "38c5b40e0bbbee825fe0b4de3d12452086d395f2"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://ftp.drupal.org/files/projects/views_timelinejs-8.x-3.0-beta2.zip",
+            "reference": null,
+            "shasum": null
+        },
+        "require": {
+            "drupal/core": "8.*",
+            "drupal/views": "8.*"
+        },
+        "time": "2016-07-09 21:58:20",
+        "type": "drupal-module",
+        "extra": {
+            "branch-alias": {
+                "dev-8.x-3.x": "8.3.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packagist.drupal-composer.org/downloads/",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "description": "Provides a View style that displays rows in a Timeline.",
+        "homepage": "https://www.drupal.org/project/views_timelinejs"
+    },
+    {
+        "name": "drupal/lightning",
+        "version": "8.1.0-beta5",
+        "version_normalized": "8.1.0.0-beta5",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupal.org/project/lightning.git",
+            "reference": "c85e4d02cce8a606d5df29af2d6b92545d74042e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://ftp.drupal.org/files/projects/lightning-8.x-1.0-beta5.zip",
+            "reference": null,
+            "shasum": null
+        },
+        "require": {
+            "drupal/block_content": "8.*",
+            "drupal/breakpoint": "8.*",
+            "drupal/ckeditor": "8.*",
+            "drupal/config": "8.*",
+            "drupal/contact": "8.*",
+            "drupal/contextual": "8.*",
+            "drupal/core": "8.*",
+            "drupal/datetime": "8.*",
+            "drupal/dblog": "8.*",
+            "drupal/editor": "8.*",
+            "drupal/entity_reference": "8.*",
+            "drupal/field_ui": "8.*",
+            "drupal/file": "8.*",
+            "drupal/help": "8.*",
+            "drupal/history": "8.*",
+            "drupal/image": "8.*",
+            "drupal/menu_link_content": "8.*",
+            "drupal/menu_ui": "8.*",
+            "drupal/metatag": "8.*",
+            "drupal/node": "8.*",
+            "drupal/options": "8.*",
+            "drupal/page_cache": "8.*",
+            "drupal/path": "8.*",
+            "drupal/quickedit": "8.*",
+            "drupal/rdf": "8.*",
+            "drupal/shortcut": "8.*",
+            "drupal/taxonomy": "8.*",
+            "drupal/text": "8.*",
+            "drupal/toolbar": "8.*",
+            "drupal/views": "8.*",
+            "drupal/views_ui": "8.*"
+        },
+        "replace": {
+            "drupal/lightning_layout": "self.version",
+            "drupal/lightning_media": "self.version",
+            "drupal/lightning_media_image": "self.version",
+            "drupal/lightning_media_instagram": "self.version",
+            "drupal/lightning_media_twitter": "self.version",
+            "drupal/lightning_media_video": "self.version",
+            "drupal/lightning_workflow": "self.version"
+        },
+        "require-dev": {
+            "drupal/drupal-extension": "^3.1",
+            "guzzlehttp/guzzle": "^6.1",
+            "jakoch/phantomjs-installer": "1.9.8"
+        },
+        "suggest": {
+            "drupal/core": "Required by drupal/lightning_layout, drupal/lightning_media, drupal/lightning_media_image, drupal/lightning_media_instagram, drupal/lightning_media_twitter, drupal/lightning_media_video, drupal/lightning_workflow",
+            "drupal/entity_embed": "Required by drupal/lightning_media",
+            "drupal/image": "Required by drupal/lightning_media, drupal/lightning_media_image, drupal/lightning_media_instagram, drupal/lightning_media_twitter, drupal/lightning_media_video",
+            "drupal/inline_entity_form": "Required by drupal/lightning_workflow",
+            "drupal/lightning_media": "Required by drupal/lightning_media_image, drupal/lightning_media_instagram, drupal/lightning_media_twitter, drupal/lightning_media_video",
+            "drupal/media_entity": "Required by drupal/lightning_media",
+            "drupal/media_entity_embeddable_video": "Required by drupal/lightning_media_video",
+            "drupal/media_entity_image": "Required by drupal/lightning_media_image",
+            "drupal/media_entity_instagram": "Required by drupal/lightning_media_instagram",
+            "drupal/media_entity_twitter": "Required by drupal/lightning_media_twitter",
+            "drupal/page_manager": "Required by drupal/lightning_layout",
+            "drupal/panelizer": "Required by drupal/lightning_layout",
+            "drupal/rest": "Required by drupal/lightning_media",
+            "drupal/scheduled_updates": "Required by drupal/lightning_workflow",
+            "drupal/services": "Required by drupal/lightning_media",
+            "drupal/user": "Required by drupal/lightning_media",
+            "drupal/workbench_moderation": "Required by drupal/lightning_workflow"
+        },
+        "time": "2016-03-21 17:43:46",
+        "type": "drupal-profile",
+        "extra": {
+            "branch-alias": {
+                "dev-8.x-1.x": "8.1.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packagist.drupal-composer.org/downloads/",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "description": "A fast and feature-rich Drupal distribution.",
+        "homepage": "https://www.drupal.org/project/lightning"
     }
 ]

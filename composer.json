@@ -63,7 +63,7 @@
     "composer/installers":                        "^1.0.20",
     "drupal-composer/drupal-scaffold":            "^2.0.0",
     "cweagans/composer-patches":                  "1.5.0",
-    "drupal/core":                                "8.1.4",
+    "drupal/core":                                "~8.1",
     "drupal/lightning":                           "^8.1.0",
     "drupal/console":                             "~0.10",
     "drupal/addtoany":                            "~8.1",

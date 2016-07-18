@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6883b09066ce27bef14d243c3aa8c671",
-    "content-hash": "824aad2d78c05ce306208e08e05dfc1f",
+    "hash": "349bfa57f5b60e2a1f9642d42b0e9330",
+    "content-hash": "7637a1ae52639d8d9c19c5e6b1448e5b",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -939,16 +939,16 @@
         },
         {
             "name": "drupal/core",
-            "version": "8.1.4",
+            "version": "8.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal-composer/drupal-core.git",
-                "reference": "f773dd668996b9dde92d2e9a99ee03a4287a0804"
+                "reference": "a6555edbe58e0a6a1d107cbf8c6568dd5e4531a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal-composer/drupal-core/zipball/f773dd668996b9dde92d2e9a99ee03a4287a0804",
-                "reference": "f773dd668996b9dde92d2e9a99ee03a4287a0804",
+                "url": "https://api.github.com/repos/drupal-composer/drupal-core/zipball/a6555edbe58e0a6a1d107cbf8c6568dd5e4531a2",
+                "reference": "a6555edbe58e0a6a1d107cbf8c6568dd5e4531a2",
                 "shasum": ""
             },
             "require": {
@@ -1105,7 +1105,7 @@
                 "GPL-2.0+"
             ],
             "description": "Drupal is an open source content management platform powering millions of websites and applications.",
-            "time": "2016-07-05 08:59:22"
+            "time": "2016-07-11 13:07:34"
         },
         {
             "name": "drupal/ctools",
@@ -1238,16 +1238,16 @@
         },
         {
             "name": "drupal/embed",
-            "version": "8.1.0-rc2",
+            "version": "8.1.0-rc3",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/embed.git",
-                "reference": "294666ad05ad930003308a5fcd1282cdeb63833a"
+                "reference": "135281965da85d0cfa04f3c0c77ce7821dfab662"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/embed-8.x-1.0-rc2.zip",
-                "reference": "294666ad05ad930003308a5fcd1282cdeb63833a",
+                "url": "https://ftp.drupal.org/files/projects/embed-8.x-1.0-rc3.zip",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -1265,7 +1265,7 @@
             ],
             "description": "Provides a framework for different types of embeds in text editors.",
             "homepage": "https://www.drupal.org/project/embed",
-            "time": "2016-04-14 01:03:52"
+            "time": "2016-07-10 18:43:18"
         },
         {
             "name": "drupal/entity_browser",
@@ -1273,7 +1273,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/entity_browser.git",
-                "reference": "362da1837bd050bfb122153bf2a892a245ab3579"
+                "reference": "e0281d8d86f1e3a00a3e1080c5e8e07d8390188e"
             },
             "require": {
                 "drupal/core": "8.*"
@@ -1319,7 +1319,7 @@
             ],
             "description": "Provide a generic entity browser/picker/selector.",
             "homepage": "http://drupal.org/project/entity_browser",
-            "time": "2016-07-05 19:58:38"
+            "time": "2016-07-17 15:02:20"
         },
         {
             "name": "drupal/entity_embed",
@@ -1327,7 +1327,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/entity_embed.git",
-                "reference": "c248cda0da575d6a9f5f979497852137a6d07811"
+                "reference": "cc17745d6492574b3d8d6c1f4b195c493fc8a36c"
             },
             "require": {
                 "drupal/core": "8.*",
@@ -1347,7 +1347,7 @@
             ],
             "description": "Allows entities to be embedded using a text editor.",
             "homepage": "https://www.drupal.org/project/entity_embed",
-            "time": "2016-07-05 12:08:46"
+            "time": "2016-07-12 22:22:54"
         },
         {
             "name": "drupal/feeds",
@@ -1355,7 +1355,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/feeds",
-                "reference": "a62adba90110ac9bedbb2784078888d60bd3d948"
+                "reference": "4794fc07caef825dda7f83df045a89dad902cd52"
             },
             "require": {
                 "drupal/core": "8.*"
@@ -1372,7 +1372,7 @@
             ],
             "description": "Aggregates RSS/Atom/RDF feeds, imports CSV files and more.",
             "homepage": "https://www.drupal.org/project/feeds",
-            "time": "2016-06-30 08:03:47"
+            "time": "2016-07-12 23:48:53"
         },
         {
             "name": "drupal/field_group",
@@ -1418,7 +1418,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/file_browser.git",
-                "reference": "5f33316a52f83d2675f2c2f7176c6e1ec58f932b"
+                "reference": "c56191c9ba0ebc0297203322f9452561aebdc5cd"
             },
             "require": {
                 "drupal/core": "8.*",
@@ -1454,7 +1454,7 @@
             ],
             "description": "Provides a default Entity Browser for files, using Masonry and Imagesloaded.",
             "homepage": "https://www.drupal.org/project/file_browser",
-            "time": "2016-06-29 21:26:52"
+            "time": "2016-07-17 16:16:37"
         },
         {
             "name": "drupal/file_entity",
@@ -1522,7 +1522,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/geolocation",
-                "reference": "346adc47f206a3d37851602e52b91e7534040cab"
+                "reference": "da19fe770945254f219e10bcfe516f205d6d3e7e"
             },
             "require": {
                 "drupal/core": "8.*",
@@ -1540,7 +1540,7 @@
             ],
             "description": "Provides a simple geolocation field type to store and display location data (lat, lng).",
             "homepage": "https://www.drupal.org/project/geolocation",
-            "time": "2016-06-30 11:09:20"
+            "time": "2016-07-14 10:57:11"
         },
         {
             "name": "drupal/git_deploy",
@@ -1704,7 +1704,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/lightning-8.x-1.0-beta5.zip",
-                "reference": "c85e4d02cce8a606d5df29af2d6b92545d74042e",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -2080,16 +2080,16 @@
         },
         {
             "name": "drupal/views_timelinejs",
-            "version": "8.3.0-beta1",
+            "version": "8.3.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/views_timelinejs",
-                "reference": "11d87d123b4e0c14d203dbb2aa4f12abee5110a5"
+                "reference": "38c5b40e0bbbee825fe0b4de3d12452086d395f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/views_timelinejs-8.x-3.0-beta1.zip",
-                "reference": "11d87d123b4e0c14d203dbb2aa4f12abee5110a5",
+                "url": "https://ftp.drupal.org/files/projects/views_timelinejs-8.x-3.0-beta2.zip",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -2108,7 +2108,7 @@
             ],
             "description": "Provides a View style that displays rows in a Timeline.",
             "homepage": "https://www.drupal.org/project/views_timelinejs",
-            "time": "2016-06-26 04:12:40"
+            "time": "2016-07-09 21:58:20"
         },
         {
             "name": "drupal/zurb_foundation",

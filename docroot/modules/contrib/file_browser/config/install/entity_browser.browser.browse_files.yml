@@ -15,8 +15,13 @@ display_configuration:
   height: 768
   link_text: 'Select files'
   auto_open: true
-selection_display: no_display
-selection_display_configuration: {  }
+selection_display: multi_step_display
+selection_display_configuration:
+  entity_type: file
+  display: thumbnail
+  display_settings:
+    image_style: file_entity_browser_small
+  selection_hidden: 1
 widget_selector: tabs
 widget_selector_configuration: {  }
 widgets:

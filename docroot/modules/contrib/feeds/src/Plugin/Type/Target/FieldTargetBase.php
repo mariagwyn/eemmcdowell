@@ -17,13 +17,6 @@ use Drupal\feeds\Plugin\Type\Processor\EntityProcessorInterface;
 abstract class FieldTargetBase extends TargetBase {
 
   /**
-   * A static cache of entity query objects stored per feed id.
-   *
-   * @var array
-   */
-  protected static $uniqueQueries;
-
-  /**
    * The field settings.
    *
    * @var array
@@ -83,7 +76,12 @@ abstract class FieldTargetBase extends TargetBase {
    */
   public function setTarget(FeedInterface $feed, EntityInterface $entity, $field_name, array $values) {
     if ($values = $this->prepareValues($values)) {
-      $entity->get($field_name)->setValue($values);
+      $item_list = $entity->get($field_name);
+
+      // Append these values to the existing values.
+      $values = array_merge($item_list->getValue(), $values);
+
+      $item_list->setValue($values);
     }
   }
 
@@ -108,6 +106,7 @@ abstract class FieldTargetBase extends TargetBase {
         drupal_set_message($e->getMessage(), 'error');
       }
     }
+
     return $return;
   }
 
@@ -125,18 +124,12 @@ abstract class FieldTargetBase extends TargetBase {
     }
   }
 
-  protected function getUniqueQuery(FeedInterface $feed) {
-    if (!isset(static::$uniqueQueries[$feed->id()])) {
-
-      static::$uniqueQueries[$feed->id()] = \Drupal::entityQuery($this->feedType->getProcessor()->entityType())
-        ->condition('feeds_item.target_id', $feed->id())
-        ->range(0, 1);
-    }
-
-    return clone static::$uniqueQueries[$feed->id()];
+  protected function getUniqueQuery() {
+    return \Drupal::entityQuery($this->feedType->getProcessor()->entityType())
+      ->range(0, 1);
   }
 
-  public function getUniqueValue($feed, $target, $key, $value) {
+  public function getUniqueValue(FeedInterface $feed, $target, $key, $value) {
     $base_fields = \Drupal::entityManager()->getBaseFieldDefinitions($this->feedType->getProcessor()->entityType());
 
     if (isset($base_fields[$target])) {
@@ -145,7 +138,7 @@ abstract class FieldTargetBase extends TargetBase {
     else {
       $field = "$target.$key";
     }
-    if ($result = $this->getUniqueQuery($feed)->condition($field, $value)->execute()) {
+    if ($result = $this->getUniqueQuery()->condition($field, $value)->execute()) {
       return reset($result);
     }
   }

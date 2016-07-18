@@ -60,7 +60,7 @@ class TimelineJS extends StylePluginBase {
     $options['timeline_config'] = [
       'contains' => [
         'width' => ['default' => '100%'],
-        'height' => ['default' => '500px'],
+        'height' => ['default' => '40em'],
         'hash_bookmark' => ['default' => FALSE],
         'start_at_end' => ['default' => FALSE],
         'scale_factor' => ['default' => 2],
@@ -106,11 +106,10 @@ class TimelineJS extends StylePluginBase {
     // $form['timeline_config']['id_of_timelinejs_option'].  See the list of
     // options at https://timeline.knightlab.com/docs/options.html.
     $form['timeline_config'] = [
-      '#type' => 'fieldset',
+      '#type' => 'details',
       '#title' => $this->t('TimelineJS Options'),
       '#description' => $this->t('Each of these settings maps directly to one of the TimelineJS presentation options.  See the <a href="@options-doc">options documentation page</a> for additional information.', ['@options-doc' => 'https://timeline.knightlab.com/docs/options.html']),
-      '#collapsible' => TRUE,
-      '#collapsed' => FALSE,
+      '#open' => TRUE,
     ];
     $form['timeline_config']['width'] = [
       '#type' => 'textfield',
@@ -123,7 +122,7 @@ class TimelineJS extends StylePluginBase {
     $form['timeline_config']['height'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Height of the timeline'),
-      '#description' => $this->t('The height of the timeline, e.g. "100%" or "650px".'),
+      '#description' => $this->t('The height of the timeline, e.g. "40em" or "650px".  Percent values are not recommended for the height.'),
       '#default_value' => $this->options['timeline_config']['height'],
       '#size' => 10,
       '#maxlength' => 10,
@@ -147,20 +146,19 @@ class TimelineJS extends StylePluginBase {
       '#default_value' => $this->options['timeline_config']['start_at_end'],
     ];
     $form['timeline_config']['language'] = [
-      '#type' => 'textfield',
-      '#size' => 5,
+      '#type' => 'select',
       '#title' => $this->t('Language'),
-      '#description' => $this->t('The <a href="@language-list">language code</a>. Leave blank for the site language.', ['@language-list' => 'https://github.com/NUKnightLab/TimelineJS#language']),
+      '#description' => $this->t("By default, the timeline will be displayed in the site's current language if it is supported by TimelineJS. Selecting a language in this setting will force the timeline to always be displayed in the chosen language."),
+      '#options' => array_merge($initial_labels, _views_timelinejs_list_languages()),
       '#default_value' => $this->options['timeline_config']['language'],
     ];
 
     // Timeline additional configuration.
     $form['additional_config'] = [
-      '#type' => 'fieldset',
+      '#type' => 'details',
       '#title' => $this->t('Additional Options'),
       '#description' => $this->t('These settings include extra options to control the TimelineJS presentation or options unique to this plugin.'),
-      '#collapsible' => TRUE,
-      '#collapsed' => FALSE,
+      '#open' => TRUE,
     ];
     $form['additional_config']['font'] = [
       '#type' => 'select',
@@ -178,11 +176,10 @@ class TimelineJS extends StylePluginBase {
 
     // Field mapping.
     $form['timeline_fields'] = [
-      '#type' => 'fieldset',
+      '#type' => 'details',
       '#title' => $this->t('Field mappings'),
       '#description' => $this->t('Map your Views data fields to TimelineJS slide object properties.'),
-      '#collapsible' => TRUE,
-      '#collapsed' => FALSE,
+      '#open' => TRUE,
     ];
     $form['timeline_fields']['headline'] = [
       '#type' => 'select',
@@ -444,7 +441,14 @@ class TimelineJS extends StylePluginBase {
   protected function buildDate($field) {
     try {
       $date_markup = $this->getField($this->view->row_index, $field);
-      $date = $date_markup ? new Date($date_markup->__toString()) : NULL;
+      if (empty($date_markup)) {
+        return NULL;
+      }
+      // Store the date string so that it can be used in the error message, if
+      // necessary.  Strip HTML tags from dates so users don't run into problems
+      // like Date fields wrapping their output with metadata.
+      $date_string = strip_tags($date_markup->__toString());
+      $date = new Date($date_string);
     }
     catch (Exception $e) {
       // Return NULL if the field didn't contain a parseable date string.
@@ -654,10 +658,10 @@ class TimelineJS extends StylePluginBase {
    * Processes timeline options before theming.
    */
   protected function prepareTimelineOptions() {
-    // Set the language option to the site's default if it is empty.
+    // Set the language option to the site's default if it is empty and the
+    // language is supported.
     if (empty($this->options['timeline_config']['language'])) {
-      $language = \Drupal::languageManager()->getCurrentLanguage();
-      $this->options['timeline_config']['language'] = $language->getId();
+      $this->prepareLanguageOption();
     }
 
     // If the custom start_at_current option is set, then set the timeline's
@@ -666,6 +670,26 @@ class TimelineJS extends StylePluginBase {
     if ($this->options['additional_config']['start_at_current']) {
       $this->options['timeline_config']['start_at_slide'] = $this->startSlideIndex;
       $this->options['timeline_config']['start_at_end'] = FALSE;
+    }
+  }
+
+  /**
+   * Sets the timeline language option to the site's current language.
+   */
+  protected function prepareLanguageOption() {
+    $supported_languages = _views_timelinejs_list_languages();
+    $language_map = _views_timelinejs_language_map();
+    $current_language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+
+    // Check for the site's current language in the list of languages that are
+    // supported by TimelineJS.
+    if (isset($supported_languages[$current_language])) {
+      $this->options['timeline_config']['language'] = $current_language;
+    }
+    // Check for the site's current language in the list of language codes
+    // that are different in Drupal than they are in TimelineJS.
+    elseif (isset($language_map[$current_language])) {
+      $this->options['timeline_config']['language'] = $language_map[$current_language];
     }
   }
 
