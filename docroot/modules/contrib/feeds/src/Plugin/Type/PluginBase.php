@@ -91,17 +91,6 @@ abstract class PluginBase extends DrupalPluginBase implements FeedsPluginInterfa
     return [];
   }
 
-  public function getConfigurationForm() {
-    $definition = $this->getPluginDefinition();
-
-    if (empty($definition['configuration_form'])) {
-      return;
-    }
-
-    $class = $definition['configuration_form'];
-    return $class::create(\Drupal::getContainer(), $this);
-  }
-
   /**
    * {@inheritdoc}
    */
@@ -112,26 +101,8 @@ abstract class PluginBase extends DrupalPluginBase implements FeedsPluginInterfa
   /**
    * {@inheritodc}
    */
-  public function sourceDefaults() {
+  public function defaultFeedConfiguration() {
     return [];
-  }
-
-  /**
-   * Stub for plugins implementing FeedPluginFormInterface.
-   *
-   * @see \Drupal\feeds\Plugin\Type\FeedPluginFormInterface
-   */
-  public function validateFeedForm(array &$form, FormStateInterface $form_state, FeedInterface $feed) {}
-
-  /**
-   * Stub for plugins implementing FeedPluginFormInterface.
-   *
-   * Most all plugins should get automatic submit handlers from this.
-   *
-   * @see \Drupal\feeds\Plugin\Type\FeedPluginFormInterface
-   */
-  public function submitFeedForm(array &$form, FormStateInterface $form_state, FeedInterface $feed) {
-    $feed->setConfigurationFor($this, $form_state->getValues());
   }
 
   /**

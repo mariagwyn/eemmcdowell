@@ -3,6 +3,7 @@
 namespace Drupal\feeds\Feeds\Fetcher\Form;
 
 use Drupal\Component\Utility\Html;
+use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\StreamWrapper\StreamWrapperInterface;
 use Drupal\Core\StreamWrapper\StreamWrapperManager;
@@ -13,7 +14,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * Defines a directory fetcher.
  */
-class DirectoryFetcherForm extends ExternalPluginFormBase {
+class DirectoryFetcherForm extends ExternalPluginFormBase implements ContainerInjectionInterface {
 
   /**
    * The stream wrapper manager.
@@ -25,21 +26,18 @@ class DirectoryFetcherForm extends ExternalPluginFormBase {
   /**
    * Constructs a DirectoryFetcherForm object.
    *
-   * @param \Drupal\feeds\Plugin\Type\FeedsPluginInterface $plugin
-   *   The feeds plugin.
    * @param \Drupal\Core\StreamWrapper\StreamWrapperManager $stream_wrapper_manager
    *   The stream wrapper manager.
    */
-  public function __construct(FeedsPluginInterface $plugin, StreamWrapperManager $stream_wrapper_manager) {
-    $this->plugin = $plugin;
+  public function __construct(StreamWrapperManager $stream_wrapper_manager) {
     $this->streamWrapperManager = $stream_wrapper_manager;
   }
 
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container, FeedsPluginInterface $plugin) {
-    return new static($plugin, $container->get('stream_wrapper_manager'));
+  public static function create(ContainerInterface $container) {
+    return new static($container->get('stream_wrapper_manager'));
   }
 
   /**
@@ -50,8 +48,9 @@ class DirectoryFetcherForm extends ExternalPluginFormBase {
       '#type' => 'textfield',
       '#title' => $this->t('Allowed file extensions'),
       '#description' => $this->t('Allowed file extensions for upload.'),
-      '#default_value' => implode(' ', $this->plugin->getConfiguration('allowed_extensions')),
+      '#default_value' => $this->plugin->getConfiguration('allowed_extensions'),
     ];
+
     $form['allowed_schemes'] = [
       '#type' => 'checkboxes',
       '#title' => $this->t('Allowed schemes'),
@@ -59,12 +58,14 @@ class DirectoryFetcherForm extends ExternalPluginFormBase {
       '#options' => $this->getSchemeOptions(),
       '#description' => $this->t('Select the schemes you want to allow for direct upload.'),
     ];
+
     $form['recursive_scan'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Search recursively'),
       '#default_value' => $this->plugin->getConfiguration('recursive_scan'),
       '#description' => $this->t('Search through sub-directories.'),
     ];
+
     return $form;
   }
 
@@ -72,10 +73,11 @@ class DirectoryFetcherForm extends ExternalPluginFormBase {
    * {@inheritdoc}
    */
   public function validateConfigurationForm(array &$form, FormStateInterface $form_state) {
-    $values =& $form_state->getValues();
-    $values['allowed_schemes'] = array_filter($values['allowed_schemes']);
-    // Convert allowed_extensions to an array for storage.
-    $values['allowed_extensions'] = array_unique(explode(' ', preg_replace('/\s+/', ' ', trim($values['allowed_extensions']))));
+    $form_state->setValue('allowed_schemes', array_filter($form_state->getValue('allowed_schemes', [])));
+
+    $extensions = preg_replace('/\s+/', ' ', trim($form_state->getValue('allowed_extensions', '')));
+
+    $form_state->setValue('allowed_extensions', $extensions);
   }
 
   /**
@@ -89,6 +91,7 @@ class DirectoryFetcherForm extends ExternalPluginFormBase {
     foreach ($this->streamWrapperManager->getDescriptions(StreamWrapperInterface::WRITE_VISIBLE) as $scheme => $description) {
       $options[$scheme] = Html::escape($scheme . ': ' . $description);
     }
+
     return $options;
   }
 

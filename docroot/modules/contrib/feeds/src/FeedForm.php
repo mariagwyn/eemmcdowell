@@ -3,14 +3,45 @@
 namespace Drupal\feeds;
 
 use Drupal\Core\Entity\ContentEntityForm;
+use Drupal\Core\Entity\EntityManagerInterface;
 use Drupal\Core\Form\FormState;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\feeds\Plugin\Type\FeedPluginFormInterface;
+use Drupal\feeds\Plugin\PluginFormFactory;
+use Drupal\feeds\Plugin\Type\FeedsPluginInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Form controller for the feed edit forms.
  */
 class FeedForm extends ContentEntityForm {
+
+  /**
+   * The form factory.
+   *
+   * @var \Drupal\feeds\Plugin\PluginFormFactory
+   */
+  protected $formFactory;
+
+  /**
+   * Constructs an FeedTypeForm object.
+   *
+   * @param \Drupal\Core\Config\Entity\ConfigEntityStorageInterface $feed_type_storage
+   *   The feed type storage controller.
+   */
+  public function __construct(EntityManagerInterface $entity_manager, PluginFormFactory $factory) {
+    $this->entityManager = $entity_manager;
+    $this->formFactory = $factory;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('entity.manager'),
+      $container->get('feeds_plugin_form_factory')
+    );
+  }
 
   /**
    * {@inheritdoc}
@@ -19,14 +50,6 @@ class FeedForm extends ContentEntityForm {
     $feed = $this->entity;
 
     $feed_type = $feed->getType();
-
-    $args = ['@type' => $feed_type->label(), '@title' => $feed->label()];
-    if ($this->operation === 'update') {
-      $form['#title'] = $this->t('<em>Edit @type</em> @title', $args);
-    }
-    elseif ($this->operation === 'create') {
-      $form['#title'] = $this->t('<em>Add @type</em>', $args);
-    }
 
     $form['advanced'] = [
       '#type' => 'vertical_tabs',
@@ -37,9 +60,12 @@ class FeedForm extends ContentEntityForm {
 
     $form['plugin']['#tree'] = TRUE;
     foreach ($feed_type->getPlugins() as $type => $plugin) {
-      if ($plugin instanceof FeedPluginFormInterface) {
+      if ($this->pluginHasForm($plugin, 'feed')) {
+        $feed_form = $this->formFactory->createInstance($plugin, 'feed');
+
         $plugin_state = (new FormState())->setValues($form_state->getValue(['plugin', $type], []));
-        $form['plugin'][$type] = $plugin->buildFeedForm([], $plugin_state, $feed);
+
+        $form['plugin'][$type] = $feed_form->buildConfigurationForm([], $plugin_state, $feed);
         $form['plugin'][$type]['#tree'] = TRUE;
 
         $form_state->setValue(['plugin', $type], $plugin_state->getValues());
@@ -112,22 +138,28 @@ class FeedForm extends ContentEntityForm {
     $feed = $this->buildEntity($form, $form_state);
 
     foreach ($feed->getType()->getPlugins() as $type => $plugin) {
-      if ($plugin instanceof FeedPluginFormInterface) {
-        $plugin_state = (new FormState())->setValues($form_state->getValue(['plugin', $type], []));
-        $plugin->validateFeedForm($form['plugin'][$type], $plugin_state, $feed);
+      if (!$this->pluginHasForm($plugin, 'feed')) {
+        continue;
+      }
 
-        $form_state->setValue(['plugin', $type], $plugin_state->getValues());
+      $feed_form = $this->formFactory->createInstance($plugin, 'feed');
 
-        foreach ($plugin_state->getErrors() as $name => $error) {
-          // Remove duplicate error messages.
+      $plugin_state = (new FormState())->setValues($form_state->getValue(['plugin', $type], []));
+      $feed_form->validateConfigurationForm($form['plugin'][$type], $plugin_state, $feed);
+
+      $form_state->setValue(['plugin', $type], $plugin_state->getValues());
+
+      foreach ($plugin_state->getErrors() as $name => $error) {
+        // Remove duplicate error messages.
+        if (!empty($_SESSION['messages']['error'])) {
           foreach ($_SESSION['messages']['error'] as $delta => $message) {
             if ($message['message'] === $error) {
               unset($_SESSION['messages']['error'][$delta]);
               break;
             }
           }
-          $form_state->setErrorByName($name, $error);
         }
+        $form_state->setErrorByName($name, $error);
       }
     }
 
@@ -143,9 +175,12 @@ class FeedForm extends ContentEntityForm {
     $feed = $this->entity;
 
     foreach ($feed->getType()->getPlugins() as $type => $plugin) {
-      if ($plugin instanceof FeedPluginFormInterface) {
+      if ($this->pluginHasForm($plugin, 'feed')) {
+        $feed_form = $this->formFactory->createInstance($plugin, 'feed');
+
         $plugin_state = (new FormState())->setValues($form_state->getValue(['plugin', $type], []));
-        $plugin->submitFeedForm($form['plugin'][$type], $plugin_state, $feed);
+
+        $feed_form->submitConfigurationForm($form['plugin'][$type], $plugin_state, $feed);
 
         $form_state->setValue(['plugin', $type], $plugin_state->getValues());
       }
@@ -203,6 +238,10 @@ class FeedForm extends ContentEntityForm {
     $feed = $this->entity;
     $feed->startBatchImport();
     return $feed;
+  }
+
+  protected function pluginHasForm(FeedsPluginInterface $plugin, $operation) {
+    return $this->formFactory->hasForm($plugin, $operation);
   }
 
 }

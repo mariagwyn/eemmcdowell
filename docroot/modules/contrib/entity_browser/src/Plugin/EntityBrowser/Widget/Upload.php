@@ -9,6 +9,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Utility\Token;
 use Drupal\entity_browser\WidgetBase;
 use Drupal\entity_browser\WidgetValidationManager;
+use Drupal\file\FileInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
@@ -96,7 +97,7 @@ class Upload extends WidgetBase {
     $form = parent::getForm($original_form, $form_state, $additional_widget_parameters);
     $form['upload'] = [
       '#type' => 'managed_file',
-      '#title' => t('Choose a file'),
+      '#title' => $this->t('Choose a file'),
       '#title_display' => 'invisible',
       '#upload_location' => $this->token->replace($this->configuration['upload_location']),
       '#multiple' => TRUE,
@@ -121,7 +122,14 @@ class Upload extends WidgetBase {
    */
   public function submit(array &$element, array &$form, FormStateInterface $form_state) {
     if (!empty($form_state->getTriggeringElement()['#eb_widget_main_submit'])) {
-      $files = $this->extractFiles($form_state);
+      $files = $this->prepareEntities($form, $form_state);
+      array_walk(
+        $files,
+        function (FileInterface $file) {
+          $file->setPermanent();
+          $file->save();
+        }
+      );
       $this->selectEntities($files, $form_state);
       $this->clearFormValues($element, $form_state);
     }
@@ -140,26 +148,6 @@ class Upload extends WidgetBase {
     // them from our values.
     $form_state->setValueForElement($element['upload']['fids'], '');
     NestedArray::setValue($form_state->getUserInput(), $element['upload']['fids']['#parents'], '');
-  }
-
-  /**
-   * @param FormStateInterface $form_state
-   *   Form state object.
-   *
-   * @return \Drupal\file\FileInterface[]
-   *   Array of files.
-   */
-  protected function extractFiles(FormStateInterface $form_state) {
-    $files = [];
-    foreach ($form_state->getValue(['upload'], []) as $fid) {
-      /** @var \Drupal\file\FileInterface $file */
-      $file = $this->entityTypeManager->getStorage('file')->load($fid);
-      $file->setPermanent();
-      $file->save();
-      $files[] = $file;
-    }
-
-    return $files;
   }
 
   /**

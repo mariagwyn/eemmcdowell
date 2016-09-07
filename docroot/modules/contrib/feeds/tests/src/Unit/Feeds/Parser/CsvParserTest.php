@@ -39,7 +39,7 @@ class CsvParserTest extends FeedsUnitTestCase {
     $this->feed->expects($this->any())
       ->method('getConfigurationFor')
       ->with($this->parser)
-      ->will($this->returnValue($this->parser->sourceDefaults()));
+      ->will($this->returnValue($this->parser->defaultFeedConfiguration()));
 
     $file = dirname(dirname(dirname(dirname(__DIR__)))) . '/resources/example.csv';
     $fetcher_result = new FetcherResult($file);
@@ -68,18 +68,6 @@ class CsvParserTest extends FeedsUnitTestCase {
   public function testGetMappingSources() {
     // Not really much to test here.
     $this->assertSame([], $this->parser->getMappingSources());
-  }
-
-  public function testFeedForm() {
-    $form_state = new FormState();
-    $form = $this->parser->buildFeedForm([], $form_state, $this->feed);
-    $this->assertSame(count($form), 1);
-  }
-
-  public function testConfigurationForm() {
-    $form_state = new FormState();
-    $form = $this->parser->buildConfigurationForm([], $form_state);
-    $this->assertSame(count($form), 2);
   }
 
 }

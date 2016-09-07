@@ -170,23 +170,9 @@ class FileBrowserWidget extends EntityReferenceBrowserWidget {
    * {@inheritdoc}
    */
   public function settingsSummary() {
-    $summary = [];
-    $entity_browser_id = $this->getSetting('entity_browser');
+    $summary = $this->summaryBase();
     $view_mode = $this->getSetting('view_mode');
     $image_style_setting = $this->getSetting('preview_image_style');
-
-    if (empty($entity_browser_id)) {
-      return [$this->t('No entity browser selected.')];
-    }
-    else {
-      $browser = $this->entityTypeManager->getStorage('entity_browser')
-        ->load($entity_browser_id);
-      $summary[] = $this->t('Entity browser: @browser', ['@browser' => $browser->label()]);
-    }
-
-    if (!empty($view_mode)) {
-      $summary[] = $this->t('View mode: @name', ['@name' => $view_mode]);
-    }
 
     if ($this->fieldDefinition->getType() == 'image' && $view_mode == 'default') {
       $image_styles = image_style_options(FALSE);
@@ -199,7 +185,6 @@ class FileBrowserWidget extends EntityReferenceBrowserWidget {
         $preview_image_style = $this->t('No preview image');
       }
     }
-
     array_unshift($summary, $preview_image_style);
 
     return $summary;
@@ -305,6 +290,7 @@ class FileBrowserWidget extends EntityReferenceBrowserWidget {
         '#attributes' => [
           'class' => ['draggable'],
           'data-entity-id' => $entity->getEntityTypeId() . ':' . $entity_id,
+          'data-row-id' => $delta,
         ],
         'display' => $display,
         'filename' => ['#markup' => $entity->label()],
@@ -351,6 +337,10 @@ class FileBrowserWidget extends EntityReferenceBrowserWidget {
           '#ajax' => [
             'url' => Url::fromRoute('entity_browser.edit_form', ['entity_type' => $entity->getEntityTypeId(), 'entity' => $entity_id]),
           ],
+          '#attributes' => [
+            'data-entity-id' => $entity->getEntityTypeId() . ':' . $entity->id(),
+            'data-row-id' => $delta,
+          ],
           '#access' => $can_edit,
         ],
         'remove_button' => [
@@ -363,7 +353,10 @@ class FileBrowserWidget extends EntityReferenceBrowserWidget {
           '#submit' => [[get_class($this), 'removeItemSubmit']],
           '#name' => $field_machine_name . '_remove_' . $entity_id,
           '#limit_validation_errors' => [array_merge($field_parents, [$field_machine_name, 'target_id'])],
-          '#attributes' => ['data-entity-id' => $entity->getEntityTypeId() . ':' . $entity_id],
+          '#attributes' => [
+            'data-entity-id' => $entity->getEntityTypeId() . ':' . $entity->id(),
+            'data-row-id' => $delta,
+          ],
           '#access' => (bool) $widget_settings['field_widget_remove'],
         ],
         '_weight' => [

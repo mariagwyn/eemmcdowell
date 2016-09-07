@@ -40,6 +40,9 @@ use Drupal\user\UserInterface;
  *       "unlock" = "Drupal\feeds\Form\FeedUnlockForm",
  *     },
  *     "list_builder" = "Drupal\feeds\FeedListBuilder",
+ *     "route_provider" = {
+ *       "html" = "Drupal\Core\Entity\Routing\AdminHtmlRouteProvider",
+ *     },
  *     "feed_import" = "Drupal\feeds\FeedImportHandler",
  *     "feed_clear" = "Drupal\feeds\FeedClearHandler",
  *     "feed_expire" = "Drupal\feeds\FeedExpireHandler"
@@ -57,9 +60,10 @@ use Drupal\user\UserInterface;
  *   field_ui_base_route = "entity.feeds_feed_type.edit_form",
  *   links = {
  *     "canonical" = "/feed/{feeds_feed}",
+ *     "add-page" = "/feed/add",
+ *     "add-form" = "/feed/add/{feeds_feed_type}",
  *     "delete-form" = "/feed/{feeds_feed}/delete",
  *     "edit-form" = "/feed/{feeds_feed}/edit",
- *     "admin-form" = "/admin/structure/feeds/manage/{feeds_feed_type}",
  *     "import-form" = "/feed/{feeds_feed}/import",
  *     "clear-form" = "/feed/{feeds_feed}/delete-items"
  *   }
@@ -253,6 +257,8 @@ class Feed extends ContentEntityBase implements FeedInterface {
    * {@inheritdoc}
    */
   public function finishImport() {
+    $time = time();
+
     $this->getType()
       ->getProcessor()
       ->postProcess($this, $this->getState(StateInterface::PROCESS));
@@ -264,7 +270,6 @@ class Feed extends ContentEntityBase implements FeedInterface {
     $this->clearStates();
     $this->setQueuedTime(0);
 
-    $time = time();
     $this->set('imported', $time);
 
     $interval = $this->getType()->getImportPeriod();
@@ -414,7 +419,8 @@ class Feed extends ContentEntityBase implements FeedInterface {
     // @todo Figure out why for the UploadFetcher there is no config available.
     $data = $this->get('config')->$type;
     $data = !empty($data) ? $data : array();
-    return $data + $client->sourceDefaults();
+
+    return $data + $client->defaultFeedConfiguration();
   }
 
   /**
@@ -422,7 +428,7 @@ class Feed extends ContentEntityBase implements FeedInterface {
    */
   public function setConfigurationFor(FeedsPluginInterface $client, array $configuration) {
     $type = $client->pluginType();
-    $this->get('config')->$type = array_intersect_key($configuration, $client->sourceDefaults()) + $client->sourceDefaults();
+    $this->get('config')->$type = array_intersect_key($configuration, $client->defaultFeedConfiguration()) + $client->defaultFeedConfiguration();
   }
 
   /**
@@ -595,7 +601,7 @@ class Feed extends ContentEntityBase implements FeedInterface {
       ])
       ->setDisplayConfigurable('view', TRUE);
 
-    $fields['config'] = BaseFieldDefinition::create('feeds_serialized')
+    $fields['config'] = BaseFieldDefinition::create('map')
       ->setLabel(t('Config'))
       ->setDescription(t('The config of the feed.'));
 
