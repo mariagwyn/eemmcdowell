@@ -702,6 +702,5 @@ if (isset($_SERVER['DEVDESKTOP_DRUPAL_SETTINGS_DIR']) && file_exists($_SERVER['D
   require $_SERVER['DEVDESKTOP_DRUPAL_SETTINGS_DIR'] . '/cld_prod_eemmcdowell_dev_default.inc';
 }
 // </DDSETTINGS>
-
-$settings['install_profile'] = 'standard';
-$config_directories['sync'] = 'sites/local.mariagwyn.dd/files/config_-uNZuujDqgKjgS4QdsK61uJe3hyklNLSZKT2ojqxea5dpLIf2fJXHds1mY5A7uyhkR6h_z2jzQ/sync';
+require DRUPAL_ROOT . "/../vendor/acquia/blt/settings/blt.settings.php";
+$settings['install_profile'] = 'lightning';

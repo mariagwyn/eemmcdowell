@@ -1,143 +1,186 @@
 {
-  "name": "mariagwyn/eemmcdowell",
-  "description": "Project json for Magnolia Tree Midwifery and DeiProfundis",
-  "type": "project",
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "https://packagist.drupal-composer.org"
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/mariagwyn/mgm_tools"
-    },
-    {
-      "type"    : "package",
-      "package" : {
-        "name"    : "enyo/dropzone",
-        "version" : "dev-master",
-        "type"    : "drupal-library",
-        "source"  : {
-          "url"       : "https://github.com/enyo/dropzone.git",
-          "type"      : "git",
-          "reference" : "origin/master"
+    "name": "mariagwyn/eemmcdowell",
+    "description": "Project json for Magnolia Tree Midwifery and DeiProfundis",
+    "type": "project",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packagist.drupal-composer.org"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/mariagwyn/mgm_tools"
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "enyo/dropzone",
+                "version": "dev-master",
+                "type": "drupal-library",
+                "source": {
+                    "url": "https://github.com/enyo/dropzone.git",
+                    "type": "git",
+                    "reference": "origin/master"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "desandro/imagesloaded",
+                "version": "dev-master",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/desandro/imagesloaded.git",
+                    "type": "drupal-library"
+                },
+                "source": {
+                    "url": "https://github.com/desandro/imagesloaded.git",
+                    "type": "git",
+                    "reference": "origin/master"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "desandro/masonry",
+                "version": "dev-master",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/desandro/masonry.git",
+                    "type": "drupal-library"
+                },
+                "source": {
+                    "url": "https://github.com/desandro/masonry.git",
+                    "type": "git",
+                    "reference": "origin/master"
+                }
+            }
         }
-      }
-    },
-    {
-          "type"    : "package",
-          "package" : {
-              "name"    : "desandro/imagesloaded",
-              "version" : "dev-master",
-              "type"    : "drupal-library",
-              "dist"    : {
-                  "url"  : "https://github.com/desandro/imagesloaded.git",
-                  "type" : "drupal-library"
-              },
-              "source"  : {
-                  "url"       : "https://github.com/desandro/imagesloaded.git",
-                  "type"      : "git",
-                  "reference" : "origin/master"
-              }
-          }
-      },
-      {
-          "type"    : "package",
-          "package" : {
-              "name"    : "desandro/masonry",
-              "version" : "dev-master",
-              "type"    : "drupal-library",
-              "dist"    : {
-                  "url"  : "https://github.com/desandro/masonry.git",
-                  "type" : "drupal-library"
-              },
-              "source"  : {
-                  "url"       : "https://github.com/desandro/masonry.git",
-                  "type"      : "git",
-                  "reference" : "origin/master"
-              }
-          }
-      }
-  ],
-  "require": {
-    "composer/installers":                        "^1.0.20",
-    "drupal-composer/drupal-scaffold":            "^2.0.0",
-    "cweagans/composer-patches":                  "1.5.0",
-    "drupal/core":                                "~8.1",
-    "drupal/lightning":                           "^8.1.0",
-    "drupal/addtoany":                            "~8.1",
-    "drupal/admin_toolbar":                       "~8.1",
-    "drupal/devel":                               "~8.1",
-    "drupal/ctools":                              "~8.3",
-    "drupal/dropzonejs":                          "~8.1",
-    "drupal/embed":                               "~8.1",
-    "drupal/entity_browser":                      "8.1.x-dev",
-    "drupal/entity_embed":                        "8.1.x-dev",
-    "drupal/feeds":                               "~8.3",
-    "drupal/field_group":                         "8.1.*",
-    "drupal/file_browser":                        "8.1.x-dev",
-    "drupal/file_entity":                         "~8.2",
-    "drupal/footnotes":                           "8.2.*",
-    "drupal/geolocation":                         "8.1.x-dev",
-    "drupal/git_deploy":                          "~8.2",
-    "drupal/google_analytics":                    "~8.2",
-    "drupal/inline_entity_form":                  "~8",
-    "drupal/layout_plugin":                       "~8.0",
-    "drupal/memcache" :                           "8.*",
-    "drupal/page_manager":                        "~8.0",
-    "drupal/panels":                              "~8.3",
-    "drupal/pathauto":                            "~8.1",
-    "drupal/security_review" :                    "8.*",
-    "roave/security-advisories":                  "dev-master",
-    "drupal-composer/drupal-security-advisories": "8.0.x-dev",
-    "drupal/social_media_links":                  "~8.2",
-    "drupal/token":                               "~8.1",
-    "drupal/views_timelinejs":                    "~8.3",
-    "drupal/adminimal_theme":                     "~8.1",
-    "drupal/zurb_foundation":                     "~8.5",
-    "mariagwyn/mgm_tools": "master",
-    "acquia/blt": "~8"
-  },
-  "require-dev": {
-    "symfony/css-selector": "2.7.*"
-  },
-  "conflict": {
-    "drupal/core": "7.*"
-  },
-  "minimum-stability": "dev",
-  "prefer-stable": true,
-  "autoload": {
-      "classmap": [
-        "scripts/ScriptHandler.php"
-      ]
-  },
-  "scripts": {
-    "post-install-cmd": [
-      "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
-      "Acquia\\Lightning\\ScriptHandler::deployLibraries"
     ],
-    "post-update-cmd": [
-      "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
-      "Acquia\\Lightning\\ScriptHandler::deployLibraries"
-    ]
-  },
-  "extra": {
-    "_readme": [
-      "This is an example comment!"
-    ],
-    "installer-paths": {
-      "docroot/core": ["type:drupal-core"],
-      "docroot/modules/contrib/{$name}/": ["type:drupal-module"],
-      "docroot/themes/contrib/{$name}/": ["type:drupal-theme"],
-      "docroot/libraries/{$name}/": ["type:drupal-library"],
-      "docroot/profiles/{$name}/": ["type:drupal-profile"],
-      "docroot/modules/custom/{$name}/": ["type:drupal-module-custom"]
+    "require": {
+        "composer/installers": "^1.0.20",
+        "drupal-composer/drupal-scaffold": "^2.0.0",
+        "cweagans/composer-patches": "^1.5.0",
+        "drupal/core": "~8",
+        "drupal/lightning": "8.1.03",
+        "drupal/addtoany": "~8.1",
+        "drupal/admin_toolbar": "~8.1",
+        "drupal/devel": "~8.1",
+        "drupal/ctools": "~8.3",
+        "drupal/dropzonejs": "~8.1",
+        "drupal/embed": "~8.1",
+        "drupal/entity_browser": "8.1.0-alpha7",
+        "drupal/feeds": "~8.3",
+        "drupal/field_group": "8.1.*",
+        "drupal/file_browser": "8.1.x-dev",
+        "drupal/file_entity": "~8.2",
+        "drupal/footnotes": "8.2.*",
+        "drupal/geolocation": "8.1.x-dev",
+        "drupal/git_deploy": "~8.2",
+        "drupal/google_analytics": "~8.2",
+        "drupal/inline_entity_form": "~8",
+        "drupal/layout_plugin": "~8.0",
+        "drupal/memcache": "8.*",
+        "drupal/page_manager": "~8.0",
+        "drupal/panels": "~8.3",
+        "drupal/pathauto": "~8.1",
+        "drupal/security_review": "8.*",
+        "roave/security-advisories": "dev-master",
+        "drupal-composer/drupal-security-advisories": "8.0.x-dev",
+        "drupal/social_media_links": "~8.2",
+        "drupal/token": "~8.1",
+        "drupal/views_timelinejs": "~8.3",
+        "drupal/adminimal_theme": "~8.1",
+        "drupal/zurb_foundation": "~8.5",
+        "mariagwyn/mgm_tools": "master",
+        "acquia/blt": "~8",
+        "drupal/acquia_connector": "8.1.*",
+        "drupal/acsf": "~8.1",
+        "drupal/console": "~1",
+        "drupal/metatag": "8.1.0-beta9"
     },
-    "drupal-scaffold": {
-      "excludes": [
-        "robots.txt",
-        "docroot/sites/development.services.yml"
-      ]
+    "require-dev": {
+        "symfony/css-selector": "2.7.*",
+        "behat/behat": "3.0.*",
+        "behat/mink": "1.6@stable",
+        "behat/mink-extension": "*",
+        "behat/mink-goutte-driver": "*",
+        "behat/mink-selenium2-driver": "*",
+        "behat/mink-browserkit-driver": "*",
+        "drush/drush": "^9.0",
+        "drupal/drupal-extension": "~3.0",
+        "drupal/coder": "~8.2",
+        "phpunit/phpunit": "~5.4",
+        "squizlabs/php_codesniffer": "2.*",
+        "phing/phing": "dev-master#0ef30e55bb5871cb38903cc0ee9d76074118a22c",
+        "jakoch/phantomjs-installer": "dev-master as 1.9.8",
+        "jarnaiz/behat-junit-formatter": "^1.2"
+    },
+    "conflict": {
+        "drupal/core": "7.*"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "classmap": [
+            "scripts/ScriptHandler.php"
+        ]
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "PhantomInstaller\\Installer::installPhantomJS",
+            "Acquia\\Lightning\\ScriptHandler::deployLibraries"
+        ],
+        "post-update-cmd": [
+            "PhantomInstaller\\Installer::installPhantomJS",
+            "Acquia\\Lightning\\ScriptHandler::deployLibraries"
+        ],
+        "install-phantomjs": "PhantomInstaller\\Installer::installPhantomJS"
+    },
+    "extra": {
+        "_readme": [
+            "This is an example comment!"
+        ],
+        "installer-paths": {
+            "docroot/core": [
+                "type:drupal-core"
+            ],
+            "docroot/modules/contrib/{$name}/": [
+                "type:drupal-module"
+            ],
+            "docroot/themes/contrib/{$name}/": [
+                "type:drupal-theme"
+            ],
+            "docroot/libraries/{$name}/": [
+                "type:drupal-library"
+            ],
+            "docroot/profiles/contrib/{$name}/": [
+                "type:drupal-profile"
+            ],
+            "docroot/modules/custom/{$name}/": [
+                "type:drupal-module-custom"
+            ],
+            "drush/contrib/{$name}": [
+                "type:drupal-drush"
+            ]
+        },
+        "drupal-scaffold": {
+            "excludes": [
+                "robots.txt",
+                "docroot/sites/development.services.yml"
+            ]
+        },
+        "patches": {
+            "drupal/core": {
+                "Ignore front end vendor folders to improve directory search performance": "https://www.drupal.org/files/issues/ignore_front_end_vendor-2329453-116.patch"
+            }
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Drupal\\Tests\\PHPUnit\\": "tests/phpunit/src/"
+        }
     }
-  }
 }
