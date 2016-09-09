@@ -65,7 +65,6 @@
     "cweagans/composer-patches":                  "1.5.0",
     "drupal/core":                                "~8.1",
     "drupal/lightning":                           "^8.1.0",
-    "drupal/console":                             "~0.10",
     "drupal/addtoany":                            "~8.1",
     "drupal/admin_toolbar":                       "~8.1",
     "drupal/devel":                               "~8.1",
@@ -96,17 +95,10 @@
     "drupal/views_timelinejs":                    "~8.3",
     "drupal/adminimal_theme":                     "~8.1",
     "drupal/zurb_foundation":                     "~8.5",
-    "mariagwyn/mgm_tools": "master"
+    "mariagwyn/mgm_tools": "master",
+    "acquia/blt": "~8"
   },
   "require-dev": {
-    "behat/behat": "^3.1",
-    "drupal/drupal-extension": "^3.1",
-    "behat/mink": "~1.6",
-    "behat/mink-goutte-driver": "~1.2",
-    "jcalderonzumba/gastonjs": "~1.0.2",
-    "jcalderonzumba/mink-phantomjs-driver": "~0.3.1",
-    "mikey179/vfsStream": "~1.2",
-    "phpunit/phpunit": "~4.8",
     "symfony/css-selector": "2.7.*"
   },
   "conflict": {
@@ -128,9 +120,6 @@
       "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
       "Acquia\\Lightning\\ScriptHandler::deployLibraries"
     ]
-  },
-  "config": {
-      "bin-dir": "bin/"
   },
   "extra": {
     "_readme": [

@@ -42,5 +42,3 @@ features:
   - name
   - slogan
   - favicon
-  - comment_user_picture
-  - node_user_picture

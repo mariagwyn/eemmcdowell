@@ -7,15 +7,17 @@ options:
     form-id: 'Identificador del formulari'
     services: common.options.services
     inputs: common.options.inputs
-    routing: 'Actualitzant ruta'
+    path: 'Enter the form path'
+    routing: 'Generate routing'
 questions:
     module: common.questions.module
     class: 'Nom de la classe del formulari'
     form-id: 'Identificador del formulari'
     services: common.questions.services
     inputs: common.questions.inputs
-    routing: 'Actualitzant el fitxer de routing'
+    routing: 'Would you like to register a route for this form'
     menu_link_gen: 'Generar un enllaç de menú'
     menu_link_title: 'El títol per l''enllaç de menú'
     menu_parent: 'Menú pare'
     menu_link_desc: 'La descripció per l''enllaç de menú'
+    path: 'Enter the route path'

@@ -1,5 +1,5 @@
-description: 'Tunjukkan konfigurasi saat ini.'
+description: 'Ipakita ang kasalukuyang configuration.'
 arguments:
-    config-name: 'Nama konfigurasi.'
+    name: 'Pangalan ng Configuration'
 errors:
-    config-not-exists: 'Konfigurasi "%s" tidak ada.'
+    not-exists: 'Ang configuration "%s" does not exists.'

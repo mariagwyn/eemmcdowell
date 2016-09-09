@@ -1,4 +1,5 @@
 options:
+    class: 'Class name'
     events: 'Carregar esdeveniments des del contenidor'
     module: 'Nom del mòdul.'
     services: 'Carregar serveis des del contenidor.'
@@ -6,6 +7,7 @@ options:
     inputs: 'Crear camp entrada (input) en un formulari.'
     permissions: 'Crear permisos'
 questions:
+    class: 'Enter the Class name'
     module: 'Introduir el nome del módul'
     confirm: '¿Confirma la generació?'
     canceled: 'Comandament de generació cancel·lat.'
@@ -32,6 +34,8 @@ errors:
     module-dependency: 'Falta la dependència del mòdul "%s"'
     class-name-empty: 'El nom de la clase no pot estar buit'
     invalid-file-path: 'Has de proporcionar una ruta de fitxer vàlida'
+    module-exist: 'Module "%s" already exist.'
+    machine-name-duplicated: 'Machine name "%s" is duplicated.'
 status:
     enabled: Habilitat
     disabled: Deshabilitat

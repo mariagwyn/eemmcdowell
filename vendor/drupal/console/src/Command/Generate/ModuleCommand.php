@@ -11,7 +11,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Drupal\Console\Generator\ModuleGenerator;
-use Drupal\Console\Command\ConfirmationTrait;
+use Drupal\Console\Command\Shared\ConfirmationTrait;
 use Drupal\Console\Command\GeneratorCommand;
 use Drupal\Console\Style\DrupalStyle;
 
@@ -100,7 +100,7 @@ class ModuleCommand extends GeneratorCommand
 
         $validators = $this->getValidator();
 
-        // @see use Drupal\Console\Command\ConfirmationTrait::confirmGeneration
+        // @see use Drupal\Console\Command\Shared\ConfirmationTrait::confirmGeneration
         if (!$this->confirmGeneration($io, $yes)) {
             return;
         }
@@ -317,13 +317,13 @@ class ModuleCommand extends GeneratorCommand
         $featuresBundle = $input->getOption('features-bundle');
         if (!$featuresBundle) {
             $featuresSupport = $io->confirm(
-              $this->trans('commands.generate.module.questions.features-support'),
-              false
+                $this->trans('commands.generate.module.questions.features-support'),
+                false
             );
             if ($featuresSupport) {
                 $featuresBundle = $io->ask(
-                  $this->trans('commands.generate.module.questions.features-bundle'),
-                  'default'
+                    $this->trans('commands.generate.module.questions.features-bundle'),
+                    'default'
                 );
             }
             $input->setOption('features-bundle', $featuresBundle);

@@ -1,4 +1,5 @@
 options:
+    class: 'Class name'
     events: 'Загрузить события из контейнера'
     module: 'Имя модуля.'
     services: 'Загрузка сервисов из контейнера.'
@@ -6,6 +7,7 @@ options:
     inputs: 'Создание полей ввода в форме.'
     permissions: 'Создание прав доступа.'
 questions:
+    class: 'Enter the Class name'
     module: 'Введите имя модуля'
     confirm: 'Вы подтвеждаете создание?'
     canceled: 'Команда создания отменана.'
@@ -32,6 +34,8 @@ errors:
     module-dependency: 'Отсутствует зависимость модуля, "%s" не установлен. Попробуйте module:install чтоб установить его.'
     class-name-empty: 'Имя класса не может быть пустым'
     invalid-file-path: 'Вы должны предоставить действительный путь к файлу'
+    module-exist: 'Модуль "%s" уже существует.'
+    machine-name-duplicated: 'Машинное имя "%s" дублируется.'
 status:
     enabled: Включено
     disabled: Выключено
