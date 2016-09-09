@@ -244,8 +244,7 @@ $databases = array();
  * @endcode
  */
  $config_directories = array(
-    CONFIG_ACTIVE_DIRECTORY => '/config/default/active',
-    CONFIG_STAGING_DIRECTORY => '/config/default/staging',  
+    CONFIG_SYNC_DIRECTORY  => '/config/default',
  );
 /**
  * Settings:

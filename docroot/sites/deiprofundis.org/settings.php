@@ -244,8 +244,7 @@ $databases = array();
  * @endcode
  */
  $config_directories = array(
-    CONFIG_ACTIVE_DIRECTORY => '/config/deiprofundis.org/active',
-    CONFIG_STAGING_DIRECTORY => '/config/deiprofundis.org/staging',
+    CONFIG_SYNC_DIRECTORY  => '/config/deiprofundis.org',
  );
 
 /**
