@@ -243,7 +243,10 @@ $databases = array();
  *   );
  * @endcode
  */
-$config_directories = array();
+$config_directories = array(
+   CONFIG_ACTIVE_DIRECTORY => '/config/magnoliatreemidwifery.com/active',
+   CONFIG_STAGING_DIRECTORY => '/config/magnoliatreemidwifery.com/staging',  
+);
 
 /**
  * Settings:
