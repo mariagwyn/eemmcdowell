@@ -24,6 +24,7 @@ events:
         - run-tests:
             type: script
             script:
+              # Line removed until ready to deal with code sniffing issues.
               - exit 0
               - export PATH=$PATH:$BUILD_DIR/vendor/bin
               - drupal init
