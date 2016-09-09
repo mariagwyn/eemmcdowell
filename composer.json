@@ -44,9 +44,9 @@
         "drupal/console": "~1",
         "drupal/metatag": "8.1.x-dev",
         "enyo/dropzone": "4.2.0",
-        "desandro/masonry": "4.1.1",
-        "desandro/imagesloaded": "4.1.1",
-        "kenwheeler/slick": "dev-master"
+        "desandro/masonry": "3.3.1",
+        "desandro/imagesloaded": "3.1.8",
+        "kenwheeler/slick": "1.5.0"
     },
     "require-dev": {
         "symfony/css-selector": "2.7.*",
@@ -98,13 +98,12 @@
         {
             "type": "package",
             "package": {
-                "name": "enyo/dropzone",
-                "version": "dev-master",
+                "name": "desandro/masonry",
+                "version": "3.3.1",
                 "type": "drupal-library",
-                "source": {
-                    "url": "https://github.com/enyo/dropzone.git",
-                    "type": "git",
-                    "reference": "origin/master"
+                "dist": {
+                    "url": "https://github.com/desandro/masonry/archive/v3.3.1.zip",
+                    "type": "zip"
                 }
             }
         },
@@ -112,14 +111,22 @@
             "type": "package",
             "package": {
                 "name": "desandro/imagesloaded",
-                "version": "dev-master",
+                "version": "3.1.8",
                 "type": "drupal-library",
                 "dist": {
-                    "url": "https://github.com/desandro/imagesloaded.git",
-                    "type": "drupal-library"
-                },
+                    "url": "https://github.com/desandro/imagesloaded/archive/v3.1.8.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "enyo/dropzone",
+                "version": "4.2.0",
+                "type": "drupal-library",
                 "source": {
-                    "url": "https://github.com/desandro/imagesloaded.git",
+                    "url": "https://github.com/enyo/dropzone",
                     "type": "git",
                     "reference": "origin/master"
                 }
@@ -128,15 +135,11 @@
         {
             "type": "package",
             "package": {
-                "name": "desandro/masonry",
-                "version": "dev-master",
+                "name": "mjolnic/fontawesome-iconpicker",
+                "version": "1.2.0",
                 "type": "drupal-library",
-                "dist": {
-                    "url": "https://github.com/desandro/masonry.git",
-                    "type": "drupal-library"
-                },
                 "source": {
-                    "url": "https://github.com/desandro/masonry.git",
+                    "url": "https://github.com/mjolnic/fontawesome-iconpicker",
                     "type": "git",
                     "reference": "origin/master"
                 }
@@ -146,10 +149,10 @@
             "type": "package",
             "package": {
                 "name": "kenwheeler/slick",
-                "version": "dev-master",
+                "version": "1.5.0",
                 "type": "drupal-library",
                 "source": {
-                    "url": "https://github.com/kenwheeler/slick.git",
+                    "url": "https://github.com/kenwheeler/slick",
                     "type": "git",
                     "reference": "origin/master"
                 }
@@ -161,27 +164,13 @@
             "This is an example comment!"
         ],
         "installer-paths": {
-            "docroot/core": [
-                "type:drupal-core"
-            ],
-            "docroot/modules/contrib/{$name}/": [
-                "type:drupal-module"
-            ],
-            "docroot/themes/contrib/{$name}/": [
-                "type:drupal-theme"
-            ],
-            "docroot/libraries/{$name}/": [
-                "type:drupal-library"
-            ],
-            "docroot/profiles/contrib/{$name}/": [
-                "type:drupal-profile"
-            ],
-            "docroot/modules/custom/{$name}/": [
-                "type:drupal-module-custom"
-            ],
-            "drush/contrib/{$name}": [
-                "type:drupal-drush"
-            ]
+            "docroot/core": ["type:drupal-core"],
+            "docroot/modules/contrib/{$name}/": ["type:drupal-module"],
+            "docroot/themes/contrib/{$name}/": ["type:drupal-theme"],
+            "docroot/libraries/{$name}/": ["type:drupal-library"],
+            "docroot/profiles/contrib/{$name}/": ["type:drupal-profile"],
+            "docroot/modules/custom/{$name}/": ["type:drupal-module-custom"],
+            "drush/contrib/{$name}": ["type:drupal-drush"]
         },
         "drupal-scaffold": {
             "excludes": [
