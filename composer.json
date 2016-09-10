@@ -14,6 +14,7 @@
         "drupal/ctools": "~8.3",
         "drupal/dropzonejs": "~8.1",
         "drupal/embed": "~8.1",
+        "drupal/url_embed": "~8.1",
         "drupal/entity_browser": "8.1.0-alpha8",
         "drupal/feeds": "~8.3",
         "drupal/field_group": "8.1.*",
