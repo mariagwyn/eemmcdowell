@@ -1,0 +1,16 @@
+uuid: 1e5312af-86e2-49e6-8a03-033c9d2f1ad3
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: IaRsZcLrhHaCYooeQYIGygDp5X7mPN_hCXY6p-F8KLo
+name: hero_image
+label: 'Hero Image Large (1440×360)'
+effects:
+  ede4cee6-6427-4215-ba46-7025d00fbb17:
+    uuid: ede4cee6-6427-4215-ba46-7025d00fbb17
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1440
+      height: 360

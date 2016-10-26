@@ -1,0 +1,10 @@
+uuid: a4bb0e9a-0aca-44e0-9bdf-3e30ea6821ff
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+id: block_content.small_hero
+label: 'Small Hero'
+targetEntityType: block_content
+cache: true

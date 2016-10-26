@@ -1,0 +1,10 @@
+uuid: a0886b6e-6f64-4db8-9038-5618a3e8a782
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: ogvkbuC5-My3MjHA0q6Vw6kl8t8whZVbM-Hr2H6boeU
+id: hero
+label: 'Hero Block'
+revision: 1
+description: 'A hero used on landing pages.'

@@ -1,0 +1,77 @@
+uuid: 478af349-dcbc-4467-ae00-f0f918003639
+langcode: en
+status: true
+dependencies:
+  module:
+    - social_media_links
+  theme:
+    - mtm_foundation
+id: socialmedialinks
+theme: mtm_foundation
+region: footer_last
+weight: -8
+provider: null
+plugin: social_media_links_block
+settings:
+  id: social_media_links_block
+  label: 'Social Media Links'
+  provider: social_media_links
+  label_display: '0'
+  platforms:
+    contact:
+      value: ''
+      weight: '4'
+    drupal:
+      value: ''
+      weight: '-2'
+    email:
+      value: ''
+      weight: '-10'
+    facebook:
+      value: 'MagnoliaTreeMidwifery/?fref=ts'
+      weight: '-4'
+    googleplus:
+      value: '105343473279208453078'
+      weight: '3'
+    instagram:
+      value: ''
+      weight: '1'
+    linkedin:
+      value: in/elizabeth-schroeder-cpm-b3542536
+      weight: '2'
+    pinterest:
+      value: ''
+      weight: '-5'
+    rss:
+      value: ''
+      weight: '-3'
+    slideshare:
+      value: ''
+      weight: '-7'
+    tumblr:
+      value: ''
+      weight: '-9'
+    twitter:
+      value: ''
+      weight: '-8'
+    vimeo:
+      value: ''
+      weight: '0'
+    youtube:
+      value: ''
+      weight: '-1'
+    youtube_channel:
+      value: ''
+      weight: '-6'
+  appearance:
+    orientation: h
+    show_name: 0
+  link_attributes:
+    target: _blank
+    rel: '<none>'
+  iconset:
+    style: 'fontawesome:2x'
+    installed_iconsets:
+      fontawesome:
+        examples: ''
+visibility: {  }

@@ -1,0 +1,18 @@
+uuid: ee8fe665-900d-451d-9f09-5da7a294bfc0
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 5rOnjIF_aDyGBmfXNhJnkPXxQMlem0CmVmggV-TF3Fg
+id: global
+label: Global
+tags:
+  abstract: "[site:slogan]\t"
+  referrer: no-referrer
+  description: "[site:slogan]\t"
+  title: '[current-page:title] | [site:name]'
+  image_src: '[node:field_hero_image]'
+  og_title: '[current-page:title]'
+  og_site_name: '[site:name]'
+  og_url: '[current-page:url]'
+  twitter_cards_type: summary

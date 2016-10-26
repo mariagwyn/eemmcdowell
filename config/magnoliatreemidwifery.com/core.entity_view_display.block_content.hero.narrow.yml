@@ -1,0 +1,44 @@
+uuid: f128d274-4d6d-4f0b-b644-68f03e11663f
+langcode: en
+status: false
+dependencies:
+  config:
+    - block_content.type.hero
+    - core.entity_view_mode.block_content.narrow
+    - field.field.block_content.hero.field_first_line
+    - field.field.block_content.hero.field_hero_link
+    - field.field.block_content.hero.field_image
+    - field.field.block_content.hero.field_photo_credit
+    - field.field.block_content.hero.field_second_line
+  module:
+    - text
+_core:
+  default_config_hash: tbc9zzZy1Nz9vs3VJ7rKh05OpNmYuC9YDbQWrGha_s4
+id: block_content.hero.narrow
+targetEntityType: block_content
+bundle: hero
+mode: narrow
+content:
+  field_first_line:
+    type: string
+    weight: 0
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    label: hidden
+  field_photo_credit:
+    type: text_default
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_second_line:
+    type: string
+    weight: 1
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    label: hidden
+hidden:
+  field_hero_link: true
+  field_image: true

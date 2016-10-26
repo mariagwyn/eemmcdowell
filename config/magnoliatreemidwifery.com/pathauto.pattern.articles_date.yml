@@ -1,0 +1,23 @@
+uuid: 05068d54-21c6-498c-9000-da9fa8fc6fc2
+langcode: en
+status: true
+dependencies:
+  module:
+    - ctools
+    - node
+id: articles_date
+label: 'Articles by Date'
+type: 'canonical_entities:node'
+pattern: '[node:created:html_year]/[node:created:custom:m]/[node:title]'
+selection_criteria:
+  a7fca34d-770b-4b3a-be2e-46c0b94c3545:
+    id: node_type
+    bundles:
+      article: article
+    negate: false
+    context_mapping:
+      node: node
+    uuid: a7fca34d-770b-4b3a-be2e-46c0b94c3545
+selection_logic: and
+weight: -9
+relationships: {  }

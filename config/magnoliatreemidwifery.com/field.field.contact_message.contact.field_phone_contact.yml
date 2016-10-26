@@ -1,0 +1,21 @@
+uuid: b9ea3a01-4201-4510-bb00-df4d2c475493
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.contact
+    - field.storage.contact_message.field_phone_contact
+  module:
+    - telephone
+id: contact_message.contact.field_phone_contact
+field_name: field_phone_contact
+entity_type: contact_message
+bundle: contact
+label: 'Best contact phone'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: telephone

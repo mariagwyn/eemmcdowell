@@ -1,0 +1,14 @@
+uuid: 0102ffc5-8d06-4c89-b491-30afef2eda92
+langcode: en
+status: true
+dependencies: {  }
+name: hero_image_xlarge
+label: 'Hero Image XLarge (1920 x 480)'
+effects:
+  16b698a0-fa81-4659-8d12-fe601d20c433:
+    uuid: 16b698a0-fa81-4659-8d12-fe601d20c433
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1920
+      height: 480

@@ -1,0 +1,33 @@
+uuid: 1683fd56-3da9-4b0e-bc36-54aa42e911d8
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.basic
+    - block_content.type.hero
+    - block_content.type.slideshow
+    - field.storage.block_content.field_block
+_core:
+  default_config_hash: bAsOSuwnreaiiBxcDDYJrFY3If09AOkwaN8y8rlkMQU
+id: block_content.slideshow.field_block
+field_name: field_block
+entity_type: block_content
+bundle: slideshow
+label: Block
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:block_content'
+  handler_settings:
+    target_bundles:
+      basic: basic
+      content: content
+      hero: hero
+      map: map
+      media: media
+    sort:
+      field: _none
+field_type: entity_reference

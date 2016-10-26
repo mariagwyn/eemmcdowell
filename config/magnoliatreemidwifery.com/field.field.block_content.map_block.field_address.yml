@@ -1,0 +1,21 @@
+uuid: d61d98e6-9b95-4137-af04-4ddf34577386
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.map_block
+    - field.storage.block_content.field_address
+  module:
+    - text
+id: block_content.map_block.field_address
+field_name: field_address
+entity_type: block_content
+bundle: map_block
+label: Address
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

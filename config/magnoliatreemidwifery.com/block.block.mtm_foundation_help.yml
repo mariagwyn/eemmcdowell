@@ -1,0 +1,22 @@
+uuid: c804fcf1-14b1-440c-8e00-cbc8d643f984
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - mtm_foundation
+_core:
+  default_config_hash: 8I8iACSa0sKO3k3jlvUG1ge52rfcKX7USJAQYnzuBgg
+id: mtm_foundation_help
+theme: mtm_foundation
+region: content
+weight: -8
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  provider: help
+  label_display: '0'
+visibility: {  }

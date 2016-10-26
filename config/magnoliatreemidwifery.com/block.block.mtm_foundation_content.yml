@@ -1,0 +1,22 @@
+uuid: f14cee3d-7db4-4ac3-8f00-c34ad1c93e28
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - mtm_foundation
+_core:
+  default_config_hash: 9EoWV2Lot6FVSr50t4hoKgiz1LIXYWNG-IIPYsWxBqo
+id: mtm_foundation_content
+theme: mtm_foundation
+region: content
+weight: -6
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  provider: system
+  label_display: '0'
+visibility: {  }

@@ -1,0 +1,20 @@
+uuid: 28273d7f-7ec7-44ac-8325-3745265dfbd2
+langcode: en
+status: true
+dependencies:
+  theme:
+    - mtm_foundation
+_core:
+  default_config_hash: 13GQpeITIJsp1kyPniXtWZfyFH87vb1xxJCHifL4UeE
+id: mtm_foundation_local_actions
+theme: mtm_foundation
+region: content
+weight: -7
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  provider: core
+  label_display: '0'
+visibility: {  }

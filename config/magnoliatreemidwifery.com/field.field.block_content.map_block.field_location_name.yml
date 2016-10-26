@@ -1,0 +1,19 @@
+uuid: 2c29d32b-b7e5-4cfa-b04d-77b717c7f4cf
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.map_block
+    - field.storage.block_content.field_location_name
+id: block_content.map_block.field_location_name
+field_name: field_location_name
+entity_type: block_content
+bundle: map_block
+label: 'Location Name'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

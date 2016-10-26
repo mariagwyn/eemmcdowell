@@ -1,0 +1,11 @@
+uuid: a34d1e7c-dfa0-4703-b621-3380ae9fd5f2
+langcode: en
+status: true
+dependencies: {  }
+id: mtm_home
+label: Welcome
+use_admin_theme: false
+path: /welcome
+access_logic: and
+access_conditions: {  }
+parameters: {  }

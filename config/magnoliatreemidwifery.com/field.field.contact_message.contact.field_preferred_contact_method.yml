@@ -1,0 +1,21 @@
+uuid: ee900efc-62a8-4a7e-9c00-b3f70a300510
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.contact
+    - field.storage.contact_message.field_preferred_contact_method
+  module:
+    - options
+id: contact_message.contact.field_preferred_contact_method
+field_name: field_preferred_contact_method
+entity_type: contact_message
+bundle: contact
+label: 'Preferred contact method'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

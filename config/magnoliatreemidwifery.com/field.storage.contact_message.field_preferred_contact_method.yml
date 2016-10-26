@@ -1,0 +1,30 @@
+uuid: c791648f-d659-4eee-954c-761d01553d2a
+langcode: en
+status: true
+dependencies:
+  module:
+    - contact
+    - options
+id: contact_message.field_preferred_contact_method
+field_name: field_preferred_contact_method
+entity_type: contact_message
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: email
+      label: Email
+    -
+      value: phone
+      label: Phone
+    -
+      value: either
+      label: Either
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

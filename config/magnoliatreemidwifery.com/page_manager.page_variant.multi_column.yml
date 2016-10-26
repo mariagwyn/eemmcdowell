@@ -1,0 +1,118 @@
+uuid: fcf9c484-3fff-4836-bb08-8d5f91e10b7c
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.mtm_home
+    - views.view.service_blocks
+  content:
+    - 'block_content:basic:d8dac747-358a-44ed-b725-3786d16dbf96'
+    - 'block_content:basic:f09f7ba4-c91a-4dee-8900-a349800df169'
+    - 'block_content:hero:7d779c74-1cd9-45ea-bf20-32b11ad6fb1e'
+    - 'block_content:hero:8cb4b27c-7034-4a9c-b100-e82b9dedc346'
+    - 'block_content:slideshow:b438a437-f683-412c-a506-060f86bdb3e5'
+  module:
+    - block_content
+    - panels
+    - views
+id: multi_column
+label: Multi-Column
+variant: panels_variant
+variant_settings:
+  blocks:
+    9fefc154-ced7-475c-b005-5e3d8e17d36f:
+      id: 'block_content:8cb4b27c-7034-4a9c-b100-e82b9dedc346'
+      label: 'About the Midwife'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: small_hero
+      region: primary_second
+      weight: 0
+      uuid: 9fefc154-ced7-475c-b005-5e3d8e17d36f
+      context_mapping: {  }
+    2764d828-bd28-482f-9806-6ccb0cad9a71:
+      id: 'block_content:7d779c74-1cd9-45ea-bf20-32b11ad6fb1e'
+      label: 'Home Birth'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: small_hero
+      region: primary_third
+      weight: -10
+      uuid: 2764d828-bd28-482f-9806-6ccb0cad9a71
+      context_mapping: {  }
+    8c89fa36-6f2e-4fd8-b000-0f7b158beede:
+      id: 'block_content:b438a437-f683-412c-a506-060f86bdb3e5'
+      label: 'Home Slider'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: top
+      weight: 0
+      uuid: 8c89fa36-6f2e-4fd8-b000-0f7b158beede
+      context_mapping: {  }
+    5a129a8b-1e66-49e7-8461-97c9f49415fe:
+      id: 'block_content:d8dac747-358a-44ed-b725-3786d16dbf96'
+      label: 'Welcome to Magnolia Tree Midwifery'
+      provider: block_content
+      label_display: visible
+      status: true
+      info: ''
+      view_mode: full
+      region: primary
+      weight: -10
+      uuid: 5a129a8b-1e66-49e7-8461-97c9f49415fe
+      context_mapping: {  }
+    cdf4113f-a7d3-4513-be4f-791da4cecfda:
+      id: 'views_block:service_blocks-block_3'
+      label: ''
+      provider: views
+      label_display: visible
+      views_label: ''
+      items_per_page: none
+      region: middle
+      weight: 0
+      uuid: cdf4113f-a7d3-4513-be4f-791da4cecfda
+      context_mapping: {  }
+    6ce87871-6d94-4a5f-b500-eac99cf78bad:
+      id: 'block_content:f09f7ba4-c91a-4dee-8900-a349800df169'
+      label: 'Service Area'
+      provider: block_content
+      label_display: visible
+      status: true
+      info: ''
+      view_mode: full
+      region: primary
+      weight: -9
+      uuid: 6ce87871-6d94-4a5f-b500-eac99cf78bad
+      context_mapping: {  }
+  id: panels_variant
+  uuid: c0e8e8cf-9543-47b4-995d-93291922e602
+  label: null
+  weight: 0
+  layout: mgm_multi_column
+  layout_settings:
+    extra_classes: mtm-landing-home
+    row_classes: row
+    top_classes: ''
+    primary_classes: 'large-8 large-offset-2 end column'
+    primary_second_classes: 'large-6 column'
+    primary_third_classes: 'large-6 column'
+    middle_classes: ''
+    bottom_classes: ''
+    bottom_second_classes: ''
+    bottom_third_classes: ''
+  page_title: ''
+  storage_type: page_manager
+  storage_id: multi_column
+  builder: standard
+page: mtm_home
+weight: 0
+selection_criteria: {  }
+selection_logic: and
+static_context: {  }

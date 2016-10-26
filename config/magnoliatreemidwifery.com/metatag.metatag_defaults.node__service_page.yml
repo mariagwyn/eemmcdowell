@@ -1,0 +1,13 @@
+uuid: 4a0971b4-99b2-4e73-9ced-854ce244d759
+langcode: en
+status: true
+dependencies: {  }
+id: node__service_page
+label: 'Content: Service Page'
+tags:
+  abstract: '[node:summary]'
+  referrer: no-referrer
+  description: '[node:summary]'
+  title: '[current-page:title] | Services | [site:name]'
+  content_language: en
+  twitter_cards_type: summary

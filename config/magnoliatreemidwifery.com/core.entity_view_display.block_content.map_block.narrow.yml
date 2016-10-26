@@ -1,0 +1,54 @@
+uuid: dd617f9b-ad10-4ae0-b848-724806e7a8dd
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.map_block
+    - core.entity_view_mode.block_content.narrow
+    - field.field.block_content.map_block.field_address
+    - field.field.block_content.map_block.field_location
+    - field.field.block_content.map_block.field_location_name
+    - field.field.block_content.map_block.field_phone
+  module:
+    - geolocation
+    - telephone
+    - text
+id: block_content.map_block.narrow
+targetEntityType: block_content
+bundle: map_block
+mode: narrow
+content:
+  field_address:
+    type: text_default
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_location:
+    weight: 3
+    label: hidden
+    settings:
+      type: ROADMAP
+      zoom: '10'
+      height: 200px
+      width: 100%
+      info_text: ''
+      info_auto_display: '1'
+      title: ''
+    third_party_settings: {  }
+    type: geolocation_map
+  field_location_name:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_phone:
+    weight: 1
+    label: visually_hidden
+    settings:
+      title: ''
+    third_party_settings: {  }
+    type: telephone_link
+hidden: {  }

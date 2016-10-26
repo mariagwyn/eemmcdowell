@@ -1,0 +1,25 @@
+uuid: cbb8c865-ba72-45b6-9708-8e9c8cf7f550
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:map_block:43794cbb-d9f0-40fe-b33d-61590024f01f'
+  module:
+    - block_content
+  theme:
+    - mtm_foundation
+id: contactinformation
+theme: mtm_foundation
+region: footer_first
+weight: -8
+provider: null
+plugin: 'block_content:43794cbb-d9f0-40fe-b33d-61590024f01f'
+settings:
+  id: 'block_content:43794cbb-d9f0-40fe-b33d-61590024f01f'
+  label: 'Magnolia Tree Midwifery'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: narrow
+visibility: {  }

@@ -1,0 +1,51 @@
+uuid: d5ebbbb0-9292-4f68-9a1b-2772619fcce8
+langcode: en
+status: true
+dependencies: {  }
+id: editor
+label: Editor
+weight: 3
+is_admin: null
+permissions:
+  - 'edit own comments'
+  - 'post comments'
+  - 'skip comment approval'
+  - 'access user contact forms'
+  - 'use text format basic_html'
+  - 'use text format full_html'
+  - 'use text format restricted_html'
+  - 'access content overview'
+  - 'administer nodes'
+  - 'delete all revisions'
+  - 'revert all revisions'
+  - 'view all revisions'
+  - 'create article content'
+  - 'delete any article content'
+  - 'edit any article content'
+  - 'edit any page content'
+  - 'edit any service_page content'
+  - 'access in-place editing'
+  - 'access site in maintenance mode'
+  - 'delete terms in tags'
+  - 'edit terms in tags'
+  - 'access toolbar'
+  - 'change own username'
+  - 'select account cancellation method'
+  - 'access user profiles'
+  - 'administer blocks'
+  - 'access administration pages'
+  - 'view the administration theme'
+  - 'administer comments'
+  - 'access browse_files entity browser pages'
+  - 'bypass node access'
+  - 'delete any page content'
+  - 'revert page revisions'
+  - 'view page revisions'
+  - 'create service_page content'
+  - 'delete any service_page content'
+  - 'delete service_page revisions'
+  - 'revert service_page revisions'
+  - 'view service_page revisions'
+  - 'use advanced search'
+  - 'dropzone upload files'
+  - 'view files'

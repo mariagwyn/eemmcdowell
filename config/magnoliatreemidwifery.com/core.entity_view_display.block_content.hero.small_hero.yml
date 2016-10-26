@@ -1,0 +1,64 @@
+uuid: 9e457002-a83a-4674-939b-16f04e2682ac
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.hero
+    - core.entity_view_mode.block_content.small_hero
+    - field.field.block_content.hero.field_first_line
+    - field.field.block_content.hero.field_hero_link
+    - field.field.block_content.hero.field_image
+    - field.field.block_content.hero.field_photo_credit
+    - field.field.block_content.hero.field_second_line
+    - image.style.hero_image_small
+  module:
+    - image
+    - link
+    - text
+_core:
+  default_config_hash: c5Sk5EMNx0_SOw5scBrxBYSCKlS6iMhMWKhSKWP3uPs
+id: block_content.hero.small_hero
+targetEntityType: block_content
+bundle: hero
+mode: small_hero
+content:
+  field_first_line:
+    type: string
+    weight: 1
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    label: hidden
+  field_hero_link:
+    type: link
+    weight: 3
+    settings:
+      trim_length: 80
+      rel: ''
+      target: ''
+      url_only: false
+      url_plain: false
+    third_party_settings: {  }
+    label: hidden
+  field_image:
+    weight: 5
+    label: hidden
+    settings:
+      image_style: hero_image_small
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  field_photo_credit:
+    weight: 6
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  field_second_line:
+    type: string
+    weight: 2
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    label: hidden
+hidden: {  }

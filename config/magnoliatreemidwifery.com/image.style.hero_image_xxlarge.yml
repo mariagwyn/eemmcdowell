@@ -1,0 +1,14 @@
+uuid: b0405e98-f6a5-44f5-add5-2dc85658af88
+langcode: en
+status: true
+dependencies: {  }
+name: hero_image_xxlarge
+label: 'Hero Image XXLarge (2600 x 650)'
+effects:
+  eb91d441-0335-4762-85e0-dbf41c16f3ee:
+    uuid: eb91d441-0335-4762-85e0-dbf41c16f3ee
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 2600
+      height: 650

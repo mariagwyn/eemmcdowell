@@ -1,0 +1,52 @@
+uuid: f9fd8940-b497-4fdf-b707-07431d431b3b
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.map_block
+    - field.field.block_content.map_block.field_address
+    - field.field.block_content.map_block.field_location
+    - field.field.block_content.map_block.field_location_name
+    - field.field.block_content.map_block.field_phone
+  module:
+    - geolocation
+    - telephone
+    - text
+id: block_content.map_block.default
+targetEntityType: block_content
+bundle: map_block
+mode: default
+content:
+  field_address:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textfield
+  field_location:
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: geolocation_googlegeocoder
+  field_location_name:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_phone:
+    weight: 2
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: telephone_default
+  info:
+    type: string_textfield
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

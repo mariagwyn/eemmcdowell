@@ -1,0 +1,10 @@
+uuid: aa6deae4-f0dd-46db-bf0e-77329ccde1ee
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+id: block_content.image_and_title
+label: 'Image and Title'
+targetEntityType: block_content
+cache: true

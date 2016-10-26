@@ -1,0 +1,21 @@
+uuid: 8787fd68-0758-42dc-8c00-b7e23abb7883
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - link
+_core:
+  default_config_hash: 7fRCcyXTgly4STkWj7S_e-TxvbpFMCQkWjLzZHTN5H0
+id: block_content.field_hero_link
+field_name: field_hero_link
+entity_type: block_content
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

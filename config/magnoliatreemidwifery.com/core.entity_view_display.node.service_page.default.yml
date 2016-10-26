@@ -1,0 +1,72 @@
+uuid: 48d24f79-e3dd-4dc8-8100-f124ecb8f483
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.service_page.body
+    - field.field.node.service_page.field_hero_block
+    - field.field.node.service_page.field_hero_image
+    - field.field.node.service_page.field_icon_css
+    - field.field.node.service_page.field_quote
+    - field.field.node.service_page.field_subtitle
+    - field.field.node.service_page.field_tags
+    - node.type.service_page
+  module:
+    - file_browser
+    - text
+    - user
+_core:
+  default_config_hash: K-kCUs6kB8h-WX4P3iGDkrMPhFEnWwyGpAs9g2bxomw
+id: node.service_page.default
+targetEntityType: node
+bundle: service_page
+mode: default
+content:
+  body:
+    weight: 4
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  field_hero_block:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: image_and_title
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+  field_hero_image:
+    weight: 7
+    label: hidden
+    settings:
+      image_style: hero_image
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_image
+  field_icon_css:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_quote:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  field_subtitle:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  links:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_tags: true

@@ -1,0 +1,23 @@
+uuid: f13556ee-eabb-40c1-b306-6a531aeac57f
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.hero
+    - field.storage.block_content.field_second_line
+_core:
+  default_config_hash: sY_HhLi8y-HnLY6UGcq9pxDYfL1ZBL1DWH36SuR3vTw
+id: block_content.hero.field_second_line
+field_name: field_second_line
+entity_type: block_content
+bundle: hero
+label: 'Second Line'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: string
