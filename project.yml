@@ -1,7 +1,7 @@
 project:
     machine_name: eemmcdowell
     prefix: MGM
-    human_name: "MariaGwyn's Multisites"
+    human_name: 'MariaGwyn''s Multisites'
     profile:
         name: lightning
         contrib: true
@@ -32,3 +32,4 @@ target-hooks:
         dir: '${docroot}/profiles/contrib/lightning'
         command: 'npm run install-libraries'
 import: null
+

@@ -9,6 +9,7 @@ docroot/core
 # Ignore paths that contain user-generated content.
 docroot/sites/*/files
 docroot/sites/*/private
+docroot/files/*
 
 # Ignore contrib modules. These should be created during build process.
 docroot/modules/contrib
@@ -105,3 +106,11 @@ nbproject/*
 
 # DrupalVM
 .vagrant/
+
+# DevDesktop
+*.dd
+
+#Exports
+*.gz
+*.sql
+*.zip
