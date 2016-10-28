@@ -1,8 +1,0 @@
-name: DF Admin
-type: module
-description: Administrate Demo Framework.
-core: 8.x
-package: Demo Framework
-dependencies:
-  - config_update
-  - scenarios

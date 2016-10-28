@@ -1,4 +1,0 @@
-administer df:
-  title: 'Administer Demo Framework'
-  description: 'Access the DF administration pages.'
-  restrict access: true

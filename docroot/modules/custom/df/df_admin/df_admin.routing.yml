@@ -1,8 +1,0 @@
-df_admin.controller_admin_page:
-  path: '/admin/df'
-  defaults:
-    _controller: '\Drupal\df_admin\Controller\DFAdminController::admin_page'
-    _title: 'Demo Framework'
-  requirements:
-    _permission: 'administer df'
-
