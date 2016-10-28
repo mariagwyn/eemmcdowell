@@ -686,7 +686,7 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
  );
 
 # Per: https://docs.acquia.com/cloud/manage/code/config-d8
- $config_directories['vcs'] = $app_root . '../config/' . basename($site_path);
+ $config_directories['sync'] = $app_root . '../config/' . basename($site_path);
 /**
  * Load local development override configuration, if available.
  *
