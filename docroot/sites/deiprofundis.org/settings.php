@@ -243,9 +243,6 @@ $databases = array();
  *   );
  * @endcode
  */
- $config_directories = array(
-    CONFIG_SYNC_DIRECTORY  => '/config/deiprofundis.org',
- );
 
 /**
  * Settings:
@@ -686,6 +683,9 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
    '^deiprofundis\.org',
    '^.+\.deiprofundis\.org',
  );
+
+ # Per: https://docs.acquia.com/cloud/manage/code/config-d8
+ $config_directories['vcs'] = $app_root . '/../config/' . basename($site_path);
 /**
  * Load local development override configuration, if available.
  *
