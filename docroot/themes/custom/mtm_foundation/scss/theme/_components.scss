@@ -76,7 +76,7 @@
   }
   .field-block-content--field-second-line {
     top: 60%;
-    font-size: rem-calc(25px);
+    font-size: rem-calc(20px);
     text-align: right;
     @include text-shadow;
     @media #{$medium-only},#{$small-only} {
