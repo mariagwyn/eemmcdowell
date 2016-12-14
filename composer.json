@@ -51,7 +51,6 @@
         "cweagans/composer-patches": "dev-master#5456199acdcc16b243814aa45259f4c56272a634 as 1.5.0",
         "drupal/lightning": "^8.1.12",
         "drupal/seckit": "^8.1.0-alpha2",
-        "drush/drush": "^9.0"
     },
     "require-dev": {
         "behat/mink-extension": "*",
