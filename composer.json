@@ -4,11 +4,8 @@
     "type": "project",
     "license": "MIT",
     "require": {
-        "composer/installers": "^1.0.20",
         "drupal-composer/drupal-scaffold": "^2.0.0",
-        "cweagans/composer-patches": "dev-master#5456199acdcc16b243814aa45259f4c56272a634 as 1.5.0",
-        "drupal/core": "^8",
-        "drupal/lightning": "^8.1",
+        "drupal/core": "~8",
         "drupal/addtoany": "^8.1",
         "drupal/admin_toolbar": "^8.1",
         "drupal/devel": "^8.1",
@@ -27,7 +24,7 @@
         "drupal/google_analytics": "^8.2",
         "drupal/inline_entity_form": "^8",
         "drupal/layout_plugin": "^8.0",
-        "drupal/memcache": "^8.2",
+        "drupal/memcache": "^8.2.0-alpha2",
         "drupal/page_manager": "^8.0",
         "drupal/panels": "^8.3",
         "drupal/pathauto": "^8.1",
@@ -40,17 +37,21 @@
         "drupal/adminimal_theme": "^8.1",
         "drupal/zurb_foundation": "^8.5",
         "mariagwyn/mgm_tools": "master",
-        "acquia/blt": "^8",
+        "acquia/blt": "8.5.2",
         "drupal/acquia_connector": "^8.1.5",
         "drupal/acsf": "^8.1.32",
         "enyo/dropzone": "4.2.0",
         "desandro/masonry": "3.3.1",
         "desandro/imagesloaded": "3.1.8",
         "kenwheeler/slick": "1.5.0",
-        "drupal/cog": "^8.1",
-        "drupal/features": "^8.3",
-        "drupal/search_api": "^8.1",
-        "drupal/search_api_solr": "^8.1"
+        "drupal/cog": "^8.1.0",
+        "drupal/features": "^8.3.0",
+        "drupal/search_api": "8.1.0-alpha14",
+        "drupal/search_api_solr": "8.1.0-alpha3",
+        "cweagans/composer-patches": "dev-master#5456199acdcc16b243814aa45259f4c56272a634 as 1.5.0",
+        "drupal/lightning": "^8.1.12",
+        "drupal/seckit": "^8.1.0-alpha2",
+        "drush/drush": "^9.0"
     },
     "require-dev": {
         "behat/mink-extension": "*",
@@ -72,7 +73,8 @@
             "rm -rf vendor composer.lock",
             "@composer clearcache",
             "@composer install"
-        ]
+        ],
+        "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold"
     },
     "repositories": [
         {
@@ -161,19 +163,46 @@
             }
         },
         "installer-paths": {
-            "docroot/core": ["type:drupal-core"],
-            "docroot/modules/contrib/{$name}/":   ["type:drupal-module"],
-            "docroot/profiles/contrib/{$name}/":  ["type:drupal-profile"],
-            "docroot/themes/contrib/{$name}/":    ["type:drupal-theme"],
-            "drush/contrib/{$name}":              ["type:drupal-drush"],
-            "docroot/libraries/{$name}/":         ["type:drupal-library"],
-            "docroot/modules/custom/{$name}/":    ["type:drupal-module-custom"]
+            "docroot/core": [
+                "type:drupal-core"
+            ],
+            "docroot/modules/contrib/{$name}/": [
+                "type:drupal-module"
+            ],
+            "docroot/profiles/contrib/{$name}/": [
+                "type:drupal-profile"
+            ],
+            "docroot/themes/contrib/{$name}/": [
+                "type:drupal-theme"
+            ],
+            "drush/contrib/{$name}": [
+                "type:drupal-drush"
+            ],
+            "docroot/libraries/{$name}/": [
+                "type:drupal-library"
+            ],
+            "docroot/modules/custom/{$name}/": [
+                "type:drupal-module-custom"
+            ],
+            "docroot/modules/contrib/{$name}": [
+                "type:drupal-module"
+            ],
+            "docroot/profiles/contrib/{$name}": [
+                "type:drupal-profile"
+            ],
+            "docroot/themes/contrib/{$name}": [
+                "type:drupal-theme"
+            ]
         },
         "drupal-scaffold": {
             "excludes": [
                 "robots.txt",
                 "docroot/sites/development.services.yml"
-            ]
+            ],
+            "initial": {
+                "sites/default/default.services.yml": "sites/default/services.yml",
+                "sites/default/default.settings.php": "sites/default/settings.php"
+            }
         },
         "patches": {
             "drupal/core": {
@@ -182,7 +211,8 @@
             "drupal/features": {
                 "Bundle support": "https://www.drupal.org/files/issues/features-2808303-2.patch"
             }
-        }
+        },
+        "enable-patching": true
     },
     "autoload-dev": {
         "psr-4": {
