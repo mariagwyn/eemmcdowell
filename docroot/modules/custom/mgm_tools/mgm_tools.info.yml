@@ -1,7 +1,0 @@
-name: MGM Tools
-type: module
-description: Wrapper for enabling MGM tools.
-core: 8.x
-package: MGM Tools
-dependencies:
-  - file_browser

@@ -9,7 +9,6 @@ docroot/core
 # Ignore paths that contain user-generated content.
 docroot/sites/*/files
 docroot/sites/*/private
-docroot/files
 
 # Ignore contrib modules. These should be created during build process.
 docroot/modules/contrib
@@ -20,6 +19,12 @@ drush/contrib
 
 # Ignore custom theme node_modules folders
 docroot/themes/custom/*/node_modules
+
+# Ignore custom modules created by build process
+docroot/modules/custom/mgm_tools
+
+# Ignore Acquia Dev Desktop messes
+docroot/files/*
 
 # Ignore build artifacts
 /deploy
@@ -114,3 +119,9 @@ nbproject/*
 *.gz
 *.sql
 *.zip
+
+# PHPStorm
+atlassian-ide-plugin.xml
+
+# Drupal console
+console
