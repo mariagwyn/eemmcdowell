@@ -3,8 +3,6 @@ global:
   css:
     base:
       css/mtm_foundation.css: {}
-  js:
-    js/mtm_foundation.js: {}
   dependencies:
     - core/drupal
     - core/jquery
