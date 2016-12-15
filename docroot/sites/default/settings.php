@@ -243,9 +243,7 @@ $databases = array();
  *   );
  * @endcode
  */
- $config_directories = array(
-    CONFIG_SYNC_DIRECTORY  => '/config/default',
- );
+ $config_directories = array();
 /**
  * Settings:
  *

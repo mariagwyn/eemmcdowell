@@ -20,12 +20,6 @@ drush/contrib
 # Ignore custom theme node_modules folders
 docroot/themes/custom/*/node_modules
 
-# Ignore custom modules created by build process
-docroot/modules/custom/mgm_tools
-
-# Ignore Acquia Dev Desktop messes
-docroot/files/*
-
 # Ignore build artifacts
 /deploy
 bin/*

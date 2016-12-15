@@ -37,7 +37,7 @@
         "drupal/adminimal_theme": "^8.1",
         "drupal/zurb_foundation": "^8.5",
         "mariagwyn/mgm_tools": "master",
-        "acquia/blt": "8.5.2",
+        "acquia/blt": "^8.6",
         "drupal/acquia_connector": "^8.1.5",
         "drupal/acsf": "^8.1.32",
         "enyo/dropzone": "4.2.0",
@@ -48,9 +48,11 @@
         "drupal/features": "^8.3.0",
         "drupal/search_api": "8.1.0-alpha14",
         "drupal/search_api_solr": "8.1.0-alpha3",
-        "cweagans/composer-patches": "dev-master#5456199acdcc16b243814aa45259f4c56272a634 as 1.5.0",
+        "cweagans/composer-patches": "^1.6.0",
         "drupal/lightning": "^8.1.12",
-        "drupal/seckit": "^8.1.0-alpha2"
+        "drupal/seckit": "^8.1.0-alpha2",
+        "drupal/shield": "^8.1.0",
+        "drush/drush": "^9.0"
     },
     "require-dev": {
         "behat/mink-extension": "*",
@@ -194,23 +196,17 @@
             ]
         },
         "drupal-scaffold": {
-            "excludes": [
-                "robots.txt",
-                "docroot/sites/development.services.yml"
-            ],
+            "excludes": {
+                "0": "robots.txt",
+                "1": "docroot/sites/development.services.yml",
+                "sites/development.services.yml": "sites/development.services.yml"
+            },
             "initial": {
                 "sites/default/default.services.yml": "sites/default/services.yml",
                 "sites/default/default.settings.php": "sites/default/settings.php"
             }
         },
-        "patches": {
-            "drupal/core": {
-                "Ignore front end vendor folders to improve directory search performance": "https://www.drupal.org/files/issues/ignore_front_end_vendor-2329453-116.patch"
-            },
-            "drupal/features": {
-                "Bundle support": "https://www.drupal.org/files/issues/features-2808303-2.patch"
-            }
-        },
+        "patches": [],
         "enable-patching": true
     },
     "autoload-dev": {
