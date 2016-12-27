@@ -5,61 +5,44 @@
     "license": "MIT",
     "require": {
         "drupal-composer/drupal-scaffold": "^2.0.0",
-        "drupal/core": "~8",
-        "drupal/addtoany": "^8.1",
-        "drupal/admin_toolbar": "^8.1",
-        "drupal/devel": "^8.1",
-        "drupal/ctools": "^8.3",
-        "drupal/dropzonejs": "^8.1",
-        "drupal/embed": "^8.1",
-        "drupal/url_embed": "^8.1",
-        "drupal/entity_browser": "^8.1",
-        "drupal/feeds": "^8.3",
-        "drupal/field_group": "8.1.*",
-        "drupal/file_browser": "8.1.x-dev",
-        "drupal/file_entity": "^8.2",
-        "drupal/footnotes": "8.2.*",
-        "drupal/geolocation": "8.1.x-dev",
-        "drupal/git_deploy": "^8.2",
-        "drupal/google_analytics": "^8.2",
-        "drupal/inline_entity_form": "^8",
-        "drupal/layout_plugin": "^8.0",
-        "drupal/memcache": "^8.2.0-alpha2",
-        "drupal/page_manager": "^8.0",
-        "drupal/panels": "^8.3",
-        "drupal/pathauto": "^8.1",
-        "drupal/security_review": "8.*",
-        "roave/security-advisories": "dev-master",
-        "drupal-composer/drupal-security-advisories": "8.0.x-dev",
-        "drupal/social_media_links": "^8.2",
-        "drupal/token": "^8.1",
-        "drupal/views_timelinejs": "^8.3",
-        "drupal/adminimal_theme": "^8.1",
-        "drupal/zurb_foundation": "^8.5",
+        "drupal/core": "^8.0",
+        "drupal/addtoany": "^1.0",
+        "drupal/admin_toolbar": "^1.0",
+        "drupal/devel": "^1.0",
+        "drupal/dropzonejs": "^1.0",
+        "drupal/url_embed": "^1.0",
+        "drupal/feeds": "^3.0",
+        "drupal/field_group": "1.x-dev",
+        "drupal/file_browser": "1.x-dev",
+        "drupal/file_entity": "^2.0",
+        "drupal/footnotes": "2.0",
+        "drupal/geolocation": "1.x-dev",
+        "drupal/git_deploy": "^2.0",
+        "drupal/google_analytics": "^2.0",
+        "drupal/layout_plugin": "1.x-dev",
+        "drupal/memcache": "2.x-dev",
+        "drupal/social_media_links": "^2.0",
+        "drupal/views_timelinejs": "^3.0",
+        "drupal/adminimal_theme": "^1.0",
+        "drupal/zurb_foundation": "^5.0",
         "mariagwyn/mgm_tools": "master",
         "acquia/blt": "^8.6",
-        "drupal/acquia_connector": "^8.1.5",
-        "drupal/acsf": "^8.1.32",
         "enyo/dropzone": "4.2.0",
         "desandro/masonry": "3.3.1",
         "desandro/imagesloaded": "3.1.8",
         "kenwheeler/slick": "1.5.0",
-        "drupal/cog": "^8.1.0",
-        "drupal/features": "^8.3.0",
-        "drupal/search_api": "8.1.0-alpha14",
-        "drupal/search_api_solr": "8.1.0-alpha3",
+        "drupal/cog": "^1.0.0",
         "cweagans/composer-patches": "^1.6.0",
-        "drupal/lightning": "^8.1.12",
-        "drupal/seckit": "^8.1.0-alpha2",
-        "drupal/shield": "^8.1.0",
-        "drush/drush": "^9.0"
+        "drush/drush": "^9.0",
+        "acquia/lightning": "2.0.1",
+        "drupal/acquia_connector": "^1.5.0",
+        "drupal/features": "^3.0.0",
+        "drupal/seckit": "^1.0.0-alpha2",
+        "drupal/shield": "^1.0.0",
+        "drupal/security_review": "*"
     },
     "require-dev": {
-        "behat/mink-extension": "*",
-        "behat/mink-goutte-driver": "*",
-        "behat/mink-browserkit-driver": "*",
         "drush/drush": "^9.0",
-        "jakoch/phantomjs-installer": "dev-master as 1.9.8",
         "jarnaiz/behat-junit-formatter": "^1.3.2",
         "se/selenium-server-standalone": "^2.53"
     },
@@ -77,16 +60,12 @@
         ],
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold"
     },
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://packagist.drupal-composer.org"
-        },
-        {
+    "repositories": {
+        "0": {
             "type": "vcs",
             "url": "https://github.com/mariagwyn/mgm_tools"
         },
-        {
+        "1": {
             "type": "package",
             "package": {
                 "name": "desandro/masonry",
@@ -98,7 +77,7 @@
                 }
             }
         },
-        {
+        "2": {
             "type": "package",
             "package": {
                 "name": "desandro/imagesloaded",
@@ -110,7 +89,7 @@
                 }
             }
         },
-        {
+        "3": {
             "type": "package",
             "package": {
                 "name": "enyo/dropzone",
@@ -123,7 +102,7 @@
                 }
             }
         },
-        {
+        "4": {
             "type": "package",
             "package": {
                 "name": "mjolnic/fontawesome-iconpicker",
@@ -136,7 +115,7 @@
                 }
             }
         },
-        {
+        "5": {
             "type": "package",
             "package": {
                 "name": "kenwheeler/slick",
@@ -148,8 +127,12 @@
                     "reference": "origin/master"
                 }
             }
+        },
+        "drupal": {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
         }
-    ],
+    },
     "extra": {
         "_readme": [
             "This is an example comment!"
@@ -206,7 +189,11 @@
                 "sites/default/default.settings.php": "sites/default/settings.php"
             }
         },
-        "patches": [],
+        "patches": {
+            "acquia/lightning": {
+                "New LightningExtension subcontexts do not autoload": "https://www.drupal.org/files/issues/2836258-3-lightning-extension-autoload.patch"
+            }
+        },
         "enable-patching": true
     },
     "autoload-dev": {
