@@ -33,7 +33,7 @@
         "kenwheeler/slick": "1.5.0",
         "drupal/cog": "^1.0.0",
         "cweagans/composer-patches": "^1.6.0",
-        "drush/drush": "^9.0",
+        "drush/drush": "^8.1.8",
         "acquia/lightning": "2.0.1",
         "drupal/acquia_connector": "^1.5.0",
         "drupal/features": "^3.0.0",
@@ -42,7 +42,6 @@
         "drupal/security_review": "*"
     },
     "require-dev": {
-        "drush/drush": "^9.0",
         "jarnaiz/behat-junit-formatter": "^1.3.2",
         "se/selenium-server-standalone": "^2.53"
     },
@@ -58,7 +57,11 @@
             "@composer clearcache",
             "@composer install"
         ],
-        "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold"
+        "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
+        "install-phantomjs": [
+            "rm -rf vendor/bin/phantomjs",
+            "PhantomInstaller\\Installer::installPhantomJS"
+        ]
     },
     "repositories": {
         "0": {
@@ -179,11 +182,10 @@
             ]
         },
         "drupal-scaffold": {
-            "excludes": {
-                "0": "robots.txt",
-                "1": "docroot/sites/development.services.yml",
-                "sites/development.services.yml": "sites/development.services.yml"
-            },
+            "excludes": [
+                "sites/development.services.yml",
+                "docroot/sites/development.services.yml"
+            ],
             "initial": {
                 "sites/default/default.services.yml": "sites/default/services.yml",
                 "sites/default/default.settings.php": "sites/default/settings.php"
