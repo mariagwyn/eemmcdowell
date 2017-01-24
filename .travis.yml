@@ -25,6 +25,7 @@ cache:
 addons:
   ssh_known_hosts:
   # - svn-4786.devcloud.hosting.acquia.com
+    - svn-6098.prod.hosting.acquia.com
   apt:
     sources:
     - xvfb
