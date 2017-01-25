@@ -108,7 +108,7 @@
                 "version": "4.2.0",
                 "type": "drupal-library",
                 "source": {
-                    "url": "https://github.com/enyo/dropzone",
+                    "url": "https://github.com/enyo/dropzone/archive/v4.2.0.zip",
                     "type": "git",
                     "reference": "origin/master"
                 }
