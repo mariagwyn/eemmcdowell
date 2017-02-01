@@ -94,7 +94,7 @@
                 "version": "3.1.8",
                 "type": "drupal-library",
                 "dist": {
-                    "url": "http://github.com/desandro/imagesloaded/archive/v3.1.8.zip",
+                    "url": "https://github.com/desandro/imagesloaded/archive/v3.1.8.zip",
                     "type": "zip"
                 }
             }
@@ -106,7 +106,7 @@
                 "version": "4.2.0",
                 "type": "drupal-library",
                 "dist": {
-                    "url": "http://github.com/enyo/dropzone/archive/v4.2.0.zip",
+                    "url": "https://github.com/enyo/dropzone/archive/v4.2.0.zip",
                     "type": "zip"
                 }
             }
