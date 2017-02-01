@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "191a92a6e6edc243453611bd0ce683c1",
+    "content-hash": "ea4ae3c85fc4a0294f3efca4aee38882",
     "packages": [
         {
             "name": "acquia/blt",
@@ -731,7 +731,7 @@
             "version": "3.1.8",
             "dist": {
                 "type": "zip",
-                "url": "http://github.com/desandro/imagesloaded/archive/v3.1.8.zip",
+                "url": "https://github.com/desandro/imagesloaded/archive/v3.1.8.zip",
                 "reference": null,
                 "shasum": null
             },
