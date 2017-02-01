@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "684ec1a947730fa79c6e8a328a6fc403",
+    "content-hash": "a91151595d9188157f9b44f4351405d3",
     "packages": [
         {
             "name": "acquia/blt",
@@ -4744,7 +4744,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/social_media_links-8.x-2.2.zip",
-                "reference": null,
+                "reference": "8.x-2.2",
                 "shasum": "a6c058d8f20837cace59e537db9030cfbcd0750e"
             },
             "require": {
@@ -5587,7 +5587,7 @@
             "version": "4.2.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/enyo/dropzone",
+                "url": "https://github.com/enyo/dropzone/archive/v4.2.0.zip",
                 "reference": "origin/master"
             },
             "type": "drupal-library"
@@ -10563,7 +10563,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/stage_file_proxy-8.x-1.0-alpha1.zip",
-                "reference": null,
+                "reference": "8.x-1.0-alpha1",
                 "shasum": "ffc763b0b74f5a29c0d4a5a6c6930bda473a9e97"
             },
             "require": {

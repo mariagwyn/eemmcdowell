@@ -363,9 +363,108 @@ $aliases['eemmcdowell.local'] = array(
   // /var/www/[vagrant_machine_name]/docroot
   'root' => '/var/www/eemmcdowell/docroot',
   // vagrant_hostname
-  'uri' => 'http://local.eemmcdowell.dd:8083',
+  'uri' => 'http://local.eemmcdowell',
   // vagrant_hostname
-  'remote-host' => 'local.eemmcdowell.dd:8083',
+  'remote-host' => 'local.eemmcdowell',
   'remote-user' => 'vagrant',
   'ssh-options' => '-o PasswordAuthentication=no -i ' . drush_server_home() . '/.vagrant.d/insecure_private_key'
+);
+// [vagrant_machine_name].local
+$aliases['eemmcdowell.local'] = array(
+  // /var/www/[vagrant_machine_name]/docroot
+  'root' => '/var/www/eemmcdowell/docroot',
+  // vagrant_hostname
+  'uri' => 'http://local.eemmcdowell',
+  // vagrant_hostname
+  'remote-host' => 'local.eemmcdowell',
+  'remote-user' => 'vagrant',
+  'ssh-options' => '-o PasswordAuthentication=no -i ' . drush_server_home() . '/.vagrant.d/insecure_private_key'
+);
+
+if (!isset($drush_major_version)) {
+  $drush_version_components = explode('.', DRUSH_VERSION);
+  $drush_major_version = $drush_version_components[0];
+}
+// Site eemmcdowell, environment dev
+$aliases['eemmcdowell.dev'] = array(
+  'root' => '/var/www/html/eemmcdowell.dev/docroot',
+  'ac-site' => 'eemmcdowell',
+  'ac-env' => 'dev',
+  'ac-realm' => 'prod',
+  'uri' => 'eemmcdowelldev.prod.acquia-sites.com',
+  'remote-host' => 'staging-2255.prod.hosting.acquia.com',
+  'remote-user' => 'eemmcdowell.dev',
+  'path-aliases' => array(
+    '%drush-script' => 'drush' . $drush_major_version,
+  )
+);
+$aliases['eemmcdowell.dev.livedev'] = array(
+  'parent' => '@eemmcdowell.dev',
+  'root' => '/mnt/gfs/eemmcdowell.dev/livedev/docroot',
+);
+
+if (!isset($drush_major_version)) {
+  $drush_version_components = explode('.', DRUSH_VERSION);
+  $drush_major_version = $drush_version_components[0];
+}
+// Site eemmcdowell, environment prod
+$aliases['eemmcdowell.prod'] = array(
+  'root' => '/var/www/html/eemmcdowell.prod/docroot',
+  'ac-site' => 'eemmcdowell',
+  'ac-env' => 'prod',
+  'ac-realm' => 'prod',
+  'uri' => 'eemmcdowell.prod.acquia-sites.com',
+  'remote-host' => 'ded-5409.prod.hosting.acquia.com',
+  'remote-user' => 'eemmcdowell.prod',
+  'path-aliases' => array(
+    '%drush-script' => 'drush' . $drush_major_version,
+  )
+);
+$aliases['eemmcdowell.prod.livedev'] = array(
+  'parent' => '@eemmcdowell.prod',
+  'root' => '/mnt/gfs/eemmcdowell.prod/livedev/docroot',
+);
+
+if (!isset($drush_major_version)) {
+  $drush_version_components = explode('.', DRUSH_VERSION);
+  $drush_major_version = $drush_version_components[0];
+}
+// Site eemmcdowell, environment ra
+$aliases['eemmcdowell.ra'] = array(
+  'root' => '/var/www/html/eemmcdowell.ra/docroot',
+  'ac-site' => 'eemmcdowell',
+  'ac-env' => 'ra',
+  'ac-realm' => 'prod',
+  'uri' => 'eemmcdowellra.prod.acquia-sites.com',
+  'remote-host' => 'staging-7285.prod.hosting.acquia.com',
+  'remote-user' => 'eemmcdowell.ra',
+  'path-aliases' => array(
+    '%drush-script' => 'drush' . $drush_major_version,
+  )
+);
+$aliases['eemmcdowell.ra.livedev'] = array(
+  'parent' => '@eemmcdowell.ra',
+  'root' => '/mnt/gfs/eemmcdowell.ra/livedev/docroot',
+);
+
+if (!isset($drush_major_version)) {
+  $drush_version_components = explode('.', DRUSH_VERSION);
+  $drush_major_version = $drush_version_components[0];
+}
+// Site eemmcdowell, environment test
+$aliases['eemmcdowell.test'] = array(
+  'root' => '/var/www/html/eemmcdowell.test/docroot',
+  'ac-site' => 'eemmcdowell',
+  'ac-env' => 'test',
+  'ac-realm' => 'prod',
+  'uri' => 'eemmcdowellstg.prod.acquia-sites.com',
+  'remote-host' => 'staging-4605.prod.hosting.acquia.com',
+  'remote-user' => 'eemmcdowell.test',
+  'path-aliases' => array(
+    '%drush-script' => 'drush' . $drush_major_version,
+  )
+);
+$aliases['eemmcdowell.test.livedev'] = array(
+  'parent' => '@eemmcdowell.test',
+  'root' => '/mnt/gfs/eemmcdowell.test/livedev/docroot',
 );
