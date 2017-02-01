@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a2dcf6725f1f738257b097bc1242f515",
+    "content-hash": "191a92a6e6edc243453611bd0ce683c1",
     "packages": [
         {
             "name": "acquia/blt",
@@ -731,7 +731,7 @@
             "version": "3.1.8",
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/desandro/imagesloaded/archive/v3.1.8.zip",
+                "url": "http://github.com/desandro/imagesloaded/archive/v3.1.8.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -5495,11 +5495,6 @@
         {
             "name": "enyo/dropzone",
             "version": "4.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/enyo/dropzone/archive/v4.2.0.zip",
-                "reference": "origin/master"
-            },
             "type": "drupal-library"
         },
         {
