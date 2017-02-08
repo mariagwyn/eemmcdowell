@@ -2891,7 +2891,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/feeds",
-                "reference": "129e53d4ec94e66cfeeb239f8e09462e87e437a7"
+                "reference": "87c812da840e915f97018c2e5d6523dc1bc59550"
             },
             "require": {
                 "drupal/core": "~8.0"
@@ -2903,7 +2903,7 @@
                 },
                 "drupal": {
                     "version": "8.x-3.x-dev",
-                    "datestamp": "1482307383"
+                    "datestamp": "1486199584"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -2977,7 +2977,7 @@
                 "source": "http://cgit.drupalcode.org/feeds",
                 "issues": "https://www.drupal.org/project/issues/feeds"
             },
-            "time": "2016-12-21 08:00:02"
+            "time": "2017-02-04 09:20:58"
         },
         {
             "name": "drupal/field_group",
