@@ -83,7 +83,7 @@
                 "version": "1.5.0",
                 "type": "drupal-library",
                 "dist": {
-                    "url": "https://github.com/kenwheeler/slick/archive/1.6.0.zip",
+                    "url": "https://github.com/kenwheeler/slick/archive/1.5.0.zip",
                     "type": "zip"
                 }
             }
