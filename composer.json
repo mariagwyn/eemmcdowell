@@ -72,23 +72,11 @@
         ]
     },
     "repositories": {
-        "0": {
-            "type": "vcs",
-            "url": "https://github.com/mariagwyn/mgm_tools"
+        "drupal": {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
         },
-        "1": {
-            "type": "package",
-            "package": {
-                "name": "mjolnic/fontawesome-iconpicker",
-                "version": "1.2.0",
-                "type": "drupal-library",
-                "dist": {
-                    "url": "https://github.com/itsjavi/fontawesome-iconpicker/archive/1.3.0.zip",
-                    "type": "zip"
-                }
-            }
-        },
-        "2": {
+        "slick": {
             "type": "package",
             "package": {
                 "name": "kenwheeler/slick",
@@ -100,15 +88,12 @@
                 }
             }
         },
-        "drupal": {
-            "type": "composer",
-            "url": "https://packages.drupal.org/8"
+        "mgm_tools": {
+            "type": "vcs",
+            "url": "https://github.com/mariagwyn/mgm_tools"
         }
     },
     "extra": {
-        "_readme": [
-            "This is an example comment!"
-        ],
         "blt": {
             "update": true,
             "composer-exclude-merge": {
@@ -125,23 +110,26 @@
             "drush/contrib/{$name}": [
                 "type:drupal-drush"
             ],
-            "docroot/libraries/{$name}/": [
-                "type:drupal-library",
-                "enyo/dropzone",
-                "desandro/imagesloaded",
-                "desandro/masonry"
-            ],
             "docroot/modules/contrib/{$name}": [
                 "type:drupal-module"
             ],
             "docroot/modules/custom/{$name}": [
                 "type:drupal-module-custom"
             ],
-            "docroot/profiles/contrib/{$name}": [
-                "type:drupal-profile"
+            "docroot/libraries/{$name}": [
+                "type:drupal-library",
+                "enyo/dropzone",
+                "desandro/imagesloaded",
+                "desandro/masonry"
             ],
             "docroot/themes/contrib/{$name}": [
                 "type:drupal-theme"
+            ],
+            "docroot/themes/custom/{$name}": [
+                "type:drupal-theme-custom"
+            ],
+            "docroot/profiles/contrib/{$name}": [
+                "type:drupal-profile"
             ]
         },
         "drupal-scaffold": {
