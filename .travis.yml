@@ -23,7 +23,7 @@ addons:
 notifications:
 before_install:
 - openssl aes-256-cbc -K $encrypted_dea39bf447b2_key -iv $encrypted_dea39bf447b2_iv
-  -in eemmcdowell.enc -out ~\/.ssh/id_rsa-acqtravis -d
+  -in eemmcdowell.enc -out ~\/.ssh/id_rsa -d
 - shopt -s expand_aliases
 - composer selfupdate
 - phpenv config-rm xdebug.ini
