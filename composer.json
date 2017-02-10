@@ -72,23 +72,11 @@
         ]
     },
     "repositories": {
-        "0": {
+        "mgm-tools": {
             "type": "vcs",
             "url": "https://github.com/mariagwyn/mgm_tools"
         },
-        "1": {
-            "type": "package",
-            "package": {
-                "name": "mjolnic/fontawesome-iconpicker",
-                "version": "1.2.0",
-                "type": "drupal-library",
-                "dist": {
-                    "url": "https://github.com/itsjavi/fontawesome-iconpicker/archive/1.3.0.zip",
-                    "type": "zip"
-                }
-            }
-        },
-        "2": {
+        "slick": {
             "type": "package",
             "package": {
                 "name": "kenwheeler/slick",
@@ -106,9 +94,6 @@
         }
     },
     "extra": {
-        "_readme": [
-            "This is an example comment!"
-        ],
         "blt": {
             "update": true,
             "composer-exclude-merge": {
@@ -122,15 +107,6 @@
             "docroot/core": [
                 "type:drupal-core"
             ],
-            "drush/contrib/{$name}": [
-                "type:drupal-drush"
-            ],
-            "docroot/libraries/{$name}/": [
-                "type:drupal-library",
-                "enyo/dropzone",
-                "desandro/imagesloaded",
-                "desandro/masonry"
-            ],
             "docroot/modules/contrib/{$name}": [
                 "type:drupal-module"
             ],
@@ -142,6 +118,18 @@
             ],
             "docroot/themes/contrib/{$name}": [
                 "type:drupal-theme"
+            ],
+            "docroot/themes/custom/{$name}": [
+                "type:drupal-custom-theme"
+            ],
+            "docroot/libraries/{$name}": [
+                "type:drupal-library",
+                "enyo/dropzone",
+                "desandro/imagesloaded",
+                "desandro/masonry"
+            ],
+            "drush/contrib/{$name}": [
+                "type:drupal-drush"
             ]
         },
         "drupal-scaffold": {
