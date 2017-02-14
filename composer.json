@@ -24,10 +24,10 @@
         "drupal/adminimal_theme": "^1.0",
         "drupal/zurb_foundation": "^5.0",
         "mariagwyn/mgm_tools": "master",
-        "acquia/blt": "^8.6",
+        "acquia/blt": "8.6.11",
         "enyo/dropzone": "4.2.0",
-        "desandro/masonry": "3.3.1",
-        "desandro/imagesloaded": "3.1.8",
+        "desandro/masonry": "^4.1",
+        "desandro/imagesloaded": "^4.1",
         "kenwheeler/slick": "1.5.0",
         "drupal/cog": "^1.0.0",
         "cweagans/composer-patches": "^1.6.0",
@@ -72,6 +72,10 @@
         ]
     },
     "repositories": {
+        "drupal": {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        },
         "mgm-tools": {
             "type": "vcs",
             "url": "https://github.com/mariagwyn/mgm_tools"
@@ -87,10 +91,6 @@
                     "type": "zip"
                 }
             }
-        },
-        "drupal": {
-            "type": "composer",
-            "url": "https://packages.drupal.org/8"
         }
     },
     "extra": {
@@ -111,22 +111,27 @@
                 "type:drupal-module"
             ],
             "docroot/modules/custom/{$name}": [
-                "type:drupal-module-custom"
+                "type:drupal-custom-module"
+            ],
+            "docroot/libraries": [
+                "type:drupal-library"
+            ],
+            "docroot/libraries/{$name}": [
+                "enyo/dropzone",
+                "desandro/imagesloaded",
+                "desandro/masonry"
             ],
             "docroot/profiles/contrib/{$name}": [
                 "type:drupal-profile"
+            ],
+            "docroot/profiles/custom/{$name}": [
+                "type:drupal-custom-profile"
             ],
             "docroot/themes/contrib/{$name}": [
                 "type:drupal-theme"
             ],
             "docroot/themes/custom/{$name}": [
                 "type:drupal-custom-theme"
-            ],
-            "docroot/libraries/{$name}": [
-                "type:drupal-library",
-                "enyo/dropzone",
-                "desandro/imagesloaded",
-                "desandro/masonry"
             ],
             "drush/contrib/{$name}": [
                 "type:drupal-drush"
