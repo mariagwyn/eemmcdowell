@@ -103,6 +103,7 @@
                 "require-dev": "*"
             }
         },
+        "installer-types": ["library", "component"],
         "installer-paths": {
             "docroot/core": [
                 "type:drupal-core"
@@ -113,13 +114,8 @@
             "docroot/modules/custom/{$name}": [
                 "type:drupal-custom-module"
             ],
-            "docroot/libraries": [
-                "type:drupal-library"
-            ],
             "docroot/libraries/{$name}": [
-                "enyo/dropzone",
-                "desandro/imagesloaded",
-                "desandro/masonry"
+                "type:drupal-library"
             ],
             "docroot/profiles/contrib/{$name}": [
                 "type:drupal-profile"
@@ -135,7 +131,10 @@
             ],
             "drush/contrib/{$name}": [
                 "type:drupal-drush"
-            ]
+            ],
+            "docroot/libraries/masonry": ["desandro/masonry"],
+            "docroot/libraries/imagesloaded": ["desandro/imagesloaded"],
+            "docroot/libraries/dropzone": ["enyo/dropzone"]
         },
         "drupal-scaffold": {
             "excludes": [
