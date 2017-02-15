@@ -30,7 +30,7 @@
         "drupal/cog": "^1.0.0",
         "cweagans/composer-patches": "^1.6.0",
         "drush/drush": "^8.1.8",
-        "acquia/lightning": "2.0.1",
+        "acquia/lightning": "2.0.3",
         "drupal/acquia_connector": "^1.5.0",
         "drupal/features": "^3.0.0",
         "drupal/seckit": "^1.0.0-alpha2",
@@ -144,11 +144,7 @@
                 "sites/default/default.settings.php": "sites/default/settings.php"
             }
         },
-        "patches": {
-            "acquia/lightning": {
-                "New LightningExtension subcontexts do not autoload": "https://www.drupal.org/files/issues/2836258-3-lightning-extension-autoload.patch"
-            }
-        },
+        "patches": [],
         "enable-patching": true
     },
     "autoload-dev": {
