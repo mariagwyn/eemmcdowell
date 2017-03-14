@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6c568f2ef5fe48429f34e40557c440f0",
+    "content-hash": "a57c66abd1ffff4c66a915e618a52f32",
     "packages": [
         {
             "name": "acquia/blt",
@@ -83,16 +83,16 @@
         },
         {
             "name": "acquia/lightning",
-            "version": "2.0.3",
+            "version": "2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/acquia/lightning.git",
-                "reference": "63ce3b2b23138a25a280d34c2a240b83ed288fba"
+                "reference": "31b5c5ec455bdf234c85ea04f4fded57fd1d44e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/acquia/lightning/zipball/63ce3b2b23138a25a280d34c2a240b83ed288fba",
-                "reference": "63ce3b2b23138a25a280d34c2a240b83ed288fba",
+                "url": "https://api.github.com/repos/acquia/lightning/zipball/31b5c5ec455bdf234c85ea04f4fded57fd1d44e1",
+                "reference": "31b5c5ec455bdf234c85ea04f4fded57fd1d44e1",
                 "shasum": ""
             },
             "require": {
@@ -120,8 +120,8 @@
                 "drupal/metatag": "^1.0",
                 "drupal/multiversion": "1.0.0-alpha12",
                 "drupal/page_manager": "1.0.0-alpha24",
-                "drupal/panelizer": "3.0.0-alpha3",
-                "drupal/panels": "3.0.0-beta5",
+                "drupal/panelizer": "3.0.0-beta1",
+                "drupal/panels": "3.0.0-beta6",
                 "drupal/pathauto": "^1.0",
                 "drupal/replication": "1.0.0-alpha5",
                 "drupal/scheduled_updates": "1.0.0-alpha5",
@@ -137,11 +137,13 @@
                 "behat/mink": "~1.7",
                 "behat/mink-goutte-driver": "~1.2",
                 "drupal-composer/drupal-scaffold": "^2.0.0",
-                "drupal/coder": "8.*",
+                "drupal/coder": "^2.0",
                 "drupal/devel": "^1.0",
                 "drupal/drupal-extension": "^3.2",
                 "drush/drush": "^8.0",
+                "jakoch/phantomjs-installer": "1.9.8",
                 "jcalderonzumba/gastonjs": "~1.0.2",
+                "jcalderonzumba/mink-phantomjs-driver": "~0.3.1",
                 "mikey179/vfsstream": "~1.2",
                 "phing/phing": "^2.14",
                 "phpunit/phpunit": "~4.8",
@@ -164,11 +166,10 @@
                 },
                 "patches": {
                     "drupal/panelizer": {
-                        "2793841 - Properly integrate with Panels IPE": "https://www.drupal.org/files/issues/panelizer-panels-ipe-tempstore-id.patch",
-                        "2664574 - Add support for Taxonomy Term entities": "https://www.drupal.org/files/issues/2664574-26.patch"
+                        "2793841 - Properly integrate with Panels IPE": "https://www.drupal.org/files/issues/panelizer-panels-ipe-tempstore-id.patch"
                     },
                     "drupal/panels": {
-                        "2793801 - Allow modules to influence the IPE tempstore ID": "https://www.drupal.org/files/issues/2793801-9.patch"
+                        "2793801 - Allow modules to influence the IPE tempstore ID": "https://www.drupal.org/files/issues/2793801-13.patch"
                     },
                     "drupal/scheduled_updates": {
                         "2674874 - Issue saving Schedule Update Type form": "https://www.drupal.org/files/issues/schedule_updates-save_type-2674874-2.patch",
@@ -176,7 +177,8 @@
                     },
                     "drupal/workbench_moderation": {
                         "2668006 - Provide logical access control for when IPE should be applied to moderated nodes": "https://www.drupal.org/files/issues/2668006-2.patch",
-                        "2847078 - Revision tracker's dynamic table creation can break Views": "https://www.drupal.org/files/issues/2847078-6.patch"
+                        "2847078 - Revision tracker's dynamic table creation can break Views": "https://www.drupal.org/files/issues/2847078-6.patch",
+                        "2749503 - Add basic support for Quick Edit": "https://www.drupal.org/files/issues/workbench_moderation-quickedit-support-2749503-6.patch"
                     },
                     "drupal/multiversion": {
                         "2822915 - Migration source plugin makes bad assumptions that can lead to data loss": "https://www.drupal.org/files/issues/2822915-2.patch",
@@ -188,7 +190,7 @@
                         "2820105 - User references are not replicated": "https://www.drupal.org/files/issues/2820105-10.patch"
                     },
                     "drupal/core": {
-                        "2652138 - ImageFormatter does not support SVGs": "https://www.drupal.org/files/issues/2652138-28.patch",
+                        "2652138 - ImageFormatter does not support SVGs": "https://www.drupal.org/files/issues/2652138.patch",
                         "2765525 - Add AJAX command to add style sheets to CKEditor instances": "https://www.drupal.org/files/issues/2765525-30-8.2.x.patch"
                     },
                     "drupal/entity_embed": {
@@ -210,7 +212,7 @@
                 "GPL-2.0+"
             ],
             "description": "The best of Drupal, curated by Acquia",
-            "time": "2017-02-01T20:07:28+00:00"
+            "time": "2017-03-09T21:00:15+00:00"
         },
         {
             "name": "alchemy/zippy",
@@ -3037,17 +3039,17 @@
         },
         {
             "name": "drupal/entity_browser",
-            "version": "1.0.0-rc1",
+            "version": "1.0.0-rc2",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/entity_browser",
-                "reference": "8.x-1.0-rc1"
+                "reference": "8.x-1.0-rc2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/entity_browser-8.x-1.0-rc1.zip",
-                "reference": "8.x-1.0-rc1",
-                "shasum": "290b9db0f2b0f30bc59a4c18d869e58ce85de63d"
+                "url": "https://ftp.drupal.org/files/projects/entity_browser-8.x-1.0-rc2.zip",
+                "reference": "8.x-1.0-rc2",
+                "shasum": "7954668b9134a8ec2dac2604c482d6521e43ee91"
             },
             "require": {
                 "drupal/core": "~8.0"
@@ -3066,8 +3068,8 @@
                     "dev-8.x-1.x": "8.1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-rc1",
-                    "datestamp": "1486242784"
+                    "version": "8.x-1.0-rc2",
+                    "datestamp": "1487581984"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -4406,17 +4408,17 @@
         },
         {
             "name": "drupal/panelizer",
-            "version": "3.0.0-alpha3",
+            "version": "3.0.0-beta1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/panelizer",
-                "reference": "8.x-3.0-alpha3"
+                "reference": "8.x-3.0-beta1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/panelizer-8.x-3.0-alpha3.zip",
-                "reference": "8.x-3.0-alpha3",
-                "shasum": "f862ae14f47cb486cd4719242763064e7d6ac387"
+                "url": "https://ftp.drupal.org/files/projects/panelizer-8.x-3.0-beta1.zip",
+                "reference": null,
+                "shasum": "1a61865b5e8ad1b28b2dbcdb1bafc7caf02c1fa2"
             },
             "require": {
                 "drupal/core": "*",
@@ -4430,12 +4432,11 @@
                     "dev-3.x": "3.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-3.0-alpha3",
+                    "version": "8.x-3.0-beta1",
                     "datestamp": "1486220583"
                 },
                 "patches_applied": {
-                    "2793841 - Properly integrate with Panels IPE": "https://www.drupal.org/files/issues/panelizer-panels-ipe-tempstore-id.patch",
-                    "2664574 - Add support for Taxonomy Term entities": "https://www.drupal.org/files/issues/2664574-26.patch"
+                    "2793841 - Properly integrate with Panels IPE": "https://www.drupal.org/files/issues/panelizer-panels-ipe-tempstore-id.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -4476,17 +4477,17 @@
         },
         {
             "name": "drupal/panels",
-            "version": "3.0.0-beta5",
+            "version": "3.0.0-beta6",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/panels",
-                "reference": "8.x-3.0-beta5"
+                "reference": "8.x-3.0-beta6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/panels-8.x-3.0-beta5.zip",
-                "reference": "8.x-3.0-beta5",
-                "shasum": "3f62240b59b503902f349f2667a65c668d1e3fb2"
+                "url": "https://ftp.drupal.org/files/projects/panels-8.x-3.0-beta6.zip",
+                "reference": null,
+                "shasum": "44b59e5009d16d1d1b17907cd3305f488c22a757"
             },
             "require": {
                 "drupal/core": "~8.0",
@@ -4494,7 +4495,8 @@
                 "drupal/layout_plugin": ">=1.0.0-alpha22"
             },
             "require-dev": {
-                "drupal/page_manager": "*"
+                "drupal/page_manager": "*",
+                "drupal/panelizer": "*"
             },
             "type": "drupal-module",
             "extra": {
@@ -4502,11 +4504,11 @@
                     "dev-3.x": "3.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-3.0-beta5",
-                    "datestamp": "1475335394"
+                    "version": "8.x-3.0-beta6",
+                    "datestamp": "1488057783"
                 },
                 "patches_applied": {
-                    "2793801 - Allow modules to influence the IPE tempstore ID": "https://www.drupal.org/files/issues/2793801-9.patch"
+                    "2793801 - Allow modules to influence the IPE tempstore ID": "https://www.drupal.org/files/issues/2793801-13.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -4561,7 +4563,7 @@
         },
         {
             "name": "drupal/panels_ipe",
-            "version": "3.0.0-beta5",
+            "version": "3.0.0-beta6",
             "require": {
                 "drupal/core": "*",
                 "drupal/panels": "self.version"
@@ -4572,8 +4574,8 @@
                     "dev-3.x": "3.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-3.0-beta5",
-                    "datestamp": "1475335394"
+                    "version": "8.x-3.0-beta6",
+                    "datestamp": "1488057783"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -5767,20 +5769,23 @@
         },
         {
             "name": "ezyang/htmlpurifier",
-            "version": "v4.8.0",
+            "version": "v4.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezyang/htmlpurifier.git",
-                "reference": "d0c392f77d2f2a3dcf7fcb79e2a1e2b8804e75b2"
+                "reference": "6d50e5282afdfdfc3e0ff6d192aff56c5629b3d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/d0c392f77d2f2a3dcf7fcb79e2a1e2b8804e75b2",
-                "reference": "d0c392f77d2f2a3dcf7fcb79e2a1e2b8804e75b2",
+                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/6d50e5282afdfdfc3e0ff6d192aff56c5629b3d4",
+                "reference": "6d50e5282afdfdfc3e0ff6d192aff56c5629b3d4",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2"
+            },
+            "require-dev": {
+                "simpletest/simpletest": "^1.1"
             },
             "type": "library",
             "autoload": {
@@ -5807,7 +5812,7 @@
             "keywords": [
                 "html"
             ],
-            "time": "2016-07-16T12:58:58+00:00"
+            "time": "2017-03-13T06:30:53+00:00"
         },
         {
             "name": "gabordemooij/redbean",

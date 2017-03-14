@@ -30,7 +30,7 @@
         "drupal/cog": "^1.0.0",
         "cweagans/composer-patches": "^1.6.0",
         "drush/drush": "^8.1.8",
-        "acquia/lightning": "2.0.3",
+        "acquia/lightning": "2.0.4",
         "drupal/acquia_connector": "^1.5.0",
         "drupal/features": "^3.0.0",
         "drupal/seckit": "^1.0.0-alpha2",
