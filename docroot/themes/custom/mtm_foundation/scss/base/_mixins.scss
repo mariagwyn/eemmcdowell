@@ -2,10 +2,7 @@
 // Place your mixins here. Feel free to roll your own mixins.
 
 @mixin border-radius($radius) {
-  -webkit-border-radius: $radius;
-     -moz-border-radius: $radius;
-      -ms-border-radius: $radius;
-          border-radius: $radius;
+  border-radius: $radius;
 }
 
 // https://dvcs.w3.org/hg/FXTF/raw-file/tip/filters/index.html
@@ -19,79 +16,25 @@
 // contrast       ex: filter: contrast(200%);
 // blur           ex: filter: blur(2px);
 
-@mixin filter($filter-type,$filter-amount) {
-  -webkit-filter: $filter-type+unquote('(#{$filter-amount})');
-  -moz-filter: $filter-type+unquote('(#{$filter-amount})');
-  -ms-filter: $filter-type+unquote('(#{$filter-amount})');
-  -o-filter: $filter-type+unquote('(#{$filter-amount})');
+@mixin filter($filter-type, $filter-amount) {
   filter: $filter-type+unquote('(#{$filter-amount})');
 }
 
 @mixin opacity($value) {
-  opacity: $value;
   filter: alpha(opacity = $value * 100);
+  opacity: $value;
   zoom: 1;
 }
 @mixin transform($properties) {
-  -webkit-transform: $properties;
-  -moz-transform: $properties;
-  -ms-transform: $properties;
-  -o-transform: $properties;
   transform: $properties;
 }
-$default-text-shadow-color: #aaaaaa;
-$default-text-shadow-h-offset: 0;
-$default-text-shadow-v-offset: 0px;
-$default-text-shadow-blur: 0px;
-$default-text-shadow-spread: false;
-@mixin stroke($width, $color) {
-    $width: $width + 0;
-    $shadow: 0 0 0 transparent;
-    $i: 0;
-    $w: 1;
 
-    @while ($i < $width) {
-        $i: $i + 1;
-        $j: 0;
-        $w: $w + 2;
+/// Text Shadow
+/// @param {Size} $x [2px] - X
+/// @param {Size} $y [2px] - Y
+/// @param {Size} $blur [2px] - Blur
+/// @param {Color} $color [rgba(0,0,0,.4)] - Color
 
-        @for $r from 1 through $w {
-            @for $c from 1 through $w {
-                $x: $c - ceil($w / 2);
-                $y: $r - ceil($w / 2);
-
-                $shadow: #{$shadow}, #{$x}px #{$y}px 0 $color;
-            }
-        }
-    }
-
-    text-shadow: $shadow;
-}
-
-$default-text-shadow-color: rgba($primary-color, 0.6);
-$default-text-shadow-blur: 6px;
-$default-text-shadow-v-offset: 4px;
-$default-text-shadow-h-offset: 4px;
-@mixin text-shadow($shadow...) {
-  $shadow: if(length($shadow) > 0, $shadow, default);
-  $default: -compass-space-list(compact($default-text-shadow-h-offset $default-text-shadow-v-offset $default-text-shadow-blur $default-text-shadow-spread $default-text-shadow-color));
-  $shadows-without-spread: join((), (), comma);
-  $shadows: join((), (), comma);
-  $has-spread: false;
-  @each $layer in $shadow {
-    $layer: if($layer == "default", $default, $layer);
-    @if length($layer) > 4 {
-      $has-spread: true;
-      $shadows-without-spread: append($shadows-without-spread, nth($layer, 1) nth($layer, 2) nth($layer, 3) nth($layer, 5));
-      $shadows: append($shadows, $layer);
-    }
-    @else {
-      $shadows-without-spread: append($shadows-without-spread, $layer);
-      $shadows: append($shadows, $layer);
-    }
-  }
-  @if $has-spread {
-    text-shadow: $shadows-without-spread;
-  }
-  text-shadow: $shadows;
+@mixin text-shadow($x: 2px, $y: 2px, $blur: 5px, $color: $primary-color) {
+  text-shadow: $x $y $blur $color;
 }

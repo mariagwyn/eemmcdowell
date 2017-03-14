@@ -43,7 +43,7 @@
  */
 #}
 {% if block.delta != 'main' %}
-    <section{{ attributes.addclass('column small-3') }}>
+    <section{{ attributes.addclass('column small-2') }}>
 {% endif %}
 
   {{ title_prefix }}
@@ -62,10 +62,6 @@
       <img src="{{ site_logo }}" alt="{{ 'Home'|t }}" />
     </a>
   {% endif %}
-  {% if site_name %}
-    <a href="{{ path('<front>') }}" title="{{ 'Home'|t }}" rel="home">{{ site_name }}</a>
-  {% endif %}
-  {{ site_slogan }}
 {% endblock %}
 
 {% if content_attributes|length %}

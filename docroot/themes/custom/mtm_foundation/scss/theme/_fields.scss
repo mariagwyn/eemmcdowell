@@ -1,0 +1,65 @@
+.field-name-field-quote {
+  color: $success-color;
+  display: block;
+  text-align: auto;
+}
+
+.field-name-field-hero-image {
+  img {
+    width: 100%;
+  }
+}
+
+h1 {
+  &.page-title {
+    font-size: rem-calc(48);
+    padding: .25em 0 1em .25em;
+    text-align: right;
+  }
+}
+
+.field-name-field-subtitle {
+  p {
+    @extend h1;
+    color: $secondary-color;
+    text-align: center;
+  }
+}
+
+.field-name-field-icon-css {
+  font-size: rem-calc(30px);
+  height: rem-calc(30px);
+  margin: 0 auto rem-calc(15px);
+  width: 60%;
+  @include breakpoint(small only) {
+    font-size: rem-calc(30px);
+    top: 25;
+  }
+
+  i {
+    float: left;
+    text-align: center;
+    width: 22.5%;
+  }
+
+  .rule {
+    background: url('../images/rule-gray.png') repeat-x 20%;
+    float: left;
+    height: rem-calc(30px);
+    width: 38.5%;
+  }
+}
+
+.node--type-service-page {
+  .block-mtm-foundation-page-title  {
+    display: none;
+  }
+
+  &.services-block-text {
+    text-align: center;
+
+    .views-row {
+      min-height: rem-calc(180);
+    }
+  }
+}

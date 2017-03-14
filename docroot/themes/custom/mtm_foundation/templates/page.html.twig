@@ -31,15 +31,7 @@
  *   added to make the site slogan visually hidden, but still accessible.
  *
  * Page content (in order of occurrence in the default page.html.twig):
- * - title_prefix: Additional output populated by modules, intended to be
- *   displayed in front of the main title tag that appears in the template.
- * - title: The page title, for use in the actual content.
- * - title_suffix: Additional output populated by modules, intended to be
- *   displayed after the main title tag that appears in the template.
- * - tabs: Tabs linking to any sub-pages beneath the current page (e.g., the
- *   view and edit tabs when displaying a node).
- * - action_links: Actions local to the page, such as "Add menu" on the menu
- *   administration interface.
+ * - messages: Status and error messages. Should be displayed prominently.
  * - node: Fully loaded node, if there is an automatically-loaded node
  *   associated with the page and the node ID is the second argument in the
  *   page's path (e.g. node/12345 and node/12345/revisions, but not
@@ -62,16 +54,18 @@
  * @see html.html.twig
  */
 #}
-<section class="off-canvas-wrap" data-offcanvas>
-  <div class="inner-wrap">
-    <aside class="left-off-canvas-menu">
+
+<div class="off-canvas-wrapper">
+  <div class="inner-wrap off-canvas-wrapper-inner" id="inner-wrap" data-off-canvas-wrapper>
+    <aside id="left-off-canvas-menu" class="off-canvas left-off-canvas-menu position-left" role="complementary" data-off-canvas>
       {{ page.left_off_canvas }}
     </aside>
 
-    <aside class="right-off-canvas-menu">
+    <aside id="right-off-canvas-menu" class="off-canvas right-off-canvas-menu position-right" role="complementary" data-off-canvas>
       {{ page.right_off_canvas }}
     </aside>
 
+    <div class="off-canvas-content" data-off-canvas-content>
       {% if page.meta_header %}
         {% if meta_header_grid %}
           <div class="row">
@@ -84,59 +78,58 @@
         {% endif %}
       {% endif %}
 
-      <header class="row meta-wrap">
+      <header class="row" role="banner" aria-label="{{ 'Site header'|t }}">
         {% if linked_site_name or linked_logo %}
           <div class="large-2 columns">
             {% if linked_logo %}
               {{ linked_logo }}
             {% endif %}
           </div>
-          <div class="large-4 columns">
+          <div class="left large-4 columns">
             {% if is_front %}
               <h1 id="site-name">{{ linked_site_name }}</h1>
             {% else %}
               <div id="site-name">{{ linked_site_name }}</div>
             {% endif %}
           </div>
-          {% if show_account_info %}
-            <div class="meta-login {{ site_slogan ? 'large-6' : 'large-3 columns right' }} columns hide-for-small">
-              <a data-dropdown="account-menu" aria-controls="account-menu" aria-expanded="false" class="account-link" data-options="">{{ 'Account'|t }}</a>
-              <ul id="account-menu" data-dropdown-content class="f-dropdown" aria-hidden="true" tabindex="-1">
-                {% if logged_in %}
-                  <li> <a href="{{ path('user.page') }}">{{ 'My Account'|t }}</a></li>
-                  <li><a href="{{ path('user.logout') }}">{{ 'Logout'|t }}</a></li>
-                {% else %}
-                  <li><a href="{{ path('user.login') }}">{{ 'Login'|t }}</a></li>
-                  <li><a href="{{ path('user.register') }}">{{ 'Sign Up'|t }}</a></li>
-                {% endif %}
-              </ul>
+        {% endif %}
+        {% if show_account_info %}
+          <div class="{{ site_slogan ? 'large-6' : 'large-4 columns large-offset-8' }} columns hide-for-small">
+            <p>
+              {% if logged_in %}
+                <a href="{{ path('user.page') }}">{{ 'My Account'|t }}</a>
+                <a href="{{ path('user.logout') }}">{{ 'Logout'|t }}</a>
+              {% else %}
+                <a href="{{ path('user.login') }}">{{ 'Login'|t }}</a>
+                <a href="{{ path('user.register') }}">{{ 'Sign Up'|t }}</a>
+              {% endif %}
+            </p>
+          </div>
+        {% endif %}
+        {% if site_slogan %}
+          <div class="large-6 columns hide-for-small">
+            {{ site_slogan }}
+          </div>
+        {% endif %}
+        {% if show_account_info %}
+          <div class="show-for-small">
+            <div class="six mobile-two columns">
+              <p>
+                <a href="{{ path('user.login') }}" class="radius button">{{ 'Login'|t }}</a>
+              </p>
             </div>
-          {% endif %}
-          {% if site_slogan %}
-            <div class="large-6 columns hide-for-small">
-              {{ site_slogan }}
+            <div class="six mobile-two columns">
+              <p>
+                <a href="{{ path('user.register') }}" class="radius success button">{{ 'Sign Up'|t }}</a>
+              </p>
             </div>
-          {% endif %}
-          {% if show_account_info %}
-            <div class="show-for-small">
-              <div class="six mobile-two columns">
-                <p>
-                  <a href="{{ path('user.login') }}" class="radius button">{{ 'Login'|t }}</a>
-                </p>
-              </div>
-              <div class="six mobile-two columns">
-                <p>
-                  <a href="{{ path('user.register') }}" class="radius success button">{{ 'Sign Up'|t }}</a>
-                </p>
-              </div>
-            </div>
-          {% endif %}
-          {% endif %}
+          </div>
+        {% endif %}
       </header>
 
       {% if page.header %}
-        <div class="header-wrap">
-          <div class="row">
+        <div class="header-wrapper full-width">
+          <div class="row header-row">
             <div class="large-12 columns">
               {{ page.header }}
             </div>
@@ -159,9 +152,9 @@
         </div>
       </div>
       {% endif %}
-      <div class="content-wrap {{ content_wrap_classes }}">
+
       <div class="row">
-        <div id="main" class="{{ main_grid }} columns">
+        <main id="main" class="{{ main_grid }} columns" role="main">
           {% if page.highlighted %}
             {% spaceless %}
               {{ page.highlighted }}
@@ -169,23 +162,23 @@
           {% endif %}
           <a id="main-content"></a>
           {% if breadcrumb %} {{ breadcrumb }} {% endif %}
-          {% if title and not is_front %}
-            {{ title_prefix }}
-            page.html<h1 id="page-title" class="title">{{ title }}</h1>
-            {{ title_suffix }}
+          {% if tabs or action_links %}alfkajsd
+            <section>
+              {% if tabs %}
+                {{ tabs }}
+                {% if tabs2 %} {{ tabs2 }} {% endif %}
+              {% endif %}
+              {% if action_links %}
+                <ul class="action-links">
+                  {{ action_links }}
+                </ul>
+              {% endif %}
+            </section>
           {% endif %}
-
-          {% if tabs %}
-            {{ tabs }}
-            {% if tabs2 %} {{ tabs2 }} {% endif %}
-          {% endif %}
-          {% if action_links %}
-            <ul class="action-links">
-              {{ action_links }}
-            </ul>
-          {% endif %}
-          {{ page.content }}
-        </div>
+          <section>
+            {{ page.content }}
+          </section>
+        </main>
         {% if page.sidebar_first %}
           <div id="sidebar-first" class="{{ sidebar_first_grid }} columns sidebar ">
             {{ page.sidebar_first }}
@@ -197,11 +190,9 @@
           </div>
         {% endif %}
       </div>
-    </div>
-
       {% if page.footer_first or page.footer_middle or page.footer_last %}
-        <footer>
-          <div class="row">
+        <footer class="full-width">
+          <div  class="row">
             {% if page.footer_first %}
               <div id="footer-first" class="large-4 columns">
                 {{ page.footer_first }}
@@ -227,8 +218,6 @@
           </div>
         </div>
       </div>
-
-    <a class="exit-off-canvas"></a>
-
+    </div>
   </div>
-</section>
+</div>

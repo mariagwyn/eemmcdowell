@@ -17,10 +17,10 @@
         "drupal/google_analytics": "^2.0",
         "drupal/layout_plugin": "1.x-dev",
         "drupal/memcache": "2.x-dev",
-        "drupal/social_media_links": "^2.0",
+        "drupal/social_media_links": "2.x-dev",
         "drupal/views_timelinejs": "^3.0",
         "drupal/adminimal_theme": "^1.0",
-        "drupal/zurb_foundation": "^5.0",
+        "drupal/zurb_foundation": "6.x-dev",
         "mariagwyn/mgm_tools": "master",
         "acquia/blt": "8.6.11",
         "enyo/dropzone": "4.2.0",
@@ -144,7 +144,11 @@
                 "sites/default/default.settings.php": "sites/default/settings.php"
             }
         },
-        "patches": [],
+        "patches": {
+          "drupal/zurb_foundation": {
+            "Minor warnings in gulp SCSS style file processing": "https://www.drupal.org/files/issues/foundation-warnings-2855460-7.patch"
+          }
+        },
         "enable-patching": true
     },
     "autoload-dev": {

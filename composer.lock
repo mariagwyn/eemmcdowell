@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c4177c6f3ca042924cc8bdf51c84dd7a",
+    "content-hash": "6c568f2ef5fe48429f34e40557c440f0",
     "packages": [
         {
             "name": "acquia/blt",
@@ -2266,7 +2266,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/contact_storage-8.x-1.0-beta8.zip",
-                "reference": null,
+                "reference": "8.x-1.0-beta8",
                 "shasum": "01e9bd402351f02cf6519b841d355a61138e0d0f"
             },
             "require": {
@@ -2657,7 +2657,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/diff-8.x-1.0-rc1.zip",
-                "reference": null,
+                "reference": "8.x-1.0-rc1",
                 "shasum": "4945154c2c07444195a7ae07011a3b3db941c72a"
             },
             "require": {
@@ -2987,7 +2987,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/entity_block-8.x-1.0-alpha2.zip",
-                "reference": null,
+                "reference": "8.x-1.0-alpha2",
                 "shasum": "05373f1dc52fafbf8e11543c968e42a33a6e8304"
             },
             "require": {
@@ -4317,7 +4317,8 @@
                 },
                 "patches_applied": {
                     "2822915 - Migration source plugin makes bad assumptions that can lead to data loss": "https://www.drupal.org/files/issues/2822915-2.patch",
-                    "2825477 - ContentEntityStorageTrait uses current entity as original, which breaks things": "https://www.drupal.org/files/issues/2825477-2.patch"
+                    "2825477 - ContentEntityStorageTrait uses current entity as original, which breaks things": "https://www.drupal.org/files/issues/2825477-2.patch",
+                    "2844998 - multiversion_views_post_execute() triggers a warning for Search API views": "https://www.drupal.org/files/issues/2844998-2.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -4414,7 +4415,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/panelizer-8.x-3.0-alpha3.zip",
-                "reference": null,
+                "reference": "8.x-3.0-alpha3",
                 "shasum": "f862ae14f47cb486cd4719242763064e7d6ac387"
             },
             "require": {
@@ -4803,7 +4804,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/search_api-8.x-1.0-beta4.zip",
-                "reference": null,
+                "reference": "8.x-1.0-beta4",
                 "shasum": "77e79980b56ca722080477e5b3e9aa8fffa87fb1"
             },
             "require": {
@@ -5006,17 +5007,11 @@
         },
         {
             "name": "drupal/social_media_links",
-            "version": "2.2.0",
+            "version": "dev-2.x",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/social_media_links",
-                "reference": "8.x-2.2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/social_media_links-8.x-2.2.zip",
-                "reference": "8.x-2.2",
-                "shasum": "a6c058d8f20837cace59e537db9030cfbcd0750e"
+                "reference": "8f0c3bec67c9e3cf627f9b4d0d79e44494d58a3f"
             },
             "require": {
                 "drupal/core": "~8.0"
@@ -5027,8 +5022,8 @@
                     "dev-2.x": "2.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-2.2",
-                    "datestamp": "1485022383"
+                    "version": "8.x-2.1+22-dev",
+                    "datestamp": "1484548689"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -5046,7 +5041,8 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/social_media_links",
                 "issues": "https://www.drupal.org/project/issues/social_media_links"
-            }
+            },
+            "time": "2017-02-17 21:45:08"
         },
         {
             "name": "drupal/token",
@@ -5286,7 +5282,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/workbench_moderation-8.x-1.2.zip",
-                "reference": null,
+                "reference": "8.x-1.2",
                 "shasum": "3d37b29ed1e7fbf398160fe2494abc4361e4341c"
             },
             "require": {
@@ -5448,17 +5444,11 @@
         },
         {
             "name": "drupal/zurb_foundation",
-            "version": "5.0.0-beta2",
+            "version": "dev-6.x",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/zurb-foundation",
-                "reference": "8.x-5.0-beta2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/zurb_foundation-8.x-5.0-beta2.zip",
-                "reference": "8.x-5.0-beta2",
-                "shasum": "b518f3e6966930362e4c4b9a63a528978f3a97f0"
+                "reference": "94560989ba7d5435bbaf890cca2e47f9caf7bd69"
             },
             "require": {
                 "drupal/core": "~8.0"
@@ -5466,11 +5456,14 @@
             "type": "drupal-theme",
             "extra": {
                 "branch-alias": {
-                    "dev-5.x": "5.x-dev"
+                    "dev-6.x": "6.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-5.0-beta2",
-                    "datestamp": "1449853739"
+                    "version": "8.x-6.0-alpha2+2-dev",
+                    "datestamp": "1487882285"
+                },
+                "patches_applied": {
+                    "Minor warnings in gulp SCSS style file processing": "https://www.drupal.org/files/issues/foundation-warnings-2855460-7.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -5514,7 +5507,8 @@
             "homepage": "https://www.drupal.org/project/zurb_foundation",
             "support": {
                 "source": "http://cgit.drupalcode.org/zurb_foundation"
-            }
+            },
+            "time": "2017-02-23 22:36:08"
         },
         {
             "name": "drush/drush",
@@ -11202,7 +11196,9 @@
         "drupal/file_browser": 20,
         "drupal/geolocation": 20,
         "drupal/layout_plugin": 20,
-        "drupal/memcache": 20
+        "drupal/memcache": 20,
+        "drupal/social_media_links": 20,
+        "drupal/zurb_foundation": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

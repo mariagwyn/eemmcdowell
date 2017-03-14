@@ -1,39 +1,64 @@
 // Non-modular or client styles for .l-footer region.
 footer {
   background: $primary-color;
-  color: $background-color;
-  padding: rem-calc(20) 0;
+  color: $body-background;
   margin-top: rem-calc(20);
+  padding: rem-calc(20) 0;
+
   a {
-    color: $background-color;
+    color: $body-background;
+
     &:hover,
     &:focus {
-      color: $tertiary-color;
+      color: $warning-color;
     }
   }
-}
-#block-mtm-foundation-footer {
-  ul li {list-style: none;}
-}
-#footer-first {
-  @media #{$medium-only},#{$small-only} {
+
+  .menu {
+    li {
+      display: list-item;
+      list-style: none;
+
+      a {
+        padding-left: 0;
+        padding-top: .5rem;
+      }
+    }
+  }
+
+  @include breakpoint(medium only) {
+    text-align: center;
+  }
+  @include breakpoint(small only) {
     text-align: center;
   }
 }
-.block-contactinformation {
-  h2 {font-size: 1.2rem;}
-}
+
+// #footer-first {
+//   @include breakpoint(medium only) {
+//     text-align: center;
+//   }
+//   @include breakpoint(small only) {
+//     text-align: center;
+//   }
+// }
+
 #footer-middle {
   padding-left: rem-calc(20);
   padding-right: rem-calc(20);
-  @media #{$medium-only},#{$small-only} {
+  @include breakpoint(medium only) {
     padding-top: rem-calc(20px);
-    text-align: center;
+  }
+  @include breakpoint(small only) {
+    padding-top: rem-calc(20px);
   }
 }
+
 #footer-last {
-  @media #{$medium-only},#{$small-only} {
+  @include breakpoint(medium only) {
     padding-top: rem-calc(20px);
-    text-align: center;
+  }
+  @include breakpoint(small only) {
+    padding-top: rem-calc(20px);
   }
 }

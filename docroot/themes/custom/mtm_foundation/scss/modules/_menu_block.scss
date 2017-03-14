@@ -1,0 +1,88 @@
+.menu {
+  margin-bottom: $list-margin-bottom;
+}
+
+.block-mtm-foundation-main-menu {
+  ul {
+    //text-align: center;
+    padding-top: rem-calc(30px);
+  }
+
+  li {
+    display: inline-block;
+    padding-right: rem-calc(20px);
+    @include breakpoint(medium only) {
+      padding-right: rem-calc(10px);
+    }
+    @include breakpoint(small only) {
+      padding-right: rem-calc(10px);
+    }
+  }
+
+  a {
+    border-bottom: 1px solid $primary-color;
+    color: $body-background;
+    text-transform: uppercase;
+
+    &.is-active,
+    &:hover {
+      border-bottom: 1px solid $success-color;
+      color: $success-color;
+    }
+  }
+}
+
+.menu-item {
+  padding-top: rem-calc(20px);
+  @include breakpoint(small only) {
+    display: none;
+  }
+
+  &:hover {
+    background-color: transparent;
+  }
+}
+
+.main-menu-logo {
+  a {
+    &:hover {
+      border-bottom: 0;
+      color: transparent;
+    }
+  }
+
+  img {
+    background: $body-background;
+    border: 4px double $primary-color;
+    border-radius: 30%;
+    margin-bottom: -6rem;
+    margin-top: -6rem;
+    position: relative;
+    width: 12em;
+  }
+  @include breakpoint(medium only) {
+    float: left;
+    padding-bottom: rem-calc(20px);
+  }
+  @include breakpoint(small only) {
+    float: left;
+    padding-bottom: rem-calc(20px);
+  }
+}
+
+.menu-mobile-wrap {
+  display: none;
+  float: right;
+  @include breakpoint(small only) {
+    display: block;
+  }
+
+  .main-menu-logo {
+    display: none;
+  }
+
+  .menu-icon {
+    color: $body-background;
+    font-size: rem-calc(20px);
+  }
+}
