@@ -103,6 +103,8 @@ li {
 
 .block-mtm-foundation-page-title {
   padding-bottom: rem-calc(60);
+  padding-top: rem-calc(30);
+
   @include breakpoint(medium only) {
     padding-bottom: rem-calc(20);
   }
