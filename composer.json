@@ -22,7 +22,7 @@
         "drupal/adminimal_theme": "^1.0",
         "drupal/zurb_foundation": "6.x-dev",
         "mariagwyn/mgm_tools": "master",
-        "acquia/blt": "8.6.11",
+        "acquia/blt": "^8.6",
         "enyo/dropzone": "4.2.0",
         "desandro/masonry": "^4.1",
         "desandro/imagesloaded": "^4.1",
@@ -30,7 +30,7 @@
         "drupal/cog": "^1.0.0",
         "cweagans/composer-patches": "^1.6.0",
         "drush/drush": "^8.1.8",
-        "acquia/lightning": "2.0.4",
+        "acquia/lightning": "2.0.3",
         "drupal/acquia_connector": "^1.5.0",
         "drupal/features": "^3.0.0",
         "drupal/seckit": "^1.0.0-alpha2",
@@ -49,7 +49,7 @@
         "se/selenium-server-standalone": "^2.53",
         "jakoch/phantomjs-installer": "^2.1.1-p07",
         "drupal/stage_file_proxy": "^1.0",
-        "geerlingguy/drupal-vm": "^4.1"
+        "geerlingguy/drupal-vm": "~4.3"
     },
     "conflict": {
         "drupal/core": "7.*"
@@ -101,7 +101,10 @@
                 "require-dev": "*"
             }
         },
-        "installer-types": ["library", "component"],
+        "installer-types": [
+            "library",
+            "component"
+        ],
         "installer-paths": {
             "docroot/core": [
                 "type:drupal-core"
@@ -130,9 +133,18 @@
             "drush/contrib/{$name}": [
                 "type:drupal-drush"
             ],
-            "docroot/libraries/masonry": ["desandro/masonry"],
-            "docroot/libraries/imagesloaded": ["desandro/imagesloaded"],
-            "docroot/libraries/dropzone": ["enyo/dropzone"]
+            "docroot/libraries/masonry": [
+                "desandro/masonry"
+            ],
+            "docroot/libraries/imagesloaded": [
+                "desandro/imagesloaded"
+            ],
+            "docroot/libraries/dropzone": [
+                "enyo/dropzone"
+            ],
+            "docroot/libraries": [
+                "type:drupal-library"
+            ]
         },
         "drupal-scaffold": {
             "excludes": [
@@ -145,9 +157,9 @@
             }
         },
         "patches": {
-          "drupal/zurb_foundation": {
-            "Minor warnings in gulp SCSS style file processing": "https://www.drupal.org/files/issues/foundation-warnings-2855460-7.patch"
-          }
+            "drupal/zurb_foundation": {
+                "Minor warnings in gulp SCSS style file processing": "https://www.drupal.org/files/issues/foundation-warnings-2855460-7.patch"
+            }
         },
         "enable-patching": true
     },

@@ -8,6 +8,12 @@ project:
   local:
     protocol: http
     hostname: 'local.${project.machine_name}'
+multisite:
+  name:
+    - default
+    - magnoliatreemidwifery.com
+    - deiprofundis.org
+    - theologytimelines.org
 git:
   default_branch: master
   remotes:
@@ -25,6 +31,9 @@ target-hooks:
   frontend-build:
     dir: '${docroot}'
     command: 'echo ''No frontend build configured.'''
+  pre-config-import:
+    dir: '${docroot}'
+    command: 'echo ''No pre-config-import configured.'''
   post-deploy-build:
     dir: '${deploy.dir}/docroot/profiles/contrib/lightning'
     command: 'npm run install-libraries'
@@ -54,4 +63,3 @@ modules:
 behat:
   paths:
     - '${repo.root}/tests/behat'
-

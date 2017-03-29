@@ -264,7 +264,7 @@ $databases = array();
  *
  * @see install_select_profile()
  */
-# $settings['install_profile'] = '';
+ $settings['install_profile'] = 'standard';
 
 /**
  * Salt for one-time login links, cancel links, form tokens, etc.

@@ -687,7 +687,8 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
 
 # Per: https://docs.acquia.com/cloud/manage/code/config-d8
  $config_directories['sync'] = $app_root . '../config/' . basename($site_path) . '/sync';
-/**
+
+ /**
  * Load local development override configuration, if available.
  *
  * Use settings.local.php to override variables on secondary (staging,
@@ -701,6 +702,15 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
 if (file_exists(__DIR__ . '/settings/local.settings.php')) {
   include __DIR__ . '/settings/local.settings.php';
 }
+
+/**
+ * BLT/VM multisite settings
+ */
+
+$site_dir = 'magnoliatreemidwifery.com';
+
+// Acquia DB include
 if (file_exists('/var/www/site-php')) {
   require '/var/www/site-php/eemmcdowell/magnoliatree-settings.inc';
 }
+require DRUPAL_ROOT . "/../vendor/acquia/blt/settings/blt.settings.php";

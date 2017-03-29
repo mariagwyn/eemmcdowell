@@ -699,6 +699,15 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
  if (file_exists(__DIR__ . '/settings/local.settings.php')) {
    include __DIR__ . '/settings/local.settings.php';
  }
+
+ /**
+  * BLT/VM multisite settings
+  */
+
+$site_dir = 'deiprofundis.org';
+
+// Acquia DB include
 if (file_exists('/var/www/site-php')) {
     require '/var/www/site-php/eemmcdowell/deiprofundis-settings.inc';
 }
+require DRUPAL_ROOT . "/../vendor/acquia/blt/settings/blt.settings.php";

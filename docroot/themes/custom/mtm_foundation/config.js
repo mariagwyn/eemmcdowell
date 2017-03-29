@@ -2,7 +2,7 @@
 
 // Set a drush alias if required to run locally, i.e.:
 // '@multisite.local --uri=multisitename'
-var drush_alias = '@eemmcdowell.local --uri=magnoliatreemidwifery.com';
+var drush_alias = '@magnoliatreemidwifery.local';
 
 module.exports = {
     // set 'enabled: true' to run drush commands as a part of 'gulp watch'.
