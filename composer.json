@@ -157,9 +157,6 @@
             }
         },
         "patches": {
-            "drupal/zurb_foundation": {
-                "Minor warnings in gulp SCSS style file processing": "https://www.drupal.org/files/issues/foundation-warnings-2855460-7.patch"
-            }
         },
         "enable-patching": true
     },

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3a033b4aaca6e18eb9af3d22e4eb464e",
+    "content-hash": "c470fff2b76c89cdf64e8f7a44e9c7c3",
     "packages": [
         {
             "name": "acquia/blt",
@@ -5033,7 +5033,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/zurb-foundation",
-                "reference": "8411e79c9102ebff2e7180b5c7c9d457bd002a5a"
+                "reference": "bd7fcb65fb2a45d7dc4be9bf3bc92fee942a8119"
             },
             "require": {
                 "drupal/core": "~8.0"
@@ -5044,8 +5044,8 @@
                     "dev-6.x": "6.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-6.0-alpha2+3-dev",
-                    "datestamp": "1487889483"
+                    "version": "8.x-6.0-alpha2+6-dev",
+                    "datestamp": "1490375283"
                 },
                 "patches_applied": []
             },
@@ -5090,7 +5090,8 @@
             "homepage": "https://www.drupal.org/project/zurb_foundation",
             "support": {
                 "source": "http://cgit.drupalcode.org/zurb_foundation"
-            }
+            },
+            "time": "2017-03-24 17:12:13"
         },
         {
             "name": "drush/drush",
