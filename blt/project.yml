@@ -13,7 +13,7 @@ multisite:
     - default
     - magnoliatreemidwifery.com
     - deiprofundis.org
-    - theologytimelines.org
+    - theologytimelines.info
 git:
   default_branch: master
   remotes:
