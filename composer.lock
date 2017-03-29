@@ -1889,16 +1889,16 @@
         },
         {
             "name": "drupal/core",
-            "version": "8.2.6",
+            "version": "8.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal-composer/drupal-core.git",
-                "reference": "6cd5d296125a4584d470d75d8e5218ff17c39c22"
+                "reference": "5d3fb8a93514f23198ac6848b2679ef1026d2326"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal-composer/drupal-core/zipball/6cd5d296125a4584d470d75d8e5218ff17c39c22",
-                "reference": "6cd5d296125a4584d470d75d8e5218ff17c39c22",
+                "url": "https://api.github.com/repos/drupal-composer/drupal-core/zipball/5d3fb8a93514f23198ac6848b2679ef1026d2326",
+                "reference": "5d3fb8a93514f23198ac6848b2679ef1026d2326",
                 "shasum": ""
             },
             "require": {
@@ -2037,16 +2037,10 @@
                 "jcalderonzumba/gastonjs": "~1.0.2",
                 "jcalderonzumba/mink-phantomjs-driver": "~0.3.1",
                 "mikey179/vfsstream": "~1.2",
-                "phpunit/phpunit": "~4.8",
+                "phpunit/phpunit": ">=4.8.28 <5",
                 "symfony/css-selector": "~2.8"
             },
             "type": "drupal-core",
-            "extra": {
-                "patches_applied": {
-                    "2652138 - ImageFormatter does not support SVGs": "https://www.drupal.org/files/issues/2652138-28.patch",
-                    "2765525 - Add AJAX command to add style sheets to CKEditor instances": "https://www.drupal.org/files/issues/2765525-30-8.2.x.patch"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Drupal\\Core\\": "lib/Drupal/Core",
@@ -2068,7 +2062,7 @@
                 "GPL-2.0+"
             ],
             "description": "Drupal is an open source content management platform powering millions of websites and applications.",
-            "time": "2017-02-01T17:03:36+00:00"
+            "time": "2017-03-15T20:19:51+00:00"
         },
         {
             "name": "drupal/ctools",
@@ -5653,16 +5647,16 @@
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "1.4.1",
+            "version": "1.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "0d6c7ca039329247e4f0f8f8f6506810e8248855"
+                "reference": "f5b8a8512e2b58b0071a7280e39f14f72e05d87c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/0d6c7ca039329247e4f0f8f8f6506810e8248855",
-                "reference": "0d6c7ca039329247e4f0f8f8f6506810e8248855",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/f5b8a8512e2b58b0071a7280e39f14f72e05d87c",
+                "reference": "f5b8a8512e2b58b0071a7280e39f14f72e05d87c",
                 "shasum": ""
             },
             "require": {
@@ -5714,7 +5708,7 @@
                 "uri",
                 "url"
             ],
-            "time": "2017-02-27T10:51:17+00:00"
+            "time": "2017-03-20T17:10:46+00:00"
         },
         {
             "name": "ircmaxell/password-compat",
@@ -8969,16 +8963,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.32.0",
+            "version": "v1.33.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "9935b662e24d6e634da88901ab534cc12e8c728f"
+                "reference": "05cf49921b13f6f01d3cfdf9018cfa7a8086fd5a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/9935b662e24d6e634da88901ab534cc12e8c728f",
-                "reference": "9935b662e24d6e634da88901ab534cc12e8c728f",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/05cf49921b13f6f01d3cfdf9018cfa7a8086fd5a",
+                "reference": "05cf49921b13f6f01d3cfdf9018cfa7a8086fd5a",
                 "shasum": ""
             },
             "require": {
@@ -8987,12 +8981,12 @@
             "require-dev": {
                 "psr/container": "^1.0",
                 "symfony/debug": "~2.7",
-                "symfony/phpunit-bridge": "~3.2"
+                "symfony/phpunit-bridge": "~3.3@dev"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.32-dev"
+                    "dev-master": "1.33-dev"
                 }
             },
             "autoload": {
@@ -9027,7 +9021,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2017-02-27T00:07:03+00:00"
+            "time": "2017-03-22T15:40:09+00:00"
         },
         {
             "name": "vierbergenlars/php-semver",
