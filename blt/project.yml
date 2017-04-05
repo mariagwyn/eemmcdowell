@@ -8,12 +8,6 @@ project:
   local:
     protocol: http
     hostname: 'local.${project.machine_name}'
-multisite:
-  name:
-    - default
-    - magnoliatreemidwifery.com
-    - deiprofundis.org
-    - theologytimelines.info
 git:
   default_branch: master
   remotes:
@@ -60,10 +54,15 @@ modules:
   deploy:
     enable: [acquia_connector, shield]
     uninstall: [devel, field_ui, views_ui]
+multisite:
+  name:
+    - default
+    - magnoliatreemidwifery.com
+    - deiprofundis.org
+    - theologytimelines.info
 behat:
   paths:
     - '${repo.root}/tests/behat'
-
 phpcs:
   filesets:
     - files.php.tests
@@ -71,3 +70,5 @@ phpcs:
     - files.frontend.custom.themes
   haltonerror: true
   haltonwarning: true
+cm:
+  strategy: features
