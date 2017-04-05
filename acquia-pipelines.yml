@@ -30,3 +30,7 @@ events:
             type: script
             script:
               - source ${BLT_DIR}/scripts/pipelines/build_artifact
+        # Deploy the build artifact to a Cloud on-demand environment.
+        - deploy:
+            script:
+              - pipelines-deploy
