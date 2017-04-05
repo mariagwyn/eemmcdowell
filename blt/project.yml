@@ -63,3 +63,11 @@ modules:
 behat:
   paths:
     - '${repo.root}/tests/behat'
+
+phpcs:
+  filesets:
+    - files.php.tests
+    - files.php.custom.themes
+    - files.frontend.custom.themes
+  haltonerror: true
+  haltonwarning: true
