@@ -4,6 +4,7 @@
     "type": "project",
     "license": "MIT",
     "require": {
+        "drupal/core": "^8.3",
         "drupal/addtoany": "^1.0",
         "drupal/admin_toolbar": "^1.0",
         "drupal/dropzonejs": "^1.0",
@@ -119,8 +120,7 @@
         "enable-patching": true,
         "merge-plugin": {
             "require": [
-                "vendor/acquia/blt/composer.required.json",
-                "vendor/acquia/blt/composer.suggested.json"
+                "vendor/acquia/blt/composer.required.json"
             ],
             "include": [
                 "blt/composer.overrides.json"
