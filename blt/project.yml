@@ -72,3 +72,4 @@ phpcs:
   haltonwarning: true
 cm:
   strategy: features
+
