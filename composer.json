@@ -16,6 +16,7 @@
         "drupal/geolocation": "1.x-dev",
         "drupal/google_analytics": "^2.0",
         "drupal/layout_plugin": "1.x-dev",
+        "acquia/lightning": "^2.1",
         "drupal/social_media_links": "2.x-dev",
         "drupal/views_timelinejs": "^3.0",
         "drupal/adminimal_theme": "^1.0",
