@@ -28,12 +28,6 @@ target-hooks:
   pre-config-import:
     dir: '${docroot}'
     command: 'echo ''No pre-config-import configured.'''
-  post-deploy-build:
-    dir: '${deploy.dir}/docroot/profiles/contrib/lightning'
-    command: 'npm run install-libraries'
-  post-setup-build:
-    dir: '${docroot}/profiles/contrib/lightning'
-    command: 'npm run install-libraries'
 import: null
 modules:
   local:
@@ -72,4 +66,3 @@ phpcs:
   haltonwarning: true
 cm:
   strategy: features
-
