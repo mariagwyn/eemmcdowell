@@ -20,10 +20,10 @@ events:
               - source ${BLT_DIR}/scripts/pipelines/setup_project
 
         # Execute all testing and validation tasks.
-        - run-tests:
-            type: script
-            script:
-              - source ${BLT_DIR}/scripts/pipelines/run_tests
+        # - run-tests:
+        #     type: script
+        #     script:
+        #       - source ${BLT_DIR}/scripts/pipelines/run_tests
 
         # Generate artifact.
         - build-artifact:
