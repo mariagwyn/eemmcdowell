@@ -1,0 +1,133 @@
+uuid: 9174644d-0551-40eb-b24f-8da9398098fe
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.home_page
+    - views.view.service_blocks
+  content:
+    - 'block_content:basic:d8dac747-358a-44ed-b725-3786d16dbf96'
+    - 'block_content:basic:f09f7ba4-c91a-4dee-8900-a349800df169'
+    - 'block_content:hero:7d779c74-1cd9-45ea-bf20-32b11ad6fb1e'
+    - 'block_content:hero:8cb4b27c-7034-4a9c-b100-e82b9dedc346'
+    - 'block_content:hero:97022fff-c0cc-486b-b100-e607dddcb4b1'
+    - 'block_content:slideshow:b438a437-f683-412c-a506-060f86bdb3e5'
+  module:
+    - block_content
+    - panels
+    - views
+id: home_page-http_status_code-0
+label: 'Main Page'
+variant: panels_variant
+variant_settings:
+  blocks:
+    48c7a23c-0a34-4c59-b834-d055916c468b:
+      id: 'block_content:b438a437-f683-412c-a506-060f86bdb3e5'
+      label: 'Home Slider'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: top
+      weight: 0
+      uuid: 48c7a23c-0a34-4c59-b834-d055916c468b
+      context_mapping: {  }
+    33edca31-a68c-4188-b758-870fd87b3665:
+      id: 'block_content:d8dac747-358a-44ed-b725-3786d16dbf96'
+      label: 'Welcome to Magnolia Tree Midwifery'
+      provider: block_content
+      label_display: visible
+      status: true
+      info: ''
+      view_mode: full
+      region: upper_left
+      weight: 0
+      uuid: 33edca31-a68c-4188-b758-870fd87b3665
+      context_mapping: {  }
+    a6596a9b-7370-477f-8230-47a2852b52d7:
+      id: 'block_content:f09f7ba4-c91a-4dee-8900-a349800df169'
+      label: 'Service Area'
+      provider: block_content
+      label_display: visible
+      status: true
+      info: ''
+      view_mode: full
+      region: upper_right
+      weight: 0
+      uuid: a6596a9b-7370-477f-8230-47a2852b52d7
+      context_mapping: {  }
+    db8868ea-e2e4-4c47-9748-a4302e8fe6cd:
+      id: 'block_content:97022fff-c0cc-486b-b100-e607dddcb4b1'
+      label: 'Services Hero'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: narrow
+      region: middle
+      weight: 0
+      uuid: db8868ea-e2e4-4c47-9748-a4302e8fe6cd
+      context_mapping: {  }
+    75ccfe9b-a642-4620-9d3a-1c53414d2d10:
+      id: 'views_block:service_blocks-block_3'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: bottom
+      weight: 0
+      uuid: 75ccfe9b-a642-4620-9d3a-1c53414d2d10
+      context_mapping: {  }
+    e3dadcf8-2f1a-4656-9b7c-e807171a0d7e:
+      id: 'block_content:8cb4b27c-7034-4a9c-b100-e82b9dedc346'
+      label: 'About the Midwife'
+      provider: block_content
+      label_display: visible
+      status: true
+      info: ''
+      view_mode: small_hero
+      region: lower_left
+      weight: 0
+      uuid: e3dadcf8-2f1a-4656-9b7c-e807171a0d7e
+      context_mapping: {  }
+    31443d9d-ef2d-4c5f-877c-b7830a6c8f68:
+      id: 'block_content:7d779c74-1cd9-45ea-bf20-32b11ad6fb1e'
+      label: 'Home Birth'
+      provider: block_content
+      label_display: visible
+      status: true
+      info: ''
+      view_mode: small_hero
+      region: lower_right
+      weight: 0
+      uuid: 31443d9d-ef2d-4c5f-877c-b7830a6c8f68
+      context_mapping: {  }
+  id: panels_variant
+  label: null
+  uuid: 9c23b11e-a7ef-4ec3-8317-51534dda9dd8
+  weight: 0
+  status_code: '404'
+  layout: foundation-6-6-bricks
+  layout_settings:
+    wrappers:
+      top: div
+      upper_left: div
+      upper_right: div
+      middle: div
+      lower_left: div
+      lower_right: div
+      bottom: div
+    wrapper_classes: ''
+    attributes: {  }
+    wrapper_id: ''
+  page_title: ''
+  storage_type: page_manager
+  storage_id: home_page-http_status_code-0
+  builder: standard
+page: home_page
+weight: 0
+selection_criteria: {  }
+selection_logic: and
+static_context: {  }

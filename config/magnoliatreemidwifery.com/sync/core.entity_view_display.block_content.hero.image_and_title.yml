@@ -28,6 +28,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     label: hidden
+    region: content
   field_image:
     type: responsive_image
     weight: 1
@@ -36,12 +37,14 @@ content:
       responsive_image_style: responsive_hero
       image_link: ''
     third_party_settings: {  }
+    region: content
   field_photo_credit:
     weight: 2
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
+    region: content
 hidden:
   field_hero_link: true
   field_second_line: true

@@ -19,16 +19,19 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: basic_string
+    region: content
   field_preferred_contact_method:
     weight: 2
     label: above
     settings: {  }
     third_party_settings: {  }
     type: list_default
+    region: content
   message:
     type: basic_string
     weight: 1
     label: above
     settings: {  }
     third_party_settings: {  }
+    region: content
 hidden: {  }

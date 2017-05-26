@@ -22,14 +22,17 @@ content:
     weight: 1
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_subtitle:
     weight: 0
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
+    region: content
   links:
     weight: 2
     settings: {  }
     third_party_settings: {  }
+    region: content
 hidden: {  }

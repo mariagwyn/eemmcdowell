@@ -24,6 +24,7 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_location:
     weight: 3
     label: hidden
@@ -51,6 +52,7 @@ content:
       common_map: ''
     third_party_settings: {  }
     type: geolocation_map
+    region: content
   field_location_name:
     weight: 0
     label: hidden
@@ -58,6 +60,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_phone:
     weight: 1
     label: visually_hidden
@@ -65,4 +68,5 @@ content:
       title: ''
     third_party_settings: {  }
     type: telephone_link
+    region: content
 hidden: {  }

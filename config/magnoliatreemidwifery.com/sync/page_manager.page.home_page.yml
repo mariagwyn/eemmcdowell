@@ -1,9 +1,10 @@
-uuid: a34d1e7c-dfa0-4703-b621-3380ae9fd5f2
+uuid: c7e98393-39b0-4be4-9485-25f4552dd2a4
 langcode: en
 status: true
 dependencies: {  }
-id: mtm_home
-label: Welcome
+id: home_page
+label: 'Home Page'
+description: ''
 use_admin_theme: false
 path: /welcome
 access_logic: and

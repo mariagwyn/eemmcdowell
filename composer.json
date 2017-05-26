@@ -3,33 +3,6 @@
     "description": "Project json for Magnolia Tree Midwifery and DeiProfundis",
     "type": "project",
     "license": "MIT",
-    "require": {
-        "drupal/core": "8.2.8",
-        "drupal/addtoany": "^1.0",
-        "drupal/admin_toolbar": "^1.0",
-        "drupal/dropzonejs": "^1.0",
-        "drupal/feeds": "^3.0",
-        "drupal/field_group": "1.x-dev",
-        "drupal/file_browser": "1.x-dev",
-        "drupal/file_entity": "^2.0",
-        "drupal/footnotes": "2.0",
-        "drupal/geolocation": "1.x-dev",
-        "drupal/google_analytics": "^2.0",
-        "drupal/layout_plugin": "1.x-dev",
-        "acquia/lightning": "2.0.6",
-        "drupal/search_api": "1.0-beta4",
-        "drupal/social_media_links": "2.x-dev",
-        "drupal/views_timelinejs": "^3.0",
-        "drupal/adminimal_theme": "^1.0",
-        "drupal/zurb_foundation": "6.x-dev",
-        "mariagwyn/mgm_tools": "master",
-        "acquia/blt": "8.7.1",
-        "enyo/dropzone": "4.2.0",
-        "desandro/masonry": "^4.1",
-        "desandro/imagesloaded": "^4.1",
-        "kenwheeler/slick": "1.5.0",
-        "oomphinc/composer-installers-extender": "^1.1"
-    },
     "require-dev": {
         "drupal/devel": "^1.0",
         "drupal/stage_file_proxy": "^1.0",
@@ -118,8 +91,15 @@
                 "sites/default/default.settings.php": "sites/default/settings.php"
             }
         },
-        "patches": [],
         "enable-patching": true,
+        "patches": [],
+        "patches-ignore": {
+          "acquia/lightning": {
+            "drupal/dropzonejs": {
+              "2868449 - dropzonejs/integration library is missing a dependency on jquery.once": "https://www.drupal.org/files/issues/2868449-2.patch"
+            }
+          }
+        },
         "merge-plugin": {
             "require": [
                 "vendor/acquia/blt/composer.required.json"
@@ -132,5 +112,32 @@
             "merge-scripts": true,
             "replace": false
         }
+    },
+    "require": {
+        "cweagans/composer-patches": "^1.6.0",
+        "drupal/addtoany": "^1.0",
+        "drupal/admin_toolbar": "^1.0",
+        "drupal/dropzonejs": "1.0.0-alpha6",
+        "drupal/feeds": "^3.0",
+        "drupal/field_group": "1.x-dev",
+        "drupal/file_browser": "1.x-dev",
+        "drupal/file_entity": "^2.0",
+        "drupal/footnotes": "2.0",
+        "drupal/geolocation": "1.x-dev",
+        "drupal/google_analytics": "^2.0",
+        "drupal/layout_plugin": "1.x-dev",
+        "acquia/lightning": "^2.1",
+        "drupal/search_api": "1.0-beta4",
+        "drupal/social_media_links": "2.x-dev",
+        "drupal/views_timelinejs": "^3.0",
+        "drupal/adminimal_theme": "^1.0",
+        "drupal/zurb_foundation": "6.x-dev",
+        "mariagwyn/mgm_tools": "master",
+        "acquia/blt": "^8.8",
+        "enyo/dropzone": "4.2.0",
+        "desandro/masonry": "^4.1",
+        "desandro/imagesloaded": "^4.1",
+        "kenwheeler/slick": "1.5.0",
+        "oomphinc/composer-installers-extender": "^1.1"
     }
 }

@@ -1,0 +1,14 @@
+uuid: 0d21a8fe-3bd3-46fe-b8e7-91e17f7001c0
+langcode: en
+status: true
+dependencies: {  }
+name: hero_narrow_xlarge
+label: 'Hero Narrow XLarge (1920 x 160)'
+effects:
+  3e8b98af-71d2-4610-b581-8301e84503c2:
+    uuid: 3e8b98af-71d2-4610-b581-8301e84503c2
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1920
+      height: 160
