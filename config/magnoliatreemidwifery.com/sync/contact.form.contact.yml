@@ -5,9 +5,8 @@ dependencies: {  }
 id: contact
 label: 'Contact Us'
 recipients:
-  - mariagwyn@gmail.com
   - elizabeth.midwife@gmail.com
 reply: ''
 weight: 0
-message: 'Your message has been sent.'
-redirect: ''
+message: 'Your message has been sent, we will reply as soon as possible.'
+redirect: /about

@@ -1,4 +1,4 @@
-uuid: 28273d7f-7ec7-44ac-8325-3745265dfbd2
+uuid: 8fb61dcd-093f-47ce-80c1-3a46402b356b
 langcode: en
 status: true
 dependencies:
@@ -9,7 +9,7 @@ _core:
 id: mtm_foundation_local_actions
 theme: mtm_foundation
 region: content
-weight: -7
+weight: -4
 provider: null
 plugin: local_actions_block
 settings:

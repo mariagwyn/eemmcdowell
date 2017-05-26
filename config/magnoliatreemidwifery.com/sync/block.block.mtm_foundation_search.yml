@@ -1,4 +1,4 @@
-uuid: 07ba3756-0567-4468-9900-0c9796cdf928
+uuid: eebb1966-c294-40e2-bbd9-05844a26c32e
 langcode: en
 status: true
 dependencies:
@@ -11,7 +11,7 @@ _core:
 id: mtm_foundation_search
 theme: mtm_foundation
 region: footer_middle
-weight: -8
+weight: -6
 provider: null
 plugin: search_form_block
 settings:
