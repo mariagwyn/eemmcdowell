@@ -1,7 +1,9 @@
-uuid: 918a1fb4-cadf-4ad2-9500-a0c314803043
+uuid: b1c7cb1f-0ad6-4f3d-9ae0-b1aca573a9f9
 langcode: en
 status: true
 dependencies:
+  module:
+    - system
   theme:
     - mtm_foundation
 _core:
@@ -9,7 +11,7 @@ _core:
 id: mtm_foundation_page_title
 theme: mtm_foundation
 region: content
-weight: -9
+weight: -8
 provider: null
 plugin: page_title_block
 settings:
@@ -17,4 +19,9 @@ settings:
   label: 'Page title'
   provider: core
   label_display: '0'
-visibility: {  }
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: true
+    context_mapping: {  }

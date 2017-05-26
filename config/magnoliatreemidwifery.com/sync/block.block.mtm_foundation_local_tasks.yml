@@ -1,4 +1,4 @@
-uuid: fa96c998-5c3a-46a0-9441-65756c3d4195
+uuid: 3646a1a8-22c3-4b94-b9a3-c9c5da7884ad
 langcode: en
 status: true
 dependencies:
@@ -9,7 +9,7 @@ _core:
 id: mtm_foundation_local_tasks
 theme: mtm_foundation
 region: content
-weight: -5
+weight: -6
 provider: null
 plugin: local_tasks_block
 settings:

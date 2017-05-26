@@ -1,4 +1,4 @@
-uuid: c804fcf1-14b1-440c-8e00-cbc8d643f984
+uuid: 99cc3c8a-649c-49b9-823e-58477b877a0c
 langcode: en
 status: true
 dependencies:
@@ -11,7 +11,7 @@ _core:
 id: mtm_foundation_help
 theme: mtm_foundation
 region: content
-weight: -8
+weight: -5
 provider: null
 plugin: help_block
 settings:

@@ -1,4 +1,4 @@
-uuid: 0fc9158a-62e6-404b-a44b-75fe08d102df
+uuid: f212e54c-2e45-4b4d-b5e4-0aeb14326ca7
 langcode: en
 status: true
 dependencies:
@@ -11,7 +11,7 @@ _core:
 id: mtm_foundation_powered
 theme: mtm_foundation
 region: footer_last
-weight: -7
+weight: -6
 provider: null
 plugin: system_powered_by_block
 settings:

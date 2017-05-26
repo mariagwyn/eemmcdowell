@@ -65,11 +65,11 @@ display:
         type: html_list
         options:
           grouping: {  }
-          row_class: ''
+          row_class: 'column column-block'
           default_row_class: true
           type: ul
           wrapper_class: item-list
-          class: 'small-block-grid-1 medium-block-grid-2 large-block-grid-3'
+          class: 'small-up-1 medium-up-2 large-up-3'
       row:
         type: fields
       fields:
@@ -1194,11 +1194,11 @@ display:
         type: html_list
         options:
           grouping: {  }
-          row_class: ''
+          row_class: 'column column-block'
           default_row_class: true
           type: ul
           wrapper_class: item-list
-          class: 'small-block-grid-1 medium-block-grid-2 large-block-grid-3'
+          class: 'small-up-1 medium-up-2 large-up-3'
       row:
         type: fields
         options: {  }

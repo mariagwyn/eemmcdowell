@@ -23,21 +23,21 @@ mode: image_and_title
 content:
   field_first_line:
     type: string
-    weight: 1
+    weight: 0
     settings:
       link_to_entity: false
     third_party_settings: {  }
     label: hidden
   field_image:
-    weight: 5
+    type: responsive_image
+    weight: 1
     label: hidden
     settings:
       responsive_image_style: responsive_hero
       image_link: ''
     third_party_settings: {  }
-    type: responsive_image
   field_photo_credit:
-    weight: 6
+    weight: 2
     label: hidden
     settings: {  }
     third_party_settings: {  }

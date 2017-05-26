@@ -1,4 +1,4 @@
-uuid: f14cee3d-7db4-4ac3-8f00-c34ad1c93e28
+uuid: b65ce638-e31d-4921-83f6-5021272dbc9f
 langcode: en
 status: true
 dependencies:
@@ -11,7 +11,7 @@ _core:
 id: mtm_foundation_content
 theme: mtm_foundation
 region: content
-weight: -6
+weight: -3
 provider: null
 plugin: system_main_block
 settings:

@@ -13,7 +13,6 @@ module:
   ctools: 0
   datetime: 0
   dblog: 0
-  devel: 0
   dropzonejs: 0
   dropzonejs_eb_widget: 0
   dynamic_page_cache: 0
@@ -29,13 +28,11 @@ module:
   file_entity: 0
   filter: 0
   geolocation: 0
-  git_deploy: 0
   google_analytics: 0
   help: 0
   history: 0
   image: 0
   inline_entity_form: 0
-  kint: 0
   layout_plugin: 0
   link: 0
   menu_ui: 0

@@ -1,10 +1,9 @@
-uuid: 341f8452-8fa6-45bb-8719-25ee68eb9446
+uuid: 773e0757-10e3-4547-b140-f862c212e4e0
 langcode: en
 status: true
 dependencies:
   module:
     - system
-    - user
   theme:
     - mtm_foundation
 _core:
@@ -12,7 +11,7 @@ _core:
 id: mtm_foundation_messages
 theme: mtm_foundation
 region: content
-weight: -4
+weight: -7
 provider: null
 plugin: system_messages_block
 settings:
@@ -20,16 +19,4 @@ settings:
   label: 'Status messages'
   provider: system
   label_display: '0'
-visibility:
-  request_path:
-    id: request_path
-    pages: '<front>'
-    negate: false
-    context_mapping: {  }
-  user_role:
-    id: user_role
-    roles:
-      administrator: administrator
-    negate: false
-    context_mapping:
-      user: '@user.current_user_context:current_user'
+visibility: {  }
