@@ -27,13 +27,14 @@ module:
   file_browser: 0
   file_entity: 0
   filter: 0
+  foundation_layouts: 0
   geolocation: 0
   google_analytics: 0
   help: 0
   history: 0
   image: 0
   inline_entity_form: 0
-  layout_plugin: 0
+  layout_discovery: 0
   link: 0
   menu_ui: 0
   metatag: 0
@@ -81,3 +82,4 @@ theme:
   mtm_foundation: 0
 _core:
   default_config_hash: m2GVq11UAOVuNgj8x0t5fMOPujpvQQ_zxLoaly1BMEU
+profile: standard

@@ -28,6 +28,7 @@ content:
       responsive_image_style: responsive_hero
       image_link: ''
     third_party_settings: {  }
+    region: content
 hidden:
   field_first_line: true
   field_hero_link: true
