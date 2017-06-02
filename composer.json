@@ -146,6 +146,7 @@
         "desandro/masonry": "^4.1",
         "desandro/imagesloaded": "^4.1",
         "kenwheeler/slick": "1.5.0",
-        "oomphinc/composer-installers-extender": "^1.1"
+        "oomphinc/composer-installers-extender": "^1.1",
+        "drupal/foundation_layouts": "^6.0"
     }
 }
