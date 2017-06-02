@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e8afc9bfba49aa47236e8fa150bed7db",
+    "content-hash": "3c61e7cf11b4735af47707a636105590",
     "packages": [
         {
             "name": "acquia/blt",
@@ -2839,6 +2839,53 @@
             "homepage": "https://www.drupal.org/project/footnotes",
             "support": {
                 "source": "http://cgit.drupalcode.org/footnotes"
+            }
+        },
+        {
+            "name": "drupal/foundation_layouts",
+            "version": "6.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/foundation_layouts",
+                "reference": "8.x-6.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/foundation_layouts-8.x-6.0.zip",
+                "reference": null,
+                "shasum": "435aa6a351e6de667618f49f87fa02e1abe244a4"
+            },
+            "require": {
+                "drupal/core": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-6.x": "6.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-6.0",
+                    "datestamp": "1492945742"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "abu-zakham",
+                    "homepage": "https://www.drupal.org/user/2836067"
+                },
+                {
+                    "name": "josebc",
+                    "homepage": "https://www.drupal.org/user/1376836"
+                }
+            ],
+            "description": "Provides ZURB Foundation grid system layouts.",
+            "homepage": "https://www.drupal.org/project/foundation_layouts",
+            "support": {
+                "source": "http://cgit.drupalcode.org/foundation_layouts"
             }
         },
         {
