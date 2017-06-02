@@ -3,7 +3,7 @@ project:
   prefix: MGM
   human_name: 'MariaGwyn''s Multisites'
   profile:
-    name: lightning
+    name: standard
     contrib: true
   local:
     protocol: http
