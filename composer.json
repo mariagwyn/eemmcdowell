@@ -120,7 +120,7 @@
         "drupal/addtoany": "^1.0",
         "drupal/admin_toolbar": "^1.0",
         "drupal/ctools": "^3.0",
-        "drupal/dropzonejs": "1.0.0-alpha6",
+        "drupal/dropzonejs": "^1.0",
         "drupal/feeds": "^3.0",
         "drupal/field_group": "1.x-dev",
         "drupal/file_browser": "1.x-dev",
