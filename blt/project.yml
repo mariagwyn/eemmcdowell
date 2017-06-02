@@ -75,7 +75,3 @@ phpcs:
   haltonwarning: true
 cm:
   strategy: features
-disable-targets:
-  tests:
-    security-updates: true
-
