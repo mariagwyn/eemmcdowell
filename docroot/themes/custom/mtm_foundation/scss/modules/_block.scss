@@ -110,6 +110,7 @@ li {
   }
   @include breakpoint(small only) {
     padding-bottom: 0;
+    padding-top: 0;
   }
 
   h1 {
@@ -117,12 +118,17 @@ li {
     font-size: rem-calc(48);
     padding: .25em 0 1em .25em;
     text-transform: capitalize;
+    @include breakpoint(medium down) {
+      padding-bottom: 0;
+    }
+
   }
 }
 
 // Generic hero block styles
 .hero-block {
   color: $body-background;
+  position: relative;
 
   a {
     color: $body-background;
@@ -138,6 +144,7 @@ li {
 .views-field-field-hero-block {
   color: $body-background;
   z-index: 100;
+  position: relative;
 
   .field-block-content--field-first-line,
   .field-block-content--field-second-line,
@@ -164,7 +171,7 @@ li {
     }
     @include breakpoint(small only) {
       font-size: rem-calc(28px);
-      top: rem-calc(16px);
+      top: 0;
     }
   }
 
@@ -177,8 +184,6 @@ li {
     }
     @include breakpoint(small only)  {
       padding-top: 0;
-    }
-    @include breakpoint(small only) {
       font-size: rem-calc(12px);
       top: rem-calc(70px);
     }
@@ -291,6 +296,9 @@ li {
     position: relative;
     text-align: right;
     //padding-right: ($grid-column-gutter, medium);
+    @include breakpoint(small only) {
+      visibility: hidden;
+    }
   }
 
   .hero-block-fields {
