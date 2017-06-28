@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "acquia/blt",
-            "version": "8.8.4",
+            "version": "8.8.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/acquia/blt.git",
-                "reference": "9486c3c1621ae516d0ee79e2d5293a7f428ddda1"
+                "reference": "5ac8a4c33a9413f9f1135ffb9bf486c69a920fd0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/acquia/blt/zipball/9486c3c1621ae516d0ee79e2d5293a7f428ddda1",
-                "reference": "9486c3c1621ae516d0ee79e2d5293a7f428ddda1",
+                "url": "https://api.github.com/repos/acquia/blt/zipball/5ac8a4c33a9413f9f1135ffb9bf486c69a920fd0",
+                "reference": "5ac8a4c33a9413f9f1135ffb9bf486c69a920fd0",
                 "shasum": ""
             },
             "require": {
@@ -82,7 +82,7 @@
                 "template",
                 "testing"
             ],
-            "time": "2017-06-06T15:58:09+00:00"
+            "time": "2017-06-12T17:53:38+00:00"
         },
         {
             "name": "asm89/stack-cors",
@@ -3936,16 +3936,16 @@
         },
         {
             "name": "grasmash/yaml-cli",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/grasmash/yaml-cli.git",
-                "reference": "7f156e67108c38203336173ade7d20b08f4cdf52"
+                "reference": "7fa0d815547c6c003c8f92159ec789f065ebfacf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/grasmash/yaml-cli/zipball/7f156e67108c38203336173ade7d20b08f4cdf52",
-                "reference": "7f156e67108c38203336173ade7d20b08f4cdf52",
+                "url": "https://api.github.com/repos/grasmash/yaml-cli/zipball/7fa0d815547c6c003c8f92159ec789f065ebfacf",
+                "reference": "7fa0d815547c6c003c8f92159ec789f065ebfacf",
                 "shasum": ""
             },
             "require": {
@@ -3979,7 +3979,7 @@
                 }
             ],
             "description": "A command line tool for reading and manipulating yaml files.",
-            "time": "2017-04-07T19:29:24+00:00"
+            "time": "2017-06-19T20:25:23+00:00"
         },
         {
             "name": "grasmash/yaml-expander",
@@ -5154,16 +5154,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "4.8.35",
+            "version": "4.8.36",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "791b1a67c25af50e230f841ee7a9c6eba507dc87"
+                "reference": "46023de9a91eec7dfb06cc56cb4e260017298517"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/791b1a67c25af50e230f841ee7a9c6eba507dc87",
-                "reference": "791b1a67c25af50e230f841ee7a9c6eba507dc87",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/46023de9a91eec7dfb06cc56cb4e260017298517",
+                "reference": "46023de9a91eec7dfb06cc56cb4e260017298517",
                 "shasum": ""
             },
             "require": {
@@ -5222,7 +5222,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-02-06T05:18:07+00:00"
+            "time": "2017-06-21T08:07:12+00:00"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -5428,16 +5428,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.8.6",
+            "version": "v0.8.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "7028d6d525fb183d50b249b7c07598e3d386b27d"
+                "reference": "fe65c30cbc55c71e61ba3a38b5a581149be31b8e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/7028d6d525fb183d50b249b7c07598e3d386b27d",
-                "reference": "7028d6d525fb183d50b249b7c07598e3d386b27d",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/fe65c30cbc55c71e61ba3a38b5a581149be31b8e",
+                "reference": "fe65c30cbc55c71e61ba3a38b5a581149be31b8e",
                 "shasum": ""
             },
             "require": {
@@ -5497,7 +5497,7 @@
                 "interactive",
                 "shell"
             ],
-            "time": "2017-06-04T10:34:20+00:00"
+            "time": "2017-06-24T06:16:19+00:00"
         },
         {
             "name": "sebastian/comparator",
