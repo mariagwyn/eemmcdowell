@@ -381,3 +381,33 @@ $aliases['magnoliatreemidwifery.local'] = array(
   'remote-user' => 'vagrant',
   'ssh-options' => '-o PasswordAuthentication=no -i ' . drush_server_home() . '/.vagrant.d/insecure_private_key'
 );
+
+// Local environment.
+$aliases['eemmcdowell.local'] = array(
+  'root' => '/var/www/eemmcdowell/docroot',
+  'uri' => 'http://local.eemmcdowell',
+  );
+// Add remote connection options when alias is used outside VM.
+if ('vagrant' != $_SERVER['USER']) {
+  $aliases['eemmcdowell.local'] += array(
+    'remote-host' => 'local.eemmcdowell',
+    'remote-user' => 'vagrant',
+    'ssh-options' => '-o PasswordAuthentication=no -i ' . drush_server_home() . '/.vagrant.d/insecure_private_key'
+  );
+}
+
+
+// Local environment.
+$aliases['eemmcdowell.local'] = array(
+  'root' => '/var/www/eemmcdowell/docroot',
+  'uri' => 'http://local.eemmcdowell',
+  );
+// Add remote connection options when alias is used outside VM.
+if ('vagrant' != $_SERVER['USER']) {
+  $aliases['eemmcdowell.local'] += array(
+    'remote-host' => 'local.eemmcdowell',
+    'remote-user' => 'vagrant',
+    'ssh-options' => '-o PasswordAuthentication=no -i ' . drush_server_home() . '/.vagrant.d/insecure_private_key'
+  );
+}
+
