@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - block_content.type.hero
+    - entity_browser.browser.browse_files
     - field.field.block_content.hero.field_first_line
     - field.field.block_content.hero.field_hero_link
     - field.field.block_content.hero.field_image
@@ -27,6 +28,7 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
   field_hero_link:
     type: link_default
     weight: 5
@@ -34,6 +36,7 @@ content:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
+    region: content
   field_image:
     weight: 1
     settings:
@@ -46,6 +49,7 @@ content:
       field_widget_display_settings: {  }
     third_party_settings: {  }
     type: file_browser
+    region: content
   field_photo_credit:
     weight: 2
     settings:
@@ -53,6 +57,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textfield
+    region: content
   field_second_line:
     type: string_textfield
     weight: 4
@@ -60,6 +65,7 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
   info:
     type: string_textfield
     weight: 0
@@ -67,4 +73,5 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
 hidden: {  }

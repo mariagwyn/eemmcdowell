@@ -84,7 +84,7 @@ variant_settings:
       id: 'block_content:8cb4b27c-7034-4a9c-b100-e82b9dedc346'
       label: 'About the Midwife'
       provider: block_content
-      label_display: visible
+      label_display: '0'
       status: true
       info: ''
       view_mode: small_hero
@@ -96,7 +96,7 @@ variant_settings:
       id: 'block_content:7d779c74-1cd9-45ea-bf20-32b11ad6fb1e'
       label: 'Home Birth'
       provider: block_content
-      label_display: visible
+      label_display: '0'
       status: true
       info: ''
       view_mode: small_hero

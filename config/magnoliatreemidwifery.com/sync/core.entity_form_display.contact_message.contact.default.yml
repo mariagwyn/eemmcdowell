@@ -17,21 +17,25 @@ content:
     weight: 6
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_phone_contact:
     weight: 2
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: telephone_default
+    region: content
   field_preferred_contact_method:
     weight: 3
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
+    region: content
   mail:
     weight: 1
     settings: {  }
     third_party_settings: {  }
+    region: content
   message:
     type: string_textarea
     weight: 5
@@ -39,10 +43,15 @@ content:
       rows: 12
       placeholder: 'How we can help you and your family?'
     third_party_settings: {  }
+    region: content
   name:
     weight: 0
     settings: {  }
     third_party_settings: {  }
+    region: content
+  preview:
+    weight: 40
+    region: content
   subject:
     type: string_textfield
     weight: 4
@@ -50,4 +59,5 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
 hidden: {  }
