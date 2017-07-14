@@ -73,6 +73,6 @@ phpcs:
   haltonerror: true
   haltonwarning: true
 cm:
-  strategy: features
+  strategy: config-split
 vm:
   enable: true
