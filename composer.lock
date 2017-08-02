@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e1c479434be41bceea6a9799619ba8e4",
+    "content-hash": "ea6b63c3fed8df1d1779973ffa8030e8",
     "packages": [
         {
             "name": "acquia/blt",
@@ -190,16 +190,16 @@
         },
         {
             "name": "acquia/lightning",
-            "version": "2.1.3",
+            "version": "2.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/acquia/lightning.git",
-                "reference": "f7967472b4f3f1b92e92620044298aef88d83e4e"
+                "reference": "bf0bf27fdc38577fc6c6e78f052c229d211916be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/acquia/lightning/zipball/f7967472b4f3f1b92e92620044298aef88d83e4e",
-                "reference": "f7967472b4f3f1b92e92620044298aef88d83e4e",
+                "url": "https://api.github.com/repos/acquia/lightning/zipball/bf0bf27fdc38577fc6c6e78f052c229d211916be",
+                "reference": "bf0bf27fdc38577fc6c6e78f052c229d211916be",
                 "shasum": ""
             },
             "require": {
@@ -218,7 +218,6 @@
                 "drupal/entity_embed": "1.0.0-beta2",
                 "drupal/features": "^3.0",
                 "drupal/inline_entity_form": "^1.0",
-                "drupal/layout_plugin": "^1.0@alpha",
                 "drupal/media_entity": "^1.0",
                 "drupal/media_entity_document": "^1.0",
                 "drupal/media_entity_image": "^1.0",
@@ -227,7 +226,7 @@
                 "drupal/metatag": "^1.0",
                 "drupal/page_manager": "^4.0",
                 "drupal/panelizer": "^4.0",
-                "drupal/panels": "^4.0",
+                "drupal/panels": "4.1.0",
                 "drupal/pathauto": "^1.0",
                 "drupal/scheduled_updates": "1.0.0-alpha6",
                 "drupal/search_api": "^1.0",
@@ -241,11 +240,12 @@
                 "behat/mink": "~1.7",
                 "behat/mink-goutte-driver": "~1.2",
                 "composer/composer": "^1.4",
-                "drupal/coder": "^2.0",
+                "drupal/coder": "~8.2.0",
                 "drupal/console": "^1.0",
                 "drupal/devel": "^1.0",
-                "drupal/drupal-extension": "^3.2",
+                "drupal/drupal-extension": "~3.2.0",
                 "drush/drush": "8.1.11",
+                "grasmash/yaml-cli": "^1.0",
                 "jakoch/phantomjs-installer": "1.9.8",
                 "jcalderonzumba/gastonjs": "~1.0.2",
                 "jcalderonzumba/mink-phantomjs-driver": "~0.3.1",
@@ -280,7 +280,11 @@
                     },
                     "drupal/core": {
                         "2652138 - ImageFormatter does not support SVGs": "https://www.drupal.org/files/issues/2652138-41.patch",
-                        "1356276 - Allow profiles to provide a base/parent profile and load them in the correct order": "https://www.drupal.org/files/issues/1356276-303.patch"
+                        "1356276 - Allow profiles to provide a base/parent profile and load them in the correct order": "https://www.drupal.org/files/issues/1356276-303.patch",
+                        "2880374 - Experimental modules should not have warnings after being installed": "https://www.drupal.org/files/issues/2880374-remove-experimental-warnings-6.patch",
+                        "2880445 - Config sync should not throw a warning when not being writable": "https://www.drupal.org/files/issues/2880445-remove-config-write-warning-2.patch",
+                        "2869592 - Disabled update module shouldn't produce a status report warning": "https://www.drupal.org/files/issues/2869592-remove-update-warning-7.patch",
+                        "2885441 - EntityReferenceAutocompleteWidget should define its size setting as an integer": "https://www.drupal.org/files/issues/2885441-2.patch"
                     },
                     "drupal/entity_embed": {
                         "2832504 - Send the CKEditor instance ID to the embed.preview route": "https://www.drupal.org/files/issues/2832504-2.patch"
@@ -293,10 +297,13 @@
                         "2697 - Don't add profile dependencies to required_by array of modules": "https://patch-diff.githubusercontent.com/raw/drush-ops/drush/pull/2697.patch"
                     },
                     "drupal/entity_browser": {
-                        "2865928 - The View widget should filter based on field settings": "https://www.drupal.org/files/issues/entity-browser-view-context-2865928-8.patch"
+                        "2865928 - The View widget should filter based on field settings": "https://www.drupal.org/files/issues/entity-browser-view-context-2865928-8.patch",
+                        "2877751 - Inform users how many items they can add to a field that uses an entity browser": "https://www.drupal.org/files/issues/2877751-10.patch"
                     },
-                    "drupal/dropzonejs": {
-                        "2868449 - dropzonejs/integration library is missing a dependency on jquery.once": "https://www.drupal.org/files/issues/2868449-2.patch"
+                    "drupal/panels": {
+                        "2878684 - Use String.match to correlate regions when switching Layouts in Panels IPE": "https://www.drupal.org/files/issues/panels-ipe-2878684-3.patch",
+                        "2878650 - Improve Layout Picker styling in Panels IPE": "https://www.drupal.org/files/issues/panels-ipe-layout-picker-styling.patch",
+                        "2825034 - Form error messages do not appear in IPE": "https://www.drupal.org/files/issues/panels-ipe-propogate-errors-2825034-5.patch"
                     }
                 }
             },
@@ -311,7 +318,7 @@
                 "GPL-2.0+"
             ],
             "description": "The best of Drupal, curated by Acquia",
-            "time": "2017-05-03T20:10:36+00:00"
+            "time": "2017-07-05T19:11:52+00:00"
         },
         {
             "name": "asm89/stack-cors",
@@ -2472,7 +2479,13 @@
             "type": "drupal-core",
             "extra": {
                 "patches_applied": {
-                    "Clear Twig caches on deploys": "https://www.drupal.org/files/issues/2752961-90.patch"
+                    "Clear Twig caches on deploys": "https://www.drupal.org/files/issues/2752961-90.patch",
+                    "2652138 - ImageFormatter does not support SVGs": "https://www.drupal.org/files/issues/2652138-41.patch",
+                    "1356276 - Allow profiles to provide a base/parent profile and load them in the correct order": "https://www.drupal.org/files/issues/1356276-303.patch",
+                    "2880374 - Experimental modules should not have warnings after being installed": "https://www.drupal.org/files/issues/2880374-remove-experimental-warnings-6.patch",
+                    "2880445 - Config sync should not throw a warning when not being writable": "https://www.drupal.org/files/issues/2880445-remove-config-write-warning-2.patch",
+                    "2869592 - Disabled update module shouldn't produce a status report warning": "https://www.drupal.org/files/issues/2869592-remove-update-warning-7.patch",
+                    "2885441 - EntityReferenceAutocompleteWidget should define its size setting as an integer": "https://www.drupal.org/files/issues/2885441-2.patch"
                 }
             },
             "autoload": {
@@ -2823,7 +2836,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/dropzonejs-8.x-1.0-alpha7.zip",
-                "reference": "8.x-1.0-alpha7",
+                "reference": null,
                 "shasum": "62fc6d46cee1d5fa9885bab3e65b3638172311f6"
             },
             "require": {
@@ -3143,7 +3156,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/entity_browser-8.x-1.0.zip",
-                "reference": "8.x-1.0",
+                "reference": null,
                 "shasum": "6bd7bbcda1eebacc3685e9edaad2ad29b525b2ad"
             },
             "require": {
@@ -3165,6 +3178,10 @@
                 "drupal": {
                     "version": "8.x-1.0",
                     "datestamp": "1492678144"
+                },
+                "patches_applied": {
+                    "2865928 - The View widget should filter based on field settings": "https://www.drupal.org/files/issues/entity-browser-view-context-2865928-8.patch",
+                    "2877751 - Inform users how many items they can add to a field that uses an entity browser": "https://www.drupal.org/files/issues/2877751-10.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -3223,7 +3240,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/entity_embed-8.x-1.0-beta2.zip",
-                "reference": "8.x-1.0-beta2",
+                "reference": null,
                 "shasum": "21cdeb2b058efce461683aed9a8951053512dca7"
             },
             "require": {
@@ -3241,6 +3258,9 @@
                 "drupal": {
                     "version": "8.x-1.0-beta2",
                     "datestamp": "1476698339"
+                },
+                "patches_applied": {
+                    "2832504 - Send the CKEditor instance ID to the embed.preview route": "https://www.drupal.org/files/issues/2832504-2.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -4482,17 +4502,17 @@
         },
         {
             "name": "drupal/panels",
-            "version": "4.2.0",
+            "version": "4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/panels",
-                "reference": "8.x-4.2"
+                "reference": "8.x-4.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/panels-8.x-4.2.zip",
-                "reference": "8.x-4.2",
-                "shasum": "6991377531eafaec09f9c7a31e091592e455137b"
+                "url": "https://ftp.drupal.org/files/projects/panels-8.x-4.1.zip",
+                "reference": null,
+                "shasum": "cebfa67934408dbd9f181054ec640b1d2ef6ef3e"
             },
             "require": {
                 "drupal/core": "^8.3",
@@ -4507,8 +4527,13 @@
                     "dev-4.x": "4.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-4.2",
+                    "version": "8.x-4.1",
                     "datestamp": "1500497642"
+                },
+                "patches_applied": {
+                    "2878684 - Use String.match to correlate regions when switching Layouts in Panels IPE": "https://www.drupal.org/files/issues/panels-ipe-2878684-3.patch",
+                    "2878650 - Improve Layout Picker styling in Panels IPE": "https://www.drupal.org/files/issues/panels-ipe-layout-picker-styling.patch",
+                    "2825034 - Form error messages do not appear in IPE": "https://www.drupal.org/files/issues/panels-ipe-propogate-errors-2825034-5.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -4563,7 +4588,7 @@
         },
         {
             "name": "drupal/panels_ipe",
-            "version": "4.2.0",
+            "version": "4.1.0",
             "require": {
                 "drupal/core": "*",
                 "drupal/panels": "self.version"
@@ -4574,7 +4599,7 @@
                     "dev-4.x": "4.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-4.2",
+                    "version": "8.x-4.1",
                     "datestamp": "1500497642"
                 }
             },
@@ -5248,6 +5273,9 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "8.0.x-dev"
+                },
+                "patches_applied": {
+                    "2697 - Don't add profile dependencies to required_by array of modules": "https://patch-diff.githubusercontent.com/raw/drush-ops/drush/pull/2697.patch"
                 }
             },
             "autoload": {

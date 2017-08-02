@@ -93,13 +93,6 @@
         },
         "enable-patching": true,
         "patches": [],
-        "patches-ignore": {
-          "acquia/lightning": {
-            "drupal/dropzonejs": {
-              "2868449 - dropzonejs/integration library is missing a dependency on jquery.once": "https://www.drupal.org/files/issues/2868449-2.patch"
-            }
-          }
-        },
         "merge-plugin": {
             "require": [
                 "vendor/acquia/blt/composer.required.json"
@@ -125,7 +118,7 @@
         "drupal/field_group": "1.x-dev",
         "drupal/file_browser": "1.x-dev",
         "drupal/file_entity": "^2.0",
-        "drupal/footnotes": "2.0",
+        "drupal/footnotes": "^2.0",
         "drupal/geolocation": "1.x-dev",
         "drupal/google_analytics": "^2.0",
         "drupal/inline_entity_form": "^1.0",
@@ -150,6 +143,6 @@
         "drupal/foundation_layouts": "^6.0",
         "drupal/acquia_lift": "^3.4",
         "drupal/acquia_contenthub": "^1.13",
-        "acquia/lightning": "^2.1"
+        "acquia/lightning": "^2.1.6"
     }
 }
