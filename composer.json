@@ -149,6 +149,7 @@
         "oomphinc/composer-installers-extender": "^1.1",
         "drupal/foundation_layouts": "^6.0",
         "drupal/acquia_lift": "^3.4",
-        "drupal/acquia_contenthub": "^1.13"
+        "drupal/acquia_contenthub": "^1.13",
+        "acquia/lightning": "^2.1"
     }
 }
