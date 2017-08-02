@@ -77,3 +77,6 @@ cm:
   allow-overrides: true
 vm:
   enable: true
+disable-targets:
+  tests:
+    behat: true
