@@ -64,7 +64,6 @@ multisite:
 behat:
   paths:
     - '${repo.root}/tests/behat'
-  web-driver: selenium
 phpcs:
   filesets:
     - files.php.tests
@@ -77,6 +76,3 @@ cm:
   allow-overrides: true
 vm:
   enable: true
-disable-targets:
-  tests:
-    behat: true
