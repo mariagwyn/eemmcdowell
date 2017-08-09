@@ -1,28 +1,36 @@
 // Search Block
-form#search-block-form--2 {
+form#search-block-form {
   margin: .5em 0 1em;
+
   input {
     border: 0;
     margin: 0;
-    &[type="search"] {
+
+    &[type='search'] {
       border-radius: 1rem 0 0 1rem;
+      float: left;
       padding: 0 1rem;
-      float:left;
       width: 70%;
     }
-    &[type="submit"] {
-      padding: 3px 0;
+
+    &[type='submit'] {
       border-radius: 0 1rem 1rem 0;
+      padding: 3px 0;
       width: 30%;
     }
   }
 }
-.block-deip-foundation-powered {
+
+.block-deip-foundation-med-system-powered-by {
+  @include color-opacity($body-font-color, .7);
   position: relative;
-    span {
+
+  span {
     padding-left: 2em;
-    &:before {
-      background-image: url(../images/d8-item.svg);
+    font-size: .8rem;
+
+    &::before {
+      background-image: url('../images/d8-item.svg');
       background-position: center center;
       background-repeat: no-repeat;
       background-size: 100% auto;
@@ -31,6 +39,6 @@ form#search-block-form--2 {
       left: .1em;
       position: absolute;
       width: 1.6em;
-      }
     }
+  }
 }

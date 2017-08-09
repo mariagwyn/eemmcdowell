@@ -17,10 +17,11 @@ libraries:
 regions:
   meta_header: 'Meta Header'
   header: Header
-  help: 'Help'
+  help: Help
   page_top: 'Page top'
   page_bottom: 'Page bottom'
   highlighted: Highlighted
+  sub_header_bar: 'Sub Header Bar'
   content: Content
   sidebar_first: 'Left Sidebar'
   sidebar_second: 'Right Sidebar'
@@ -29,7 +30,6 @@ regions:
   footer_last: 'Footer last column'
   left_off_canvas: 'Left off canvas'
   right_off_canvas: 'Right off canvas'
-  sub_header_bar: 'Sub Header Bar'
 regions_hidden:
   page_top: 'Page Top'
   page_bottom: 'Page bottom'
@@ -43,3 +43,5 @@ features:
   - name
   - slogan
   - favicon
+  - comment_user_picture
+  - node_user_picture

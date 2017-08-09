@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * Default theme implementation for comments.
+ * Theme override for comments.
  *
  * Available variables:
  * - author: Comment author. Can be a link or plain text.
@@ -62,10 +62,9 @@
  * - entity: Entity the comments are attached to.
  *
  * @see template_preprocess_comment()
- *
- * @ingroup themeable
  */
 #}
+
 <article{{ attributes.addClass('js-comment row') }}>
   {#
     Hide the "new" indicator by default, let a piece of JavaScript ask the
@@ -73,9 +72,17 @@
     indicator here would break the render cache.
   #}
   <mark class="hidden" data-comment-timestamp="{{ new_indicator_timestamp }}"></mark>
-  <div{{ content_attributes }}>
-    {{ user_picture }}
-    <h3 class="meta-author {{ attributes.class }}">{{ author }}:</h3>
+
+  {% if title %}
+    {{ title_prefix }}
+    <h5{{ title_attributes.addClass("column small-12 comment-title") }}>{{ title }}</h5>
+    {{ title_suffix }}
+  {% endif %}
+  <footer class="column medium-3 small-12">
+    <p class="meta-author"><strong>{{ author }}</strong><br />
+    <p class="meta-date">{{ created }}<br />
+    <p class="permalink">{{ permalink }}</p>
+
     {#
       Indicate the semantic relationship between parent and child comments for
       accessibility. The list is difficult to navigate in a screen reader
@@ -85,9 +92,10 @@
       <p class="visually-hidden">{{ parent }}</p>
     {% endif %}
 
+  </footer>
+
+  <div{{ content_attributes.addClass('column medium-9 small-12') }}>
     {{ content|without('links') }}
-    <div class="meta-date fa fa-calendar-o">{{ created }}</div>
     <div class="comment-meta">{{ content.links }}</div>
-    <div class="permalink">{{ permalink }}</div>
   </div>
 </article>

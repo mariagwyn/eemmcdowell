@@ -3,6 +3,5 @@ global:
   css:
     base:
       css/deip_foundation.css: {}
-  dependencies:
-    - core/drupal
-    - core/jquery
+  js:
+    js/deip_foundation.js: {}

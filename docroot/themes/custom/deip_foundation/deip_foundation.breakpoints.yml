@@ -1,0 +1,35 @@
+deip_foundation.small:
+  label: small
+  mediaQuery: '(min-width: 0px)'
+  weight: 0
+  multipliers:
+    - 1x
+    - 2x
+deip_foundation.medium:
+  label: medium
+  mediaQuery: 'all and (min-width: 641px)'
+  weight: 1
+  multipliers:
+    - 1x
+    - 2x
+deip_foundation.large:
+  label: large
+  mediaQuery: 'all and (min-width: 1025px)'
+  weight: 1
+  multipliers:
+    - 1x
+    - 2x
+deip_foundation.xlarge:
+  label: xlarge
+  mediaQuery: 'all and (min-width: 1441px)'
+  weight: 1
+  multipliers:
+    - 1x
+    - 2x
+deip_foundation.xxlarge:
+  label: xxlarge
+  mediaQuery: 'all and (min-width: 1921px)'
+  weight: 1
+  multipliers:
+    - 1x
+    - 2x

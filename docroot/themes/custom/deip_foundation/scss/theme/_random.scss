@@ -1,0 +1,227 @@
+// Random Stuff
+// Font Awesome
+.fa {
+  &::before {
+    @include fa-icon-adj;
+  }
+}
+
+// Headers
+h1 {
+  &#site-name {
+    font-family: 'Forum', $serif;
+    font-size: 4em;
+    line-height: 1.6em;
+
+    a {
+      -webkit-text-fill-color: rgba($primary-color, .75); /* Will override color (regardless of order) */
+      -webkit-text-stroke-color: $primary-color;
+      -webkit-text-stroke-width: 1px;
+      color: $primary-color;
+    }
+  }
+
+  span.page-title {
+    margin-left: -.35em;
+    padding-bottom: .5em;
+  }
+}
+
+h3 {
+  &#site-slogan {
+    font-family: 'Forum', $serif;
+    font-size: 1.4rem;
+    line-height: 2em;
+    text-align: right;
+  }
+}
+
+// Article Meta
+.article-meta,
+.comment-meta {
+  font-size: .7em;
+
+  div {
+    margin-bottom: .25rem;
+  }
+}
+.content-meta {
+  @include color-opacity($body-font-color, .6);
+
+s  a {
+    @include color-opacity($secondary-color, .6);
+  }
+}
+
+.meta-date {
+  display: block;
+
+  &::before {
+    @include fa-icon-adj;
+    content: $fa-var-calendar-o;
+  }
+}
+
+.comment-meta {
+  float: left;
+
+  a {
+    &::before {
+      @include fa-icon-adj;
+    }
+  }
+
+  ul.links {
+    list-style: none;
+    margin-left: 0;
+
+    li {
+      display: inline-block;
+      float: left;
+      margin-right: 1em;
+    }
+  }
+}
+
+// Node Slim Sidebar Settings (Panel)
+.deip-slimsidebarnode {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .addtoany_list {
+    @include opacity(.6);
+  }
+}
+
+.deip-slimsidebarteaser {
+  h1 {
+    font-size: 2.4rem;
+  }
+
+  img {
+    margin-bottom: 1em;
+  }
+}
+// Node Comment Settings
+.views-field-comment-count a,
+.comment-comments a {
+  &::before {
+    @include fa-icon-adj;
+    content: $fa-var-comments-o;
+  }
+}
+.comment-add a {
+  &::before {
+    @include fa-icon-adj;
+    content: $fa-var-comment-o;
+  }
+}
+.comment-edit a {
+  &::before {
+    content: $fa-var-pencil;
+  }
+}
+
+.comment-delete a {
+  &::before {
+    content: $fa-var-ban;
+  }
+}
+
+.comment-reply a {
+  &::before {
+    content: $fa-var-reply;
+  }
+}
+
+// Tags and Vocabs
+.tags,
+.field-name-field-tags {
+  &::before {
+    @include fa-icon-adj;
+    @include fa-icon-rotate(90deg, 90deg);
+    content: $fa-var-tags;
+  }
+
+}
+
+.permalink {
+  float: left;
+}
+
+.filter-wrapper {
+  border: 0;
+}
+
+.breadcrumbs {
+  @include border-radius(1rem);
+
+  &::before {
+    background: $primary-color;
+    opacity: .4;
+  }
+}
+
+// pagination
+
+.pagination {
+  .current {
+    color: $body-background;
+    padding: 0;
+
+    a {
+      color: $body-background;
+    }
+  }
+
+  a {
+    color: $success-color;
+
+    &:hover {
+      color: $body-background;
+    }
+  }
+}
+
+.path-frontpage {
+  .layout__region--middle {
+    margin: 1em 0;
+    position: relative;
+
+    &::before {
+      background: $background-image no-repeat;
+      border-radius: $global-radius;
+      content: ' ';
+      display: block;
+      height: 100%;
+      opacity: .4;
+      position: absolute;
+      width: 100%;
+      z-index: -1;
+    }
+  }
+}
+
+.six-posts {
+  h4 {
+    font-size: 1.125rem;
+  }
+
+  .views-row {
+    min-height: 6em;
+  }
+
+  .views-field-created {
+    font-size: .8rem;
+  }
+}
+
+// Wordpress feed image settings
+.alignleft {
+  float: left;
+}
+
+.footnotes {
+  border-top: 0;
+}

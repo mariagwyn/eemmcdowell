@@ -1,0 +1,30 @@
+deip_slimsidebar:
+  label: 'DeiP: Slim Sidebar for Teasers'
+  category: 'DeiP Foundation'
+  template: layouts/deip_slimsidebarteaser
+  regions:
+    top:
+      label: Top
+    header:
+      label: Header
+    slim_sidebar:
+      label: Slim Sidebar
+    main:
+      label: Main
+    bottom:
+      label: Bottom
+deip_slimsidebar_node:
+  label: 'DeiP: Slim Sidebar for Node'
+  category: 'DeiP Foundation'
+  template: layouts/deip_slimsidebarnode
+  regions:
+    top:
+      label: Top
+    header:
+      label: Header
+    slim_sidebar:
+      label: Slim Sidebar
+    main:
+      label: Main
+    bottom:
+      label: Bottom

@@ -31,15 +31,7 @@
  *   added to make the site slogan visually hidden, but still accessible.
  *
  * Page content (in order of occurrence in the default page.html.twig):
- * - title_prefix: Additional output populated by modules, intended to be
- *   displayed in front of the main title tag that appears in the template.
- * - title: The page title, for use in the actual content.
- * - title_suffix: Additional output populated by modules, intended to be
- *   displayed after the main title tag that appears in the template.
- * - tabs: Tabs linking to any sub-pages beneath the current page (e.g., the
- *   view and edit tabs when displaying a node).
- * - action_links: Actions local to the page, such as "Add menu" on the menu
- *   administration interface.
+ * - messages: Status and error messages. Should be displayed prominently.
  * - node: Fully loaded node, if there is an automatically-loaded node
  *   associated with the page and the node ID is the second argument in the
  *   page's path (e.g. node/12345 and node/12345/revisions, but not
@@ -56,7 +48,6 @@
  * - page.footer_first
  * - page.footer_middle
  * - page.footer_last
- * - search_bar
  *
  * @see template_preprocess_page()
  * @see bartik_preprocess_page()
@@ -64,20 +55,21 @@
  */
 #}
 
-<section class="off-canvas-wrap" data-offcanvas>
-  <div class="inner-wrap">
-    <aside class="left-off-canvas-menu">
+<div class="off-canvas-wrapper">
+  <div class="inner-wrap off-canvas-wrapper-inner" id="inner-wrap" data-off-canvas-wrapper>
+    <aside id="left-off-canvas-menu" class="off-canvas left-off-canvas-menu position-left" role="complementary" data-off-canvas>
       {{ page.left_off_canvas }}
     </aside>
 
-    <aside class="right-off-canvas-menu">
+    <aside id="right-off-canvas-menu" class="off-canvas right-off-canvas-menu position-right" role="complementary" data-off-canvas>
       {{ page.right_off_canvas }}
     </aside>
 
+    <div class="off-canvas-content" data-off-canvas-content>
       {% if page.meta_header %}
         {% if meta_header_grid %}
           <div class="row">
-            <div class="large-12 column">
+            <div class="large-12 columns">
         {% endif %}
         {{ page.meta_header }}
         {% if meta_header_grid %}
@@ -86,19 +78,32 @@
         {% endif %}
       {% endif %}
 
-      {% if page.header %}
-        <header id="page-header">
+      <header class="page-header" role="banner" aria-label="{{ 'Site header'|t }}">
+        {% if linked_site_name or linked_logo %}
+          <div class="large-2 columns">
+            {% if linked_logo %}
+              {{ linked_logo }}
+            {% endif %}
+          </div>
+          <div class="left large-4 columns">
+            {% if is_front %}
+              <h1 id="site-name">{{ linked_site_name }}</h1>
+            {% else %}
+              <div id="site-name">{{ linked_site_name }}</div>
+            {% endif %}
+          </div>
+        {% endif %}
+        {% if page.header %}
           <div class="row">
-              <div class="row">
-                <div class="large-12 column">
-                  {{ page.header }}
-                </div>
-              </div>
-        </header>
-      {% endif %}
+          <div class="large-12 columns">
+            {{ page.header }}
+          </div>
+          </row>
+        {% endif %}
+      </header>
 
-      {% if show_account_info %}
-        <div class="row something">
+      <div class="row">
+        {% if show_account_info %}
           <div class="{{ site_slogan ? 'large-6' : 'large-4 columns large-offset-8' }} columns hide-for-small">
             <p>
               {% if logged_in %}
@@ -129,15 +134,15 @@
               </p>
             </div>
           </div>
-        </div>
         {% endif %}
+      </div>
 
-        {% if messages and not zurb_foundation_messages_modal %}
-        <div class="l-messages row">
-          <div class="large-12 columns">
-            {{ messages }}
-          </div>
+      {% if messages and not zurb_foundation_messages_modal %}
+      <div class="l-messages row">
+        <div class="large-12 columns">
+          {{ messages }}
         </div>
+      </div>
       {% endif %}
 
       {% if page.help %}
@@ -150,14 +155,14 @@
 
       <div class="row">
         {% if page.sub_header_bar %}
-          <div id="sub-header">
-            <div class=" {{ main_grid }} ">
+          <div class="sub-header">
+          <div class=" {{ main_grid }} ">
             {{ page.sub_header_bar }}
             </div>
           </div>
         {% endif %}
 
-        <div id="main" class="{{ main_grid }} columns">
+        <main id="main" class="{{ main_grid }} columns" role="main">
           {% if page.highlighted %}
             {% spaceless %}
               {{ page.highlighted }}
@@ -165,23 +170,10 @@
           {% endif %}
           <a id="main-content"></a>
           {% if breadcrumb %} {{ breadcrumb }} {% endif %}
-          {% if title and not is_front %}
-            {{ title_prefix }}
-            <h1 id="page-title" class="title">{{ title }}</h1>
-            {{ title_suffix }}
-          {% endif %}
-
-          {% if tabs %}
-            {{ tabs }}
-            {% if tabs2 %} {{ tabs2 }} {% endif %}
-          {% endif %}
-          {% if action_links %}
-            <ul class="action-links">
-              {{ action_links }}
-            </ul>
-          {% endif %}
-          {{ page.content }}
-        </div>
+          <section>
+            {{ page.content }}
+          </section>
+        </main>
         {% if page.sidebar_first %}
           <div id="sidebar-first" class="{{ sidebar_first_grid }} columns sidebar ">
             {{ page.sidebar_first }}
@@ -196,23 +188,28 @@
       {% if page.footer_first or page.footer_middle or page.footer_last %}
         <footer class="row page-footer">
           {% if page.footer_first %}
-            <div id="footer-first" class="small-12 medium-4 columns">
+            <div id="footer-first" class="large-4 columns">
               {{ page.footer_first }}
             </div>
           {% endif %}
           {% if page.footer_middle %}
-            <div id="footer-middle" class="small-12 medium-4 columns">
+            <div id="footer-middle" class="large-4 columns">
               {{ page.footer_middle }}
             </div>
           {% endif %}
           {% if page.footer_last %}
-            <div id="footer-last" class="small-12 medium-4 columns">
+            <div id="footer-last" class="large-4 columns">
               {{ page.footer_last }}
             </div>
           {% endif %}
         </footer>
       {% endif %}
-    <a class="exit-off-canvas"></a>
-
+      <div class="bottom-bar panel">
+        <div class="row">
+          <div class="large-12 columns">
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</section>
+</div>

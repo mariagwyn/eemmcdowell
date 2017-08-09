@@ -6,87 +6,77 @@
 //   "base/_common.scss" file. You may not need to write any code.
 
 html {
-  font: #{($font-size-base / 16px * 100%)}/#{$line-height-general} $serif;
+  //font: #{($font-size-base / 16px * 100%)}/#{$line-height-general} $serif;
 }
+
 body {
   color: $body-font-color;
 }
 
 // Headings
-//------------------------------------------
 // h1, h2, h3,
 // h4, h5, h6 {}
-h1, h2 {
-  color: $header-font-color;
+h1,
+h2 {
+  color: $header-color;
+
   &.comments {
-    border-bottom: 1px solid $header-font-color;
-  }
-}
-h1 {
-  &#site-name {
-    font-size: 6em;
-    font-family: "Forum", $serif;
-    line-height: 1em;
-    a {
-      color: $primary-color;
-   -webkit-text-fill-color: rgba($primary-color, .75); /* Will override color (regardless of order) */
-   -webkit-text-stroke-width: 1px;
-   -webkit-text-stroke-color: $primary-color;
-    }
-  }
-  span.page-title {
-    padding-bottom: .5em;
-    margin-left: -.35em;
-  }
-}
-h3 {
-  &#site-slogan {
-    font-family: "Forum", $serif;
-    text-align: right;
-    line-height: 1.8em;
-  }
-}
-// Paragraph
-//------------------------------------------
-p {
-  hyphens: auto;
-  word-wrap: break-word;
-  font: #{($font-size-base / 16px * 110%)}/#{$line-height-text} $serif;
-}
-// Anchors
-//-----------------------------------------------------------------------------
-a {
-  &:link, &:visited {
-    text-decoration: none;
-    color: $color-link;
-    outline: none;
-    transition: color 0.25s;
-  }
-  &:hover, &:focus {
-    text-decoration: none;
-    color: $color-active;
-  }
-  &.active {
-    color: $color-active;
+    border-bottom: 1px solid $header-color;
   }
 }
 
+// Paragraph
+p {
+  //font: #{($font-size-base / 16px * 110%)}/#{$line-height-text} $serif;
+  hyphens: auto;
+  word-wrap: break-word;
+}
+
 blockquote {
-  border:none;
+  @include color-opacity($body-font-color, .7);
+  border: 0;
   position: relative;
-  @include color-opacity($body-font-color, 0.7);
+
   &::before {
-      @include fa-icon-adj;
-      @include color-opacity($header-font-color, 0.2);
-      content: $fa-var-quote-left;
-      display: block;
-      font-size: 6rem;
-      left: -1.6rem;
-      line-height: 1;
-      position: absolute;
-      top: -1rem;
-      z-index: -1;
+    @include fa-icon-adj;
+    @include color-opacity($header-color, .2);
+    content: $fa-var-quote-left;
+    display: block;
+    font-size: 6rem;
+    left: -1.6rem;
+    line-height: 1;
+    position: absolute;
+    top: -1rem;
+    z-index: -1;
   }
+}
+
+figure {
+  &.left,
+  &.align-left {
+    margin: 0 1em 1em 0;
+  }
+
+  &.right,
+  &.align-right {
+    margin: 0 0 1em 1em;
+  }
+
+  &.wp-caption {
+
+    img {
+      @include border-radius(1em);
+    }
+  }
+}
+
+img {
+  @include border-radius(1em);
+}
+
+hr {
+  border: solid rgba($primary-color, .25);
+  border-width: 1px 0 0;
 }
 
 // Form Input

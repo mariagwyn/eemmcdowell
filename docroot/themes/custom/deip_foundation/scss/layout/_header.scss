@@ -1,51 +1,49 @@
 // Non-modular or client styles for .l-header region.
-
-header {
-  &#page-header {
-  width: 100%;
+.page-header {
+  border-bottom: 1px solid $primary-color;
   height: 6rem;
   margin-bottom: 1em;
-  &:before {
+  width: 100%;
+
+  &::before {
+    background: $background-image repeat-x;
     content: ' ';
     display: block;
+    height: 100%;
+    height: 6rem;
+    opacity: .6;
     position: absolute;
     width: 100%;
-    height: 100%;
     z-index: -1;
-    opacity: 0.6;
-    background: $background-image repeat-x;
-    height: 6rem;
   }
-  .row {
-    position:relative;
-  }
+
+  &.row {
+    position: relative;
+    width: 100%;
   }
 }
 
-#block-deip-foundation-branding {
-}
-#header-first {
-  &:before {
-    border-radius: 0 0 0 1rem;
-    //background: $primary-color;
-  }
-}
-#header-middle {
-  &:before {
-    //background: $success-color;
-  }
-}
-#header-last {
-  &:before {
-    border-radius: 0 0 1rem 0;
-    //background: $highlight-color;
+.top-bar {
+  a {
+    color: $body-background;
   }
 }
 
-#sub-header {
-  display: inline-block;
-  width: 100%;
-  border: 1px solid rgba($primary-color, .25);
+.sub-header {
+  //border: 1px solid rgba($primary-color, .25);
   border-width: 0 0 1px 0;
+  display: inline-block;
   margin-bottom: 1rem;
+  width: 100%;
+}
+
+.node-header {
+  border-bottom: 1px solid $secondary-color;
+  margin: 2em 0;
+}
+
+.menu-text {
+  padding: .2rem 1rem;
+  padding-bottom: 0;
+  padding-top: 0;
 }
