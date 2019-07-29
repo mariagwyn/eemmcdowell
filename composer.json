@@ -97,7 +97,7 @@
         "drupal/adminimal_theme": "^1.0",
         "drupal/zurb_foundation": "6.x-dev",
         "acquia/blt": "^8.9.0",
-        "acquia/lightning": "^2.2"
+        "acquia/lightning": "2.2.8"
     },
     "config": {
         "platform": {
