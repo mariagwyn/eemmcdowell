@@ -6,11 +6,11 @@ use Exception;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Config\Config;
 use Drupal\Core\Entity\EntityManagerInterface;
-use Drupal\node\Entity\NodeType;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Link;
+use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Url;
+use Drupal\Component\Uuid\Uuid;
 use Drupal\acquia_lift\Service\Helper\SettingsHelper;
 
 /**
@@ -23,6 +23,13 @@ class AdminSettingsForm extends ConfigFormBase {
    * @var \Drupal\Core\Entity\EntityManagerInterface
    */
   private $entityManager;
+
+  /**
+   * The Messenger service.
+   *
+   * @var \Drupal\Core\Messenger\MessengerInterface
+   */
+  protected $messenger;
 
   /**
    * {@inheritdoc}
@@ -45,17 +52,25 @@ class AdminSettingsForm extends ConfigFormBase {
    *
    * @param \Drupal\Core\Entity\EntityManagerInterface $entity_manager
    *   The entity manager.
+   * @param \Drupal\Core\Messenger\MessengerInterface|null $messenger
+   *   The messenger service (or null).
    */
-  public function __construct(EntityManagerInterface $entity_manager) {
+  public function __construct(EntityManagerInterface $entity_manager, $messenger) {
     $this->entityManager = $entity_manager;
+    $this->messenger = $messenger;
   }
 
   /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container) {
+    // MessengerInterface was introduced by Drupal 8.5.
+    // This code is for backwards-compatibility to 8.4 and below.
+    $messenger = $container->has('messenger') ? $container->get('messenger') : null;
+
     return new static(
-      $container->get('entity.manager')
+      $container->get('entity.manager'),
+      $messenger
     );
   }
 
@@ -78,7 +93,7 @@ class AdminSettingsForm extends ConfigFormBase {
     $form['udf_touch_mappings'] = $this->buildUdfMappingsForm('touch');
     $form['udf_event_mappings'] = $this->buildUdfMappingsForm('event');
     $form['visibility'] = $this->buildVisibilityForm();
-    $form['advanced_configuration'] = $this->buildAdvancedConfigurationForm();
+    $form['advanced'] = $this->buildAdvancedForm();
 
     return parent::buildForm($form, $form_state);
   }
@@ -94,14 +109,14 @@ class AdminSettingsForm extends ConfigFormBase {
       SettingsHelper::isInvalidCredentialSiteId($credential_settings['site_id']) ||
       SettingsHelper::isInvalidCredentialAssetsUrl($credential_settings['assets_url'])
     ) {
-      drupal_set_message(t('The Acquia Lift module requires a valid Account ID, Site ID, and Assets URL to complete activation.'), 'warning');
+      $this->setFormMessage(t('The Acquia Lift module requires a valid Account ID, Site ID, and Assets URL to complete activation.'), 'warning');
     }
 
     // Validate URLs and check connections.
     if (isset($credential_settings['decision_api_url']) && SettingsHelper::isInvalidCredentialDecisionApiUrl($credential_settings['decision_api_url']) ||
       isset($credential_settings['oauth_url']) && SettingsHelper::isInvalidCredentialOauthUrl($credential_settings['oauth_url'])
     ) {
-      drupal_set_message(t('Acquia Lift module requires valid Decision API URL and Authentication URL to be activate.'), 'warning');
+      $this->setFormMessage(t('Acquia Lift module requires valid Decision API URL and Authentication URL to be activate.'), 'warning');
     }
   }
 
@@ -239,13 +254,11 @@ class AdminSettingsForm extends ConfigFormBase {
     $field_mappings_settings = $this->config('acquia_lift.settings')->get('field_mappings');
     $field_names = $this->getTaxonomyTermFieldNames();
 
-    $taxonomy_vocabulary_url_text = t('Taxonomy Vocabulary');
-    $taxonomy_vocabulary_url = Url::fromRoute('entity.taxonomy_vocabulary.collection', [], ['attributes' => ['target' => '_blank']]);
-    $taxonomy_vocabulary_link = Link::fromTextAndUrl($taxonomy_vocabulary_url_text, $taxonomy_vocabulary_url)->toString();
-
     $form = [
       '#title' => t('Field Mappings'),
-      '#description' => t('Create ') . $taxonomy_vocabulary_link . t(' and map to "content section", "content keywords", and "persona" fields.'),
+      '#description' => $this->t('Create <a href="@url" target="_blank">Taxonomy vocabularies</a> and map to "content section", "content keywords", and "persona" fields.', [
+        '@url' => Url::fromRoute('entity.taxonomy_vocabulary.collection')->toString(),
+      ]),
       '#type' => 'details',
       '#tree' => TRUE,
       '#group' => 'data_collection_settings',
@@ -293,14 +306,14 @@ class AdminSettingsForm extends ConfigFormBase {
 
     $field_mappings_settings = $this->config('acquia_lift.settings')->get('udf_' . $type . '_mappings');
     $field_names = $this->getTaxonomyTermFieldNames();
-    $taxonomy_vocabulary_url_text = t('Taxonomy Vocabulary');
-    $taxonomy_vocabulary_url = Url::fromRoute('entity.taxonomy_vocabulary.collection', [], ['attributes' => ['target' => '_blank']]);
-    $taxonomy_vocabulary_link = Link::fromTextAndUrl($taxonomy_vocabulary_url_text, $taxonomy_vocabulary_url)->toString();
     $udf_limit = SettingsHelper::getUdfLimitsForType($type);
 
     $form = [
       '#title' => t('User @type Mappings', ['@type' => ucfirst($type)]),
-      '#description' => t('Map taxonomy terms to Visitor Profile @type fields in Acquia Lift. Select a Taxonomy Reference Field that, if present, will map the value of the specified field to the Acquia Lift Profile for that specific visitor. No options available? Create ',  ['@type' => $type]) . $taxonomy_vocabulary_link . t(' and map the corresponding value.'),
+      '#description' => $this->t('Map taxonomy terms to Visitor Profile @type fields in Acquia Lift. Select a Taxonomy Reference Field that, if present, will map the value of the specified field to the Acquia Lift Profile for that specific visitor. No options available? Create <a href="@url" target="_blank">Taxonomy vocabularies</a> and map the corresponding value.', [
+        '@url' => Url::fromRoute('entity.taxonomy_vocabulary.collection')->toString(),
+        '@type' => $type,
+      ]),
       '#type' => 'details',
       '#tree' => TRUE,
       '#group' => 'data_collection_settings',
@@ -365,13 +378,20 @@ class AdminSettingsForm extends ConfigFormBase {
   }
 
   /**
-   * Display advanced configurations forms.
+   * Display advanced form.
    *
    * @return array
-   *   The render array for the advanced configuration form.
+   *   The render array for the advanced form.
    */
-  private function buildAdvancedConfigurationForm() {
-    $settings = $this->config('acquia_lift.settings')->get('advanced');
+  private function buildAdvancedForm() {
+    $credential_settings = $this->config('acquia_lift.settings')->get('credential');
+    $advanced_settings = $this->config('acquia_lift.settings')->get('advanced');
+
+    // Bootstrap mode was introduced in a update. Instead of providing a update
+    // hook, we just handle the "missing default value" case in code.
+    if (!isset($advanced_settings['bootstrap_mode'])) {
+      $advanced_settings['bootstrap_mode'] = 'auto';
+    }
 
     $form = [
       '#title' => t('Advanced configuration'),
@@ -379,12 +399,33 @@ class AdminSettingsForm extends ConfigFormBase {
       '#tree' => TRUE,
       '#open' => FALSE,
     ];
+    $form['bootstrap_mode'] = [
+      '#type' => 'radios',
+      '#title' => t('Bootstrap Mode'),
+      '#description' => t('"Auto" means Lift scripts will automatically bootstrap and act as quickly as possible. "Manual" means Lift scripts will load but withhold itself from collecting data, delivering content, and allowing admins to login; this option is useful when you want to do things on your site (e.g. check a cookie, set field value) before you want Lift to start bootstrapping; to resume Lift\'s bootstrapping process, call AcquiaLiftPublicApi.personalize().'),
+      '#default_value' => $advanced_settings['bootstrap_mode'],
+      '#options' => [
+        'auto' => t('Auto'),
+        'manual' => t('Manual')
+      ],
+    ];
     $form['content_replacement_mode'] = [
       '#type' => 'radios',
       '#title' => t('Content replacement mode'),
       '#description' => t('The default, site-wide setting for <a href="https://docs.acquia.com/lift/drupal/3/config/trusted" target="_blank">content replacement mode</a>.'),
-      '#default_value' => $settings['content_replacement_mode'],
-      '#options' => ['trusted' => t('Trusted'), 'untrusted' => t('Untrusted')],
+      '#default_value' => $advanced_settings['content_replacement_mode'],
+      '#options' => [
+        'trusted' => t('Trusted'),
+        'untrusted' => t('Untrusted'),
+        'customized' => t('Customized')
+      ],
+    ];
+    $form['content_origin'] = [
+      '#type' => 'textfield',
+      '#title' => t('Content Hub Origin Site UUID'),
+      '#description' => t('Show content in Experience Builder content list from only one origin site, specified by its Content Hub Site UUID. Leave empty to show content from all sites.'),
+      '#default_value' => $credential_settings['content_origin'],
+      '#required' => FALSE,
     ];
 
     return $form;
@@ -395,7 +436,7 @@ class AdminSettingsForm extends ConfigFormBase {
    */
   public function validateForm(array &$form, FormStateInterface $form_state) {
     parent::validateForm($form, $form_state);
-    $this->validateCredentialvalues($form, $form_state);
+    $this->validateCredentialValues($form, $form_state);
   }
 
   /**
@@ -412,7 +453,7 @@ class AdminSettingsForm extends ConfigFormBase {
     $this->setUdfMappingsValues($settings, $values['udf_event_mappings'], 'event');
     $this->setUdfMappingsValues($settings, $values['udf_touch_mappings'], 'touch');
     $this->setVisibilityValues($settings, $values['visibility']);
-    $this->setAdvancedConfigurationValues($settings, $values['advanced_configuration']);
+    $this->setAdvancedValues($settings, $values['advanced']);
 
     $settings->save();
 
@@ -449,6 +490,11 @@ class AdminSettingsForm extends ConfigFormBase {
     // Validate Auth URL.
     if (SettingsHelper::isInvalidCredentialOauthUrl($values['credential']['oauth_url'])) {
       $form_state->setError($form['credential']['oauth_url'], $this->t('Authentication URL is an invalid URL.'));
+    }
+
+    // Validate Content Hub Origin Site UUID.
+    if (!empty($values['advanced']['content_origin']) && !Uuid::isValid($values['advanced']['content_origin'])) {
+      $form_state->setError($form['advanced']['content_origin'], $this->t('Content Hub Origin Site UUID is not a valid UUID.'));
     }
   }
 
@@ -536,11 +582,11 @@ class AdminSettingsForm extends ConfigFormBase {
   private function checkConnection($name, $base_uri, $path, $expected_status_code = 200) {
     $responseInfo = SettingsHelper::pingUri($base_uri, $path);
     if (empty($responseInfo)) {
-      drupal_set_message(t('Acquia Lift module could not reach the specified :name URL.', [':name' => $name]), 'error');
+      $this->setFormMessage(t('Acquia Lift module could not reach the specified :name URL.', [':name' => $name]), 'error');
       return;
     }
     if ($responseInfo['statusCode'] !== $expected_status_code) {
-      drupal_set_message(t('Acquia Lift module has successfully connected to :name URL, but received status code ":statusCode" with the reason ":reasonPhrase".', [
+      $this->setFormMessage(t('Acquia Lift module has successfully connected to :name URL, but received status code ":statusCode" with the reason ":reasonPhrase".', [
         ':name' => $name,
         ':statusCode' => $responseInfo['statusCode'],
         ':reasonPhrase' => $responseInfo['reasonPhrase'],
@@ -621,14 +667,36 @@ class AdminSettingsForm extends ConfigFormBase {
   }
 
   /**
-   * Sets the advanced configuration values.
+   * Sets the advanced values.
    *
    * @param \Drupal\Core\Config\Config $settings
    *   Acquia Lift config settings
    * @param array $values
-   *   Advanced configuration values
+   *   Advanced values
    */
-  private function setAdvancedConfigurationValues(Config $settings, array $values) {
+  private function setAdvancedValues(Config $settings, array $values) {
+    $settings->set('advanced.bootstrap_mode', $values['bootstrap_mode']);
     $settings->set('advanced.content_replacement_mode', $values['content_replacement_mode']);
+    $settings->set('credential.content_origin', trim($values['content_origin']));
+  }
+
+  /**
+   * Sets form message.
+   *
+   * MessengerInterface was introduced by Drupal 8.5.
+   * This code is for backwards-compatibility to 8.4 and below.
+   *
+   * @param string $message
+   *   Message to show on form.
+   * @param string $type
+   *   Type of the message to show on form.
+   */
+  private function setFormMessage($message, $type) {
+    if (!$this->messenger) {
+      drupal_set_message($message, $type);
+      return;
+    }
+    $messengerFunctionName = 'add' . ucwords($type);
+    $this->messenger->$messengerFunctionName($message);
   }
 }

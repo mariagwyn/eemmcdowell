@@ -2,7 +2,6 @@
 
 namespace Drupal\search_api\Plugin\views\filter;
 
-use Drupal\Core\Cache\UncacheableDependencyTrait;
 use Drupal\views\Plugin\views\filter\LanguageFilter;
 
 /**
@@ -14,14 +13,13 @@ use Drupal\views\Plugin\views\filter\LanguageFilter;
  */
 class SearchApiLanguage extends LanguageFilter {
 
-  use UncacheableDependencyTrait;
   use SearchApiFilterTrait;
 
   /**
    * {@inheritdoc}
    */
   public function query() {
-    $substitutions = self::queryLanguageSubstitutions();
+    $substitutions = static::queryLanguageSubstitutions();
     foreach ($this->value as $i => $value) {
       if (isset($substitutions[$value])) {
         $this->value[$i] = $substitutions[$value];

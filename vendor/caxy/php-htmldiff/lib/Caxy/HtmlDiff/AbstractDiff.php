@@ -2,6 +2,8 @@
 
 namespace Caxy\HtmlDiff;
 
+use Caxy\HtmlDiff\Util\MbStringUtil;
+
 /**
  * Class AbstractDiff.
  */
@@ -80,6 +82,11 @@ abstract class AbstractDiff
     protected $resetCache = false;
 
     /**
+     * @var MbStringUtil
+     */
+    protected $stringUtil;
+
+    /**
      * AbstractDiff constructor.
      *
      * @param string     $oldText
@@ -90,7 +97,7 @@ abstract class AbstractDiff
      */
     public function __construct($oldText, $newText, $encoding = 'UTF-8', $specialCaseTags = null, $groupDiffs = null)
     {
-        mb_substitute_character(0x20);
+        $this->stringUtil = new MbStringUtil($oldText, $newText);
 
         $this->setConfig(HtmlDiffConfig::create()->setEncoding($encoding));
 
@@ -390,43 +397,12 @@ abstract class AbstractDiff
     }
 
     /**
-     * @param string $str
-     * @param string $start
-     * @param string $end
-     *
-     * @return string
-     */
-    protected function getStringBetween($str, $start, $end)
-    {
-        $expStr = explode($start, $str, 2);
-        if (count($expStr) > 1) {
-            $expStr = explode($end, $expStr[ 1 ]);
-            if (count($expStr) > 1) {
-                array_pop($expStr);
-
-                return implode($end, $expStr);
-            }
-        }
-
-        return '';
-    }
-
-    /**
      * @param string $html
      *
      * @return string
      */
     protected function purifyHtml($html)
     {
-        if (class_exists('Tidy') && false) {
-            $config = array('output-xhtml' => true, 'indent' => false);
-            $tidy = new tidy();
-            $tidy->parseString($html, $config, 'utf8');
-            $html = (string) $tidy;
-
-            return $this->getStringBetween($html, '<body>');
-        }
-
         return $this->purifier->purify($html);
     }
 
@@ -461,7 +437,7 @@ abstract class AbstractDiff
      */
     protected function isPartOfWord($text)
     {
-        return ctype_alnum(str_replace($this->config->getSpecialCaseChars(), '', $text));
+        return $this->ctypeAlphanumUnicode(str_replace($this->config->getSpecialCaseChars(), '', $text));
     }
 
     /**
@@ -474,6 +450,7 @@ abstract class AbstractDiff
         $mode = 'character';
         $current_word = '';
         $words = array();
+        $keepNewLines = $this->getConfig()->isKeepNewLines();
         foreach ($characterString as $i => $character) {
             switch ($mode) {
                 case 'character':
@@ -484,15 +461,15 @@ abstract class AbstractDiff
 
                     $current_word = '<';
                     $mode = 'tag';
-                } elseif (preg_match("/\s/", $character)) {
+                } elseif (preg_match("/\s/u", $character)) {
                     if ($current_word !== '') {
                         $words[] = $current_word;
                     }
-                    $current_word = preg_replace('/\s+/S', ' ', $character);
+                    $current_word = $keepNewLines ? $character : preg_replace('/\s+/Su', ' ', $character);
                     $mode = 'whitespace';
                 } else {
                     if (
-                        (ctype_alnum($character) && (strlen($current_word) == 0 || $this->isPartOfWord($current_word))) ||
+                        (($this->ctypeAlphanumUnicode($character) === true) && ($this->stringUtil->strlen($current_word) === 0 || $this->isPartOfWord($current_word))) ||
                         (in_array($character, $this->config->getSpecialCaseChars()) && isset($characterString[$i + 1]) && $this->isPartOfWord($characterString[$i + 1]))
                     ) {
                         $current_word .= $character;
@@ -508,7 +485,7 @@ abstract class AbstractDiff
                     $words[] = $current_word;
                     $current_word = '';
 
-                    if (!preg_match('[^\s]', $character)) {
+                    if (!preg_match('[^\s]u', $character)) {
                         $mode = 'whitespace';
                     } else {
                         $mode = 'character';
@@ -524,9 +501,9 @@ abstract class AbstractDiff
                     }
                     $current_word = '<';
                     $mode = 'tag';
-                } elseif (preg_match("/\s/", $character)) {
+                } elseif (preg_match("/\s/u", $character)) {
                     $current_word .= $character;
-                    $current_word = preg_replace('/\s+/S', ' ', $current_word);
+                    if (!$keepNewLines) $current_word = preg_replace('/\s+/Su', ' ', $current_word);
                 } else {
                     if ($current_word != '') {
                         $words[] = $current_word;
@@ -553,7 +530,7 @@ abstract class AbstractDiff
      */
     protected function isStartOfTag($val)
     {
-        return $val == '<';
+        return $val === '<';
     }
 
     /**
@@ -563,7 +540,7 @@ abstract class AbstractDiff
      */
     protected function isEndOfTag($val)
     {
-        return $val == '>';
+        return $val === '>';
     }
 
     /**
@@ -573,7 +550,7 @@ abstract class AbstractDiff
      */
     protected function isWhiteSpace($value)
     {
-        return !preg_match('[^\s]', $value);
+        return !preg_match('[^\s]u', $value);
     }
 
     /**
@@ -584,6 +561,16 @@ abstract class AbstractDiff
     protected function explode($value)
     {
         // as suggested by @onassar
-        return preg_split('//u', $value);
+        return preg_split('//u', $value, -1, PREG_SPLIT_NO_EMPTY);
+    }
+
+    /**
+     * @param string $str
+     *
+     * @return bool
+     */
+    protected function ctypeAlphanumUnicode($str)
+    {
+        return preg_match("/^[a-zA-Z0-9\pL]+$/u", $str) === 1;
     }
 }

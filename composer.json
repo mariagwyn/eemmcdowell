@@ -149,7 +149,7 @@
         "drupal/adminimal_theme": "^1.0",
         "drupal/zurb_foundation": "6.x-dev",
         "mariagwyn/mgm_tools": "master",
-        "acquia/blt": "^9.0.0",
+        "acquia/blt": "^8.0.0",
         "enyo/dropzone": "^4.2.0",
         "desandro/masonry": "^4.1",
         "desandro/imagesloaded": "^4.1",

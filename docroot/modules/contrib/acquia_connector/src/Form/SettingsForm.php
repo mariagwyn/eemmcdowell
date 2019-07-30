@@ -4,7 +4,6 @@ namespace Drupal\acquia_connector\Form;
 
 use Drupal\acquia_connector\Helper\Storage;
 use Drupal\acquia_connector\Client;
-use Drupal\acquia_connector\Migration;
 use Drupal\Core\Url;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Form\ConfigFormBase;
@@ -153,15 +152,13 @@ class SettingsForm extends ConfigFormBase {
       '#title' => $this->t('Name'),
       '#maxlength' => 255,
       '#required' => TRUE,
-      '#default_value' => $config->get('spi.site_name'),
+      '#default_value' => $config->get('spi.site_name') ?: \Drupal::service('acquia_connector.spi')->getAcquiaHostedName(),
     );
 
     $acquia_hosted = \Drupal::service('acquia_connector.spi')->checkAcquiaHosted();
 
     if ($acquia_hosted) {
-      $form['identification']['#description'] = $this->t('Acquia hosted sites are automatically provided with a name and machine name.');
-      $form['identification']['site']['name']['#default_value'] = \Drupal::service('acquia_connector.spi')->getAcquiaHostedName();
-      $form['identification']['site']['name']['#disabled'] = TRUE;
+      $form['identification']['#description'] = $this->t('Acquia hosted sites are automatically provided with a machine name.');
     }
 
     $form['identification']['site']['machine_name'] = array(
@@ -177,7 +174,7 @@ class SettingsForm extends ConfigFormBase {
     );
 
     if ($acquia_hosted) {
-      $form['identification']['site']['machine_name']['#default_value'] = \Drupal::service('acquia_connector.spi')->getAcquiaHostedMachineName();
+      $form['identification']['site']['machine_name']['#default_value'] = $this->config('acquia_connector.settings')->get('spi.site_machine_name') ?: \Drupal::service('acquia_connector.spi')->getAcquiaHostedMachineName();
       $form['identification']['site']['machine_name']['#disabled'] = TRUE;
     }
 
@@ -187,35 +184,12 @@ class SettingsForm extends ConfigFormBase {
       '#collapsible' => FALSE,
     );
 
-    $form['migrate'] = array(
-      '#type' => 'details',
-      '#title' => $this->t('Acquia Cloud Migrate'),
-      '#description' => $this->t('Transfer a fully-functional copy of your site to Acquia Cloud. <a href=":url">Learn more</a>.', array(':url' => Url::fromUri('https://docs.acquia.com/cloud/site/import/connector')->getUri())),
-      // Collapse migrate if Acquia hosting.
-      '#open' => !\Drupal::request()->server->has('AH_SITE_GROUP'),
-    );
-    $form['migrate']['submit'] = array(
-      '#type' => 'submit',
-      '#value' => $this->t('Migrate'),
-      '#submit' => ['::submitMigrateGoForm'],
-    );
-
-    $last_migration = \Drupal::state()->get('migrate.cloud', []);
-
-    if (!empty($last_migration['db_file']) || !empty($last_migration['tar_file']) || !empty($last_migration['dir'])) {
-      // Replace Upload button with Cleanup.
-      unset($form['migrate']['#description']);
-      $form['migrate']['#prefix'] = '<div class="messages error">' . $this->t('Temporary files were leftover from last migration attempt.') . '</div>';
-      $form['migrate']['submit']['#value'] = $this->t('Cleanup files');
-      $form['migrate']['submit']['#submit'] = ['::submitMigrateCleanupForm'];
-    }
-
     // Help documentation is local unless the Help module is disabled.
     if ($this->moduleHandler->moduleExists('help')) {
       $help_url = \Drupal::url('help.page', array('name' => 'acquia_connector'));
     }
     else {
-      $help_url = Url::fromUri('https://docs.acquia.com/network/install')->getUri();
+      $help_url = Url::fromUri('https://docs.acquia.com/acquia-cloud/insight/install/')->getUri();
     }
 
     if (!empty($identifier) && !empty($key)) {
@@ -244,13 +218,6 @@ class SettingsForm extends ConfigFormBase {
         '#type' => 'checkbox',
         '#title' => $this->t('Watchdog logs'),
         '#default_value' => $config->get('spi.send_watchdog'),
-      );
-      $form['connection']['spi']['module_diff_data'] = array(
-        '#type' => 'checkbox',
-        '#title' => $this->t('Source code'),
-        '#default_value' => (int) $config->get('spi.module_diff_data') && $ssl_available,
-        '#description' => $this->t('Source code analysis requires a SSL connection and for your site to be publicly accessible. <a href=":url">Learn more</a>.', array(':url' => $help_url)),
-        '#disabled' => !$ssl_available,
       );
       $form['connection']['acquia_dynamic_banner'] = array(
         '#type' => 'checkbox',
@@ -306,8 +273,7 @@ class SettingsForm extends ConfigFormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $config = \Drupal::configFactory()->getEditable('acquia_connector.settings');
     $values = $form_state->getValues();
-    $config->set('spi.module_diff_data', $values['module_diff_data'])
-      ->set('spi.site_name', $values['name'])
+    $config->set('spi.site_name', $values['name'])
       ->set('spi.dynamic_banner', $values['acquia_dynamic_banner'])
       ->set('spi.admin_priv', $values['admin_priv'])
       ->set('spi.send_node_user', $values['send_node_user'])
@@ -326,23 +292,4 @@ class SettingsForm extends ConfigFormBase {
 
     parent::submitForm($form, $form_state);
   }
-
-  /**
-   * Submit handler for Migrate button on settings form.
-   */
-  public function submitMigrateGoForm($form, FormStateInterface &$form_state) {
-    $form_state->setRedirect('acquia_connector.migrate');
-  }
-
-  /**
-   * Submit handler for the migrate cleaner form.
-   */
-  public function submitMigrateCleanupForm($form, FormStateInterface &$form_state) {
-    $migration = $this->config('acquia_connector.settings')->get('cloud_migration');
-    $migration_class = new Migration();
-    $migration_class->cleanup($migration);
-    drupal_set_message($this->t('Temporary files removed'));
-    $form_state->setRedirect('acquia_connector.settings');
-  }
-
 }

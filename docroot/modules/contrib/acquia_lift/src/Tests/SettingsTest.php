@@ -89,7 +89,10 @@ class SettingsTest extends WebTestBase {
     $udf_touch_settings = $this->getValidUdfTouchMappingsFormData();
     $udf_event_settings = $this->getValidUdfEventMappingsFormData();
     $visibility_settings = $this->getValidVisibilitySettings();
-    $advanced_config_settings = $this->getValidAdvancedConfigurationSettings();
+    $advanced_settings = $this->getValidAdvancedSettings();
+
+    // Remove 'content_origin' from credential settings, because it is defined in advanced form.
+    unset($credential_settings['content_origin']);
 
     $edit =[];
     $edit += $this->convertToPostFormSettings($credential_settings, 'credential');
@@ -99,13 +102,12 @@ class SettingsTest extends WebTestBase {
     $edit += $this->convertToPostFormSettings($udf_touch_settings, 'udf_touch_mappings');
     $edit += $this->convertToPostFormSettings($udf_event_settings, 'udf_event_mappings');
     $edit += $this->convertToPostFormSettings($visibility_settings, 'visibility');
-    $edit += $this->convertToPostFormSettings($advanced_config_settings, 'advanced_configuration');
+    $edit += $this->convertToPostFormSettings($advanced_settings, 'advanced');
     $edit_settings_count = count($edit);
-    $expect_settings_count = 19;
+    $expect_settings_count = 21;
 
-    // Post the edits and assert that options are saved.
+    // Post the edits.
     $this->drupalPostForm('admin/config/services/acquia-lift', $edit, t('Save configuration'));
-    $this->assertText(t('The configuration options have been saved.'));
 
     // Assert error messages are set for required fields and unreachable URLs.
     $this->assertText(t('The Acquia Lift module requires a valid Account ID, Site ID, and Assets URL to complete activation.'));
@@ -137,9 +139,15 @@ class SettingsTest extends WebTestBase {
     $this->assertRaw('node page', '[testMetatagsAndScriptTag]: page_type metatag value is loaded on the node page.');
     $this->assertRaw('acquia_lift:account_id', '[testMetatagsAndScriptTag]: account_id metatag is loaded on the node page.');
     $this->assertRaw('AccountId1', '[testMetatagsAndScriptTag]: account_id metatag value is loaded on the node page.');
-    $this->assertRaw('acquia_lift:contentReplacementMode', '[testMetatagsAndScriptTag]: content replacement mode metatag value is loaded on the node page.');
+    $this->assertRaw('acquia_lift:bootstrapMode', '[testMetatagsAndScriptTag]: bootstrap mode metatag is loaded on the node page.');
+    $this->assertRaw('manual', '[testMetatagsAndScriptTag]: bootstrap mode metatag value is loaded on the node page.');
+    $this->assertRaw('acquia_lift:contentReplacementMode', '[testMetatagsAndScriptTag]: content replacement mode metatag is loaded on the node page.');
+    $this->assertRaw('customized', '[testMetatagsAndScriptTag]: content replacement mode metatag value is loaded on the node page.');
+    $this->assertRaw('acquia_lift:contentOrigin', '[testMetatagsAndScriptTag]: content origin metatag is loaded on the node page.');
+    $this->assertRaw('08c93130-2e45-45f6-af6d-7c02de8cd90c', '[testMetatagsAndScriptTag]: content origin metatag value is loaded on the node page.');
 
-    // Assert Lift JavaScript tag is loaded on the page.
+    // Assert Lift JavaScript tag is async-loaded on the page.
     $this->assertRaw('AssetsUrl1', '[testMetatagsAndScriptTag]: With valid settings, Lift\'s JavaScript is loaded on the home page.');
+    $this->assertRaw('async', '[testMetatagsAndScriptTag]: With valid settings, Lift\'s JavaScript is async-loaded on the home page.');
   }
 }

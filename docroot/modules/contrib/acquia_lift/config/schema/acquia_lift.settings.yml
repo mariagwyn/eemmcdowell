@@ -21,6 +21,9 @@ acquia_lift.settings:
         oauth_url:
           type: uri
           label: 'Authentication URL'
+        content_origin:
+          type: string
+          label: 'Content Hub Site UUID'
     identity:
       type: config_object
       label: 'Identity'
@@ -109,6 +112,9 @@ acquia_lift.settings:
       type: config_object
       label: 'Advanced'
       mapping:
+        bootstrap_mode:
+          type: string
+          label: 'Bootstrap mode'
         content_replacement_mode:
           type: string
           label: 'Content replacement mode'

@@ -89,7 +89,7 @@ class ConfigLister implements ConfigListInterface {
 
     // Calculate and return the list.
     foreach ($this->entityManager->getDefinitions() as $entity_type => $definition) {
-      if ($definition->isSubclassOf('Drupal\Core\Config\Entity\ConfigEntityInterface')) {
+      if ($definition->entityClassImplements('Drupal\Core\Config\Entity\ConfigEntityInterface')) {
         $this->definitions[$entity_type] = $definition;
         $prefix = $definition->getConfigPrefix();
         $this->typesByPrefix[$prefix] = $entity_type;
@@ -123,7 +123,7 @@ class ConfigLister implements ConfigListInterface {
   public function getTypeNameByConfigName($name) {
     $definitions = $this->listTypes();
     foreach ($this->typesByPrefix as $prefix => $entity_type) {
-      if (strpos($name, $prefix) === 0) {
+      if (strpos($name, $prefix . '.') === 0) {
         return $entity_type;
       }
     }
@@ -174,6 +174,12 @@ class ConfigLister implements ConfigListInterface {
         break;
     }
 
+    // This only seems to be a problem in unit tests, where a mock object
+    // is returning NULL instead of an empy array for some reason.
+    if (!is_array($optional_list)) {
+      $optional_list = [];
+    }
+
     return [$active_list, $install_list, $optional_list];
   }
 
@@ -211,7 +217,7 @@ class ConfigLister implements ConfigListInterface {
     $list = array_combine($list, $list);
     foreach ($list as $name) {
       foreach ($prefixes as $prefix) {
-        if (strpos($name, $prefix) === 0) {
+        if (strpos($name, $prefix . '.') === 0) {
           unset($list[$name]);
         }
       }

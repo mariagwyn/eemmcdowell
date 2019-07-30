@@ -158,7 +158,7 @@ class HtmlDiff extends AbstractDiff
         foreach ($words as $index => $word) {
             $openIsolatedDiffTag = $this->isOpeningIsolatedDiffTag($word, $currentIsolatedDiffTag);
             if ($openIsolatedDiffTag) {
-                if ($this->isSelfClosingTag($word) || stripos($word, '<img') !== false) {
+                if ($this->isSelfClosingTag($word) || $this->stringUtil->stripos($word, '<img') !== false) {
                     if ($openIsolatedDiffTags === 0) {
                         $isolatedDiffTagIndices[] = array(
                             'start' => $index,
@@ -205,7 +205,7 @@ class HtmlDiff extends AbstractDiff
         $tagsToMatch = $currentIsolatedDiffTag !== null
             ? array($currentIsolatedDiffTag => $this->config->getIsolatedDiffTagPlaceholder($currentIsolatedDiffTag))
             : $this->config->getIsolatedDiffTags();
-        $pattern = '#<%s(\s+[^>]*)?>#iU';
+        $pattern = '#<%s(\s+[^>]*)?>#iUu';
         foreach ($tagsToMatch as $key => $value) {
             if (preg_match(sprintf($pattern, $key), $item)) {
                 return $key;
@@ -217,7 +217,7 @@ class HtmlDiff extends AbstractDiff
 
     protected function isSelfClosingTag($text)
     {
-        return (bool) preg_match('/<[^>]+\/\s*>/', $text);
+        return (bool) preg_match('/<[^>]+\/\s*>/u', $text);
     }
 
     /**
@@ -231,7 +231,7 @@ class HtmlDiff extends AbstractDiff
         $tagsToMatch = $currentIsolatedDiffTag !== null
             ? array($currentIsolatedDiffTag => $this->config->getIsolatedDiffTagPlaceholder($currentIsolatedDiffTag))
             : $this->config->getIsolatedDiffTags();
-        $pattern = '#</%s(\s+[^>]*)?>#iU';
+        $pattern = '#</%s(\s+[^>]*)?>#iUu';
         foreach ($tagsToMatch as $key => $value) {
             if (preg_match(sprintf($pattern, $key), $item)) {
                 return $key;
@@ -354,7 +354,7 @@ class HtmlDiff extends AbstractDiff
         $wrapEnd = '';
 
         if ($stripWrappingTags) {
-            $pattern = '/(^<[^>]+>)|(<\/[^>]+>$)/i';
+            $pattern = '/(^<[^>]+>)|(<\/[^>]+>$)/iu';
             $matches = array();
 
             if (preg_match_all($pattern, $newText, $matches)) {
@@ -441,7 +441,7 @@ class HtmlDiff extends AbstractDiff
     protected function getAttributeFromTag($text, $attribute)
     {
         $matches = array();
-        if (preg_match(sprintf('/<[^>]*\b%s\s*=\s*([\'"])(.*)\1[^>]*>/i', $attribute), $text, $matches)) {
+        if (preg_match(sprintf('/<[^>]*\b%s\s*=\s*([\'"])(.*)\1[^>]*>/iu', $attribute), $text, $matches)) {
             return htmlspecialchars_decode($matches[2]);
         }
 
@@ -543,7 +543,7 @@ class HtmlDiff extends AbstractDiff
             $specialCaseTagInjection = '';
             $specialCaseTagInjectionIsBefore = false;
 
-            if (count($nonTags) != 0) {
+            if (count($nonTags) !== 0) {
                 $text = $this->wrapText(implode('', $nonTags), $tag, $cssClass);
                 $this->content .= $text;
             } else {
@@ -567,7 +567,7 @@ class HtmlDiff extends AbstractDiff
                     }
                 }
             }
-            if (count($words) == 0 && count($specialCaseTagInjection) == 0) {
+            if (count($words) == 0 && $this->stringUtil->strlen($specialCaseTagInjection) == 0) {
                 break;
             }
             if ($specialCaseTagInjectionIsBefore) {
@@ -575,7 +575,7 @@ class HtmlDiff extends AbstractDiff
             } else {
                 $workTag = $this->extractConsecutiveWords($words, 'tag');
                 if (isset($workTag[ 0 ]) && $this->isOpeningTag($workTag[ 0 ]) && !$this->isClosingTag($workTag[ 0 ])) {
-                    if (strpos($workTag[ 0 ], 'class=')) {
+                    if ($this->stringUtil->strpos($workTag[ 0 ], 'class=')) {
                         $workTag[ 0 ] = str_replace('class="', 'class="diffmod ', $workTag[ 0 ]);
                         $workTag[ 0 ] = str_replace("class='", 'class="diffmod ', $workTag[ 0 ]);
                     } else {
@@ -584,7 +584,7 @@ class HtmlDiff extends AbstractDiff
                 }
 
                 $appendContent = implode('', $workTag).$specialCaseTagInjection;
-                if (isset($workTag[0]) && false !== stripos($workTag[0], '<img')) {
+                if (isset($workTag[0]) && false !== $this->stringUtil->stripos($workTag[0], '<img')) {
                     $appendContent = $this->wrapText($appendContent, $tag, $cssClass);
                 }
                 $this->content .= $appendContent;
@@ -673,7 +673,7 @@ class HtmlDiff extends AbstractDiff
      */
     protected function isOpeningTag($item)
     {
-        return preg_match('#<[^>]+>\\s*#iU', $item);
+        return preg_match('#<[^>]+>\\s*#iUu', $item);
     }
 
     /**
@@ -683,7 +683,7 @@ class HtmlDiff extends AbstractDiff
      */
     protected function isClosingTag($item)
     {
-        return preg_match('#</[^>]+>\\s*#iU', $item);
+        return preg_match('#</[^>]+>\\s*#iUu', $item);
     }
 
     /**
@@ -698,7 +698,7 @@ class HtmlDiff extends AbstractDiff
         $matches   = $this->matchingBlocks();
         $matches[] = new Match(count($this->oldWords), count($this->newWords), 0);
 
-        foreach ($matches as $i => $match) {
+        foreach ($matches as $match) {
             $matchStartsAtCurrentPositionInOld = ($positionInOld === $match->startInOld);
             $matchStartsAtCurrentPositionInNew = ($positionInNew === $match->startInNew);
 
@@ -769,10 +769,10 @@ class HtmlDiff extends AbstractDiff
      */
     protected function stripTagAttributes($word)
     {
-        $space = strpos($word, ' ', 1);
+        $space = $this->stringUtil->strpos($word, ' ', 1);
 
         if ($space) {
-            return '<' . substr($word, 1, $space) . '>';
+            return '<' . $this->stringUtil->substr($word, 1, $space) . '>';
         }
 
         return trim($word, '<>');
@@ -788,6 +788,7 @@ class HtmlDiff extends AbstractDiff
      */
     protected function findMatch($startInOld, $endInOld, $startInNew, $endInNew)
     {
+        $groupDiffs     = $this->isGroupDiffs();
         $bestMatchInOld = $startInOld;
         $bestMatchInNew = $startInNew;
         $bestMatchSize = 0;
@@ -816,7 +817,7 @@ class HtmlDiff extends AbstractDiff
 
                 if ($newMatchLength > $bestMatchSize ||
                     (
-                        $this->isGroupDiffs() &&
+                        $groupDiffs &&
                         $bestMatchSize > 0 &&
                         $this->isOnlyWhitespace($this->array_slice_cached($this->oldWords, $bestMatchInOld, $bestMatchSize))
                     )
@@ -830,9 +831,9 @@ class HtmlDiff extends AbstractDiff
         }
 
         // Skip match if none found or match consists only of whitespace
-        if ($bestMatchSize != 0 &&
+        if ($bestMatchSize !== 0 &&
             (
-                !$this->isGroupDiffs() ||
+                !$groupDiffs ||
                 !$this->isOnlyWhitespace($this->array_slice_cached($this->oldWords, $bestMatchInOld, $bestMatchSize))
             )
         ) {
@@ -850,7 +851,7 @@ class HtmlDiff extends AbstractDiff
     protected function isOnlyWhitespace($str)
     {
         //  Slightly faster then using preg_match
-        return $str !== '' && (strlen(trim($str)) === 0);
+        return $str !== '' && trim($str) === '';
     }
 
     /**

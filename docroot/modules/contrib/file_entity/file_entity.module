@@ -7,6 +7,7 @@
 
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Entity\FieldableEntityInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\Core\Routing\RouteMatchInterface;
@@ -155,7 +156,6 @@ function file_entity_entity_type_alter(&$entity_types) {
     ->set('bundle_entity_type', 'file_type')
     ->set('admin_permission', 'administer files')
     ->setClass('Drupal\file_entity\Entity\FileEntity')
-    ->setHandlerClass('storage_schema', 'Drupal\file_entity\FileEntityStorageSchema')
     ->setFormClass('default', 'Drupal\file_entity\Form\FileEditForm')
     ->setFormClass('edit', 'Drupal\file_entity\Form\FileEditForm')
     ->setFormClass('inline_edit', 'Drupal\file_entity\Form\FileInlineEditForm')
@@ -324,7 +324,9 @@ function file_entity_file_download($uri) {
  * @{
  */
 
-// @todo move
+/**
+ * Implements hook_entity_base_field_info().
+ */
 function file_entity_entity_base_field_info(EntityTypeInterface $entity_type) {
   // @todo: Make this configurable and/or remove if
   //   https://drupal.org/node/476294 is resolved.
@@ -334,6 +336,7 @@ function file_entity_entity_base_field_info(EntityTypeInterface $entity_type) {
       ->setCustomStorage(TRUE)
       ->setLabel(t('URL alias'))
       ->setTranslatable(TRUE)
+      ->setProvider('file_entity')
       ->setDisplayOptions('form', array(
         'type' => 'path',
         'weight' => 30,
@@ -391,7 +394,11 @@ function file_entity_entity_storage_load($entities, $entity_type) {
 
   // Loop over all the entities looking for entities with attached images.
   foreach ($entities as $entity) {
-    /** @var \Drupal\Core\Entity\ContentEntityInterface $entity */
+    // Skip non-fieldable entities.
+    if (!$entity instanceof FieldableEntityInterface) {
+      continue;
+    }
+    /** @var \Drupal\Core\Entity\FieldableEntityInterface $entity */
     // Examine every image field instance attached to this entity's bundle.
     foreach ($entity->getFieldDefinitions() as $field_definition) {
       if ($field_definition->getSetting('target_type') == 'file' && $field_definition->getType() != 'image') {

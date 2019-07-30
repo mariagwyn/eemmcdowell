@@ -128,6 +128,19 @@ class SettingsHelper {
   }
 
   /**
+   * Is a valid bootstrap mode.
+   *
+   * @param string
+   *   Mode to compare
+   * @return boolean
+   *   True if valid, false otherwise.
+   */
+  public static function isValidBootstrapMode($test_mode) {
+    $valid_modes = ['auto', 'manual'];
+    return in_array($test_mode, $valid_modes);
+  }
+
+  /**
    * Is a valid content replacement mode.
    *
    * @param string
@@ -136,7 +149,7 @@ class SettingsHelper {
    *   True if valid, false otherwise.
    */
   public static function isValidContentReplacementMode($test_mode) {
-    $valid_modes = ['trusted', 'untrusted'];
+    $valid_modes = ['trusted', 'untrusted', 'customized'];
     return in_array($test_mode, $valid_modes);
   }
 

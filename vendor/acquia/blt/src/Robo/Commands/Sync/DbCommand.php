@@ -15,7 +15,6 @@ class DbCommand extends BltTasks {
    *
    * @command sync:db:all
    *
-   * @executeInDrupalVm
    */
   public function syncDbAll() {
     $exit_code = 0;
@@ -53,7 +52,6 @@ class DbCommand extends BltTasks {
    *
    * @command sync:db
    *
-   * @executeInDrupalVm
    */
   public function syncDbDefault() {
     $this->invokeCommand('setup:settings');
@@ -82,7 +80,7 @@ class DbCommand extends BltTasks {
       }
     }
 
-    $task->drush('cache-clear drush');
+    $task->drush('cr');
 
     $result = $task->run();
 

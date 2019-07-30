@@ -4,9 +4,6 @@ acquia_connector.settings:
   type: config_object
   label: 'Acquia connector settings'
   mapping:
-    cloud_migration:
-      type: sequence
-      label: 'Acquia connector migration data'
     subscription_data:
       label: 'Acquia subscription data'
       type: mapping
@@ -73,13 +70,6 @@ acquia_connector.settings:
     banner_service:
       type: string
       label: 'Acquia banner service uri'
-    migrate:
-      type: mapping
-      label: 'Migrate'
-      mapping:
-        files:
-          type: integer
-          label: 'Migrate files directory'
     hide_signup_messages:
       type: integer
       label: 'Hide signup messages'
@@ -128,9 +118,6 @@ acquia_connector.settings:
         send_watchdog:
           type: integer
           label: 'Allow collection of Watchdog logs'
-        module_diff_data:
-          type: integer
-          label: 'Allow collection of Source code'
         use_cron:
           type: integer
           label: 'Send via Drupal cron'
@@ -174,19 +161,7 @@ acquia_connector.settings:
             - type: string
             - type: string
             - type: string
-        acquia_spi_send_node_user:
-          type: sequence
-          sequence:
-            - type: string
-            - type: string
-            - type: string
         acquia_spi_admin_priv:
-          type: sequence
-          sequence:
-            - type: string
-            - type: string
-            - type: string
-        acquia_spi_module_diff_data:
           type: sequence
           sequence:
             - type: string

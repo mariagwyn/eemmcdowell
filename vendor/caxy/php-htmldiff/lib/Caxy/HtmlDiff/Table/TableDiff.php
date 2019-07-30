@@ -733,7 +733,7 @@ class TableDiff extends AbstractDiff
     protected function setInnerHtml($node, $html)
     {
         // DOMDocument::loadHTML does not allow empty strings.
-        if (strlen(trim($html)) === 0) {
+        if ($this->stringUtil->strlen(trim($html)) === 0) {
             $html = '<span class="empty"></span>';
         }
 
