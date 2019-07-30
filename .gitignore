@@ -9,7 +9,7 @@ box/local.config.yml
 project.local.yml
 
 # Ignore drupal core.
-docroot/core
+#docroot/core
 
 # Ignore paths that contain user-generated content.
 docroot/sites/*/files
@@ -17,11 +17,11 @@ docroot/sites/*/files
 docroot/sites/*/private
 
 # Ignore contrib modules. These should be created during build process.
-docroot/modules/contrib
-docroot/themes/contrib
-docroot/profiles/contrib
-docroot/libraries
-drush/contrib
+#docroot/modules/contrib
+#docroot/themes/contrib
+#docroot/profiles/contrib
+#docroot/libraries
+#drush/contrib
 
 # Ignore custom theme build artifacts
 docroot/themes/custom/*/node_modules
@@ -100,8 +100,8 @@ tramp
 xhprof_*
 
 #Composer vendor
-vendor/
-vendor/.git
+#vendor/
+#vendor/.git
 
 #Sass
 .sass-cache

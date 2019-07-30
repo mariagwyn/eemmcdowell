@@ -39,6 +39,14 @@
             "url": "https://asset-packagist.org"
         }
     },
+    "scripts": {
+       "post-install-cmd": [
+           "find docroot vendor -name '.git' | xargs rm -rf"
+       ],
+       "post-update-cmd": [
+           "find docroot vendor -name '.git' | xargs rm -rf"
+       ]
+     },
     "extra": {
         "blt": {
             "update": true
@@ -117,11 +125,10 @@
     "require": {
         "cweagans/composer-patches": "^1.6",
         "drupal-composer/drupal-scaffold": "^2.3",
-        "drupal/core": "^8.4",
         "drupal/addtoany": "^1.0",
         "drupal/admin_toolbar": "^1.0",
         "drupal/ctools": "^3.0",
-        "drupal/dropzonejs": "^1.0",
+        "drupal/dropzonejs": "^2.0",
         "drupal/feeds": "^3.0",
         "drupal/field_group": "1.x-dev",
         "drupal/file_browser": "1.x-dev",
@@ -135,26 +142,26 @@
         "drupal/page_manager": "^4.0",
         "drupal/panels": "^4.1",
         "drupal/pathauto": "^1.0",
-        "drupal/search_api": "1.0-beta4",
+        "drupal/search_api": "^1.0-beta4",
         "drupal/social_media_links": "2.x-dev",
         "drupal/token": "^1.0",
         "drupal/views_timelinejs": "^3.0",
         "drupal/adminimal_theme": "^1.0",
         "drupal/zurb_foundation": "6.x-dev",
         "mariagwyn/mgm_tools": "master",
-        "acquia/blt": "^8.9.0",
-        "enyo/dropzone": "4.2.0",
+        "acquia/blt": "^8.0.0",
+        "enyo/dropzone": "^4.2.0",
         "desandro/masonry": "^4.1",
         "desandro/imagesloaded": "^4.1",
         "kenwheeler/slick": "1.5.0",
         "oomphinc/composer-installers-extender": "^1.1",
         "drupal/foundation_layouts": "^6.0",
         "drupal/acquia_lift": "^3.4",
-        "acquia/lightning": "^2.2"
+        "acquia/lightning": "2.2.4"
     },
     "config": {
         "platform": {
-            "php": "5.6"
+            "php": "7.1"
         }
     }
 }
