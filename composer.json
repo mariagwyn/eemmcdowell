@@ -120,7 +120,6 @@
         "drupal/addtoany": "^1.0",
         "drupal/admin_toolbar": "^1.0",
         "drupal/ctools": "^3.0",
-        "drupal/dropzonejs": "^2.0",
         "drupal/feeds": "^3.0",
         "drupal/field_group": "1.x-dev",
         "drupal/file_browser": "1.x-dev",
@@ -131,7 +130,6 @@
         "drupal/inline_entity_form": "^1.0",
         "drupal/layout_plugin": "1.x-dev",
         "drupal/metatag": "^1.0",
-        "drupal/page_manager": "^4.0",
         "drupal/panels": "^4.1",
         "drupal/pathauto": "^1.0",
         "drupal/search_api": "^1.0-beta4",
@@ -150,7 +148,8 @@
         "drupal/foundation_layouts": "^6.0",
         "drupal/acquia_lift": "^3.4",
         "acquia/lightning": "2.2.4",
-        "drupal/core": "8.4.2"
+        "drupal/core": "8.4.2",
+        "drupal/media_entity_actions": "^1.0@alpha"
     },
     "config": {
         "platform": {

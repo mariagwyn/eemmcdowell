@@ -74,5 +74,3 @@ phpcs:
 cm:
   strategy: config-split
   allow-overrides: true
-vm:
-  enable: true
