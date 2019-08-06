@@ -20,7 +20,7 @@ drush:
 modules:
   local:
     enable: [dblog, devel, field_ui, seckit, views_ui]
-    uninstall: [acsf, acquia_connector, dblog, shield]
+    uninstall: [acquia_connector, dblog, shield]
   ci:
     enable: {  }
     uninstall: [acquia_connector, shield]
@@ -29,7 +29,7 @@ modules:
     uninstall: {  }
   test:
     enable: [acquia_connector, shield]
-    uninstall: [devel, field_ui, views_ui]
+    uninstall: {  }
   prod:
     enable: [acquia_connector, shield]
     uninstall: [devel, field_ui, views_ui]
@@ -58,7 +58,6 @@ target-hooks:
 multisite:
   name:
     - default
-    - magnoliatreemidwifery.com
     - deiprofundis.org
     - theologytimelines.info
 behat:
@@ -74,3 +73,10 @@ phpcs:
 cm:
   strategy: config-split
   allow-overrides: true
+cloud:
+  appId: 3659c457-b49d-ee94-3d04-3a9e211fc85e
+disable-targets:
+  tests:
+    phpcs:
+      sniff:
+        files: true

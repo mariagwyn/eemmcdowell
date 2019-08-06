@@ -711,3 +711,11 @@ if (file_exists('/var/www/site-php')) {
     require '/var/www/site-php/eemmcdowell/deiprofundis-settings.inc';
 }
 require DRUPAL_ROOT . "/../vendor/acquia/blt/settings/blt.settings.php";
+/**
+ * IMPORTANT.
+ *
+ * Do not include additional settings here. Instead, add them to settings
+ * included by `blt.settings.php`. See BLT's documentation for more detail.
+ *
+ * @link http://blt.readthedocs.io
+ */

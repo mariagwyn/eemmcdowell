@@ -1,4 +1,0 @@
-drush:
-  aliases:
-    local: magnoliatreemidwifery.local
-    remote: magnoliatreemidwifery.prod

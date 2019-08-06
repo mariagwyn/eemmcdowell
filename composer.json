@@ -4,8 +4,8 @@
     "type": "project",
     "license": "MIT",
     "require-dev": {
-        "drupal/devel": "^1.0",
-        "drupal/stage_file_proxy": "^1.0",
+        "acquia/blt-require-dev": "^10.0.0-alpha1",
+        "drupal/devel": "^2.0.0",
         "geerlingguy/drupal-vm": "~4.3"
     },
     "conflict": {
@@ -13,14 +13,39 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
+    "require": {
+        "php": ">=7.1",
+        "acquia/blt": "^10.0.0",
+        "acquia/drupal-spec-tool": "^2.0.0",
+        "acquia/lightning": "^3.3",
+        "desandro/imagesloaded": "^4.1",
+        "desandro/masonry": "^4.1",
+        "drupal/acquia_connector": "^1.5.0",
+        "drupal/acquia_purge": "^1.0-beta3",
+        "drupal/addtoany": "^1.0",
+        "drupal/admin_toolbar": "^1.0",
+        "drupal/adminimal_theme": "^1.0",
+        "drupal/config_split": "^1.0.0",
+        "drupal/core": "^8.6.0",
+        "drupal/ctools": "^3.0",
+        "drupal/devel": "^2.0.0",
+        "drupal/features": "^3.7.0",
+        "drupal/file_entity": "^2.0",
+        "drupal/footnotes": "^2.0",
+        "drupal/google_analytics": "^2.0",
+        "drupal/inline_entity_form": "^1.0",
+        "drupal/memcache": "2.0-alpha7",
+        "drupal/pathauto": "^1.0",
+        "drupal/qa_accounts": "^1.0.0-alpha1",
+        "drupal/seckit": "^1.0.0-alpha2",
+        "drupal/shield": "^1.0.0",
+        "drupal/token": "^1.0",
+        "drupal/zurb_foundation": "6.x-dev"
+    },
     "repositories": {
         "drupal": {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
-        },
-        "mgm-tools": {
-            "type": "vcs",
-            "url": "https://github.com/mariagwyn/mgm_tools"
         },
         "slick": {
             "type": "package",
@@ -44,8 +69,8 @@
             "update": true
         },
         "installer-types": [
-            "library",
-            "component",
+            "bower-asset",
+            "npm-asset",
             "bower-asset",
             "npm-asset"
         ],
@@ -76,17 +101,15 @@
                 "type:bower-asset",
                 "type:npm-asset"
             ],
-            "drush/contrib/{$name}": [
-                "type:drupal-drush"
-            ],
             "docroot/libraries/masonry": [
                 "desandro/masonry"
             ],
             "docroot/libraries/imagesloaded": [
                 "desandro/imagesloaded"
             ],
-            "docroot/libraries/dropzone": [
-                "enyo/dropzone"
+            "drush/Commands/{$name}": [
+                "type:drupal-drush",
+                "type:drupal-drush"
             ]
         },
         "drupal-scaffold": {
@@ -101,59 +124,36 @@
         },
         "enable-patching": true,
         "patches": [],
-        "merge-plugin": {
-            "require": [
-                "vendor/acquia/blt/composer.required.json"
-            ],
-            "include": [
-                "blt/composer.overrides.json"
-            ],
-            "merge-extra": true,
-            "merge-extra-deep": true,
-            "merge-scripts": true,
-            "replace": false
+        "composer-exit-on-patch-failure": true,
+        "patchLevel": {
+            "drupal/core": "-p2"
         }
-    },
-    "require": {
-        "cweagans/composer-patches": "^1.6",
-        "drupal-composer/drupal-scaffold": "^2.3",
-        "drupal/addtoany": "^1.0",
-        "drupal/admin_toolbar": "^1.0",
-        "drupal/ctools": "^3.0",
-        "drupal/feeds": "^3.0",
-        "drupal/field_group": "1.x-dev",
-        "drupal/file_browser": "1.x-dev",
-        "drupal/file_entity": "^2.0",
-        "drupal/footnotes": "^2.0",
-        "drupal/geolocation": "1.x-dev",
-        "drupal/google_analytics": "^2.0",
-        "drupal/inline_entity_form": "^1.0",
-        "drupal/layout_plugin": "1.x-dev",
-        "drupal/metatag": "^1.0",
-        "drupal/panels": "^4.1",
-        "drupal/pathauto": "^1.0",
-        "drupal/search_api": "^1.0-beta4",
-        "drupal/social_media_links": "2.x-dev",
-        "drupal/token": "^1.0",
-        "drupal/views_timelinejs": "^3.0",
-        "drupal/adminimal_theme": "^1.0",
-        "drupal/zurb_foundation": "6.x-dev",
-        "mariagwyn/mgm_tools": "master",
-        "acquia/blt": "8.9.15",
-        "enyo/dropzone": "^4.2.0",
-        "desandro/masonry": "^4.1",
-        "desandro/imagesloaded": "^4.1",
-        "kenwheeler/slick": "1.5.0",
-        "oomphinc/composer-installers-extender": "^1.1",
-        "drupal/foundation_layouts": "^6.0",
-        "drupal/acquia_lift": "^3.4",
-        "acquia/lightning": "2.2.4",
-        "drupal/core": "8.4.2",
-        "drupal/media_entity_actions": "^1.0@alpha"
     },
     "config": {
         "platform": {
             "php": "7.1"
+        },
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "Example\\": "blt/src/"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Drupal\\Tests\\PHPUnit\\": "tests/phpunit/src/"
+        }
+    },
+    "scripts": {
+        "post-create-project-cmd": [
+            "blt internal:create-project:init-repo"
+        ],
+        "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
+        "nuke": [
+            "rm -rf vendor composer.lock docroot/core docroot/modules/contrib docroot/profiles/contrib docroot/themes/contrib",
+            "@composer clearcache --ansi",
+            "@composer install --ansi"
+        ]
     }
 }
