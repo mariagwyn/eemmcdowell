@@ -1,8 +1,0 @@
-uuid: 3749e9cb-4404-4b58-a44e-7840ff59338c
-langcode: en
-status: true
-dependencies: {  }
-id: map_block
-label: 'Map Block'
-revision: 0
-description: 'Add a simple location and map.'

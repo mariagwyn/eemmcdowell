@@ -1,7 +1,0 @@
-uuid: 38f3930a-999e-4116-841e-00a96ac620b0
-langcode: en
-status: true
-dependencies: {  }
-name: hero_image_large
-label: 'Hero Image Large'
-effects: {  }
