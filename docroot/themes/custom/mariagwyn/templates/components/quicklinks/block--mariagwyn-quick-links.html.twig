@@ -1,0 +1,11 @@
+{% extends "block.html.twig" %}
+{#
+/**
+ * @file
+ * Theme override for MariaGwyn footer Promo block.
+ */
+#}
+{% block content %}
+  {{ attach_library('mariagwyn/quicklinks') }}
+  {{ content }}
+{% endblock %}

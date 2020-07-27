@@ -264,7 +264,7 @@ $config_directories = array();
  *
  * @see install_select_profile()
  */
-$settings['install_profile'] = 'standard';
+# $settings['install_profile'] = 'standard';
 
 /**
  * Salt for one-time login links, cancel links, form tokens, etc.
@@ -283,7 +283,7 @@ $settings['install_profile'] = 'standard';
  *   $settings['hash_salt'] = file_get_contents('/home/example/salt.txt');
  * @endcode
  */
-$settings['hash_salt'] = '0p7RtkDxt17ujq7t_8v038LSZ1mourA9IMYCAKiO5eh-sGlUqDxwaQuT1KqI-ZRZQBfYvbDeMg';
+$settings['hash_salt'] = '';
 
 /**
  * Deployment identifier.
@@ -610,8 +610,7 @@ $settings['update_free_access'] = FALSE;
 /**
  * Load services definition file.
  */
-$settings['container_yamls'][] = __DIR__ . '/services.yml';
-
+$settings['container_yamls'][] = $app_root . '/' . $site_path . '/services.yml';
 /**
  * Override the default service container class.
  *
@@ -658,6 +657,31 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
  * example.org, with all subdomains included.
  */
 
+ /**
+  * The default list of directories that will be ignored by Drupal's file API.
+  *
+  * By default ignore node_modules and bower_components folders to avoid issues
+  * with common frontend tools and recursive scanning of directories looking for
+  * extensions.
+  *
+  * @see file_scan_directory()
+  * @see \Drupal\Core\Extension\ExtensionDiscovery::scanDirectory()
+  */
+ $settings['file_scan_ignore_directories'] = [
+   'node_modules',
+   'bower_components',
+ ];
+
+ /**
+  * The default number of entities to update in a batch process.
+  *
+  * This is used by update and post-update functions that need to go through and
+  * change all the entities on a site, so it is useful to increase this number
+  * if your hosting configuration (i.e. RAM allocation, CPU speed) allows for a
+  * larger number of entities to be processed in a single batch run.
+  */
+ $settings['entity_update_batch_size'] = 50;
+
 /**
  * Load local development override configuration, if available.
  *
@@ -669,15 +693,15 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
  * Keep this code block at the end of this file to take full effect.
  */
 
-if (file_exists(__DIR__ . '/settings/local.settings.php')) {
-  include __DIR__ . '/settings/local.settings.php';
-}
+ # if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
+ #   include $app_root . '/' . $site_path . '/settings.local.php';
+ # }
+ require DRUPAL_ROOT . "/../vendor/acquia/blt/settings/blt.settings.php";
+ # $settings['install_profile'] = 'headless_lightning';
 
-if (file_exists('/var/www/site-php')) {
-  require '/var/www/site-php/eemmcdowell/eemmcdowell-settings.inc';
-}
-
-require DRUPAL_ROOT . "/../vendor/acquia/blt/settings/blt.settings.php";
+ if (file_exists(__DIR__ . '/settings.ddev.php')) {
+   require_once __DIR__ . '/settings.ddev.php';
+ }
 /**
  * IMPORTANT.
  *
