@@ -1,0 +1,23 @@
+uuid: 7ef6fec3-82d4-4d78-9946-c2cec1e3296e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_links
+    - node.type.article
+  module:
+    - link
+id: node.article.field_links
+field_name: field_links
+entity_type: node
+bundle: article
+label: Links
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

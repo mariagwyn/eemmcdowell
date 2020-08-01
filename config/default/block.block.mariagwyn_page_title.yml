@@ -1,0 +1,27 @@
+uuid: 1e63160f-8ebe-4bb6-8830-ff6507af64ae
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - mariagwyn
+_core:
+  default_config_hash: sXajirap2n31twY0YvOCCGD6yRA-_RHGfF6xak2FXHU
+id: mariagwyn_page_title
+theme: mariagwyn
+region: page_title
+weight: -10
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: true
+    context_mapping: {  }

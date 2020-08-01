@@ -1,0 +1,27 @@
+uuid: 7785bb22-324f-4f25-b675-631e3900f59a
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.account
+  module:
+    - system
+  theme:
+    - mariagwyn
+_core:
+  default_config_hash: YCs4_-HTTmjNzo_9tmi2BE9Lvojnxoasu7IEWm1h-0g
+id: mariagwyn_account_menu
+theme: mariagwyn
+region: bottom
+weight: -7
+provider: null
+plugin: 'system_menu_block:account'
+settings:
+  id: 'system_menu_block:account'
+  label: 'User account menu'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 1
+  expand_all_items: false
+visibility: {  }

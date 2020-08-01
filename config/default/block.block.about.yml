@@ -1,0 +1,30 @@
+uuid: f2fd9f48-e92d-4286-8aee-43621022e863
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:banner_block:904ad047-b884-49bb-8385-9a3228b57cfa'
+  module:
+    - block_content
+    - system
+  theme:
+    - mariagwyn
+id: about
+theme: mariagwyn
+region: sub_header_wide
+weight: -11
+provider: null
+plugin: 'block_content:904ad047-b884-49bb-8385-9a3228b57cfa'
+settings:
+  id: 'block_content:904ad047-b884-49bb-8385-9a3228b57cfa'
+  label: About
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false

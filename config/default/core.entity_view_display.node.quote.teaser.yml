@@ -1,0 +1,36 @@
+uuid: 6cb82271-c985-4307-9d42-a316f1f11df3
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.quote.body
+    - field.field.node.quote.field_author
+    - field.field.node.quote.field_citation
+    - node.type.quote
+  module:
+    - text
+    - user
+id: node.quote.teaser
+targetEntityType: node
+bundle: quote
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_author:
+    type: text_default
+    weight: 1
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_citation: true
+  langcode: true
+  links: true

@@ -1,0 +1,30 @@
+uuid: 5a08f3f3-12f9-4f4a-ab6d-a29d04badae0
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:promo_block:ccda2d29-f2b7-4794-bfdd-8c168e06e937'
+  module:
+    - block_content
+    - system
+  theme:
+    - mariagwyn
+id: academia
+theme: mariagwyn
+region: sub_header
+weight: -7
+provider: null
+plugin: 'block_content:ccda2d29-f2b7-4794-bfdd-8c168e06e937'
+settings:
+  id: 'block_content:ccda2d29-f2b7-4794-bfdd-8c168e06e937'
+  label: Academia
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false

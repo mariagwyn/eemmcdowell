@@ -1,0 +1,13 @@
+uuid: ae7f4781-9492-4491-b086-2f89f9ced677
+langcode: en
+status: true
+dependencies:
+  module:
+    - bibcite_export
+_core:
+  default_config_hash: ZaQwxjk0VAgqQ8PV1rPcec8g4hfeATgPpcXap5MNSdM
+id: bibcite_export_multiple
+label: 'Export reference'
+type: bibcite_reference
+plugin: bibcite_export_multiple
+configuration: {  }

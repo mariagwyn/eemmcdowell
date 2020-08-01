@@ -1,0 +1,60 @@
+uuid: 6f911589-b2ef-477a-89cf-2bb2776f3ece
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.image.field_media_image
+    - media.type.image
+  module:
+    - media
+id: media_image_feed
+label: 'Media Image Feed'
+description: ''
+help: ''
+import_period: 3600
+fetcher: http
+fetcher_configuration:
+  auto_detect_feeds: false
+  use_pubsubhubbub: false
+  always_download: false
+  fallback_hub: ''
+  request_timeout: 30
+parser: syndication
+parser_configuration: {  }
+processor: 'entity:media'
+processor_configuration:
+  langcode: en
+  update_existing: 2
+  update_non_existent: _keep
+  expire: -1
+  owner_feed_author: false
+  owner_id: 1
+  authorize: true
+  skip_hash_check: true
+  values:
+    bundle: image
+custom_sources:
+  media_thumbnail:
+    label: 'media:thumbnail'
+    value: 'media:thumbnail'
+    machine_name: media_thumbnail
+  media_title:
+    label: 'media:title'
+    value: 'media:title'
+    machine_name: media_title
+  media_title2:
+    label: 'media:title'
+    value: 'media:title'
+    machine_name: media_title2
+mappings:
+  -
+    target: field_media_image
+    map:
+      target_id: media_thumbnail
+      alt: title
+      title: title
+    settings:
+      language: ''
+      reference_by: fid
+      existing: '1'
+      autocreate: 0

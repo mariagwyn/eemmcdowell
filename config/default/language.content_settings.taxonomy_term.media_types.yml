@@ -1,0 +1,11 @@
+uuid: 8d2c001f-d8d4-4e42-bea3-ad76020fa783
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.media_types
+id: taxonomy_term.media_types
+target_entity_type_id: taxonomy_term
+target_bundle: media_types
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,38 @@
+uuid: a914ea44-52b7-4b69-8d3e-365e6477eccb
+langcode: en
+status: true
+dependencies:
+  config:
+    - bibcite_entity.bibcite_reference_type.book
+    - bibcite_entity.bibcite_reference_type.book_chapter
+    - bibcite_entity.bibcite_reference_type.conference_paper
+    - bibcite_entity.bibcite_reference_type.conference_proceedings
+    - bibcite_entity.bibcite_reference_type.journal
+    - bibcite_entity.bibcite_reference_type.journal_article
+    - field.storage.node.field_reference
+    - node.type.article
+id: node.article.field_reference
+field_name: field_reference
+entity_type: node
+bundle: article
+label: Reference
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:bibcite_reference'
+  handler_settings:
+    target_bundles:
+      book: book
+      book_chapter: book_chapter
+      conference_paper: conference_paper
+      conference_proceedings: conference_proceedings
+      journal: journal
+      journal_article: journal_article
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: conference_proceedings
+field_type: entity_reference

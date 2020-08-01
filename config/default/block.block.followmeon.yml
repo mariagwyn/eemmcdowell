@@ -1,0 +1,25 @@
+uuid: ae9b5eb4-72b1-45d4-b9ea-e7995ed80ccd
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:promo_block:3686a512-5caa-4706-a23d-c12f444233a2'
+  module:
+    - block_content
+  theme:
+    - mariagwyn
+id: followmeon
+theme: mariagwyn
+region: footer
+weight: -8
+provider: null
+plugin: 'block_content:3686a512-5caa-4706-a23d-c12f444233a2'
+settings:
+  id: 'block_content:3686a512-5caa-4706-a23d-c12f444233a2'
+  label: 'Follow me on'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

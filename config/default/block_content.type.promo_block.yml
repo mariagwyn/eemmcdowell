@@ -1,0 +1,8 @@
+uuid: 93f4eb51-d075-4390-b9c2-465232378a54
+langcode: en
+status: true
+dependencies: {  }
+id: promo_block
+label: 'Promo Block'
+revision: 1
+description: ''

@@ -1,0 +1,4 @@
+processor: citeproc-php
+default_style: chicago_manual_of_style_17th_edition_note_annotated_bibliography
+_core:
+  default_config_hash: xrKaN_2e7lR23yRaoflUaJktwsTkUG0r5Ux2mKNAiVs

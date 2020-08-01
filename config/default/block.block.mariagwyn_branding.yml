@@ -1,0 +1,25 @@
+uuid: 092de364-8fd9-404a-b4a1-61458697b14f
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - mariagwyn
+_core:
+  default_config_hash: Xxm8x7KCQT7a43uJjJLRMknRxnN28QIqSC4ZVlAnkiI
+id: mariagwyn_branding
+theme: mariagwyn
+region: header
+weight: -8
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Site branding'
+  provider: system
+  label_display: '0'
+  use_site_logo: true
+  use_site_name: true
+  use_site_slogan: true
+visibility: {  }

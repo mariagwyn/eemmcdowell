@@ -1,0 +1,25 @@
+uuid: c43d1f4e-a879-44ac-a28f-d0fd0f3a08eb
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:disclaimer_block:56ffdde8-3ec7-46aa-a76a-ab7d3a0d45db'
+  module:
+    - block_content
+  theme:
+    - mariagwyn
+id: copyright
+theme: mariagwyn
+region: bottom
+weight: 0
+provider: null
+plugin: 'block_content:56ffdde8-3ec7-46aa-a76a-ab7d3a0d45db'
+settings:
+  id: 'block_content:56ffdde8-3ec7-46aa-a76a-ab7d3a0d45db'
+  label: Copyright
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

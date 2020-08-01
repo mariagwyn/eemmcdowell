@@ -1,0 +1,27 @@
+uuid: ff0b19be-9ce5-4ba4-9681-daa43e52cd9b
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - system
+  theme:
+    - mariagwyn
+_core:
+  default_config_hash: Sxjy5s5mixCeBBk2OzPLlPdGGRcXZe6Hiwplak7A2X0
+id: mariagwyn_main_menu
+theme: mariagwyn
+region: pre_header
+weight: -11
+provider: null
+plugin: 'system_menu_block:main'
+settings:
+  id: 'system_menu_block:main'
+  label: 'Main navigation'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 1
+  expand_all_items: false
+visibility: {  }

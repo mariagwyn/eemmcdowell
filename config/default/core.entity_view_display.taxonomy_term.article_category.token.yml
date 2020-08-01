@@ -1,0 +1,23 @@
+uuid: afc5ea7e-ae30-4ac0-b971-324e89188235
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.token
+    - field.field.taxonomy_term.article_category.field_logo
+    - taxonomy.vocabulary.article_category
+  module:
+    - layout_builder
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: false
+id: taxonomy_term.article_category.token
+targetEntityType: taxonomy_term
+bundle: article_category
+mode: token
+content: {  }
+hidden:
+  description: true
+  field_logo: true
+  langcode: true

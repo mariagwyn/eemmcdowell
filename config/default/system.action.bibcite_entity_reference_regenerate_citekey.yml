@@ -1,0 +1,13 @@
+uuid: 88849f2d-b03e-4b52-9f74-453831699954
+langcode: en
+status: true
+dependencies:
+  module:
+    - bibcite_entity
+_core:
+  default_config_hash: KKghRKV8swwRKVtMckPJSkCP43_u5LNXSI6v_YvI3mE
+id: bibcite_entity_reference_regenerate_citekey
+label: 'Regenerate citation key'
+type: bibcite_reference
+plugin: bibcite_entity_reference_regenerate_citekey
+configuration: {  }

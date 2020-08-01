@@ -1,0 +1,21 @@
+uuid: 638fa8d7-cd72-45eb-ba9b-d221c26893f2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_citation
+    - node.type.quote
+  module:
+    - text
+id: node.quote.field_citation
+field_name: field_citation
+entity_type: node
+bundle: quote
+label: Citation
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

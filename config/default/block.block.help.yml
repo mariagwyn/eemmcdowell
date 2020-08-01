@@ -1,0 +1,22 @@
+uuid: 1cc303ae-8bb4-49eb-8f7c-45bee8ba63f9
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - mariagwyn
+_core:
+  default_config_hash: iXRSXR5rh0ioogl3zV79MUQrVmF-vQFfus8DBBGEarY
+id: help
+theme: mariagwyn
+region: highlighted
+weight: -9
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  provider: help
+  label_display: '0'
+visibility: {  }

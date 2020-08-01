@@ -1,0 +1,8 @@
+uuid: b71f8f3e-4939-48dc-be45-62f0dcf06a14
+langcode: en
+status: true
+dependencies: {  }
+name: 'Media Category'
+vid: media_types
+description: ''
+weight: 0

@@ -1,0 +1,187 @@
+uuid: 171423ca-a552-4107-afbe-e54429a27d0d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.article.body
+    - field.field.node.article.feeds_item
+    - field.field.node.article.field_category
+    - field.field.node.article.field_links
+    - field.field.node.article.field_tags
+    - node.type.article
+  module:
+    - feeds_tamper
+    - node
+third_party_settings:
+  feeds_tamper:
+    tampers:
+      0a5f6ae5-c159-4f85-a643-2b359511d537:
+        default_value: 'Originally posted at Women in Theology'
+        only_if_empty: false
+        plugin: default_value
+        source: feed_title
+        weight: 0
+        label: 'Set value or default value'
+        uuid: 0a5f6ae5-c159-4f85-a643-2b359511d537
+      b715788e-e61c-413b-ab6a-0fdad430b4c5:
+        find: 'http://womenintheology.org/?p='
+        replace: ''
+        case_sensitive: false
+        whole: false
+        plugin: find_replace
+        source: guid
+        weight: 0
+        label: 'Strip URL from GUID'
+        word_boundaries: false
+        uuid: b715788e-e61c-413b-ab6a-0fdad430b4c5
+      b6d124b7-76f5-41f1-955e-f1869a46d3e0:
+        default_value: 'WIT Posts'
+        only_if_empty: true
+        plugin: default_value
+        source: tags
+        weight: 0
+        label: 'Set value or default value'
+        uuid: b6d124b7-76f5-41f1-955e-f1869a46d3e0
+      7dd850b9-e9f9-4adc-88e9-3b5eaba00c1a:
+        default_value: '1'
+        only_if_empty: false
+        plugin: default_value
+        source: published
+        weight: 0
+        label: 'Set to Published'
+        uuid: 7dd850b9-e9f9-4adc-88e9-3b5eaba00c1a
+      0c19c0c2-d6ad-4c26-9a44-cdec2b084e32:
+        default_value: published
+        only_if_empty: false
+        plugin: default_value
+        source: moderation
+        weight: 0
+        label: 'Set to Published (Moderation)'
+        uuid: 0c19c0c2-d6ad-4c26-9a44-cdec2b084e32
+      7979990e-b3ce-40f5-bfea-67a7e8426a95:
+        default_value: '0'
+        only_if_empty: true
+        plugin: default_value
+        source: promote
+        weight: 0
+        label: Promoted
+        uuid: 7979990e-b3ce-40f5-bfea-67a7e8426a95
+id: rss_feed
+label: 'RSS Feed'
+description: ''
+help: ''
+import_period: 86400
+fetcher: http
+fetcher_configuration:
+  auto_detect_feeds: true
+  use_pubsubhubbub: false
+  always_download: false
+  fallback_hub: ''
+  request_timeout: 30
+parser: syndication
+parser_configuration: {  }
+processor: 'entity:node'
+processor_configuration:
+  langcode: en
+  update_existing: 2
+  update_non_existent: _keep
+  expire: -1
+  owner_feed_author: false
+  owner_id: 1
+  authorize: true
+  skip_hash_check: false
+  values:
+    type: article
+custom_sources:
+  published:
+    label: published
+    value: published
+    machine_name: published
+  moderation:
+    label: moderation
+    value: moderation
+    machine_name: moderation
+  promote:
+    label: Promote
+    value: Promote
+    machine_name: promote
+mappings:
+  -
+    target: title
+    map:
+      value: title
+    unique: {  }
+    settings:
+      language: null
+  -
+    target: body
+    map:
+      value: content
+      summary: description
+    settings:
+      language: ''
+      format: full_html
+  -
+    target: created
+    map:
+      value: timestamp
+    settings:
+      language: ''
+      timezone: America/Los_Angeles
+  -
+    target: feeds_item
+    map:
+      url: url
+      guid: guid
+    unique:
+      guid: '1'
+    settings: {  }
+  -
+    target: field_tags
+    map:
+      target_id: tags
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: '1'
+  -
+    target: field_category
+    map:
+      target_id: tags
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: 0
+  -
+    target: field_links
+    map:
+      uri: url
+      title: title
+    settings:
+      language: ''
+  -
+    target: field_links
+    map:
+      uri: feed_url
+      title: feed_title
+    settings:
+      language: null
+  -
+    target: status
+    map:
+      value: published
+    settings:
+      language: null
+  -
+    target: moderation_state
+    map:
+      value: moderation
+    unique: {  }
+    settings:
+      language: null
+  -
+    target: promote
+    map:
+      value: promote
+    settings:
+      language: null

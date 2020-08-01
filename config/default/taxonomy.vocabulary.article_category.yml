@@ -1,0 +1,10 @@
+uuid: 73a35a3a-f27e-444e-87e3-655aea5bbbf7
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: wm3zsxqjVUNldWJhh-FumMfn2duT5EdGZstKm92JNak
+name: 'Primary Category'
+vid: article_category
+description: 'Use this taxonomy to group articles of the same type together.'
+weight: 0

@@ -1,0 +1,13 @@
+uuid: 23a91ef2-91c0-4cb4-9eb3-09e4d3f5e6f7
+langcode: en
+status: true
+dependencies:
+  module:
+    - bibcite_entity
+_core:
+  default_config_hash: 6fcuIkm5QXFflEdmHJCYWyrLnHXhPkKUWHSYxe_T79o
+id: bibcite_entity_keyword_delete
+label: 'Delete keyword'
+type: bibcite_keyword
+plugin: bibcite_entity_keyword_delete
+configuration: {  }

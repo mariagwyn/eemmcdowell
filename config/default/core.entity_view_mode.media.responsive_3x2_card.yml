@@ -1,0 +1,10 @@
+uuid: 8dafc04b-8544-4aea-8de9-c458c3ce3f36
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.responsive_3x2_card
+label: 'Responsive 3x2 Card'
+targetEntityType: media
+cache: true

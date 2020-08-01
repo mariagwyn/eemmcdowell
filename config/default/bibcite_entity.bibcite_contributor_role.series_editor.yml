@@ -1,0 +1,9 @@
+uuid: bf5eb420-60ad-4a2e-94ae-76cf4b737b20
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: PkldvsTZe0jcn2Nb-2cR0KjG3hflOcm1d8v3abY05IY
+id: series_editor
+label: 'Series Editor'
+weight: -5

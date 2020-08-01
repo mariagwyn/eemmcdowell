@@ -1,0 +1,10 @@
+uuid: e260339e-c93d-4a2e-a27a-5430b4885d60
+langcode: en
+status: true
+dependencies:
+  module:
+    - bibcite_entity
+id: bibcite_reference.citation_plus
+label: 'Citation Plus'
+targetEntityType: bibcite_reference
+cache: true

@@ -1,0 +1,10 @@
+uuid: 5def7c26-9471-4dd7-a5ab-8ab5ae0dae1c
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: kGcuxSnRc4Zcn003hwmPjcxp-OXGOFaADUsQR-hpHoo
+id: mariagwyn_dates
+label: 'MariaGwyn dates'
+locked: false
+pattern: 'jS F Y'

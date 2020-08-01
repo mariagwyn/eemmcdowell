@@ -1,0 +1,33 @@
+uuid: c75cb491-ba55-4ac4-a9e1-55ae53dccb5c
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.term_logo
+    - field.field.taxonomy_term.article_category.field_logo
+    - image.style.tiny_thumbnail
+    - taxonomy.vocabulary.article_category
+  module:
+    - layout_builder
+    - media
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: false
+id: taxonomy_term.article_category.term_logo
+targetEntityType: taxonomy_term
+bundle: article_category
+mode: term_logo
+content:
+  field_logo:
+    type: media_thumbnail
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      image_style: tiny_thumbnail
+      image_link: ''
+    third_party_settings: {  }
+hidden:
+  description: true
+  langcode: true

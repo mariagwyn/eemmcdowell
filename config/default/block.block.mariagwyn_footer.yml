@@ -1,0 +1,27 @@
+uuid: 89da7d57-e479-4830-b2fe-72d95c9ed5b3
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.footer
+  module:
+    - system
+  theme:
+    - mariagwyn
+_core:
+  default_config_hash: rdp4gjs6llREckxZFaDOiXLe5R-Cdk5Er-WAgaBEmoc
+id: mariagwyn_footer
+theme: mariagwyn
+region: footer
+weight: -7
+provider: null
+plugin: 'system_menu_block:footer'
+settings:
+  id: 'system_menu_block:footer'
+  label: 'Reach out'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

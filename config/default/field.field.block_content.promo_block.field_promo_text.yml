@@ -1,0 +1,21 @@
+uuid: c712481d-7bc9-4200-bcba-68ab28207233
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.promo_block
+    - field.storage.block_content.field_promo_text
+  module:
+    - text
+id: block_content.promo_block.field_promo_text
+field_name: field_promo_text
+entity_type: block_content
+bundle: promo_block
+label: 'Promo Text'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

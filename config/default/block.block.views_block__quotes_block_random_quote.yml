@@ -1,0 +1,24 @@
+uuid: 6cd46630-cd7c-4dd3-b16b-89337d8d6e91
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.quotes
+  module:
+    - views
+  theme:
+    - mariagwyn
+id: views_block__quotes_block_random_quote
+theme: mariagwyn
+region: sub_header
+weight: -10
+provider: null
+plugin: 'views_block:quotes-block_random_quote'
+settings:
+  id: 'views_block:quotes-block_random_quote'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: none
+visibility: {  }

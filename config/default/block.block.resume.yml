@@ -1,0 +1,30 @@
+uuid: 52a68bf3-e904-4661-ab11-89a7a58b358c
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:promo_block:cf49d68a-b55f-4e04-9e74-c61d29ca3610'
+  module:
+    - block_content
+    - system
+  theme:
+    - mariagwyn
+id: resume
+theme: mariagwyn
+region: sub_header
+weight: -9
+provider: null
+plugin: 'block_content:cf49d68a-b55f-4e04-9e74-c61d29ca3610'
+settings:
+  id: 'block_content:cf49d68a-b55f-4e04-9e74-c61d29ca3610'
+  label: Resume
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false

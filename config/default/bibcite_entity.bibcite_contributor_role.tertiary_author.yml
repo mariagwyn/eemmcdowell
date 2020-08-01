@@ -1,0 +1,9 @@
+uuid: ff8d75da-2dbb-4026-ad29-6158b72ea987
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: LCO39ZLnNATyWcPMzY4pxMbeoeMQIElG2eM4x4q3vK8
+id: tertiary_author
+label: 'Tertiary Author'
+weight: -8

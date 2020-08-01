@@ -1,0 +1,30 @@
+uuid: 2e3ee036-7ff4-401f-b63d-31cc8afa250f
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:promo_block:5de06760-e323-428a-9a49-f9867ae1bee2'
+  module:
+    - block_content
+    - system
+  theme:
+    - mariagwyn
+id: ekklesia
+theme: mariagwyn
+region: sub_header
+weight: -8
+provider: null
+plugin: 'block_content:5de06760-e323-428a-9a49-f9867ae1bee2'
+settings:
+  id: 'block_content:5de06760-e323-428a-9a49-f9867ae1bee2'
+  label: Ekklesia
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
