@@ -1,2 +1,4 @@
-project:
-  machine_name: eemmcdowell
+project: {  }
+multisites:
+  - default
+  - deiprofundis

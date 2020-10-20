@@ -53,6 +53,10 @@
  * @see conf_path()
  * @see https://www.drupal.org/documentation/install/multi-site
  */
+ $sites['mariagwyn.com'] = 'default';
+ $sites['dev.mariagwyn.com'] = 'default';
+ $sites['stage.mariagwyn.com'] = 'default';
+ $sites['ra.mariagwyn.com'] = 'default';
 
  $sites['deiprofundis.org'] = 'deiprofundis.org';
  $sites['dev.deiprofundis.org'] = 'deiprofundis.org';

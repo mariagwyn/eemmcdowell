@@ -1,0 +1,18 @@
+.block-views-blockquotes-block-random-quote {
+  flex: 0 1 80%;
+  margin-left: auto;
+  margin-top: -4rem;
+  text-align: right;
+}
+.block-views-blockquotes-block-random-quote .field--type-text-with-summary {
+  font-style: oblique;
+}
+.block-views-blockquotes-block-random-quote .field--type-text-with-summary p {
+  background: #fff;
+}
+.block-views-blockquotes-block-random-quote .field--name-field-author {
+
+}
+.block-views-blockquotes-block-random-quote .node {
+  background: none;
+}

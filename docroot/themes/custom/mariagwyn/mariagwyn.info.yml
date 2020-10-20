@@ -71,6 +71,8 @@ libraries-extend:
 regions:
   pre_header: Pre-header
   header: Header
+  sub_header: Sub Header
+  sub_header_wide: Sub Header (Wide)
   highlighted: Highlighted
   tabs: Tabs
   banner_top: 'Banner Top'

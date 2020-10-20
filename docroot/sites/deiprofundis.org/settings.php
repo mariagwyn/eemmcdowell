@@ -57,7 +57,7 @@
  */
 
 /**
- * Database settings:
+ * Database settings.
  *
  * The $databases array specifies the database connection or
  * connections that Drupal may use.  Drupal is able to connect
@@ -243,9 +243,9 @@ $databases = array();
  *   );
  * @endcode
  */
-
+$config_directories = array();
 /**
- * Settings:
+ * Settings.
  *
  * $settings contains environment-specific configuration, such as the files
  * directory and reverse proxy address, and temporary configuration, such as
@@ -264,8 +264,8 @@ $databases = array();
  *
  * @see install_select_profile()
  */
-# $settings['install_profile'] = '';
-$settings['install_profile'] = 'standard';
+# $settings['install_profile'] = 'standard';
+
 /**
  * Salt for one-time login links, cancel links, form tokens, etc.
  *
@@ -283,7 +283,7 @@ $settings['install_profile'] = 'standard';
  *   $settings['hash_salt'] = file_get_contents('/home/example/salt.txt');
  * @endcode
  */
-$settings['hash_salt'] = 'M-vvRgrtLigP0vB9w3gNQR6-On_Q6fMwKBpPj5IgBdn2OnPVRfkT8LXMumheZNaiH259dc3zCw';
+$settings['hash_salt'] = '';
 
 /**
  * Deployment identifier.
@@ -293,8 +293,7 @@ $settings['hash_salt'] = 'M-vvRgrtLigP0vB9w3gNQR6-On_Q6fMwKBpPj5IgBdn2OnPVRfkT8L
  * custom code that changes the container, changing this identifier will also
  * allow the container to be invalidated as soon as code is deployed.
  */
-# $settings['deployment_identifier'] = \Drupal::VERSION;
-
+// $settings['deployment_identifier'] = \Drupal::VERSION;
 /**
  * Access control for update.php script.
  *
@@ -309,7 +308,7 @@ $settings['hash_salt'] = 'M-vvRgrtLigP0vB9w3gNQR6-On_Q6fMwKBpPj5IgBdn2OnPVRfkT8L
 $settings['update_free_access'] = FALSE;
 
 /**
- * External access proxy settings:
+ * External access proxy settings.
  *
  * If your site must access the Internet via a web proxy then you can enter
  * the proxy settings here. Currently only basic authentication is supported
@@ -319,15 +318,14 @@ $settings['update_free_access'] = FALSE;
  * proxy_exceptions variable is an array of host names to be accessed directly,
  * not via proxy.
  */
-# $settings['proxy_server'] = '';
-# $settings['proxy_port'] = 8080;
-# $settings['proxy_username'] = '';
-# $settings['proxy_password'] = '';
-# $settings['proxy_user_agent'] = '';
-# $settings['proxy_exceptions'] = array('127.0.0.1', 'localhost');
-
+// $settings['proxy_server'] = '';
+// $settings['proxy_port'] = 8080;
+// $settings['proxy_username'] = '';
+// $settings['proxy_password'] = '';
+// $settings['proxy_user_agent'] = '';
+// $settings['proxy_exceptions'] = array('127.0.0.1', 'localhost');
 /**
- * Reverse Proxy Configuration:
+ * Reverse Proxy Configuration.
  *
  * Reverse proxy servers are often used to enhance the performance
  * of heavily visited sites and may also provide other site caching,
@@ -357,22 +355,22 @@ $settings['update_free_access'] = FALSE;
  * Be aware, however, that it is likely that this would allow IP
  * address spoofing unless more advanced precautions are taken.
  */
-# $settings['reverse_proxy'] = TRUE;
-
+// $settings['reverse_proxy'] = TRUE;
 /**
- * Specify every reverse proxy IP address in your environment.
+ * Specify every reverse proxy IP address.
+ *
  * This setting is required if $settings['reverse_proxy'] is TRUE.
  */
-# $settings['reverse_proxy_addresses'] = array('a.b.c.d', ...);
-
+// $settings['reverse_proxy_addresses'] = array('a.b.c.d', ...);
 /**
+ * Set reverse proxy header.
+ *
  * Set this value if your proxy server sends the client IP in a header
  * other than X-Forwarded-For.
  */
-# $settings['reverse_proxy_header'] = 'HTTP_X_CLUSTER_CLIENT_IP';
-
+// $settings['reverse_proxy_header'] = 'HTTP_X_CLUSTER_CLIENT_IP';
 /**
- * Page caching:
+ * Page caching.
  *
  * By default, Drupal sends a "Vary: Cookie" HTTP header for anonymous page
  * views. This tells a HTTP proxy that it may return a page from its local
@@ -387,8 +385,7 @@ $settings['update_free_access'] = FALSE;
  * HTTP proxy, and bypass the reverse proxy if one is used) in order to avoid
  * getting cached pages from the proxy.
  */
-# $settings['omit_vary_cookie'] = TRUE;
-
+// $settings['omit_vary_cookie'] = TRUE;
 /**
  * Class Loader.
  *
@@ -396,8 +393,7 @@ $settings['update_free_access'] = FALSE;
  * performance reasons. Detection can be prevented by setting
  * class_loader_auto_detect to false, as in the example below.
  */
-# $settings['class_loader_auto_detect'] = FALSE;
-
+// $settings['class_loader_auto_detect'] = FALSE;
 /*
  * If the APC extension is not detected, either because APC is missing or
  * because auto-detection has been disabled, auto-loading falls back to
@@ -410,19 +406,17 @@ $settings['update_free_access'] = FALSE;
  * example, to use Symfony's APC class loader without automatic detection,
  * uncomment the code below.
  */
-/*
-if ($settings['hash_salt']) {
-  $prefix = 'drupal.' . hash('sha256', 'drupal.' . $settings['hash_salt']);
-  $apc_loader = new \Symfony\Component\ClassLoader\ApcClassLoader($prefix, $class_loader);
-  unset($prefix);
-  $class_loader->unregister();
-  $apc_loader->register();
-  $class_loader = $apc_loader;
-}
-*/
-
+//  if ($settings['hash_salt']) {
+//    $prefix = 'drupal.' . hash('sha256', 'drupal.' . $settings['hash_salt']);
+//    $apc_loader = new \Symfony\Component\ClassLoader\ApcClassLoader($prefix, $class_loader);
+//    unset($prefix);
+//    $class_loader->unregister();
+//    $apc_loader->register();
+//    $class_loader = $apc_loader;
+// }
+// .
 /**
- * Authorized file system operations:
+ * Authorized file system operations.
  *
  * The Update Manager module included with Drupal provides a mechanism for
  * site administrators to securely install missing updates for the site
@@ -443,27 +437,24 @@ if ($settings['hash_salt']) {
  *
  * Remove the leading hash signs to disable.
  */
-# $settings['allow_authorize_operations'] = FALSE;
-
+// $settings['allow_authorize_operations'] = FALSE;
 /**
  * Default mode for for directories and files written by Drupal.
  *
  * Value should be in PHP Octal Notation, with leading zero.
  */
-# $settings['file_chmod_directory'] = 0775;
-# $settings['file_chmod_file'] = 0664;
-
+// $settings['file_chmod_directory'] = 0775;
+// $settings['file_chmod_file'] = 0664;
 /**
- * Public file path:
+ * Public file path.
  *
  * A local file system path where public files will be stored. This directory
  * must exist and be writable by Drupal. This directory must be relative to
  * the Drupal installation directory and be accessible over the web.
  */
-$settings['file_public_path'] = 'sites/deiprofundis.org/files';
-
+// $settings['file_public_path'] = 'sites/default/files';
 /**
- * Private file path:
+ * Private file path.
  *
  * A local file system path where private files will be stored. This directory
  * must be absolute, outside of the Drupal installation directory and not
@@ -475,18 +466,16 @@ $settings['file_public_path'] = 'sites/deiprofundis.org/files';
  * See https://www.drupal.org/documentation/modules/file for more information
  * about securing private files.
  */
-# $settings['file_private_path'] = '';
-
+// $settings['file_private_path'] = '';
 /**
- * Session write interval:
+ * Session write interval.
  *
  * Set the minimum interval between each session write to database.
  * For performance reasons it defaults to 180.
  */
-# $settings['session_write_interval'] = 180;
-
+// $settings['session_write_interval'] = 180;
 /**
- * String overrides:
+ * String overrides.
  *
  * To override specific strings on your site with or without enabling the Locale
  * module, add an entry to this list. This functionality allows you to change
@@ -497,13 +486,12 @@ $settings['file_public_path'] = 'sites/deiprofundis.org/files';
  * The "en" part of the variable name, is dynamic and can be any langcode of
  * any added language. (eg locale_custom_strings_de for german).
  */
-# $settings['locale_custom_strings_en'][''] = array(
-#   'forum'      => 'Discussion board',
-#   '@count min' => '@count minutes',
-# );
-
+// $settings['locale_custom_strings_en'][''] = array(
+//   'forum'      => 'Discussion board',
+//   '@count min' => '@count minutes',
+// );
 /**
- * A custom theme for the offline page:
+ * A custom theme for the offline page.
  *
  * This applies when the site is explicitly set to maintenance mode through the
  * administration page or when the database is inactive due to an error.
@@ -512,8 +500,7 @@ $settings['file_public_path'] = 'sites/deiprofundis.org/files';
  *
  * Note: This setting does not apply to installation and update pages.
  */
-# $settings['maintenance_theme'] = 'bartik';
-
+// $settings['maintenance_theme'] = 'bartik';
 /**
  * Base URL (optional).
  *
@@ -534,10 +521,9 @@ $settings['file_public_path'] = 'sites/deiprofundis.org/files';
  * It is not allowed to have a trailing slash; Drupal will add it
  * for you.
  */
-# $base_url = 'http://www.example.com';  // NO trailing slash!
-
+// $base_url = 'http://www.example.com';  // NO trailing slash!
 /**
- * PHP settings:
+ * PHP settings.
  *
  * To see what PHP settings are possible, including whether they can be set at
  * runtime (by using ini_set()), read the PHP documentation:
@@ -556,9 +542,8 @@ $settings['file_public_path'] = 'sites/deiprofundis.org/files';
  * and increase the limits of these variables.  For more information, see
  * http://php.net/manual/pcre.configuration.php.
  */
-# ini_set('pcre.backtrack_limit', 200000);
-# ini_set('pcre.recursion_limit', 200000);
-
+// ini_set('pcre.backtrack_limit', 200000);
+// ini_set('pcre.recursion_limit', 200000);
 /**
  * Active configuration settings.
  *
@@ -572,8 +557,7 @@ $settings['file_public_path'] = 'sites/deiprofundis.org/files';
  *   override in a services.yml file in the same directory as settings.php
  *   (definitions in this file will override service definition defaults).
  */
-# $settings['bootstrap_config_storage'] = array('Drupal\Core\Config\BootstrapConfigStorageFactory', 'getFileStorage');
-
+// $settings['bootstrap_config_storage'] = array('Drupal\Core\Config\BootstrapConfigStorageFactory', 'getFileStorage');
 /**
  * Configuration overrides.
  *
@@ -596,12 +580,11 @@ $settings['file_public_path'] = 'sites/deiprofundis.org/files';
  * configuration values in settings.php will not fire any of the configuration
  * change events.
  */
-# $config['system.site']['name'] = 'My Drupal site';
-# $config['system.theme']['default'] = 'stark';
-# $config['user.settings']['anonymous'] = 'Visitor';
-
+// $config['system.site']['name'] = 'My Drupal site';
+// $config['system.theme']['default'] = 'stark';
+// $config['user.settings']['anonymous'] = 'Visitor';
 /**
- * Fast 404 pages:
+ * Fast 404 pages.
  *
  * Drupal can generate fully themed 404 pages. However, some of these responses
  * are for images or other resource files that are not displayed to the user.
@@ -623,15 +606,11 @@ $settings['file_public_path'] = 'sites/deiprofundis.org/files';
  *
  * Remove the leading hash signs if you would like to alter this functionality.
  */
-# $config['system.performance']['fast_404']['exclude_paths'] = '/\/(?:styles)|(?:system\/files)\//';
-# $config['system.performance']['fast_404']['paths'] = '/\.(?:txt|png|gif|jpe?g|css|js|ico|swf|flv|cgi|bat|pl|dll|exe|asp)$/i';
-# $config['system.performance']['fast_404']['html'] = '<!DOCTYPE html><html><head><title>404 Not Found</title></head><body><h1>Not Found</h1><p>The requested URL "@path" was not found on this server.</p></body></html>';
 
 /**
  * Load services definition file.
  */
-$settings['container_yamls'][] = __DIR__ . '/services.yml';
-
+$settings['container_yamls'][] = $app_root . '/' . $site_path . '/services.yml';
 /**
  * Override the default service container class.
  *
@@ -639,8 +618,8 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
  * tracking purposes, for testing a service container with an error condition or
  * to test a service container that throws an exception.
  */
-# $settings['container_base_class'] = '\Drupal\Core\DependencyInjection\Container';
-
+// $settings['container_base_class'] =
+// '\Drupal\Core\DependencyInjection\Container';
 /**
  * Trusted host configuration.
  *
@@ -677,15 +656,32 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
  * will allow the site to run off of all variants of example.com and
  * example.org, with all subdomains included.
  */
- $settings['trusted_host_patterns'] = array(
-   '^deiprofundis\.org$',
-   '^.+\.deiprofundis\.org$',
-   '^deiprofundis\.org',
-   '^.+\.deiprofundis\.org',
- );
 
- # Per: https://docs.acquia.com/cloud/manage/code/config-d8
-  $config_directories['sync'] = $app_root . '../config/' . basename($site_path) . '/sync';
+ /**
+  * The default list of directories that will be ignored by Drupal's file API.
+  *
+  * By default ignore node_modules and bower_components folders to avoid issues
+  * with common frontend tools and recursive scanning of directories looking for
+  * extensions.
+  *
+  * @see file_scan_directory()
+  * @see \Drupal\Core\Extension\ExtensionDiscovery::scanDirectory()
+  */
+ $settings['file_scan_ignore_directories'] = [
+   'node_modules',
+   'bower_components',
+ ];
+
+ /**
+  * The default number of entities to update in a batch process.
+  *
+  * This is used by update and post-update functions that need to go through and
+  * change all the entities on a site, so it is useful to increase this number
+  * if your hosting configuration (i.e. RAM allocation, CPU speed) allows for a
+  * larger number of entities to be processed in a single batch run.
+  */
+ $settings['entity_update_batch_size'] = 50;
+
 /**
  * Load local development override configuration, if available.
  *
@@ -696,21 +692,22 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
  *
  * Keep this code block at the end of this file to take full effect.
  */
- if (file_exists(__DIR__ . '/settings/local.settings.php')) {
-   include __DIR__ . '/settings/local.settings.php';
+
+ # if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
+ #   include $app_root . '/' . $site_path . '/settings.local.php';
+ # }
+
+ // Acquia DB include
+ if (file_exists('/var/www/site-php')) {
+     require '/var/www/site-php/eemmcdowell/deiprofundis-settings.inc';
  }
 
- /**
-  * BLT/VM multisite settings
-  */
+ require DRUPAL_ROOT . "/../vendor/acquia/blt/settings/blt.settings.php";
+ # $settings['install_profile'] = 'headless_lightning';
 
-$site_dir = 'deiprofundis.org';
-
-// Acquia DB include
-if (file_exists('/var/www/site-php')) {
-    require '/var/www/site-php/eemmcdowell/deiprofundis-settings.inc';
-}
-require DRUPAL_ROOT . "/../vendor/acquia/blt/settings/blt.settings.php";
+ if (file_exists(__DIR__ . '/settings.ddev.php')) {
+   require_once __DIR__ . '/settings.ddev.php';
+ }
 /**
  * IMPORTANT.
  *

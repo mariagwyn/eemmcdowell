@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - mariagwyn
+_core:
+  default_config_hash: iXRSXR5rh0ioogl3zV79MUQrVmF-vQFfus8DBBGEarY
+id: help
+theme: mariagwyn
+region: highlighted
+weight: 0
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  provider: help
+  label_display: '0'
+visibility: {  }

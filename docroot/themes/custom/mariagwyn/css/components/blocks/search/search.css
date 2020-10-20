@@ -71,7 +71,7 @@
   height: auto;
   margin: 0;
   padding: 7px 8px 7px 32px;
-  color: #464646;
+  color: #301b11;
   border: 2px solid #fff;
   background: url(../../../../images/svg/search.svg) no-repeat 0.5em center #fff;
   font-size: 0.875rem;
@@ -85,7 +85,7 @@
 }
 
 .search-block-form .form-search:focus {
-  border: 2px solid #008068;
+  border: 2px solid #4a7bad;
   border-top-left-radius: 2px;  /* LTR */
   border-bottom-left-radius: 2px; /* LTR */
 }
@@ -152,7 +152,7 @@
 .search-block-form .form-submit:focus,
 .search-block-form .form-submit:hover {
   margin: 0;
-  border: 2px solid #008068;
+  border: 2px solid #4a7bad;
   outline-offset: 2px;
   background-color: #e6eee0;
 }

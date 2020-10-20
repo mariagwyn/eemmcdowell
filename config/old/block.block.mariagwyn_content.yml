@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - mariagwyn
+_core:
+  default_config_hash: WSew_BZSe_D2ZfGx7-JZxvapwPpwmI-thdDysutAAiM
+id: mariagwyn_content
+theme: mariagwyn
+region: content
+weight: -7
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  provider: system
+  label_display: '0'
+visibility: {  }

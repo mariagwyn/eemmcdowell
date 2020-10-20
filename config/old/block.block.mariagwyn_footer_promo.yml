@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:footer_promo_block:924ab293-8f5f-45a1-9c7f-2423ae61a241'
+  enforced:
+    module:
+      - mariagwyn_content
+  module:
+    - block_content
+  theme:
+    - mariagwyn
+_core:
+  default_config_hash: QynK5MODGHvEPwH4149oEDhkCdm1qbPLLBU47ONY1Lo
+id: mariagwyn_footer_promo
+theme: mariagwyn
+region: footer
+weight: -1
+provider: null
+plugin: 'block_content:924ab293-8f5f-45a1-9c7f-2423ae61a241'
+settings:
+  id: 'block_content:924ab293-8f5f-45a1-9c7f-2423ae61a241'
+  label: 'MariaGwyn footer promo'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

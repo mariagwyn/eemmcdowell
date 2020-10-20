@@ -18,6 +18,22 @@
   justify-content: space-between;
   padding: 0.75rem 1rem;
 }
+.background-chiro {
+  background-attachment: fixed;
+  background-image: url(../../../../images/chi.jpg);
+  background-size: cover;
+  border-bottom: 1px solid #301b11;
+  border-top: 1px solid #301b11;
+}
+.layout-sub-header {
+  padding-top: 5rem;
+  padding-bottom: 2rem;
+}
+.region-sub-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
 
 @media screen and (min-width: 48em) {
   .region-header {

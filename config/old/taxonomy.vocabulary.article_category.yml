@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: wm3zsxqjVUNldWJhh-FumMfn2duT5EdGZstKm92JNak
+name: 'Article category'
+vid: article_category
+description: 'Use this taxonomy to group articles of the same type together.'
+weight: 0

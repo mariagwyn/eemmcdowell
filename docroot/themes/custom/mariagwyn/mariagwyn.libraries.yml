@@ -13,6 +13,8 @@ global:
     base:
       css/base.css: {}
     component:
+      css/components/blocks/quotes/quotes.css: {}
+      css/components/blocks/promo/promo.css: {}
       css/components/blocks/banner/banner.css: {}
       css/components/blocks/branding/branding.css: {}
       css/components/blocks/disclaimer/disclaimer.css: {}

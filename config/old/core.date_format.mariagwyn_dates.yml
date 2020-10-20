@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: kGcuxSnRc4Zcn003hwmPjcxp-OXGOFaADUsQR-hpHoo
+id: mariagwyn_dates
+label: 'MariaGwyn dates'
+locked: false
+pattern: 'jS F Y'

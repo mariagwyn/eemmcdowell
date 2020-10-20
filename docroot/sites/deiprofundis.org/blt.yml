@@ -1,0 +1,17 @@
+project:
+  local:
+    hostname: null
+    protocol: null
+  machine_name: deiprofundis.org
+  human_name: deiprofundis.org
+drush:
+  aliases:
+    local: local.deiprofundis
+    remote: deiprofundis
+drupal:
+  db:
+    database: deiprofundis
+    username: deiprofundis
+    password: deiprofundis
+    host: localhost
+    port: 3306

@@ -38,3 +38,10 @@ test:
     root: /var/www/html/eemmcdowell.test/docroot
     user: eemmcdowell.test
     ssh: { options: '-p 22' }
+local:
+    root: /var/www/eemmcdowell/docroot
+    options: {  }
+    uri: 'http://local.eemmcdowell.com'
+    host: local.eemmcdowell.com
+    user: vagrant
+    ssh: { options: '-o StrictHostKeyChecking=no -o PasswordAuthentication=no -i $HOME/.vagrant.d/insecure_private_key' }

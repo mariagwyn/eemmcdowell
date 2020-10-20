@@ -1,0 +1,9 @@
+project:
+  local:
+    hostname: local.eemmcdowell.com
+    protocol: http
+  machine_name: eemmcdowell
+drush:
+  aliases:
+    local: self
+    remote: null

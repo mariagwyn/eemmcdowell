@@ -9,11 +9,12 @@
 .footer {
   padding: 2rem 1rem;
   text-align: center;
-  color: #fff;
-  background-color: #5f635d;
-  font-size: 0.9rem;
+  /* font-size: 0.9rem; */
 }
 
+.region-footer > div {
+  flex-basis: 30%;
+}
 @media screen and (min-width: 60rem) {
   .footer {
     padding: 1rem 1rem 0;
@@ -29,7 +30,7 @@
 }
 
 .footer a {
-  color: #fff;
+  color: #f6b241;
   background-color: inherit;
   font-weight: 400;
 }
@@ -37,6 +38,6 @@
 .footer a:active,
 .footer a:focus,
 .footer a:hover {
-  outline-color: #fff;
-  background-color: #000;
+  color: #fff;
+  background-color: #f6b241;
 }

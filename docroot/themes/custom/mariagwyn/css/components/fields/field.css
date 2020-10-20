@@ -13,3 +13,14 @@
   /* Undo use of floats by classy, switch to flexbox */
   float: none;
 }
+
+.view-mode-term-logo {
+  display: flex;
+  align-items: flex-end;
+}
+.view-mode-term-logo h5 {
+  margin: 0 0 .8rem .6rem;
+}
+.view-mode-term-logo .content {
+  order: -1;
+}

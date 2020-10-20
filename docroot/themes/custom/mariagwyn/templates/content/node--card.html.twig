@@ -81,7 +81,7 @@
 {{ attach_library('mariagwyn/view-mode-card') }}
 
 <article{{ attributes.addClass(classes) }}>
-
+{{ content.field_category.0 }}
   {{ title_prefix }}
   {% if label and not page %}
     <h2{{ title_attributes.addClass('node__title') }}>
@@ -91,12 +91,13 @@
   {{ title_suffix }}
 
   <div{{ content_attributes.addClass('node__content') }}>
-    {{ content }}
+    {{ content|without('field_category','field_type') }}
+    {{ node.getCreatedTime()|date('d M, Y')}}
   </div>
 
   <div class="read-more">
     <a class="read-more__link" href="{{ url }}">
-      {% trans %}View {{ node.type.entity.label() }}{% endtrans %} <span class="visually-hidden"> - {{ label }}</span>
+      View {{ content.field_type[0]['#title'] }}<span class="visually-hidden"> - {{ label }}</span>
     </a>
   </div>
 

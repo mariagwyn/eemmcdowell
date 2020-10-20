@@ -6,3 +6,13 @@
 .node--view-mode-card-common-alt .node__content {
   order: -1;
 }
+.node--view-mode-card-common-alt .view-mode-term-logo {
+  order: -3
+}
+.node--view-mode-card-common-alt .view-mode-term-logo h5 {
+  font-size: 1rem;
+}
+
+.node--view-mode-card-common-alt .view-mode-term-logo .field--name-field-logo img {
+  width: 30px;
+}

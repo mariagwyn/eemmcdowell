@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - language
+  theme:
+    - mariagwyn
+_core:
+  default_config_hash: FAYZG5lUJB7bn2sVTK4ceEH-cy1jlcOrD7D45gxV8HQ
+id: languageswitcher
+theme: mariagwyn
+region: pre_header
+weight: 0
+provider: null
+plugin: 'language_block:language_interface'
+settings:
+  id: 'language_block:language_interface'
+  label: 'Language switcher'
+  provider: language
+  label_display: '0'
+visibility: {  }
